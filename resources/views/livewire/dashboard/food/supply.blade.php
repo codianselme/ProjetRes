@@ -122,8 +122,8 @@
                                 <select class="form-control @error('category_id') is-invalid @enderror" id="category_id" 
                                     wire:model.defer="category_id">
                                     <option value="">Sélectionner une catégorie</option>
-                                    @foreach($categories as $category)
-                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                    @foreach($categories as $key => $category)
+                                        <option value="{{ $category->id }}">{{ $key + 1 }}. {{ $category->name }}</option>
                                     @endforeach
                                 </select>
                                 @error('category_id')
@@ -147,12 +147,12 @@
                                 <select class="form-control @error('unit') is-invalid @enderror" id="unit" 
                                     wire:model.defer="unit">
                                     <option value="">Sélectionner une unité de mesure</option>
-                                    <option value="kg">kg</option>
-                                    <option value="casiers">Casiers</option>
-                                    <option value="pièces">pièces</option>
-                                    <option value="cartons">cartons</option>
-                                    <option value="litre">litre</option>
-                                    <option value="aucun">Aucun</option>
+                                    <option value="casiers">1. Casiers</option>
+                                    <option value="cartons">2. cartons</option>
+                                    <option value="pièces">3. pièces</option>
+                                    <option value="litre">4. litre</option>
+                                    <option value="kg">5. kg</option>
+                                    <option value="aucun">6. Aucun</option>
                                 </select>
                                 @error('unit')
                                     <span class="invalid-feedback">{{ $message }}</span>

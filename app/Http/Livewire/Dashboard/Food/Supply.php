@@ -120,6 +120,8 @@ class Supply extends Component
         } catch (\Exception $e) {
             Alert::error('Erreur', "Une erreur est survenue lors de la mise à jour de l'approvisionnement.");
         }
+
+        return redirect()->route('dashboard.food.supply');
     }
 
     public function delete($id)
@@ -141,6 +143,7 @@ class Supply extends Component
         } catch (\Exception $e) {
             Alert::error('Erreur', "Une erreur est survenue lors de la suppression de l'approvisionnement.");
         }
+        return redirect()->route('dashboard.food.supply');
     }
 
     public function render()
