@@ -116,10 +116,10 @@
                         </a>
                         <ul class="nk-menu-sub">
                             <li class="nk-menu-item">
-                                <a href="#" class="nk-menu-link"><span class="nk-menu-text">Stock Aliment</span></a>
+                                <a href="{{ route('dashboard.stock.food') }}" class="nk-menu-link"><span class="nk-menu-text">Stock Aliment</span></a>
                             </li>
                             <li class="nk-menu-item">
-                                <a href="#" class="nk-menu-link"><span class="nk-menu-text">Stock Boissson</span></a>
+                                <a href="{{ route('dashboard.stock.drink') }}" class="nk-menu-link"><span class="nk-menu-text">Stock Boissson</span></a>
                             </li>
                         </ul><!-- .nk-menu-sub -->
                     </li><!-- .nk-menu-item -->
