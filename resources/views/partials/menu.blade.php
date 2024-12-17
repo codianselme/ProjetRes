@@ -121,9 +121,21 @@
                             <li class="nk-menu-item">
                                 <a href="#" class="nk-menu-link"><span class="nk-menu-text">Stock Boissson</span></a>
                             </li>
+                        </ul><!-- .nk-menu-sub -->
+                    </li><!-- .nk-menu-item -->
+
+                    <li class="nk-menu-item has-sub">
+                        <a href="#" class="nk-menu-link nk-menu-toggle">
+                            <span class="nk-menu-icon"><em class="icon ni ni-tranx"></em></span>
+                            <span class="nk-menu-text">Gestion des repas</span>
+                        </a>
+                        <ul class="nk-menu-sub">
                             <li class="nk-menu-item">
-                                <a href="#" class="nk-menu-link"><span class="nk-menu-text">Liste des Mets</span></a>
+                                <a href="{{ route('dashboard.food.dish') }}" class="nk-menu-link"><span class="nk-menu-text">Liste des Mets</span></a>
                             </li>
+                            {{-- <li class="nk-menu-item">
+                                <a href="html/transaction-crypto.html" class="nk-menu-link"><span class="nk-menu-text">Tranx List - Crypto</span></a>
+                            </li> --}}
                         </ul><!-- .nk-menu-sub -->
                     </li><!-- .nk-menu-item -->
 
@@ -139,22 +151,11 @@
                         </ul><!-- .nk-menu-sub -->
                     </li><!-- .nk-menu-item -->
 
-                    {{-- <li class="nk-menu-item has-sub">
-                        <a href="#" class="nk-menu-link nk-menu-toggle">
-                            <span class="nk-menu-icon"><em class="icon ni ni-tranx"></em></span>
-                            <span class="nk-menu-text">Transactions</span>
-                        </a>
-                        <ul class="nk-menu-sub">
-                            <li class="nk-menu-item">
-                                <a href="html/transaction-basic.html" class="nk-menu-link"><span class="nk-menu-text">Tranx List - Basic</span></a>
-                            </li>
-                            <li class="nk-menu-item">
-                                <a href="html/transaction-crypto.html" class="nk-menu-link"><span class="nk-menu-text">Tranx List - Crypto</span></a>
-                            </li>
-                        </ul><!-- .nk-menu-sub -->
-                    </li><!-- .nk-menu-item -->
+                    
 
-                    <li class="nk-menu-item has-sub">
+                    
+
+                    {{-- <li class="nk-menu-item has-sub">
                         <a href="#" class="nk-menu-link nk-menu-toggle">
                             <span class="nk-menu-icon"><em class="icon ni ni-grid-alt"></em></span>
                             <span class="nk-menu-text">Applications</span>
