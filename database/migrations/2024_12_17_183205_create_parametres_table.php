@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('parametres', function (Blueprint $table) {
             $table->id();
+            $table->string('type')->comment('Le type de structure (par exemple, Bar restaurant)');
             $table->string('name')->comment('Nom de la structure (par exemple, nom du restaurant)');
             $table->string('address')->comment('Adresse de la structure');
             $table->string('contact_phone_1')->comment('Numéro de contact (par exemple, téléphone)');

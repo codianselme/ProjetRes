@@ -214,7 +214,7 @@
     </div>
 </div>
 
-@push('scripts')
+@section('js')
 <script>
     window.addEventListener('close-modal', event => {
         $('#modalForm').modal('hide');
@@ -241,4 +241,4 @@
         });
     });
 </script>
-@endpush
+@endsection

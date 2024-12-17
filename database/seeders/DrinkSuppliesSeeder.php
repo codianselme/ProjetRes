@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class DrinkSuppliesSeeder extends Seeder
 {
@@ -22,7 +24,7 @@ class DrinkSuppliesSeeder extends Seeder
                 'unit_price' => 1000,
                 'total_cost' => 100000,
                 'supply_date' => Carbon::now()->format('Y-m-d'),
-                'drink_category_id' => 6,
+                'category_id' => 6,
             ],
 
             [
@@ -33,7 +35,7 @@ class DrinkSuppliesSeeder extends Seeder
                 'unit_price' => 1000,
                 'total_cost' => 100000,
                 'supply_date' => Carbon::now()->format('Y-m-d'),
-                'drink_category_id' => 6,
+                'category_id' => 6,
             ],
 
             [
@@ -44,7 +46,7 @@ class DrinkSuppliesSeeder extends Seeder
                 'unit_price' => 1000,
                 'total_cost' => 100000,
                 'supply_date' => Carbon::now()->format('Y-m-d'),
-                'drink_category_id' => 6,
+                'category_id' => 6,
             ],
 
             [
@@ -55,7 +57,7 @@ class DrinkSuppliesSeeder extends Seeder
                 'unit_price' => 1000,
                 'total_cost' => 100000,
                 'supply_date' => Carbon::now()->format('Y-m-d'),
-                'drink_category_id' => 6,
+                'category_id' => 6,
             ], 
             // -------------------------------------------------------------------
             [
@@ -66,7 +68,7 @@ class DrinkSuppliesSeeder extends Seeder
                 'unit_price' => 1500,
                 'total_cost' => 150000,
                 'supply_date' => Carbon::now()->format('Y-m-d'),
-                'drink_category_id' => 6,
+                'category_id' => 6,
             ],
 
             [
@@ -77,7 +79,7 @@ class DrinkSuppliesSeeder extends Seeder
                 'unit_price' => 1500,
                 'total_cost' => 150000,
                 'supply_date' => Carbon::now()->format('Y-m-d'),
-                'drink_category_id' => 6,
+                'category_id' => 6,
             ],
 
             [
@@ -88,7 +90,7 @@ class DrinkSuppliesSeeder extends Seeder
                 'unit_price' => 1500,
                 'total_cost' => 150000,
                 'supply_date' => Carbon::now()->format('Y-m-d'),
-                'drink_category_id' => 6,
+                'category_id' => 6,
             ],
 
             [
@@ -99,7 +101,7 @@ class DrinkSuppliesSeeder extends Seeder
                 'unit_price' => 1500,
                 'total_cost' => 150000,
                 'supply_date' => Carbon::now()->format('Y-m-d'),
-                'drink_category_id' => 6,
+                'category_id' => 6,
             ],
             // -------------------------------------------------------------------
             [
@@ -110,7 +112,7 @@ class DrinkSuppliesSeeder extends Seeder
                 'unit_price' => 1000,
                 'total_cost' => 100000,
                 'supply_date' => Carbon::now()->format('Y-m-d'),
-                'drink_category_id' => 7,
+                'category_id' => 7,
             ],
             [
                 'drink_name' => 'Sucreries : sprite (0,33 cl)',
@@ -120,7 +122,7 @@ class DrinkSuppliesSeeder extends Seeder
                 'unit_price' => 1000,
                 'total_cost' => 100000,
                 'supply_date' => Carbon::now()->format('Y-m-d'),
-                'drink_category_id' => 7,
+                'category_id' => 7,
             ],
             [
                 'drink_name' => 'Sucreries : youki (0,33 cl)',
@@ -130,7 +132,7 @@ class DrinkSuppliesSeeder extends Seeder
                 'unit_price' => 1000,
                 'total_cost' => 100000,
                 'supply_date' => Carbon::now()->format('Y-m-d'),
-                'drink_category_id' => 7,
+                'category_id' => 7,
             ],
             
             // -------------------------------------------------------------------
@@ -142,7 +144,7 @@ class DrinkSuppliesSeeder extends Seeder
                 'unit_price' => 1500,
                 'total_cost' => 150000,
                 'supply_date' => Carbon::now()->format('Y-m-d'),
-                'drink_category_id' => 7,
+                'category_id' => 7,
             ],
             [
                 'drink_name' => 'Sucreries : sprite (0,60 cl)',
@@ -152,7 +154,7 @@ class DrinkSuppliesSeeder extends Seeder
                 'unit_price' => 1500,
                 'total_cost' => 150000,
                 'supply_date' => Carbon::now()->format('Y-m-d'),
-                'drink_category_id' => 7,
+                'category_id' => 7,
             ],
             [
                 'drink_name' => 'Sucreries : youki (0,60 cl)',
@@ -162,7 +164,7 @@ class DrinkSuppliesSeeder extends Seeder
                 'unit_price' => 1500,
                 'total_cost' => 150000,
                 'supply_date' => Carbon::now()->format('Y-m-d'),
-                'drink_category_id' => 7,
+                'category_id' => 7,
             ],
             // -------------------------------------------------------------------
             [
@@ -173,7 +175,7 @@ class DrinkSuppliesSeeder extends Seeder
                 'unit_price' => 500,
                 'total_cost' => 50000,
                 'supply_date' => Carbon::now()->format('Y-m-d'),
-                'drink_category_id' => 2,
+                'category_id' => 2,
             ],
 
             [
@@ -184,7 +186,7 @@ class DrinkSuppliesSeeder extends Seeder
                 'unit_price' => 500,
                 'total_cost' => 50000,
                 'supply_date' => Carbon::now()->format('Y-m-d'),
-                'drink_category_id' => 2,
+                'category_id' => 2,
             ],
 
             [
@@ -195,7 +197,7 @@ class DrinkSuppliesSeeder extends Seeder
                 'unit_price' => 500,
                 'total_cost' => 50000,
                 'supply_date' => Carbon::now()->format('Y-m-d'),
-                'drink_category_id' => 2,
+                'category_id' => 2,
             ],
             // -------------------------------------------------------------------
             [
@@ -206,7 +208,7 @@ class DrinkSuppliesSeeder extends Seeder
                 'unit_price' => 1000,
                 'total_cost' => 100000,
                 'supply_date' => Carbon::now()->format('Y-m-d'),
-                'drink_category_id' => 2,
+                'category_id' => 2,
             ],
 
             [
@@ -217,7 +219,7 @@ class DrinkSuppliesSeeder extends Seeder
                 'unit_price' => 1000,
                 'total_cost' => 100000,
                 'supply_date' => Carbon::now()->format('Y-m-d'),
-                'drink_category_id' => 2,
+                'category_id' => 2,
             ],
 
             [
@@ -228,7 +230,7 @@ class DrinkSuppliesSeeder extends Seeder
                 'unit_price' => 1000,
                 'total_cost' => 100000,
                 'supply_date' => Carbon::now()->format('Y-m-d'),
-                'drink_category_id' => 2,
+                'category_id' => 2,
             ],
 
             [
@@ -239,160 +241,160 @@ class DrinkSuppliesSeeder extends Seeder
                 'unit_price' => 1000,
                 'total_cost' => 100000,
                 'supply_date' => Carbon::now()->format('Y-m-d'),
-                'drink_category_id' => 2,
+                'category_id' => 2,
             ],
 
             // -------------------------------------------------------------------
 
             [
                 'drink_name' => 'Amura',
-                'unit' => 'bottle',
+                'unit' => '',
                 'supplier_name' => 'Supplier 1',
                 'quantity' => 100,
                 'unit_price' => 1500,
                 'total_cost' => 150000,
                 'supply_date' => Carbon::now()->format('Y-m-d'),
-                'drink_category_id' => 5,
+                'category_id' => 5,
             ],
             [
                 'drink_name' => 'Campari',
-                'unit' => 'bottle',
+                'unit' => '',
                 'supplier_name' => 'Supplier 2',
                 'quantity' => 100,
                 'unit_price' => 1500,
                 'total_cost' => 150000,
                 'supply_date' => Carbon::now()->format('Y-m-d'),
-                'drink_category_id' => 5,
+                'category_id' => 5,
             ],
             [
                 'drink_name' => 'Cardhu',
-                'unit' => 'bottle',
+                'unit' => '',
                 'supplier_name' => 'Supplier 3',
                 'quantity' => 100,
                 'unit_price' => 5000,
                 'total_cost' => 500000,
                 'supply_date' => Carbon::now()->format('Y-m-d'),
-                'drink_category_id' => 5,
+                'category_id' => 5,
             ],
             [
                 'drink_name' => 'Cointreau',
-                'unit' => 'bottle',
+                'unit' => '',
                 'supplier_name' => 'Supplier 4',
                 'quantity' => 100,
                 'unit_price' => 5000,
                 'total_cost' => 500000,
                 'supply_date' => Carbon::now()->format('Y-m-d'),
-                'drink_category_id' => 5,
+                'category_id' => 5,
             ],
             [
                 'drink_name' => 'Chivas régal 12/18',
-                'unit' => 'bottle',
+                'unit' => '',
                 'supplier_name' => 'Supplier 5',
                 'quantity' => 100,
                 'unit_price' => 5000,
                 'total_cost' => 500000,
                 'supply_date' => Carbon::now()->format('Y-m-d'),
-                'drink_category_id' => 5,
+                'category_id' => 5,
             ],
             [
                 'drink_name' => 'Chivas régal 12/18',
-                'unit' => 'bottle',
+                'unit' => '',
                 'supplier_name' => 'Supplier 5',
                 'quantity' => 100,
                 'unit_price' => 10000,
                 'total_cost' => 1000000,
                 'supply_date' => Carbon::now()->format('Y-m-d'),
-                'drink_category_id' => 5,
+                'category_id' => 5,
             ],
             [
                 'drink_name' => 'Dimple',
-                'unit' => 'bottle',
+                'unit' => '',
                 'supplier_name' => 'Supplier 6',
                 'quantity' => 100,
                 'unit_price' => 5000,
                 'total_cost' => 500000,
                 'supply_date' => Carbon::now()->format('Y-m-d'),
-                'drink_category_id' => 5,
+                'category_id' => 5,
             ],
             [
                 'drink_name' => 'Island green',
-                'unit' => 'bottle',
+                'unit' => '',
                 'supplier_name' => 'Supplier 7',
                 'quantity' => 100,
                 'unit_price' => 10000,
                 'total_cost' => 1000000,
                 'supply_date' => Carbon::now()->format('Y-m-d'),
-                'drink_category_id' => 5,
+                'category_id' => 5,
             ],
             [
                 'drink_name' => 'Jack Daniel\'s',
-                'unit' => 'bottle',
+                'unit' => '',
                 'supplier_name' => 'Supplier 8',
                 'quantity' => 100,
                 'unit_price' => 5000,
                 'total_cost' => 500000,
                 'supply_date' => Carbon::now()->format('Y-m-d'),
-                'drink_category_id' => 5,
+                'category_id' => 5,
             ],
             [
                 'drink_name' => 'Label 5',
-                'unit' => 'bottle',
+                'unit' => '',
                 'supplier_name' => 'Supplier 9',
                 'quantity' => 100,
                 'unit_price' => 1500,
                 'total_cost' => 150000,
                 'supply_date' => Carbon::now()->format('Y-m-d'),
-                'drink_category_id' => 5,
+                'category_id' => 5,
             ],
             [
                 'drink_name' => 'Martini',
-                'unit' => 'bottle',
+                'unit' => '',
                 'supplier_name' => 'Supplier 10',
                 'quantity' => 100,
                 'unit_price' => 1500,
                 'total_cost' => 150000,
                 'supply_date' => Carbon::now()->format('Y-m-d'),
-                'drink_category_id' => 5,
+                'category_id' => 5,
             ],
             [
                 'drink_name' => 'Moulin de la grange',
-                'unit' => 'bottle',
+                'unit' => '',
                 'supplier_name' => 'Supplier 11',
                 'quantity' => 100,
                 'unit_price' => 10000,
                 'total_cost' => 1000000,
                 'supply_date' => Carbon::now()->format('Y-m-d'),
-                'drink_category_id' => 5,
+                'category_id' => 5,
             ],
             [
                 'drink_name' => 'Red Label',
-                'unit' => 'bottle',
+                'unit' => '',
                 'supplier_name' => 'Supplier 12',
                 'quantity' => 100,
                 'unit_price' => 1500,
                 'total_cost' => 150000,
                 'supply_date' => Carbon::now()->format('Y-m-d'),
-                'drink_category_id' => 5,
+                'category_id' => 5,
             ],
             [
                 'drink_name' => 'Saint James',
-                'unit' => 'bottle',
+                'unit' => '',
                 'supplier_name' => 'Supplier 13',
                 'quantity' => 100,
                 'unit_price' => 1500,
                 'total_cost' => 150000,
                 'supply_date' => Carbon::now()->format('Y-m-d'),
-                'drink_category_id' => 5,
+                'category_id' => 5,
             ],
             [
                 'drink_name' => 'Suze',
-                'unit' => 'bottle',
+                'unit' => '',
                 'supplier_name' => 'Supplier 14',
                 'quantity' => 100,
                 'unit_price' => 1500,
                 'total_cost' => 150000,
                 'supply_date' => Carbon::now()->format('Y-m-d'),
-                'drink_category_id' => 5,
+                'category_id' => 5,
             ],
         ];
 
