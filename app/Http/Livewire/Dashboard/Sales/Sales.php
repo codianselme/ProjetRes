@@ -53,6 +53,7 @@ class Sales extends Component
         ];
     }
 
+
     public function removeItem($index)
     {
         unset($this->items[$index]);
@@ -126,8 +127,9 @@ class Sales extends Component
         ->paginate(10);
 
         $dishes = Dish::where('is_available', true)->get();
-        $drinks = DrinkSupply::select('drink_name', 'unit_price')
-            ->groupBy('drink_name', 'unit_price')
+
+        $drinks = DrinkSupply::select('id', 'drink_name', 'unit_price')
+            ->groupBy('id', 'drink_name', 'unit_price')
             ->having(DB::raw('SUM(quantity)'), '>', 0)
             ->get();
 

@@ -47,6 +47,20 @@ class Supply extends Component
         'supply_date.required' => 'La date d\'approvisionnement est obligatoire',
     ];
 
+    private function resetInputFields()
+    {
+        $this->category_id = '';
+        $this->food_name = '';
+        $this->unit = '';
+        $this->supplier_name = '';
+        $this->quantity = '';
+        $this->unit_price = '';
+        $this->total_cost = '';
+        $this->supply_date = '';
+        $this->supplyId = null;
+        $this->isEditing = false;
+    }
+
     public function store()
     {
         $this->validate();
@@ -69,7 +83,8 @@ class Supply extends Component
             $this->dispatchBrowserEvent('close-modal');
             Alert::success('Succès', 'Approvisionnement ajouté avec succès !');
         } catch (\Exception $e) {
-            Alert::error('Erreur', "Une erreur est survenue lors de l'ajout de l'approvisionnement.");
+            dd($e);
+            Alert::error('Erreur', "Une erreur est survenue lors de l'ajout de l'approvisionnement : {$e->getMessage()}");
         }
 
         return redirect()->route('dashboard.food.supply');
