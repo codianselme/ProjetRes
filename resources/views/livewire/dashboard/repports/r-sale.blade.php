@@ -1,4 +1,5 @@
 <div>
+    <br><br>
     <div class="nk-content">
         <div class="container-fluid">
             <div class="nk-content-inner">
@@ -7,6 +8,11 @@
                         <div class="nk-block-between">
                             <div class="nk-block-head-content">
                                 <h3 class="nk-block-title page-title">Rapport des Ventes</h3>
+                            </div>
+                            <div class="nk-block-head-content">
+                                <button class="btn btn-primary" wire:click="exportPDF">Exporter en PDF</button>
+                                <button class="btn btn-success" wire:click="exportExcel">Exporter en Excel</button>
+                                <button class="btn btn-info" wire:click="exportTXT">Exporter en TXT</button>
                             </div>
                         </div>
                     </div>

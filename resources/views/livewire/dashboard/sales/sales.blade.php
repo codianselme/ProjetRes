@@ -161,45 +161,75 @@
     <!-- Modal Facture -->
     @if($showInvoice && $currentSale)
     <div class="modal fade show" tabindex="-1" style="display: block;">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Facture {{ $currentSale->invoice_number }}</h5>
                     <button type="button" class="btn-close" wire:click="$set('showInvoice', false)"></button>
                 </div>
-                <div class="modal-body">
-                    <!-- Contenu de la facture -->
-                    <div class="invoice">
-                        <div class="invoice-head">
-                            <h3>Restaurant XYZ</h3>
-                            <p>Date: {{ $currentSale->created_at->format('d/m/Y H:i') }}</p>
+                <div class="modal-body bg-light">
+                    <div class="invoice bg-white shadow-sm rounded p-4">
+                        <div class="invoice-header text-center mb-4">
+                            <h1 class="h3 fw-bold text-primary mb-2">Restaurant XYZ</h1>
+                            <div class="contact-info text-muted">
+                                <p class="mb-1">123 Rue de la Gastronomie, Cotonou, Bénin</p>
+                                <p class="mb-1">Tél : +123 456 7890</p>
+                                <p class="mb-0 text-muted">{{ now()->format('d/m/Y H:i:s') }}</p>
+                            </div>
                         </div>
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Article</th>
-                                    <th>Quantité</th>
-                                    <th>Prix unitaire</th>
-                                    <th>Total</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($currentSale->items as $item)
-                                <tr>
-                                    <td>{{ $item->itemable->name ?? $item->itemable->drink_name }}</td>
-                                    <td>{{ $item->quantity }}</td>
-                                    <td>{{ number_format($item->unit_price, 0) }} FCFA</td>
-                                    <td>{{ number_format($item->total_price, 0) }} FCFA</td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                            <tfoot>
-                                <tr>
-                                    <th colspan="3">Total</th>
-                                    <th>{{ number_format($currentSale->total_amount, 0) }} FCFA</th>
-                                </tr>
-                            </tfoot>
-                        </table>
+
+                        <div class="invoice-details row mb-4">
+                            <div class="col-6">
+                                <small class="text-muted">Date de vente :</small>
+                                <p class="fw-bold">{{ $currentSale->created_at->format('d/m/Y H:i') }}</p>
+                            </div>
+                            <div class="col-6 text-end">
+                                <small class="text-muted">Caissière :</small>
+                                <p class="fw-bold">{{ $currentSale->cashier_name }}</p>
+                            </div>
+                        </div>
+
+                        <div class="invoice-items">
+                            <table class="table table-hover">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Article</th>
+                                        <th class="text-center">Quantité</th>
+                                        <th class="text-end">Prix unitaire</th>
+                                        <th class="text-end">Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($currentSale->items as $item)
+                                    <tr>
+                                        <td>{{ $item->itemable->name ?? $item->itemable->drink_name }}</td>
+                                        <td class="text-center">{{ $item->quantity }}</td>
+                                        <td class="text-end">{{ number_format($item->unit_price, 0) }} FCFA</td>
+                                        <td class="text-end">{{ number_format($item->total_price, 0) }} FCFA</td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                                <tfoot>
+                                    <tr class="table-active">
+                                        <th colspan="3" class="text-end">Total TTC</th>
+                                        <th class="text-end">{{ number_format($currentSale->total_amount, 0) }} FCFA</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+
+                        <div class="qr-code-section text-center mb-4">
+                            <img 
+                                src="{{ asset('https://fiches-pratiques.e-marketing.fr/Assets/Img/FICHEPRATIQUE/2021/10/365359/Comment-generer-facilement-code--F.jpg') }}" 
+                                alt="QR Code" 
+                                class="img-fluid rounded shadow" 
+                                style="max-width: 120px;"
+                            >
+                        </div>
+
+                        <div class="invoice-footer text-center mt-4">
+                            <small class="text-muted">Merci pour votre visite</small>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">

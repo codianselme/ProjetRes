@@ -6,6 +6,9 @@ use Livewire\Component;
 use App\Models\Sale;
 use Livewire\WithPagination;
 use Carbon\Carbon;
+use PDF;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\SalesExport;
 
 class RSale extends Component
 {
@@ -29,7 +32,6 @@ class RSale extends Component
 
     public function getSalesData()
     {
-        // dd($this->startDate, $this->endDate);
         $query = Sale::with('items.itemable')
             ->whereBetween('created_at', [$this->startDate." 00:00:00", $this->endDate." 23:59:59"]);
 
@@ -51,6 +53,33 @@ class RSale extends Component
     {
         $this->showInvoice = false;
         $this->currentSale = null;
+    }
+
+    public function exportPDF()
+    {
+        $sales = $this->getSalesData()->items();
+        $pdf = PDF::loadView('exports.sales', ['sales' => $sales]);
+        return $pdf->download('rapport_ventes.pdf');
+    }
+
+    public function exportExcel()
+    {
+        return Excel::download(new SalesExport($this->startDate, $this->endDate, $this->searchTerm), 'rapport_ventes.xlsx');
+    }
+
+    public function exportTXT()
+    {
+        $sales = $this->getSalesData()->items();
+        $filename = 'rapport_ventes.txt';
+        $handle = fopen($filename, 'w');
+
+        foreach ($sales as $sale) {
+            $line = "Numéro de Facture: {$sale->invoice_number}, Date: {$sale->created_at->format('d/m/Y')}, Montant Total: {$sale->total_amount} FCFA, Montant Payé: {$sale->paid_amount} FCFA\n";
+            fwrite($handle, $line);
+        }
+
+        fclose($handle);
+        return response()->download($filename)->deleteFileAfterSend(true);
     }
 
     public function render()
