@@ -30,6 +30,11 @@ Route::middleware([ 'auth:sanctum', config('jetstream.auth_session'), 'verified'
         Route::get('profiles/',             App\Http\Livewire\Dashboard\Roles\Roles::class)->name('dashboard.roles');
         Route::get('utilisateurs/',         App\Http\Livewire\Dashboard\Utilisateurs\Utilisateurs::class)->name('dashboard.utilisateurs');
         Route::get('utilisateurs/archives', App\Http\Livewire\Dashboard\UtilisateursArchives\UtilisateursArchives::class)->name('dashboard.utilisateurs-archives');
+        
+        Route::get('drink/category/', App\Http\Livewire\Dashboard\Drink\Category::class)->name('dashboard.drink.category');
+        Route::get('drink/supply/', App\Http\Livewire\Dashboard\Drink\Supply::class)->name('dashboard.drink.supply');
+        Route::get('food/category/', App\Http\Livewire\Dashboard\Food\Category::class)->name('dashboard.food.category');
+        Route::get('food/supply/', App\Http\Livewire\Dashboard\Food\Supply::class)->name('dashboard.food.supply');
 
     });
 });

@@ -64,13 +64,13 @@
 
                     
                     <br><br>
-                    <li class="nk-menu-heading">
+                    {{-- <li class="nk-menu-heading">
                         <h6 class="overline-title text-primary-alt">Gestion des Utilisateurs</h6>
-                    </li><!-- .nk-menu-heading -->
+                    </li><!-- .nk-menu-heading --> --}}
                     <li class="nk-menu-item has-sub">
                         <a href="#" class="nk-menu-link nk-menu-toggle">
                             <span class="nk-menu-icon"><em class="icon ni ni-users"></em></span>
-                            <span class="nk-menu-text">Gestion des Utilisateur</span>
+                            <span class="nk-menu-text">Gestion des Utilisateurs</span>
                         </a>
                         <ul class="nk-menu-sub">
                             <li class="nk-menu-item">
@@ -91,14 +91,20 @@
                     <li class="nk-menu-item has-sub">
                         <a href="#" class="nk-menu-link nk-menu-toggle">
                             <span class="nk-menu-icon"><em class="icon ni ni-tile-thumb"></em></span>
-                            <span class="nk-menu-text">Projects</span>
+                            <span class="nk-menu-text">Gestion des Approvs</span> 
                         </a>
                         <ul class="nk-menu-sub">
                             <li class="nk-menu-item">
-                                <a href="html/project-card.html" class="nk-menu-link"><span class="nk-menu-text">Project Cards</span></a>
+                                <a href="{{ route('dashboard.food.category') }}" class="nk-menu-link"><span class="nk-menu-text">Catégories d'Aliments</span></a>
                             </li>
                             <li class="nk-menu-item">
-                                <a href="html/project-list.html" class="nk-menu-link"><span class="nk-menu-text">Project List</span></a>
+                                <a href="{{ route('dashboard.drink.category') }}" class="nk-menu-link"><span class="nk-menu-text">Catégories de Boisson</span></a>
+                            </li>
+                            <li class="nk-menu-item">
+                                <a href="{{ route('dashboard.food.supply') }}" class="nk-menu-link"><span class="nk-menu-text">Approvs en Aliments</span></a>
+                            </li>
+                            <li class="nk-menu-item">
+                                <a href="{{ route('dashboard.drink.supply') }}" class="nk-menu-link"><span class="nk-menu-text">Approvs en Boisson</span></a>
                             </li>
                         </ul><!-- .nk-menu-sub -->
                     </li><!-- .nk-menu-item -->
@@ -106,14 +112,17 @@
                     <li class="nk-menu-item has-sub">
                         <a href="#" class="nk-menu-link nk-menu-toggle">
                             <span class="nk-menu-icon"><em class="icon ni ni-user-list"></em></span>
-                            <span class="nk-menu-text">Customers</span><span class="nk-menu-badge">New</span>
+                            <span class="nk-menu-text">Gestion du Stock</span>
                         </a>
                         <ul class="nk-menu-sub">
                             <li class="nk-menu-item">
-                                <a href="html/customer-list.html" class="nk-menu-link"><span class="nk-menu-text">Customer List</span></a>
+                                <a href="#" class="nk-menu-link"><span class="nk-menu-text">Stock Aliment</span></a>
                             </li>
                             <li class="nk-menu-item">
-                                <a href="html/customer-details.html" class="nk-menu-link"><span class="nk-menu-text">Customer Details</span></a>
+                                <a href="#" class="nk-menu-link"><span class="nk-menu-text">Stock Boissson</span></a>
+                            </li>
+                            <li class="nk-menu-item">
+                                <a href="#" class="nk-menu-link"><span class="nk-menu-text">Liste des Mets</span></a>
                             </li>
                         </ul><!-- .nk-menu-sub -->
                     </li><!-- .nk-menu-item -->
@@ -121,19 +130,16 @@
                     <li class="nk-menu-item has-sub">
                         <a href="#" class="nk-menu-link nk-menu-toggle">
                             <span class="nk-menu-icon"><em class="icon ni ni-file-docs"></em></span>
-                            <span class="nk-menu-text">AML / KYCs</span>
+                            <span class="nk-menu-text">Ventes et Facturation</span>
                         </a>
                         <ul class="nk-menu-sub">
                             <li class="nk-menu-item">
-                                <a href="html/kyc-list-regular.html" class="nk-menu-link"><span class="nk-menu-text">KYC List - Regular</span></a>
-                            </li>
-                            <li class="nk-menu-item">
-                                <a href="html/kyc-details-regular.html" class="nk-menu-link"><span class="nk-menu-text">KYC Details - Regular</span></a>
+                                <a href="#" class="nk-menu-link"><span class="nk-menu-text">Liste des Ventes</span></a>
                             </li>
                         </ul><!-- .nk-menu-sub -->
                     </li><!-- .nk-menu-item -->
 
-                    <li class="nk-menu-item has-sub">
+                    {{-- <li class="nk-menu-item has-sub">
                         <a href="#" class="nk-menu-link nk-menu-toggle">
                             <span class="nk-menu-icon"><em class="icon ni ni-tranx"></em></span>
                             <span class="nk-menu-text">Transactions</span>
@@ -572,7 +578,7 @@
                             <span class="nk-menu-icon"><em class="icon ni ni-text-rich"></em></span>
                             <span class="nk-menu-text">Email Template</span>
                         </a>
-                    </li>
+                    </li> --}}
                 </ul><!-- .nk-menu -->
             </div><!-- .nk-sidebar-menu -->
         </div><!-- .nk-sidebar-content -->
