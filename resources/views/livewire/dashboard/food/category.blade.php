@@ -7,7 +7,7 @@
                     <div class="nk-block-head nk-block-head-sm">
                         <div class="nk-block-between">
                             <div class="nk-block-head-content">
-                                <h3 class="nk-block-title page-title">Catégories de Nourriture</h3>
+                                <h3 class="nk-block-title page-title">Catégories d'Aliments</h3>
                                 <div class="nk-block-des text-soft">
                                     <p>Vous avez au total {{ $categories->total() }} catégories.</p>
                                 </div>
@@ -151,6 +151,24 @@
 
     window.addEventListener('show-modal', event => {
         $('#modalForm').modal('show');
+    });
+
+    // Ajout de la confirmation de suppression
+    window.addEventListener('swal:confirm', event => {
+        Swal.fire({
+            title: event.detail.title,
+            text: event.detail.text,
+            icon: event.detail.type,
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Oui, supprimer!',
+            cancelButtonText: 'Annuler'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Livewire.emit('deleteConfirmed', event.detail.id);
+            }
+        });
     });
 </script>
 @endsection

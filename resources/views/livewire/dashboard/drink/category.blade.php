@@ -152,5 +152,23 @@
     window.addEventListener('show-modal', event => {
         $('#modalForm').modal('show');
     });
+
+    // Ajout de la confirmation de suppression
+    window.addEventListener('swal:confirm', event => {
+        Swal.fire({
+            title: event.detail.title,
+            text: event.detail.text,
+            icon: event.detail.type,
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Oui, supprimer!',
+            cancelButtonText: 'Annuler'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Livewire.emit('deleteConfirmed', event.detail.id);
+            }
+        });
+    });
 </script>
 @endsection

@@ -18,6 +18,7 @@ class Category extends Component
     public $categoryId;
     public $searchTerm;
     public $isEditing = false;
+    protected $listeners = ['deleteConfirmed'];
 
     protected $rules = [
         'name' => 'required|min:3',
@@ -87,6 +88,16 @@ class Category extends Component
     }
 
     public function delete($id)
+    {
+        $this->dispatchBrowserEvent('swal:confirm', [
+            'type' => 'warning',
+            'title' => 'Êtes-vous sûr?',
+            'text' => 'Cette action est irréversible!',
+            'id' => $id
+        ]);
+    }
+
+    public function deleteConfirmed($id)
     {
         try {
             $category = FoodCategory::findOrFail($id);

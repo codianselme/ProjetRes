@@ -31,6 +31,8 @@ class Category extends Component
         'description.required' => 'La description est obligatoire',
     ];
 
+    protected $listeners = ['deleteConfirmed'];
+
     public function store()
     {
         $this->validate();
@@ -87,6 +89,16 @@ class Category extends Component
     }
 
     public function delete($id)
+    {
+        $this->dispatchBrowserEvent('swal:confirm', [
+            'type' => 'warning',
+            'title' => 'Êtes-vous sûr?',
+            'text' => 'Cette action est irréversible!',
+            'id' => $id
+        ]);
+    }
+
+    public function deleteConfirmed($id)
     {
         try {
             $category = DrinkCategory::findOrFail($id);
