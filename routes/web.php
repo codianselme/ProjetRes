@@ -56,6 +56,7 @@ Route::middleware([ 'auth:sanctum', config('jetstream.auth_session'), 'verified'
 
         Route::get('stock/drink/', App\Http\Livewire\Dashboard\Stock\Food::class)->name('dashboard.stock.food');
         Route::get('stock/food/', App\Http\Livewire\Dashboard\Stock\Drink::class)->name('dashboard.stock.drink');
-
+        
+        Route::get('sales/', App\Http\Livewire\Dashboard\Sales\Sales::class)->name('dashboard.sales.sales');
     });
 });

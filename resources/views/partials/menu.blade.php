@@ -146,7 +146,7 @@
                         </a>
                         <ul class="nk-menu-sub">
                             <li class="nk-menu-item">
-                                <a href="#" class="nk-menu-link"><span class="nk-menu-text">Liste des Ventes</span></a>
+                                <a href="{{ route('dashboard.sales.sales') }}" class="nk-menu-link"><span class="nk-menu-text">Liste des Ventes</span></a>
                             </li>
                         </ul><!-- .nk-menu-sub -->
                     </li><!-- .nk-menu-item -->
