@@ -152,7 +152,20 @@
                     </li><!-- .nk-menu-item -->
 
                     
-
+                    <li class="nk-menu-item has-sub">
+                        <a href="#" class="nk-menu-link nk-menu-toggle">
+                            <span class="nk-menu-icon"><em class="icon ni ni-file-docs"></em></span>
+                            <span class="nk-menu-text">Rapport</span>
+                        </a>
+                        <ul class="nk-menu-sub">
+                            <li class="nk-menu-item">
+                                <a href="{{ route('dashboard.repport.supply') }}" class="nk-menu-link"><span class="nk-menu-text">Approvs</span></a>
+                            </li>
+                            <li class="nk-menu-item">
+                                <a href="{{ route('dashboard.repport.sales') }}" class="nk-menu-link"><span class="nk-menu-text">Ventes</span></a>
+                            </li>
+                        </ul><!-- .nk-menu-sub -->
+                    </li><!-- .nk-menu-item -->
                     
 
                     {{-- <li class="nk-menu-item has-sub">
