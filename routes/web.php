@@ -61,5 +61,8 @@ Route::middleware([ 'auth:sanctum', config('jetstream.auth_session'), 'verified'
         
         Route::get('repports/sales/',  App\Http\Livewire\Dashboard\Repports\RSale::class)->name('dashboard.repport.sales');
         Route::get('repports/supply/', App\Http\Livewire\Dashboard\Repports\RSupply::class)->name('dashboard.repport.supply');
+        
+        Route::get('profile', App\Http\Livewire\Dashboard\Profile\Profile::class)->name('dashboard.profile');
+
     });
 });

@@ -10,7 +10,7 @@
                     <img class="logo-dark logo-img" src="{{ asset('files/images/logo-dark.png') }}" srcset="{{ asset('files/images/logo-dark2x.png') }} 2x" alt="logo-dark">
                 </a>
             </div><!-- .nk-header-brand -->
-            <div class="nk-header-news d-none d-xl-block">
+            {{-- <div class="nk-header-news d-none d-xl-block">
                 <div class="nk-news-list">
                     <a class="nk-news-item" href="#">
                         <div class="nk-news-icon">
@@ -22,7 +22,7 @@
                         </div>
                     </a>
                 </div>
-            </div><!-- .nk-header-news -->
+            </div> --}}<!-- .nk-header-news -->
             <div class="nk-header-tools">
                 <ul class="nk-quick-nav">
                     {{-- <li class="dropdown language-dropdown d-none d-sm-block me-n1">
@@ -60,7 +60,8 @@
                             </ul>
                         </div>
                     </li><!-- .dropdown --> --}}
-                    <li class="dropdown notification-dropdown me-n1">
+
+                    {{-- <li class="dropdown notification-dropdown me-n1">
                         <a href="#" class="dropdown-toggle nk-quick-nav-icon" data-bs-toggle="dropdown">
                             <div class="icon-status icon-status-info"><em class="icon ni ni-bell"></em></div>
                         </a>
@@ -131,7 +132,7 @@
                                 <a href="#">View All</a>
                             </div>
                         </div>
-                    </li><!-- .dropdown -->
+                    </li> --}}<!-- .dropdown -->
                     <li class="dropdown user-dropdown">
                         <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown">
                             <div class="user-toggle">
@@ -139,7 +140,7 @@
                                     <em class="icon ni ni-user-alt"></em>
                                 </div>
                                 <div class="user-info d-none d-md-block">
-                                    <div class="user-status">Administrator</div>
+                                    <div class="user-status">{{ Auth::user()->getRoleNames()[0] }}</div>
                                     <div class="user-name dropdown-indicator">{{ Auth::user()->name }}</div>
                                 </div>
                             </div>
@@ -158,10 +159,10 @@
                             </div>
                             <div class="dropdown-inner">
                                 <ul class="link-list">
-                                    <li><a href="html/user-profile-regular.html"><em class="icon ni ni-user-alt"></em><span>View Profile</span></a></li>
-                                    <li><a href="html/user-profile-setting.html"><em class="icon ni ni-setting-alt"></em><span>Account Setting</span></a></li>
-                                    <li><a href="html/user-profile-activity.html"><em class="icon ni ni-activity-alt"></em><span>Login Activity</span></a></li>
-                                    <li><a class="dark-switch" href="#"><em class="icon ni ni-moon"></em><span>Dark Mode</span></a></li>
+                                    <li><a href="{{ route('dashboard.profile') }}"><em class="icon ni ni-user-alt"></em><span>Voir Profile</span></a></li>
+                                    {{-- <li><a href="html/user-profile-setting.html"><em class="icon ni ni-setting-alt"></em><span>Account Setting</span></a></li>
+                                    <li><a href="html/user-profile-activity.html"><em class="icon ni ni-activity-alt"></em><span>Login Activity</span></a></li> --}}
+                                    <li><a class="dark-switch" href="#"><em class="icon ni ni-moon"></em><span>Mode Sombre</span></a></li>
                                 </ul>
                             </div>
                             <div class="dropdown-inner">
