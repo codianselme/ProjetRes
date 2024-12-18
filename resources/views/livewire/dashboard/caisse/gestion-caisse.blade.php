@@ -19,29 +19,21 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th>Date de la veille</th>
+                                            <th>Jour Concerné</th>
+                                            <th>Date Concerné</th>
                                             <th>Solde final de la veille en Espèce</th>
                                             <th>Solde final de la veille en Mobile Money</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
+                                            <td>Veille</td>
                                             <td>{{ $caisse_last_day->date ?? "Non trouvé" }}</td>
                                             <td>{{ $caisse_last_day->solde_especes_final ?? 0 }}</td>
                                             <td>{{ $caisse_last_day->solde_momo_final ?? 0 }}</td>
                                         </tr>
-                                    </tbody>
-                                </table>
-                                <table class="table">
-                                    <thead>
                                         <tr>
-                                            <th>Date du jour</th>
-                                            <th>Solde final du jour</th>
-                                            <th>Solde final du jour</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
+                                            <td>Jour</td>
                                             <td>{{ $caisse_last_day->date ?? "Non trouvé" }}</td>
                                             <td>{{ $caisse_last_day->solde_especes_final ?? 0 }}</td>
                                             <td>{{ $caisse_last_day->solde_momo_final ?? 0 }}</td>
