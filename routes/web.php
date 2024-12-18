@@ -13,13 +13,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('/', function () {
     return view('accueil');
 });
+
+# Pour les envois de mails
+Route::get('/activation/{token}', [App\Http\Controllers\Utilisateurs\AuthController::class, 'activation'])->name('activation');
+Route::get('/activate/{token}',   [App\Http\Controllers\Utilisateurs\AuthController::class, 'activate'])->name('activate');
+Route::post('/setpassword',       [App\Http\Controllers\Utilisateurs\AuthController::class, 'setPassword'])->name('setpassword');
+Route::post('/forgotpassword',    [App\Http\Controllers\Utilisateurs\AuthController::class, 'forgotPassword'])->name('forgot.password');
 
 Route::middleware([ 'auth:sanctum', config('jetstream.auth_session'), 'verified', ])->group(function () {
     

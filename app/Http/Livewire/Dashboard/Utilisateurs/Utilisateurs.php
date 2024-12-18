@@ -2,11 +2,14 @@
 
 namespace App\Http\Livewire\Dashboard\Utilisateurs;
 
-use Livewire\Component;
-use Livewire\WithPagination;
-use RealRashid\SweetAlert\Facades\Alert;
-use Spatie\Permission\Models\Role;
+use Carbon\Carbon;
 use App\Models\User;
+use Livewire\Component;
+use Illuminate\Support\Str;
+use Livewire\WithPagination;
+use Spatie\Permission\Models\Role;
+use RealRashid\SweetAlert\Facades\Alert;
+use App\Notifications\Notification\NewUser;
 
 class Utilisateurs extends Component
 {
@@ -56,7 +59,7 @@ class Utilisateurs extends Component
         $this->poste = '';
         $this->gender = '';
         $this->address = '';
-        $this->password = '';
+        $this->role = '';
         $this->user_id = null;
         $this->isEditing = false;
     }
@@ -80,11 +83,21 @@ class Utilisateurs extends Component
                 'gender' => $this->gender,
                 'address' => $this->address,
                 'password'  => bcrypt($this->email), 
+                'role'  => $this->role, 
             ]);
 
             if ($user) {
                 // Associer le profil à l'utilisateur
                 $user->assignRole($this->role);
+
+                $token = $user->user_tokens()->create([
+                    'value' => Str::random(32),
+                    'expire_at' => Carbon::now()->add(24, 'hour'),
+                ]);
+                $user->token = $token->value;
+
+                // Notifications
+                $user->notify(new NewUser($user));
             }
 
             $this->resetInputFields();
@@ -92,7 +105,7 @@ class Utilisateurs extends Component
             // session()->flash('message', 'Utilisateur créé avec succès.');
             Alert::success('Message', 'Utilisateur créé avec succès !');
         } catch (\Illuminate\Database\QueryException $e) {
-            dd($e);
+            // dd($e);
             if ($e->getCode() == 23000) {
                 Alert::error('Nouvel Utilisateur', "Cet email est déjà utilisé par un autre utilisateur !!");
                 $this->addError('email', 'Cet email est déjà utilisé par un autre utilisateur.');
