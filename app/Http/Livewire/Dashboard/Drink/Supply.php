@@ -24,6 +24,9 @@ class Supply extends Component
     public $supplyId;
     public $searchTerm;
     public $isEditing = false;
+    public $bottles_per_case;
+    public $existingDrinks;
+    public $new_drink_name;
 
     protected $listeners = ['deleteConfirmed'];
 
@@ -35,6 +38,7 @@ class Supply extends Component
         'quantity' => 'required|numeric|min:1',
         'unit_price' => 'required|numeric|min:0',
         'supply_date' => 'required|date',
+        'bottles_per_case' => 'nullable|in:12,16,24',
     ];
 
     protected $messages = [
@@ -51,9 +55,17 @@ class Supply extends Component
     {
         $this->validate();
 
+        if ($this->drink_name === 'new') {
+            $this->drink_name = $this->new_drink_name;
+        }
+
         try {
             $this->total_cost = $this->quantity * $this->unit_price;
-            
+
+            if ($this->unit === 'casiers' && $this->bottles_per_case) {
+                $this->quantity *= $this->bottles_per_case;
+            }
+
             DrinkSupply::create([
                 'category_id' => $this->category_id,
                 'drink_name' => $this->drink_name,
@@ -64,6 +76,23 @@ class Supply extends Component
                 'total_cost' => $this->total_cost,
                 'supply_date' => $this->supply_date,
             ]);
+
+            // Mettre à jour le stock
+            // $drinkStock = DrinkStock::where('drink_name', $this->drink_name)->first();
+            // if ($drinkStock) {
+            //     $drinkStock->drink_name;
+            //     $drinkStock->quantity = $drinkStock->quantity + $this->quantity;
+            //     $drinkStock->unit_price = $this->unit_price;
+            //     $drinkStock->total_cost = $this->total_cost;
+            //     $drinkStock->save();
+            // }else{
+            //     DrinkStock::create([
+            //         'drink_name' => $this->drink_name,
+            //         'quantity' => $this->quantity,
+            //         'unit_price' => $this->unit_price,
+            //         'total_cost' => $this->total_cost
+            //     ]);
+            // }
 
             $this->resetInputFields();
             $this->dispatchBrowserEvent('close-modal');
@@ -159,6 +188,8 @@ class Supply extends Component
         $this->supply_date = '';
         $this->supplyId = null;
         $this->isEditing = false;
+        $this->bottles_per_case = null;
+        $this->new_drink_name = '';
     }
 
     public function render()
@@ -171,15 +202,16 @@ class Supply extends Component
                     ->orWhereHas('category', function($q) use ($searchTerm) {
                         $q->where('name', 'like', $searchTerm);
                     });
-            })
-            ->orderBy('supply_date', 'desc')
+            })->orderBy('supply_date', 'desc')
             ->paginate(10);
 
         $categories = DrinkCategory::where('is_active', true)->get();
+        $this->existingDrinks = DrinkSupply::pluck('drink_name')->unique();
 
         return view('livewire.dashboard.drink.supply', [
             'supplies' => $supplies,
             'categories' => $categories,
+            'existingDrinks' => $this->existingDrinks,
         ])->extends('layouts.base')->section('content');
     }
 }

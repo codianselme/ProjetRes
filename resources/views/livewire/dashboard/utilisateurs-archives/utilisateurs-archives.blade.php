@@ -19,7 +19,7 @@
                         <div class="card card-bordered card-stretch">
                             <div class="card-inner-group">
                                 <div class="card-inner position-relative card-tools-toggle">
-                                    <div class="card-title-group">
+                                    {{-- <div class="card-title-group">
                                         <div class="card-tools">
                                             <div class="form-inline flex-nowrap gx-3">
                                                 <div class="form-wrap w-150px">
@@ -140,7 +140,7 @@
                                                 </li><!-- li -->
                                             </ul><!-- .btn-toolbar -->
                                         </div><!-- .card-tools -->
-                                    </div><!-- .card-title-group -->
+                                    </div> --}}<!-- .card-title-group -->
                                     <div class="card-search search-wrap" data-search="search">
                                         <div class="card-body">
                                             <div class="search-content">

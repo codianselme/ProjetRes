@@ -18,7 +18,7 @@
                                     <a href="#" class="btn btn-icon btn-trigger toggle-expand me-n1" data-target="pageMenu"><em class="icon ni ni-menu-alt-r"></em></a>
                                     <div class="toggle-expand-content" data-content="pageMenu">
                                         <ul class="nk-block-tools g-3">
-                                            <li><a href="#" class="btn btn-white btn-outline-light"><em class="icon ni ni-download-cloud"></em><span>Export</span></a></li>
+                                            {{-- <li><a href="#" class="btn btn-white btn-outline-light"><em class="icon ni ni-download-cloud"></em><span>Export</span></a></li> --}}
                                             <li class="nk-block-tools-opt">
                                                 <div class="drodown">
                                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalNewUser">
@@ -175,7 +175,7 @@
                         <div class="card card-bordered card-stretch">
                             <div class="card-inner-group">
                                 <div class="card-inner position-relative card-tools-toggle">
-                                    <div class="card-title-group">
+                                    {{-- <div class="card-title-group">
                                         <div class="card-tools">
                                             <div class="form-inline flex-nowrap gx-3">
                                                 <div class="form-wrap w-150px">
@@ -294,7 +294,7 @@
                                                 </li><!-- li -->
                                             </ul><!-- .btn-toolbar -->
                                         </div><!-- .card-tools -->
-                                    </div><!-- .card-title-group -->
+                                    </div> --}}<!-- .card-title-group -->
                                     <div class="card-search search-wrap" data-search="search">
                                         <div class="card-body">
                                             <div class="search-content">
@@ -395,7 +395,7 @@
                                                         <span>{{ $user->address ?? "-" }}</span>
                                                     </div>
                                                     <div class="nk-tb-col tb-col-md">
-                                                        <span class="tb-status text-{{ $user->statsus == false ? 'success' : 'danger' }}">{{ $user->status == 1 ? 'Actif' : 'Inactif' }}</span>
+                                                        <span class="tb-status text-{{ $user->status == true ? 'success' : 'danger' }}">{{ $user->status == 1 ? 'Actif' : 'Inactif' }}</span>
                                                     </div>
                                                     <div class="nk-tb-col nk-tb-col-tools">
                                                         <ul class="nk-tb-actions gx-1">

@@ -60,7 +60,7 @@
                                                 <span class="tb-lead">{{ $supply->category->name }}</span>
                                             </div>
                                             <div class="nk-tb-col tb-col-md">
-                                                <span class="tb-lead">{{ $supply->quantity }} {{ $supply->unit }}</span>
+                                                <span class="tb-lead">{{ $supply->quantity }} {{-- {{ $supply->unit }} --}}</span>
                                             </div>
                                             <div class="nk-tb-col tb-col-md">
                                                 <span class="tb-lead">{{ number_format($supply->unit_price, 2) }} FCFA</span>
@@ -105,7 +105,7 @@
     </div>
 
     <!-- Modal Form -->
-    <div class="modal fade" id="modalForm" tabindex="-1" aria-labelledby="modalFormLabel" aria-hidden="true">
+    <div wire:ignore.self class="modal fade" id="modalForm" tabindex="-1" aria-labelledby="modalFormLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -118,7 +118,7 @@
                             <label class="form-label" for="category_id">Catégorie</label>
                             <div class="form-control-wrap">
                                 <select class="form-select @error('category_id') is-invalid @enderror" id="category_id" 
-                                    wire:model.defer="category_id">
+                                    wire:model="category_id">
                                     <option value="">Sélectionner une catégorie</option>
                                     @foreach($categories as $key => $category)
                                         <option value="{{ $category->id }}">{{ $key + 1 }}. {{ $category->name }}</option>
@@ -132,9 +132,26 @@
                         <div class="form-group">
                             <label class="form-label" for="drink_name">Nom de la Boisson</label>
                             <div class="form-control-wrap">
-                                <input type="text" class="form-control @error('drink_name') is-invalid @enderror" id="drink_name" 
-                                    wire:model.defer="drink_name" placeholder="Nom de la boisson">
+                                <select class="form-select @error('drink_name') is-invalid @enderror" id="drink_name" 
+                                    wire:model="drink_name">
+                                    <option value="">Sélectionner une boisson existante ou entrer un nouveau nom</option>
+                                    @foreach($existingDrinks as $m => $drink)
+                                        <option value="{{ $drink }}">{{ $m + 1 }}. {{ $drink }}</option>
+                                    @endforeach
+                                    <option value="new">Entrer un nouveau nom</option>
+                                </select>
                                 @error('drink_name')
+                                    <span class="invalid-feedback">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group" wire:ignore.self>
+                            <label class="form-label" for="new_drink_name">Nouveau Nom de la Boisson</label>
+                            <div class="form-control-wrap">
+                                <input type="text" class="form-control @error('drink_name') is-invalid @enderror" id="new_drink_name" 
+                                    wire:model.defer="new_drink_name" placeholder="Entrez un nouveau nom" 
+                                    {{ $drink_name !== 'new' ? 'disabled' : '' }}>
+                                @error('new_drink_name')
                                     <span class="invalid-feedback">{{ $message }}</span>
                                 @enderror
                             </div>
@@ -143,16 +160,32 @@
                             <label class="form-label" for="unit">Unité de mesure</label>
                             <div class="form-control-wrap">
                                 <select class="form-control @error('unit') is-invalid @enderror" id="unit" 
-                                    wire:model.defer="unit">
+                                    wire:model="unit">
                                     <option value="">Sélectionner une unité de mesure</option>
                                     <option value="casiers">1. Casiers</option>
-                                    <option value="cartons">2. cartons</option>
-                                    <option value="pièces">3. pièces</option>
-                                    <option value="litre">4. litre</option>
-                                    <option value="kg">5. kg</option>
+                                    <option value="cartons">2. Cartons</option>
+                                    <option value="pièces">3. Pièces</option>
+                                    <option value="litre">4. Litre</option>
+                                    <option value="kg">5. Kg</option>
                                     <option value="aucun">6. Aucun</option>
                                 </select>
                                 @error('unit')
+                                    <span class="invalid-feedback">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group" wire:ignore.self>
+                            <label class="form-label" for="bottles_per_case">Nombre de bouteilles par casier</label>
+                            <div class="form-control-wrap">
+                                <select class="form-control @error('bottles_per_case') is-invalid @enderror" id="bottles_per_case" 
+                                    wire:model="bottles_per_case" 
+                                    {{ $unit !== 'casiers' ? 'disabled' : '' }}>
+                                    <option value="">Sélectionner le nombre de bouteilles</option>
+                                    <option value="12">12 Bouteilles</option>
+                                    <option value="16">16 Bouteilles</option>
+                                    <option value="24">24 Bouteilles</option>
+                                </select>
+                                @error('bottles_per_case')
                                     <span class="invalid-feedback">{{ $message }}</span>
                                 @enderror
                             </div>
@@ -161,7 +194,7 @@
                             <label class="form-label" for="supplier_name">Fournisseur</label>
                             <div class="form-control-wrap">
                                 <input type="text" class="form-control @error('supplier_name') is-invalid @enderror" id="supplier_name" 
-                                    wire:model.defer="supplier_name" placeholder="Nom du fournisseur">
+                                    wire:model="supplier_name" placeholder="Nom du fournisseur">
                                 @error('supplier_name')
                                     <span class="invalid-feedback">{{ $message }}</span>
                                 @enderror
@@ -173,7 +206,7 @@
                                     <label class="form-label" for="quantity">Quantité</label>
                                     <div class="form-control-wrap">
                                         <input type="number" class="form-control @error('quantity') is-invalid @enderror" id="quantity" 
-                                            wire:model.defer="quantity" min="1">
+                                            wire:model="quantity" min="1">
                                         @error('quantity')
                                             <span class="invalid-feedback">{{ $message }}</span>
                                         @enderror
@@ -185,7 +218,7 @@
                                     <label class="form-label" for="unit_price">Prix unitaire</label>
                                     <div class="form-control-wrap">
                                         <input type="number" class="form-control @error('unit_price') is-invalid @enderror" id="unit_price" 
-                                            wire:model.defer="unit_price" min="0" step="0.01">
+                                            wire:model="unit_price" min="0" step="0.01">
                                         @error('unit_price')
                                             <span class="invalid-feedback">{{ $message }}</span>
                                         @enderror
@@ -197,7 +230,7 @@
                             <label class="form-label" for="supply_date">Date d'approvisionnement</label>
                             <div class="form-control-wrap">
                                 <input type="date" class="form-control @error('supply_date') is-invalid @enderror" id="supply_date" 
-                                    wire:model.defer="supply_date">
+                                    wire:model="supply_date">
                                 @error('supply_date')
                                     <span class="invalid-feedback">{{ $message }}</span>
                                 @enderror

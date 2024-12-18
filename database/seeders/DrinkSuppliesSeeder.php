@@ -249,7 +249,7 @@ class DrinkSuppliesSeeder extends Seeder
             [
                 'drink_name' => 'Amura',
                 'unit' => '',
-                'supplier_name' => 'Supplier 1',
+                'supplier_name' => '-',
                 'quantity' => 100,
                 'unit_price' => 1500,
                 'total_cost' => 150000,
@@ -259,7 +259,7 @@ class DrinkSuppliesSeeder extends Seeder
             [
                 'drink_name' => 'Campari',
                 'unit' => '',
-                'supplier_name' => 'Supplier 2',
+                'supplier_name' => '-',
                 'quantity' => 100,
                 'unit_price' => 1500,
                 'total_cost' => 150000,
@@ -269,7 +269,7 @@ class DrinkSuppliesSeeder extends Seeder
             [
                 'drink_name' => 'Cardhu',
                 'unit' => '',
-                'supplier_name' => 'Supplier 3',
+                'supplier_name' => '-',
                 'quantity' => 100,
                 'unit_price' => 5000,
                 'total_cost' => 500000,
@@ -279,7 +279,7 @@ class DrinkSuppliesSeeder extends Seeder
             [
                 'drink_name' => 'Cointreau',
                 'unit' => '',
-                'supplier_name' => 'Supplier 4',
+                'supplier_name' => '-',
                 'quantity' => 100,
                 'unit_price' => 5000,
                 'total_cost' => 500000,
@@ -289,7 +289,7 @@ class DrinkSuppliesSeeder extends Seeder
             [
                 'drink_name' => 'Chivas régal 12/18',
                 'unit' => '',
-                'supplier_name' => 'Supplier 5',
+                'supplier_name' => '-',
                 'quantity' => 100,
                 'unit_price' => 5000,
                 'total_cost' => 500000,
@@ -299,7 +299,7 @@ class DrinkSuppliesSeeder extends Seeder
             [
                 'drink_name' => 'Chivas régal 12/18',
                 'unit' => '',
-                'supplier_name' => 'Supplier 5',
+                'supplier_name' => '-',
                 'quantity' => 100,
                 'unit_price' => 10000,
                 'total_cost' => 1000000,
@@ -309,7 +309,7 @@ class DrinkSuppliesSeeder extends Seeder
             [
                 'drink_name' => 'Dimple',
                 'unit' => '',
-                'supplier_name' => 'Supplier 6',
+                'supplier_name' => '-',
                 'quantity' => 100,
                 'unit_price' => 5000,
                 'total_cost' => 500000,
@@ -319,7 +319,7 @@ class DrinkSuppliesSeeder extends Seeder
             [
                 'drink_name' => 'Island green',
                 'unit' => '',
-                'supplier_name' => 'Supplier 7',
+                'supplier_name' => '-',
                 'quantity' => 100,
                 'unit_price' => 10000,
                 'total_cost' => 1000000,
@@ -329,7 +329,7 @@ class DrinkSuppliesSeeder extends Seeder
             [
                 'drink_name' => 'Jack Daniel\'s',
                 'unit' => '',
-                'supplier_name' => 'Supplier 8',
+                'supplier_name' => '-',
                 'quantity' => 100,
                 'unit_price' => 5000,
                 'total_cost' => 500000,
@@ -339,7 +339,7 @@ class DrinkSuppliesSeeder extends Seeder
             [
                 'drink_name' => 'Label 5',
                 'unit' => '',
-                'supplier_name' => 'Supplier 9',
+                'supplier_name' => '-',
                 'quantity' => 100,
                 'unit_price' => 1500,
                 'total_cost' => 150000,
@@ -349,7 +349,7 @@ class DrinkSuppliesSeeder extends Seeder
             [
                 'drink_name' => 'Martini',
                 'unit' => '',
-                'supplier_name' => 'Supplier 10',
+                'supplier_name' => '-',
                 'quantity' => 100,
                 'unit_price' => 1500,
                 'total_cost' => 150000,
@@ -359,7 +359,7 @@ class DrinkSuppliesSeeder extends Seeder
             [
                 'drink_name' => 'Moulin de la grange',
                 'unit' => '',
-                'supplier_name' => 'Supplier 11',
+                'supplier_name' => '-',
                 'quantity' => 100,
                 'unit_price' => 10000,
                 'total_cost' => 1000000,
@@ -369,7 +369,7 @@ class DrinkSuppliesSeeder extends Seeder
             [
                 'drink_name' => 'Red Label',
                 'unit' => '',
-                'supplier_name' => 'Supplier 12',
+                'supplier_name' => '-',
                 'quantity' => 100,
                 'unit_price' => 1500,
                 'total_cost' => 150000,
@@ -379,7 +379,7 @@ class DrinkSuppliesSeeder extends Seeder
             [
                 'drink_name' => 'Saint James',
                 'unit' => '',
-                'supplier_name' => 'Supplier 13',
+                'supplier_name' => '-',
                 'quantity' => 100,
                 'unit_price' => 1500,
                 'total_cost' => 150000,
@@ -389,7 +389,7 @@ class DrinkSuppliesSeeder extends Seeder
             [
                 'drink_name' => 'Suze',
                 'unit' => '',
-                'supplier_name' => 'Supplier 14',
+                'supplier_name' => '-',
                 'quantity' => 100,
                 'unit_price' => 1500,
                 'total_cost' => 150000,

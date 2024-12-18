@@ -42,10 +42,10 @@
                                 <div class="card-inner p-0">
                                     <div class="nk-tb-list nk-tb-ulist">
                                         <div class="nk-tb-item nk-tb-head">
-                                            <div class="nk-tb-col"><span class="sub-text">Nom</span></div>
-                                            <div class="nk-tb-col tb-col-mb"><span class="sub-text">Description</span></div>
-                                            <div class="nk-tb-col tb-col-md"><span class="sub-text">Statut</span></div>
-                                            <div class="nk-tb-col nk-tb-col-tools text-end">Actions</div>
+                                            <div class="nk-tb-col" style="width: 20%;"><span class="sub-text">Nom</span></div>
+                                            <div class="nk-tb-col tb-col-mb" style="width: 60%;"><span class="sub-text">Description</span></div>
+                                            <div class="nk-tb-col tb-col-md" style="width: 10%;"><span class="sub-text">Statut</span></div>
+                                            <div class="nk-tb-col nk-tb-col-tools text-end" style="width: 10%;">Actions</div>
                                         </div>
                                         @foreach($categories as $category)
                                         <div class="nk-tb-item">

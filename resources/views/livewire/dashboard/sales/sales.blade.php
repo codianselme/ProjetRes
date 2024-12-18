@@ -137,7 +137,7 @@
                                             <td>{{ $sale->created_at->format('d/m/Y H:i') }}</td>
                                             <td>{{ number_format($sale->total_amount, 0) }} FCFA</td>
                                             <td>{{ number_format($sale->paid_amount, 0) }} FCFA</td>
-                                            <td>{{ $sale->payment_method }}</td>
+                                            <td>{{ ucfirst( str_replace('_', ' ', $sale->payment_method)) }}</td>
                                             <td>
                                                 <button class="btn btn-icon btn-sm btn-primary" wire:click="showInvoice({{ $sale->id }})">
                                                     <em class="icon ni ni-file-text"></em>

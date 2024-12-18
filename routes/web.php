@@ -69,6 +69,9 @@ Route::middleware([ 'auth:sanctum', config('jetstream.auth_session'), 'verified'
         Route::get('repports/supply/', App\Http\Livewire\Dashboard\Repports\RSupply::class)->name('dashboard.repport.supply');
         
         Route::get('profile', App\Http\Livewire\Dashboard\Profile\Profile::class)->name('dashboard.profile');
+        
+        Route::get('caisse/operation', App\Http\Livewire\Dashboard\Caisse\Depenses::class)->name('dashboard.caisse.depenses');
+        Route::get('caisse/gestion', App\Http\Livewire\Dashboard\Caisse\GestionCaisse::class)->name('dashboard.caisse.gestion-caisse');
 
     });
 });

@@ -142,6 +142,21 @@
                     <li class="nk-menu-item has-sub">
                         <a href="#" class="nk-menu-link nk-menu-toggle">
                             <span class="nk-menu-icon"><em class="icon ni ni-file-docs"></em></span>
+                            <span class="nk-menu-text">Gestion de la Caisse</span>
+                        </a>
+                        <ul class="nk-menu-sub">
+                            <li class="nk-menu-item">
+                                <a href="{{ route('dashboard.caisse.depenses') }}" class="nk-menu-link"><span class="nk-menu-text">Les opérations</span></a>
+                            </li>
+                            <li class="nk-menu-item">
+                                <a href="{{ route('dashboard.caisse.gestion-caisse') }}" class="nk-menu-link"><span class="nk-menu-text">La Caisse</span></a>
+                            </li>
+                        </ul><!-- .nk-menu-sub -->
+                    </li>
+
+                    <li class="nk-menu-item has-sub">
+                        <a href="#" class="nk-menu-link nk-menu-toggle">
+                            <span class="nk-menu-icon"><em class="icon ni ni-file-docs"></em></span>
                             <span class="nk-menu-text">Ventes et Facturation</span>
                         </a>
                         <ul class="nk-menu-sub">

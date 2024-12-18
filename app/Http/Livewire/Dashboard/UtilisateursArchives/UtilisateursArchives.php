@@ -39,12 +39,13 @@ class UtilisateursArchives extends Component
     public function render()
     {
         $searchTerm = '%' . $this->searchTerm . '%';
+
         $users = User::onlyTrashed()
-            ->where('first_name', 'like', $searchTerm)
-            ->orWhere('last_name', 'like', $searchTerm)
-            ->orWhere('email', 'like', $searchTerm)
-            ->whereNotNull('deleted_at')
-            ->paginate(10);
+            ->where(function ($query) use ($searchTerm) {
+                $query->where('first_name', 'like', "%$searchTerm%")
+                    ->orWhere('last_name', 'like', "%$searchTerm%")
+                    ->orWhere('email', 'like', "%$searchTerm%");
+            })->paginate(10);
 
         return view('livewire.dashboard.utilisateurs-archives.utilisateurs-archives', [
             'users' => $users,
