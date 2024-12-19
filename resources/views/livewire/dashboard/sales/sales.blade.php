@@ -11,9 +11,9 @@
                                 <div class="row g-3">
                                     <div class="col-lg-8">
                                         <div class="form-group">
-                                            <label class="form-label">Articles</label>
                                             <div class="row g-2">
                                                 <div class="col-md-6">
+                                                    <label class="form-label">Mets</label>
                                                     <select class="form-select" wire:change="addItem('dish', $event.target.value)">
                                                         <option value="">Sélectionner un plat</option>
                                                         @foreach($dishes as $dish)
@@ -22,6 +22,7 @@
                                                     </select>
                                                 </div>
                                                 <div class="col-md-6">
+                                                    <label class="form-label">Boissons</label>
                                                     <select class="form-select" wire:change="addItem('drink', $event.target.value)">
                                                         <option value="">Sélectionner une boisson</option>
                                                         @foreach($drinks as $drink)

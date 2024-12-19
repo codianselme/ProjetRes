@@ -56,6 +56,20 @@ class RoleSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
+            [#7
+                'name' => 'Gérante',
+                'guard_name' => 'web',
+                // 'description' => "Ce role répresente un employee de l'application.",
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [#8
+                'name' => 'Comercial',
+                'guard_name' => 'web',
+                // 'description' => "Ce role répresente un employee de l'application.",
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
             
         ];
         Role::insert($roles);

@@ -19,6 +19,7 @@ return new class extends Migration
             // $table->unsignedBigInteger('category_id')->comment('Lien vers la catégorie du plat'); // Lien vers la catégorie du plat
             // $table->foreign('category_id')->references('id')->on('food_categories')->onDelete('cascade')->comment('Clé étrangère vers food_categories'); // Clé étrangère vers food_categories
             $table->boolean('is_available')->default(true)->comment('Statut pour savoir si le plat est disponible'); // Statut pour savoir si le plat est disponible
+            $table->string('operateur')->nullable();
             $table->timestamps();
         });
     }

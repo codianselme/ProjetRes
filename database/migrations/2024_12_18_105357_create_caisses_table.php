@@ -30,8 +30,8 @@ return new class extends Migration
             $table->unsignedInteger('solde_especes_final')->nullable();
             $table->unsignedInteger('solde_momo_final')->nullable();
 
-            $table->string('operateur');
             $table->boolean('status')->default(false);
+            $table->string('operateur')->nullable();
             $table->timestamps();
         });
     }

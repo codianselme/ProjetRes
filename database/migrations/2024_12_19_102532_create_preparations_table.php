@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('ingredients')->comment('Ingrédients utilisés');
             $table->boolean('is_completed')->default(false)->comment('Statut de la préparation');
             $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
+            $table->string('operateur')->nullable();
             $table->timestamps();
         });
     }

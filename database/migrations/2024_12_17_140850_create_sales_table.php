@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('payment_method')->default('cash')->comment('Méthode de paiement utilisée');
             $table->string('status')->default('completed')->comment('État de la vente');
             $table->text('notes')->nullable()->comment('Notes supplémentaires sur la vente');
+            $table->string('operateur')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

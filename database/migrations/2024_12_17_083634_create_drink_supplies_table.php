@@ -28,6 +28,7 @@ return new class extends Migration
                 ->on('drink_categories')
                 ->onDelete('cascade');
             
+            $table->string('operateur')->nullable();
             $table->softDeletes();
             $table->timestamps(); // Champs created_at et updated_at
         });

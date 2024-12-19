@@ -27,6 +27,8 @@ return new class extends Migration
                 ->references('id')
                 ->on('food_categories')
                 ->onDelete('cascade');
+
+            $table->string('operateur')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

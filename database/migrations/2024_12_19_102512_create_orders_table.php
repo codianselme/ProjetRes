@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('status')->default('pending')->comment('Statut de la commande');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('dish_id')->references('id')->on('dishes')->onDelete('cascade');
+            $table->string('operateur')->nullable();
             $table->timestamps();
         });
     }

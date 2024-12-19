@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name', 100)->comment('Nom de la catégorie (e.g., "Entrées", "Plats principaux")');
             $table->text('description')->nullable()->comment('Description facultative');
             $table->boolean('is_active')->default(true)->comment('Indique si la catégorie est active');
+            $table->string('operateur')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

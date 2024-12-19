@@ -17,6 +17,7 @@ return new class extends Migration
             $table->integer('quantity')->comment('Quantité approvisionnée');
             $table->decimal('unit_price', 10, 2)->comment('Prix unitaire de la boisson');
             $table->decimal('total_cost', 10, 2)->comment('Coût total (calculé)');
+            $table->string('operateur')->nullable();
             $table->timestamps();
         });
     }
