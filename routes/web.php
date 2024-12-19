@@ -21,12 +21,15 @@ use Illuminate\Support\Facades\Route;
 //     return view('accueil');
 // });
 
-Route::get('/', function () {
-    return view('layouts.home');
-});
+// Route::get('/', function () {
+//     return view('layouts.home');
+// });
 
 
-// Route::get('/',  \App\Http\Livewire\Home\HomePage::class)->name('home.page');
+Route::get('/',  \App\Http\Livewire\Home\HomePage::class)->name('home.page');
+Route::get('/contact',  \App\Http\Livewire\Home\ContactPage::class)->name('contact.page');
+Route::get('/a propos',  \App\Http\Livewire\Home\AboutPage::class)->name('about.page');
+Route::get('/reservation',  \App\Http\Livewire\Home\ReservationPage::class)->name('reservation.page');
 
 # Pour les envois de mails
 Route::get('/activation/{token}', [App\Http\Controllers\Utilisateurs\AuthController::class, 'activation'])->name('activation');
