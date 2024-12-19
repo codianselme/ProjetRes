@@ -25,6 +25,10 @@ return new class extends Migration
             $table->string('client_ifu')->nullable();
             $table->string('client_fullname')->nullable();
             $table->string('client_address')->nullable();
+            $table->text('commentaire')->nullable();
+            $table->string('identify_of_mobile_trasaction')->nullable();
+            $table->string('reference_of_cheque')->nullable();
+            $table->string('name_banque_of_checque')->nullable();
             $table->string('operateur')->nullable();
             $table->softDeletes();
             $table->timestamps();

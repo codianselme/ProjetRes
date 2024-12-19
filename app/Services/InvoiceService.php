@@ -141,7 +141,7 @@ class InvoiceService
                     'name' => $item->itemable->name ?? $item->itemable->drink_name,
                     'price' => $priceAfterAib,
                     'quantity' => $item->quantity,
-                    'taxGroup' => $item->tax_group,
+                    'taxGroup' => $firstVente->tax_group,
                     'originalPrice' => $item->unit_price, // A modifier
                     'priceModification' => "Remise ". $item->taux_reduction ?? 0 . "%",
                 ];
@@ -153,7 +153,7 @@ class InvoiceService
                     'name' => $item->itemable->name ?? $item->itemable->drink_name,
                     'price' => $priceAfterAib,
                     'quantity' => $item->quantity,
-                    'taxGroup' => $item->tax_group,
+                    'taxGroup' => $firstVente->tax_group,
                     // 'originalPrice' => $price,
                     // 'priceModification' => null,
                 ];
@@ -190,14 +190,14 @@ class InvoiceService
     public function invoiceRequestDataDto(array $data, int $id, int $user_id, ?string $origineReference = null)
     {
         DB::beginTransaction();
-        dd($data, $id, $user_id, $origineReference);
+        
 
         $venteInfo = DB::table('sales')
                         ->where('id', $id)
                         ->select('name_banque_of_checque', 'reference_of_cheque', 'identify_of_mobile_trasaction', 'commentaire')
                         ->first();
 
-        dd($venteInfo);
+        // dd($data, $id, $user_id, $origineReference, is_null($venteInfo));
 
         if (is_null($venteInfo)) {
             $message = 'Aucune information trouvée dans la table ' . 'sales' . ' pour les identifiants ' . $id;
@@ -207,28 +207,86 @@ class InvoiceService
         }
 
         try {
-            $invoiceData = [
-                'invoiceRequestDataDto' => $data,
-                'typeInvoice' => $data['type'],
-                //'typeVendeur' => $typeVendeur,
-                //'structure_id' => $structure_id ?? Auth::user()->structure_id,
-                'invoice_number' => $origineReference ?? $data['reference'],
-                'user_id' => $user_id,
-                'date' => Carbon::now()->format('Y-m-d'),
-                'name_banque_of_checque' => $venteInfo->name_banque_of_checque,
-                'reference_of_cheque' => $venteInfo->reference_of_cheque,
-                'identify_of_mobile_trasaction' => $venteInfo->identify_of_mobile_trasaction,
-                'commentaire' => $venteInfo->commentaire,
-            ];
+
+            // dd($data, $origineReference, $venteInfo, $venteInfo->identify_of_mobile_trasaction);
 
             $invoice = Invoice::updateOrCreate(
+                ['vente_id' => $id],
                 [
-                    //$typeVendeur . '_ids' => json_encode($saleIds), 
-                    'typeInvoice' => $data['type'], 
-                    //'typeVendeur' => $typeVendeur
-                ],
-                $invoiceData
+                    'date' => Carbon::now()->format('Y-m-d'),
+                    'invoiceRequestDataDto' => json_encode($data),
+                    'typeInvoice' => $data['type'],
+                    'invoice_number' => $origineReference ?? $data['reference'],
+                    'commentaire' => $venteInfo->commentaire,
+                    'identify_of_mobile_trasaction' => $venteInfo->identify_of_mobile_trasaction,
+                    'reference_of_cheque' => $venteInfo->reference_of_cheque,
+                    'name_banque_of_checque' => $venteInfo->name_banque_of_checque,
+                    'user_id' => $user_id,
+                ]
             );
+            
+            
+            // $new_invoice = new Invoice();
+            // $new_invoice->date = Carbon::now()->format('Y-m-d');
+            // $new_invoice->invoiceRequestDataDto         = $data;
+            // //$new_invoice->invoiceResponseDataDto        = ;
+            // //$new_invoice->statusInvoice                 = ;
+            // $new_invoice->typeInvoice                   = $data['type'];
+            // //$new_invoice->securityElementsDto           = ;
+            // $new_invoice->vente_id                      = $id;
+            // $new_invoice->invoice_number                = $origineReference ?? $data['reference'];
+            // $new_invoice->commentaire                   = $venteInfo->commentaire;
+            // $new_invoice->identify_of_mobile_trasaction = $venteInfo->identify_of_mobile_trasaction;
+            // $new_invoice->reference_of_cheque           = $venteInfo->reference_of_cheque;
+            // $new_invoice->name_banque_of_checque        = $venteInfo->name_banque_of_checque;
+            // $new_invoice->user_id                       = $user_id;
+            // dd($new_invoice);
+            // $new_invoice->save();
+
+            
+
+
+
+            // $new_invoice->typeInvoice = $data['type'];
+            // $new_invoice->typeVendeur = $data['typeVendeur'];
+            // $new_invoice->structure_id = $data['structure_id'] ?? Auth::user()->structure_id;
+            // $new_invoice->invoice_number = $origineReference ?? $data['reference'];
+            // $new_invoice->user_id = $user_id;
+            // $new_invoice->date = Carbon::now()->format('Y-m-d');
+            // $new_invoice->name_banque_of_checque = $venteInfo->name_banque_of_checque;
+            // $new_invoice->reference_of_cheque = $venteInfo->reference_of_cheque;
+            // $new_invoice->identify_of_mobile_trasaction = $venteInfo->identify_of_mobile_trasaction;
+            // $new_invoice->commentaire = $venteInfo->commentaire;
+            // dd($new_invoice);
+            // $new_invoice->save();
+
+            
+
+
+            // $invoiceData = [
+            //     'invoiceRequestDataDto' => $data,
+            //     'typeInvoice' => $data['type'],
+            //     //'typeVendeur' => $typeVendeur,
+            //     //'structure_id' => $structure_id ?? Auth::user()->structure_id,
+            //     'invoice_number' => $origineReference ?? $data['reference'],
+            //     'user_id' => $user_id,
+            //     'date' => Carbon::now()->format('Y-m-d'),
+            //     'name_banque_of_checque' => $venteInfo->name_banque_of_checque,
+            //     'reference_of_cheque' => $venteInfo->reference_of_cheque,
+            //     'identify_of_mobile_trasaction' => $venteInfo->identify_of_mobile_trasaction,
+            //     'commentaire' => $venteInfo->commentaire,
+            // ];
+
+            // $invoice = Invoice::updateOrCreate(
+            //     [
+            //         //$typeVendeur . '_ids' => json_encode($saleIds), 
+            //         'typeInvoice' => $data['type'], 
+            //         //'typeVendeur' => $typeVendeur
+            //     ],
+            //     $invoiceData
+            // );
+
+            // dd($invoice);
 
             DB::commit();
 
@@ -244,9 +302,9 @@ class InvoiceService
         }
     }
 
-    public function invoiceResponseDataDto(array $createInvoice, int $id, string $typeVendeur, $typeInvoice, ?string $invoice_number)
+    public function invoiceResponseDataDto(array $createInvoice, int $id, $typeInvoice, ?string $invoice_number)
     {
-        dd($createInvoice, $id, $typeVendeur, $typeInvoice, $invoice_number);
+        // dd($createInvoice, $id, $typeInvoice, $invoice_number);
         try {
             // Convertir les ids des ventes en JSON
             // $saleIdsJson = json_encode($id);
@@ -258,7 +316,7 @@ class InvoiceService
 
             // Retrieve the invoice corresponding to the saleIds and typeVendeur
             $invoice = Invoice::where('typeInvoice', $typeInvoice)->where('invoice_number', $invoice_number)->first();
-            dd($invoice);
+            // dd($invoice);
             //$invoice = Invoice::where($typeVendeur . '_ids', json_encode($saleIdsJson))->where('typeInvoice', $typeInvoice)->first();
             // dd($createInvoice, $saleIds, $typeVendeur, $typeInvoice, $invoice, $typeVendeur . '_ids', json_encode($saleIdsJson), $typeInvoice);
             if (!$invoice) {

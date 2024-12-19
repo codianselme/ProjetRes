@@ -23,6 +23,10 @@ class Sale extends Model
         'client_ifu',
         'client_fullname',
         'client_address',
+        'commentaire',
+        'identify_of_mobile_trasaction',
+        'reference_of_cheque',
+        'name_banque_of_checque',
     ];
 
     /**

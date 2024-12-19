@@ -116,7 +116,7 @@
                                 {{ $payment['name'] }}
                                 @if($payment['name'] == 'MOBILEMONEY')
                                     <br>
-                                    {{ Arr::get(get_reference_field($data['reference']), 'identify_of_mobile_trasaction', '') }}
+                                    {{ Arr::get($data['reference'], 'identify_of_mobile_trasaction', '') }}
                                 @elseif($payment['name'] == 'CHEQUES')
                                     <br>
                                     {{ Arr::get(get_reference_field($data['reference']), 'name_banque_of_checque', '') }}
@@ -221,7 +221,7 @@
                             @endif
                                 <p class="mb-0"> Nous vous remercions de votre confiance. </p>
                                 <br>
-                                {{ get_reference_field($data['reference'] ?? null)['commentaire'] ?? '' }}
+                                {{ $data['reference'] ?? '' }}
                         </div><br>
                     </div>
                     <div class="col-auto">

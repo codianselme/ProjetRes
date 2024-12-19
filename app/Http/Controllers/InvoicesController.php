@@ -321,12 +321,16 @@ class InvoicesController extends Controller
             
             $data = $invoiceService->createInvoiceData($vente);
             $invoiceRequestDataDto = $invoiceService->invoiceRequestDataDto($data, $id, $user_id);
-            dd($vente, $data, $invoiceRequestDataDto);
+            //dd($data, $invoiceRequestDataDto);
             $createInvoice = $sgmefApiService->createInvoice($data);
+            //dd($firstVente->invoice_number, $data, /* $invoiceRequestDataDto, */ $createInvoice);
+            // dd($createInvoice, $id, 'FV', $firstVente->invoice_number);
             $invoiceResponseDataDto = $invoiceService->invoiceResponseDataDto($createInvoice, $id, 'FV', $firstVente->invoice_number);
+            
+            // dd($vente, $data, $invoiceRequestDataDto, $createInvoice, $invoiceResponseDataDto);
             $invoice = $invoiceResponseDataDto;
 
-            dd($httpClient, $invoiceService, $sgmefApiService);
+            // dd($httpClient, $invoiceService, $sgmefApiService);
 
             Log::channel('invoice')->info('Facture créée avec succès', ['create_invoice' => $createInvoice]);
 
