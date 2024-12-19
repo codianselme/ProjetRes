@@ -160,6 +160,9 @@
                             <span class="nk-menu-text">Ventes et Facturation</span>
                         </a>
                         <ul class="nk-menu-sub">
+                        <li class="nk-menu-item">
+                                <a href="{{ route('dashboard.gestion.commands') }}" class="nk-menu-link"><span class="nk-menu-text">Gestion des commande</span></a>
+                            </li>
                             <li class="nk-menu-item">
                                 <a href="{{ route('dashboard.sales.sales') }}" class="nk-menu-link"><span class="nk-menu-text">Liste des Ventes</span></a>
                             </li>
