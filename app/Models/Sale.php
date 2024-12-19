@@ -17,6 +17,12 @@ class Sale extends Model
         'payment_method',
         'status',
         'notes',
+        'aib_amount',
+        'tax_group',
+        'phone_client',
+        'client_ifu',
+        'client_fullname',
+        'client_address',
     ];
 
     /**

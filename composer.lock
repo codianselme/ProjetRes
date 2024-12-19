@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1b02da539fa17678d1f9ab2521d5bc01",
+    "content-hash": "90c43333c7ec65f1a1a374f5a070c21b",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -3040,6 +3040,63 @@
                 "source": "https://github.com/Masterminds/html5-php/tree/2.9.0"
             },
             "time": "2024-03-31T07:05:07+00:00"
+        },
+        {
+            "name": "mercuryseries/flashy",
+            "version": "v1.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mercuryseries/flashy.git",
+                "reference": "a17dcc5f25fa5445ceb5d537dee10d4406d63958"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mercuryseries/flashy/zipball/a17dcc5f25fa5445ceb5d537dee10d4406d63958",
+                "reference": "a17dcc5f25fa5445ceb5d537dee10d4406d63958",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.0|~6.0|~7.0|~8.0|~9.0|~10.0",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "dev-master"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "Flashy": "MercurySeries\\Flashy\\Flashy"
+                    },
+                    "providers": [
+                        "MercurySeries\\Flashy\\FlashyServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/MercurySeries/Flashy/functions.php"
+                ],
+                "psr-0": {
+                    "MercurySeries\\Flashy": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Honoré Hounwanou",
+                    "email": "mercuryseries@gmail.com"
+                }
+            ],
+            "description": "Easy flash notifications",
+            "support": {
+                "issues": "https://github.com/mercuryseries/flashy/issues",
+                "source": "https://github.com/mercuryseries/flashy/tree/v1.0.5"
+            },
+            "time": "2023-03-17T09:56:41+00:00"
         },
         {
             "name": "mobiledetect/mobiledetectlib",

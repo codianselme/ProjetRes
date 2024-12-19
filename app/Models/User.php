@@ -73,4 +73,8 @@ class User extends Authenticatable
     public function user_tokens(){
         return $this->hasMany('App\Models\UserToken');
     }
+
+    public function getFullNameAttribute() {
+        return $this->first_name . ' ' . $this->last_name;
+    }
 }

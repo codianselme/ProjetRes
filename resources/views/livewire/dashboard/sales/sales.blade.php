@@ -129,6 +129,7 @@
                                             <th>Payé</th>
                                             <th>Mode</th>
                                             <th>Actions</th>
+                                            <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -142,6 +143,11 @@
                                             <td>
                                                 <button class="btn btn-icon btn-sm btn-primary" wire:click="showInvoice({{ $sale->id }})">
                                                     <em class="icon ni ni-file-text"></em>
+                                                </button>
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-icon btn-sm btn-primary" wire:click="genererFacture('{{ $sale->invoice_number }}')">
+                                                    Générer Qr
                                                 </button>
                                             </td>
                                         </tr>
@@ -168,25 +174,25 @@
                     <h5 class="modal-title">Facture {{ $currentSale->invoice_number }}</h5>
                     <button type="button" class="btn-close" wire:click="$set('showInvoice', false)"></button>
                 </div>
-                <div class="modal-body bg-light">
+                <div class="modal-body bg-light" id="printableArea">
                     <div class="invoice bg-white shadow-sm rounded p-4">
                         <div class="invoice-header text-center mb-4">
-                            <h1 class="h3 fw-bold text-primary mb-2">Restaurant XYZ</h1>
+                            <h1 class="h5 fw-bold text-primary mb-2">{{ $parametres->type }} {{ $parametres->name }}</h1>
                             <div class="contact-info text-muted">
-                                <p class="mb-1">123 Rue de la Gastronomie, Cotonou, Bénin</p>
-                                <p class="mb-1">Tél : +123 456 7890</p>
-                                <p class="mb-0 text-muted">{{ now()->format('d/m/Y H:i:s') }}</p>
+                                <p class="mb-1">{{ $parametres->address ?? "123 Rue de la Gastronomie, Cotonou, Bénin"}}</p>
+                                <p class="mb-1">Tél : {{ $parametres->contact_phone_1 }}</p>
+                                <p class="mb-0 text-muted">{{ now()->format('d/m/Y à H:i:s') }}</p>
                             </div>
                         </div>
 
                         <div class="invoice-details row mb-4">
                             <div class="col-6">
-                                <small class="text-muted">Date de vente :</small>
-                                <p class="fw-bold">{{ $currentSale->created_at->format('d/m/Y H:i') }}</p>
+                                <small class="text-muted">Date : {{ $currentSale->created_at->format('d/m/Y à H:i:s') }} </small>
+                                {{-- <p class="fw-bold"></p> --}}
                             </div>
                             <div class="col-6 text-end">
-                                <small class="text-muted">Caissière :</small>
-                                <p class="fw-bold">{{ $currentSale->cashier_name }}</p>
+                                <small class="text-muted">Caissière : {{ auth()->user()->first_name }} {{ auth()->user()->last_name }}</small>
+                                {{-- <p class="fw-bold">{{ $currentSale->cashier_name }}</p> --}}
                             </div>
                         </div>
 
@@ -194,10 +200,10 @@
                             <table class="table table-hover">
                                 <thead class="table-light">
                                     <tr>
-                                        <th>Article</th>
-                                        <th class="text-center">Quantité</th>
-                                        <th class="text-end">Prix unitaire</th>
-                                        <th class="text-end">Total</th>
+                                        <th style="width: 50%">Article</th>
+                                        <th style="width: 10%" class="text-center">Qte</th>
+                                        <th style="width: 25%" class="text-end">Prix unitaire</th>
+                                        <th style="width: 15%" class="text-end">Total</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -205,15 +211,15 @@
                                     <tr>
                                         <td>{{ $item->itemable->name ?? $item->itemable->drink_name }}</td>
                                         <td class="text-center">{{ $item->quantity }}</td>
-                                        <td class="text-end">{{ number_format($item->unit_price, 0) }} FCFA</td>
-                                        <td class="text-end">{{ number_format($item->total_price, 0) }} FCFA</td>
+                                        <td class="text-end">{{ number_format($item->unit_price, 0, ',', ' ') }}</td>
+                                        <td class="text-end">{{ number_format($item->total_price, 0, ',', ' ') }}</td>
                                     </tr>
                                     @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr class="table-active">
                                         <th colspan="3" class="text-end">Total TTC</th>
-                                        <th class="text-end">{{ number_format($currentSale->total_amount, 0) }} FCFA</th>
+                                        <th class="text-end">{{ number_format($currentSale->total_amount, 0, ',', ' ') }}</th>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -235,7 +241,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" wire:click="$set('showInvoice', false)">Fermer</button>
-                    <button type="button" class="btn btn-primary" onclick="window.print()">Imprimer</button>
+                    <button type="button" class="btn btn-primary" onclick="printDiv('printableArea')">Imprimer</button>
+                    {{-- <button type="button" class="btn btn-success" wire:click="genererFacture('{{ $currentSale->invoice_number }}')">Générer Qr</button> --}}
                 </div>
             </div>
         </div>
@@ -261,5 +268,16 @@
             icon: 'error',
         });
     });
+
+    function printDiv(divId) {
+        var printContents = document.getElementById(divId).innerHTML;
+        var originalContents = document.body.innerHTML;
+
+        document.body.innerHTML = printContents;
+
+        window.print();
+
+        document.body.innerHTML = originalContents;
+    }
 </script>
 @endsection

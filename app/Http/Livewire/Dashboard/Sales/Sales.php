@@ -6,11 +6,17 @@ use App\Models\Dish;
 use App\Models\Sale;
 use App\Models\Caisse;
 use Livewire\Component;
+use App\Models\Parametre;
 use App\Models\DrinkSupply;
 use Illuminate\Support\Str;
 use Livewire\WithPagination;
+use App\Services\InvoiceService;
+use App\Services\SgmefApiService;
+
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\Http\Controllers\InvoicesController;
 
 class Sales extends Component
 {
@@ -27,12 +33,23 @@ class Sales extends Component
     public $showInvoice = false;
     public $currentSale;
 
+    protected $sgmefApiService;
+    protected $invoiceService;
+    protected $invoiceController;
+
     protected $rules = [
         'items' => 'required|array|min:1',
         'items.*.quantity' => 'required|numeric|min:1',
         'payment_method' => 'required|in:cash,card,mobile_money',
         'paid_amount' => 'required|numeric|min:0',
     ];
+
+    public function boot(SgmefApiService $sgmefApiService, InvoiceService $invoiceService)
+    {
+        $this->sgmefApiService = $sgmefApiService;
+        $this->invoiceService = $invoiceService;
+        $this->invoiceController = new InvoicesController();
+    }
 
     public function mount()
     {
@@ -129,6 +146,21 @@ class Sales extends Component
         $this->showInvoice = true;
     }
 
+    public function genererFacture($code_vente)
+    {
+        $id = Sale::where('invoice_number', $code_vente)->first()->id;
+        //dd($id, Auth::user()->id);
+
+        return redirect()->route('invoices.show', [
+            'id' => $id,
+            // 'typeVendeur' => 'vente_physiques',
+            "user_id" => Auth::user()->id,
+            // "structure_id" => Auth::user()->structure_id
+        ]);
+
+        // $this->dispatchBrowserEvent('openFactureInNewTab', ['url' => $url, 'code_vente' => $code_vente]);
+    }
+
     public function render()
     {
         $searchTerm = '%' . $this->searchTerm . '%';
@@ -141,6 +173,7 @@ class Sales extends Component
         ->paginate(10);
 
         $dishes = Dish::where('is_available', true)->get();
+        $parametres = Parametre::where('id', 1)->first();
 
         $drinks = DrinkSupply::select('id', 'drink_name', 'unit_price')
             ->groupBy('id', 'drink_name', 'unit_price')
@@ -151,6 +184,7 @@ class Sales extends Component
             'sales' => $sales,
             'dishes' => $dishes,
             'drinks' => $drinks,
+            'parametres' => $parametres
         ])->extends('layouts.base')->section('content');
     }
 }

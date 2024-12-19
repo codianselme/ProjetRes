@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\InvoicesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +38,32 @@ Route::get('/activation/{token}', [App\Http\Controllers\Utilisateurs\AuthControl
 Route::get('/activate/{token}',   [App\Http\Controllers\Utilisateurs\AuthController::class, 'activate'])->name('activate');
 Route::post('/setpassword',       [App\Http\Controllers\Utilisateurs\AuthController::class, 'setPassword'])->name('setpassword');
 Route::post('/forgotpassword',    [App\Http\Controllers\Utilisateurs\AuthController::class, 'forgotPassword'])->name('forgot.password');
+
+
+// Route::resources(['invoices' => InvoicesController::class]);
+Route::get('/invoices/{id}/{user_id}/', [InvoicesController::class, 'show'])->name('invoices.show');
+
+Route::get('/invoices/createinvoicemecef/{createInvoice}/{data}', [InvoicesController::class, 'createinvoicemecef'])->name('invoices.createinvoicemecef');
+Route::get('/invoices/invoicesqrcode', [InvoicesController::class, 'invoicesqrcode'])->name('invoices.qrcode');
+
+// Route for confirming the invoice and generating the QR code
+Route::post('/invoice/{invoice}/confirm-qrcode', [InvoicesController::class, 'confirmInvoiceQrCode'])->name('invoices.confirm-qrcode');
+
+// Route for canceling the invoice and generating the QR code
+Route::post('/invoice/{invoice}/cancel-qrcode', [InvoicesController::class, 'cancelInvoiceQrCode'])->name('invoices.cancel-qrcode');
+
+Route::get('/invoice/modalqrcode/{invoice}', [InvoicesController::class, 'modalqrcode'])->name('invoices.modalqrcode');
+
+Route::get('/invoice/finalinvoice/{invoice}', [InvoicesController::class, 'finalinvoice'])->name('invoice.final');
+
+Route::get('/generate-credit-invoice/{invoiceId}/{ids}/{typeVendeur}', [InvoicesController::class, 'createCreditInvoice'])->name('generate.credit.invoice');
+
+// Route::get('/invoices', FactureComponent::class)->name('invoices.list');
+
+Route::get('/invoice/avoir/{invoice_number}', [InvoicesController::class, 'returnviewaftercancelinvoice'])->name('after.cancel.invoice');
+
+
+
 
 Route::middleware([ 'auth:sanctum', config('jetstream.auth_session'), 'verified', ])->group(function () {
     
