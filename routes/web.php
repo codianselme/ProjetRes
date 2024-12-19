@@ -17,9 +17,16 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
+// Route::get('/', function () {
+//     return view('accueil');
+// });
+
 Route::get('/', function () {
-    return view('accueil');
+    return view('layouts.home');
 });
+
+
+// Route::get('/',  \App\Http\Livewire\Home\HomePage::class)->name('home.page');
 
 # Pour les envois de mails
 Route::get('/activation/{token}', [App\Http\Controllers\Utilisateurs\AuthController::class, 'activation'])->name('activation');
