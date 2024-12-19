@@ -28,8 +28,8 @@
                     <li><a href="https://www.youtube.com/yahoobaba"><i class="fab fa-youtube"></i></a></li>
                 </ul>
                 <ul>
-                    <li><a href="login.html">Connexion</a></li>
-                    <li><a href="signup.html">Inscription</a></li>
+                    <li><a href="{{ route('connexion.page') }}">Connexion</a></li>
+                    {{-- <li><a href="#">Inscription</a></li> --}}
                 </ul>
             </div>
             <nav class="navbar navbar-expand-lg">
@@ -60,7 +60,7 @@
                         </ul>
                         <ul class="header-nav-right">
                             <li>
-                                <a href="index.html"><i class="fa fa-phone"></i>+229015161630</a>
+                                <a href="{{ route('home.page') }}"><i class="fa fa-phone"></i>+229015161630</a>
                             </li>
                             <li>
                                 <a href="{{ route('reservation.page') }}" class="link-button">Réserver une table</a>
@@ -79,7 +79,7 @@
                     <div class="row">
                         <div class="col-lg-4 col-md-12">
                             <div class="footer-widget text-center text-lg-left">
-                                <a href="index.html" class="logo">
+                                <a href="{{ route('home.page') }}" class="logo">
                                     <img src="{{ asset('home/site-images/logo.png') }}" alt="Yb Restaurant">
                                 </a>
                                 <ul class="footer-social-links">
@@ -117,7 +117,7 @@
                             <span>Copyright &copy; {{ date('Y') }} KAVINA.</span>
                             <ul class="">
                                 <li><a href="{{ route('about.page') }}">À propos de Nous</a></li>
-                                {{-- <li><a href="privacy-policy.html">Politique de confidentialité</a></li> --}}
+                                {{-- <li><a href="#">Politique de confidentialité</a></li> --}}
                             </ul>
                         </div>
                     </div>
