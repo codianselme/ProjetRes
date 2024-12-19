@@ -9,6 +9,8 @@
         <form method="POST" action="{{ route('password.update') }}">
             @csrf
 
+            @dd($email, $token)
+
             <input type="hidden" name="token" value="{{ $request->route('token') }}">
 
             <div class="block">
