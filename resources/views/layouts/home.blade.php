@@ -60,7 +60,7 @@
                         </ul>
                         <ul class="header-nav-right">
                             <li>
-                                <a href="index.html"><i class="fa fa-phone"></i>1234567895</a>
+                                <a href="index.html"><i class="fa fa-phone"></i>+229015161630</a>
                             </li>
                             <li>
                                 <a href="{{ route('reservation.page') }}" class="link-button">Réserver une table</a>
@@ -94,7 +94,7 @@
                             <div class="footer-widget text-center">
                                 <h4>Appel pour commande</h4>
                                 <ul>
-                                    <li><span>1234567895</span></li>
+                                    <li><span>+229 015161630</span></li>
                                     <li>email@email.com</li>
                                 </ul>
                             </div>
@@ -103,7 +103,7 @@
                             <div class="footer-widget text-center">
                                 <h4>Emplacement</h4>
                                 <ul>
-                                    <li>New York, US</li>
+                                    <li>Cotonou, Bénin</li>
                                 </ul>
                             </div>
                         </div>
@@ -116,8 +116,8 @@
                         <div class="col-12 d-flex flex-row justify-content-between">
                             <span>Copyright &copy; {{ date('Y') }} KAVINA.</span>
                             <ul class="">
-                                <li><a href="{{ route('about.page') }}">À propos</a></li>
-                                <li><a href="privacy-policy.html">Politique de confidentialité</a></li>
+                                <li><a href="{{ route('about.page') }}">À propos de Nous</a></li>
+                                {{-- <li><a href="privacy-policy.html">Politique de confidentialité</a></li> --}}
                             </ul>
                         </div>
                     </div>
