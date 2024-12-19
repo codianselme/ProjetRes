@@ -390,7 +390,11 @@ class InvoicesController extends Controller
                 return redirect()->route('sales.index');
             }
 
-            $securityElementsDto = $this->processInvoiceQrCode($invoice->invoiceResponseDataDto['uid'], 'confirm', $invoice_id);
+            // dd($invoice->invoiceResponseDataDto, $invoice_id);
+            //dd($invoice->invoiceResponseDataDto, json_decode($invoice->invoiceResponseDataDto, true)['uid']);
+            $uid = json_decode($invoice->invoiceResponseDataDto, true)['uid']   ;
+            // dd($uid);
+            $securityElementsDto = $this->processInvoiceQrCode($uid, 'confirm', $invoice_id);
 
             if (isset($securityElementsDto['errorDesc'])) {
                 Log::channel('invoice')->error('Error creating QR code for confirmation', [
@@ -461,12 +465,13 @@ class InvoicesController extends Controller
     {
         # code...
         $invoice = Invoice::find($invoice_id);
+        // dd($invoice);
 
         $data = $invoice->invoiceRequestDataDto;
 
         $createInvoice = $invoice->invoiceResponseDataDto;
 
-        return view('livewire.direction.normalize-invoices.qrcodeModal', compact('createInvoice', 'data', 'invoice_id'));
+        return view('livewire.dashboard.normalize-invoices.qrcodeModal', compact('createInvoice', 'data', 'invoice_id'));
     }
 
     /**
@@ -474,7 +479,7 @@ class InvoicesController extends Controller
      */
     private function processInvoiceQrCode($uid, $statusInvoice, $invoice_id)
     {
-
+        // dd($uid);
         try {
             Log::channel('invoice')->info('Processing QR code generation for invoice', [
                 'invoice_id' => $invoice_id,

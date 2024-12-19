@@ -468,8 +468,6 @@ class InvoiceService
     private function sendErrorEmail(array $logData, ?string $newInvoiceNumber)
     {
         Mail::to('codianselme@gmail.com')
-            ->cc('banelsemassoussi@gmail.com')
-            ->cc('aedenrosario@gmail.com')
             ->send(new InvoiceErrorMail([
                 'errorCode' => $logData['errorCode'],
                 'errorDesc' => $logData['errorDesc'],
@@ -489,8 +487,6 @@ class InvoiceService
         $this->logToJson($logData);
 
         Mail::to('codianselme@gmail.com')
-            ->cc('banelsemassoussi@gmail.com')
-            ->cc('aedenrosario@gmail.com')
             ->send(new InvoiceErrorMail($logData));
 
         Flashy::error('Une erreur s\'est produite : ' . $message);

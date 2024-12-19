@@ -32,6 +32,10 @@
                 <div class="text-center col-2">
                   <img src="https://img.icons8.com/ios-filled/50/000000/bookmark.png" alt="Date icon" style="width:35px; height:35px; ">
                 </div>
+                @php
+                  $data = json_decode($data, true);
+                  $createInvoice = json_decode($createInvoice, true);
+                @endphp
                 <div class="col-10 align-self-center">
                   <h6 class="mb-0 fs-4">Facture_No:<b>#{{ $data['reference']}} </b></h6>
                 </div>
