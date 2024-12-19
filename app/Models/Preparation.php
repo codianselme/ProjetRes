@@ -15,4 +15,9 @@ class Preparation extends Model
     {
         return $this->belongsTo(Order::class);
     }
+
+    public function ingredientsUtilises()
+    {
+        return $this->hasMany(PreparationIngredient::class);
+    }
 }

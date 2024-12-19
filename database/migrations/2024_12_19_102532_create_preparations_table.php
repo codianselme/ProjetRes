@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('order_id')->comment('Référence à la commande');
             $table->integer('quantity_used')->comment('Quantité d\'éléments utilisés');
-            $table->string('ingredients')->comment('Ingrédients utilisés');
+            $table->string('ingredients')->nullable()->comment('Ingrédients utilisés');
             $table->boolean('is_completed')->default(false)->comment('Statut de la préparation');
             $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
             $table->string('operateur')->nullable();
