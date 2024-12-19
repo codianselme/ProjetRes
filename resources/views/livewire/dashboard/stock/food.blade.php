@@ -49,7 +49,7 @@
                             <div class="card-inner-group">
                                 <div class="card-inner p-0">
                                     <div class="nk-tb-list nk-tb-ulist">
-                                        <div class="nk-tb-item nk-tb-head">
+                                        <div class="nk-tb-item nk-tb-head"> 
                                             <div class="nk-tb-col">
                                                 <span class="sub-text">Aliment</span>
                                             </div>

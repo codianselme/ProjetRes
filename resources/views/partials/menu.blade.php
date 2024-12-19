@@ -115,9 +115,9 @@
                             <span class="nk-menu-text">Gestion du Stock</span>
                         </a>
                         <ul class="nk-menu-sub">
-                            <li class="nk-menu-item">
+                            {{-- <li class="nk-menu-item">
                                 <a href="{{ route('dashboard.stock.food') }}" class="nk-menu-link"><span class="nk-menu-text">Stock Aliment</span></a>
-                            </li>
+                            </li> --}}
                             <li class="nk-menu-item">
                                 <a href="{{ route('dashboard.stock.drink') }}" class="nk-menu-link"><span class="nk-menu-text">Stock Boissson</span></a>
                             </li>

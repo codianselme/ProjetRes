@@ -2,11 +2,13 @@
 
 namespace App\Http\Livewire\Dashboard\Drink;
 
-use App\Models\DrinkSupply;
-use App\Models\DrinkCategory;
 use Livewire\Component;
+use App\Models\DrinkStock;
+use App\Models\DrinkSupply;
 use Livewire\WithPagination;
+use App\Models\DrinkCategory;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\DB;
 
 class Supply extends Component
 {
@@ -60,39 +62,51 @@ class Supply extends Component
         }
 
         try {
-            $this->total_cost = $this->quantity * $this->unit_price;
+            DB::transaction(function () {
+                $this->total_cost = $this->quantity * $this->unit_price;
 
-            if ($this->unit === 'casiers' && $this->bottles_per_case) {
-                $this->quantity *= $this->bottles_per_case;
-            }
+                if ($this->unit === 'casiers' && $this->bottles_per_case) {
+                    $this->quantity *= $this->bottles_per_case;
+                }
 
-            DrinkSupply::create([
-                'category_id' => $this->category_id,
-                'drink_name' => $this->drink_name,
-                'unit' => $this->unit,
-                'supplier_name' => $this->supplier_name,
-                'quantity' => $this->quantity,
-                'unit_price' => $this->unit_price,
-                'total_cost' => $this->total_cost,
-                'supply_date' => $this->supply_date,
-            ]);
+                $data_tab = [
+                    'category_id' => $this->category_id,
+                    'drink_name' => $this->drink_name,
+                    'unit' => $this->unit,
+                    'supplier_name' => $this->supplier_name,
+                    'quantity' => $this->quantity,
+                    'unit_price' => $this->unit_price,
+                    'total_cost' => $this->total_cost,
+                    'supply_date' => $this->supply_date,
+                ]; 
 
-            // Mettre à jour le stock
-            // $drinkStock = DrinkStock::where('drink_name', $this->drink_name)->first();
-            // if ($drinkStock) {
-            //     $drinkStock->drink_name;
-            //     $drinkStock->quantity = $drinkStock->quantity + $this->quantity;
-            //     $drinkStock->unit_price = $this->unit_price;
-            //     $drinkStock->total_cost = $this->total_cost;
-            //     $drinkStock->save();
-            // }else{
-            //     DrinkStock::create([
-            //         'drink_name' => $this->drink_name,
-            //         'quantity' => $this->quantity,
-            //         'unit_price' => $this->unit_price,
-            //         'total_cost' => $this->total_cost
-            //     ]);
-            // }
+                // Mettre à jour le stock
+                $drinkStock = DrinkStock::where('drink_name', $this->drink_name)->first();
+                // dd($drinkStock);
+
+                if ($drinkStock !== null) {
+                    $total_quantity = $drinkStock->quantity + $this->quantity;
+                    #$drinkStock->quantity += $this->quantity;
+                    $drinkStock->quantity = $total_quantity;
+                    $drinkStock->unit_price = $this->unit_price;
+                    $drinkStock->total_cost = $total_quantity * $this->unit_price;
+                    $drinkStock->update();
+
+                    // Mettre à jour l'approvisionnement
+                    DrinkSupply::create($data_tab);
+                } else {
+                    // Créer le stock 
+                    DrinkStock::create([
+                        'drink_name' => $this->drink_name,
+                        'quantity' => $this->quantity,
+                        'unit_price' => $this->unit_price,
+                        'total_cost' => $this->total_cost
+                    ]);
+
+                    // Mettre à jour l'approvisionnement
+                    DrinkSupply::create($data_tab);
+                }
+            });
 
             $this->resetInputFields();
             $this->dispatchBrowserEvent('close-modal');

@@ -96,7 +96,7 @@
                 <div class="col">
                     <h2 class="section-heading">Réserver une table</h2>
                     <h3 class="section-sub-heading">Faites une réservation</h3>
-                    <a href="reservation.html" class="link-button">Réserver une table</a>
+                    <a href="{{ route('reservation.page') }}" class="link-button">Réserver une table</a>
                 </div>
             </div>
         </div>

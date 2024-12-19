@@ -4,11 +4,13 @@ namespace App\Http\Livewire\Dashboard\Sales;
 
 use App\Models\Dish;
 use App\Models\Sale;
+use App\Models\Caisse;
 use Livewire\Component;
 use App\Models\DrinkSupply;
 use Illuminate\Support\Str;
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\DB;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class Sales extends Component
 {
@@ -73,6 +75,13 @@ class Sales extends Component
 
     public function saveSale()
     {
+        $caisse = Caisse::whereDate('date', now()->toDateString())->first();
+
+        if(!$caisse){
+            Alert::error('Erreur', "Veuillez ouvrir d'abord la caisse avant de faire une vente.");
+            return redirect()->route('dashboard.sales.sales');
+        }
+
         $this->validate();
 
         try {
@@ -101,12 +110,17 @@ class Sales extends Component
                 'title' => 'Succès!',
                 'text' => 'Vente enregistrée avec succès!',
             ]);
+
+            Alert::success('Succès', 'Vente enregistrée avec succès !');
         } catch (\Exception $e) {
             $this->dispatchBrowserEvent('swal:error', [
                 'title' => 'Erreur!',
                 'text' => "Une erreur s'est produite lors de l'enregistrement.",
             ]);
+
+            Alert::error('Erreur', "Une erreur s'est produite lors de l'enregistrement.");
         }
+        return redirect()->route('dashboard.sales.sales');
     }
 
     public function showInvoice($id)

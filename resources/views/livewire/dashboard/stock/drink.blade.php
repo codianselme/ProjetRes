@@ -19,7 +19,7 @@
                                     </a>
                                     <div class="toggle-expand-content" data-content="pageMenu">
                                         <ul class="nk-block-tools g-3">
-                                            <li>
+                                            {{-- <li>
                                                 <div class="form-control-wrap">
                                                     <select class="form-select" wire:model="filterCategory">
                                                         <option value="">Toutes les catégories</option>
@@ -28,13 +28,13 @@
                                                         @endforeach
                                                     </select>
                                                 </div>
-                                            </li>
+                                            </li> --}}
                                             <li>
                                                 <div class="form-control-wrap">
                                                     <div class="form-icon form-icon-right">
                                                         <em class="icon ni ni-search"></em>
                                                     </div>
-                                                    <input type="text" class="form-control" wire:model="searchTerm" placeholder="Rechercher...">
+                                                    <input type="text" class="form-control" wire:model="searchTerm" placeholder="Rechercher une boisson...">
                                                 </div>
                                             </li>
                                         </ul>
@@ -50,12 +50,11 @@
                                 <div class="card-inner p-0">
                                     <div class="nk-tb-list nk-tb-ulist">
                                         <div class="nk-tb-item nk-tb-head">
-                                            <div class="nk-tb-col"><span class="sub-text">Boisson</span></div>
-                                            <div class="nk-tb-col tb-col-mb"><span class="sub-text">Catégorie</span></div>
+                                            <div class="nk-tb-col"><span class="sub-text">Nom de la Boisson</span></div>
+                                            <div class="nk-tb-col tb-col-mb"><span class="sub-text">Catégorie de la Boisson</span></div>
                                             <div class="nk-tb-col tb-col-md"><span class="sub-text">Stock Actuel</span></div>
-                                            <div class="nk-tb-col tb-col-md"><span class="sub-text">Prix Moyen</span></div>
-                                            <div class="nk-tb-col tb-col-md"><span class="sub-text">Dernier Approvisionnement</span></div>
-                                            {{-- <div class="nk-tb-col tb-col-md"><span class="sub-text">Statut</span></div> --}}
+                                            <div class="nk-tb-col tb-col-md"><span class="sub-text">Prix Unitaire</span></div>
+                                            <div class="nk-tb-col tb-col-md"><span class="sub-text">Coût Total</span></div>
                                         </div>
 
                                         @foreach($stocks as $stock)
@@ -64,24 +63,31 @@
                                                 <span class="tb-lead">{{ $stock->drink_name }}</span>
                                             </div>
                                             <div class="nk-tb-col tb-col-mb">
-                                                <span>{{ $stock->category->name }}</span>
+                                                <span>{{ \App\Models\DrinkSupply::where("drink_name", $stock->drink_name)->first()->category->name ?? "-" }}</span>
                                             </div>
                                             <div class="nk-tb-col tb-col-md">
-                                                <span class="tb-amount">{{ $stock->total_quantity }} {{ $stock->unit }}</span>
+                                                <span class="tb-amount">{{ number_format($stock->total_quantity, 0, ',', ' ') }}</span>
                                             </div>
                                             <div class="nk-tb-col tb-col-md">
-                                                <span>{{ number_format($stock->average_price, 2) }}</span>
+                                                <span>{{ number_format($stock->unit_price, 0, ',', ' ') }}</span>
                                             </div>
                                             <div class="nk-tb-col tb-col-md">
-                                                <span>{{ $stock->last_supply_date }}</span>
+                                                <span>{{ number_format($stock->total_quantity * $stock->unit_price, 0, ',', ' ') }} FCFA</span>
                                             </div>
-                                            {{-- <div class="nk-tb-col tb-col-md">
-                                                <span>{{ $stock->supply_status }}</span>
-                                            </div> --}}
                                         </div>
                                         @endforeach
                                     </div>
                                 </div>
+
+                                <div class="card-inner">
+                                    <div class="nk-block-between-md g-3">
+                                        <div class="g">
+                                            <ul class="pagination justify-content-center justify-content-md-start">
+                                                {{ $stocks->links() }}
+                                            </ul><!-- .pagination -->
+                                        </div>
+                                    </div><!-- .nk-block-between -->
+                                </div><!-- .card-inner -->
                             </div>
                         </div>
                     </div>

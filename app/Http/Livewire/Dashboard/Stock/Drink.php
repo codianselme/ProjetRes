@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Dashboard\Stock;
 
-use App\Models\DrinkSupply;
+use App\Models\DrinkStock;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\DB;
@@ -19,33 +19,20 @@ class Drink extends Component
     {
         $searchTerm = '%' . $this->searchTerm . '%';
 
-        $stocks = DrinkSupply::select(
+        $stocks = DrinkStock::select(
             'drink_name',
-            'unit',
-            'category_id',
+            'unit_price',
             DB::raw('SUM(quantity) as total_quantity'),
             DB::raw('AVG(unit_price) as average_price'),
-            DB::raw('MAX(supply_date) as last_supply_date')
-        )
-        ->with('category')
-        ->when($this->filterCategory, function($query) {
-            return $query->where('category_id', $this->filterCategory);
-        })
-        ->where(function($query) use ($searchTerm) {
-            $query->where('drink_name', 'like', $searchTerm)
-                ->orWhereHas('category', function($q) use ($searchTerm) {
-                    $q->where('name', 'like', $searchTerm);
-                });
-        })
-        ->groupBy('drink_name', 'unit', 'category_id')
+            DB::raw('MAX(total_cost) as total_total_cost')
+        )->where('drink_name', 'like', $searchTerm) 
+        ->groupBy('drink_name', 'unit_price')
         ->orderBy('drink_name')
         ->paginate(10);
-
-        $categories = \App\Models\DrinkCategory::where('is_active', true)->get();
+        
 
         return view('livewire.dashboard.stock.drink', [
             'stocks' => $stocks,
-            'categories' => $categories
         ])->extends('layouts.base')->section('content');
     }
 }
