@@ -12,62 +12,148 @@
                     </div>
 
                     <div class="row g-gs">
-                        <div class="col-xxl-4 col-sm-6">
-                            <div class="card card-bordered">
+                        <div class="col-md-3 mb-4">
+                            <div class="card card-bordered card-full">
                                 <div class="card-inner">
-                                    <div class="card-title-group">
+                                    <div class="card-title-group align-start mb-0">
                                         <div class="card-title">
-                                            <h6 class="title">Total des Ventes</h6>
+                                            <h4 class="title">Total des Ventes</h4>
                                         </div>
                                     </div>
-                                    <div class="data">
-                                        <div class="data-group">
-                                            <div class="amount">{{ $totalSales }}</div>
-                                        </div>
+                                    <div class="card-amount">
+                                        <span class="amount text-right">{{ $totalSales }}</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xxl-4 col-sm-6">
-                            <div class="card card-bordered">
+
+                        <div class="col-md-3 mb-4">
+                            <div class="card card-bordered card-full">
                                 <div class="card-inner">
-                                    <div class="card-title-group">
+                                    <div class="card-title-group align-start mb-0">
                                         <div class="card-title">
-                                            <h6 class="title">Montant Total des Ventes</h6>
+                                            <h4 class="title">Montant Total des Ventes</h4>
                                         </div>
                                     </div>
-                                    <div class="data">
-                                        <div class="data-group">
-                                            <div class="amount">{{ number_format($totalAmount, 0) }} FCFA</div>
-                                        </div>
+                                    <div class="card-amount">
+                                        <span class="amount text-right">{{ number_format($totalAmount, 0) }} FCFA</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xxl-4 col-sm-6">
-                            <div class="card card-bordered">
+
+                        <div class="col-md-3 mb-4">
+                            <div class="card card-bordered card-full">
                                 <div class="card-inner">
-                                    <div class="card-title-group">
+                                    <div class="card-title-group align-start mb-0">
                                         <div class="card-title">
-                                            <h6 class="title">Actions</h6>
+                                            <h4 class="title">Total Plats</h4>
                                         </div>
                                     </div>
-                                    <div class="data">
-                                        <div class="data-group">
-                                            <a href="{{-- {{ route('sales.report') }} --}}" class="btn btn-primary">Voir Rapport des Ventes</a>
-                                            <a href="{{-- {{ route('sales.export') }} --}}" class="btn btn-success">Exporter les Ventes</a>
+                                    <div class="card-amount">
+                                        <span class="amount text-right">{{ $totalDishes }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 mb-4">
+                            <div class="card card-bordered card-full">
+                                <div class="card-inner">
+                                    <div class="card-title-group align-start mb-0">
+                                        <div class="card-title">
+                                            <h4 class="title">Total Boissons</h4>
                                         </div>
+                                    </div>
+                                    <div class="card-amount">
+                                        <span class="amount text-right">{{ $totalDrinks }}</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="nk-block">
-                        <div class="card card-bordered">
-                            <div class="card-inner">
-                                <h5>Graphique des Ventes Mensuelles</h5>
-                                <canvas id="monthlySalesChart"></canvas>
+                    <div class="row g-gs">
+                        <div class="col-md-3 mb-4">
+                            <div class="card card-bordered card-full">
+                                <div class="card-inner">
+                                    <div class="card-title-group align-start mb-0">
+                                        <div class="card-title">
+                                            <h4 class="title">Stock Total d'Aliments</h4>
+                                        </div>
+                                    </div>
+                                    <div class="card-amount">
+                                        <span class="amount text-right">{{ $totalFoodStock }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 mb-4">
+                            <div class="card card-bordered card-full">
+                                <div class="card-inner">
+                                    <div class="card-title-group align-start mb-0">
+                                        <div class="card-title">
+                                            <h4 class="title">Stock Total de Boissons</h4>
+                                        </div>
+                                    </div>
+                                    <div class="card-amount">
+                                        <span class="amount text-right">{{ $totalDrinkStock }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 mb-4">
+                            <div class="card card-bordered card-full">
+                                <div class="card-inner">
+                                    <div class="card-title-group align-start mb-0">
+                                        <div class="card-title">
+                                            <h4 class="title">Total Utilisateurs</h4>
+                                        </div>
+                                    </div>
+                                    <div class="card-amount">
+                                        <span class="amount text-right">{{ $totalUsers }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 mb-4">
+                            <div class="card card-bordered card-full">
+                                <div class="card-inner">
+                                    <div class="card-title-group align-start mb-0">
+                                        <div class="card-title">
+                                            <h4 class="title">{{ \Carbon\Carbon::now()->format('d/m/Y') }}</h4>
+                                        </div>
+                                    </div>
+                                    <div class="card-amount">
+                                        <span class="amount text-right">{{ $isCashRegisterOpen ? 'Caisse Ouverte' : 'Caisse Fermée' }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        
+                    <div class="row g-gs">
+                        <div class="col-xxl-6 col-sm-12 mb-4">
+                            <div class="nk-block">
+                                <div class="card card-bordered">
+                                    <div class="card-inner">
+                                        <h5>Graphique des Ventes Mensuelles</h5>
+                                        <canvas id="monthlySalesChart" style="height: 300px;"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xxl-6 col-sm-12 mb-4">
+                            <div class="nk-block">
+                                <div class="card card-bordered">
+                                    <div class="card-inner">
+                                        <h5>Ventes par Méthode de Paiement</h5>
+                                        <canvas id="paymentMethodChart" style="height: 300px;"></canvas>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -96,15 +182,6 @@
                                         @endforeach
                                     </tbody>
                                 </table>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="nk-block">
-                        <div class="card card-bordered">
-                            <div class="card-inner">
-                                <h5>Ventes par Méthode de Paiement</h5>
-                                <canvas id="paymentMethodChart"></canvas>
                             </div>
                         </div>
                     </div>
