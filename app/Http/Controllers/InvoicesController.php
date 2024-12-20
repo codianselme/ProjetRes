@@ -523,7 +523,7 @@ class InvoicesController extends Controller
         $currentUser = Auth::user();
         $currentDateTime = now();
 
-        dd($currentUser);
+        // dd($currentUser);
         Log::channel('invoice')->info('Appel de la méthode finalinvoice', [
             'user_id' => $currentUser->id,
             'username' => $currentUser->name,
@@ -568,8 +568,10 @@ class InvoicesController extends Controller
                 'security_elements_dto' => $securityElementsDto,
             ]);
 
-            // Retourne la vue avec les données nécessaires
-            return view('livewire.direction.normalize-invoices.create', compact('createInvoice', 'data', 'invoice_id', 'invoice', 'securityElementsDto'));
+            // dd($data, $createInvoice, $securityElementsDto);
+
+            // Retourne la vue avec les données nécessaires livewire/dashboard/normalize-invoices/create.blade.php
+            return view('livewire.dashboard.normalize-invoices.create', compact('createInvoice', 'data', 'invoice_id', 'invoice', 'securityElementsDto'));
         } catch (\Exception $e) {
             // Journaliser l'erreur finalisation
             Log::channel('invoice')->error('Erreur lors de l\'affichage de la facture finale', [
