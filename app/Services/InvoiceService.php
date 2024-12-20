@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Request;
 use MercurySeries\Flashy\Flashy;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\InvoiceErrorMail;
-
+ 
 
 class InvoiceService
 {
@@ -214,7 +214,7 @@ class InvoiceService
                 ['vente_id' => $id],
                 [
                     'date' => Carbon::now()->format('Y-m-d'),
-                    'invoiceRequestDataDto' => json_encode($data),
+                    'invoiceRequestDataDto' => $data, // json_encode($data),
                     'typeInvoice' => $data['type'],
                     'invoice_number' => $origineReference ?? $data['reference'],
                     'commentaire' => $venteInfo->commentaire,

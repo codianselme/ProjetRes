@@ -11,7 +11,7 @@ class Invoice extends Model
 
     protected $fillable = [
         'date',
-        'invoiceRequestDataDto',
+        'invoiceRequestDataDto', //
         'invoiceResponseDataDto',
         'statusInvoice',
         'typeInvoice',
@@ -23,6 +23,12 @@ class Invoice extends Model
         'reference_of_cheque',
         'name_banque_of_checque',
         'user_id',
+    ];
+
+    protected $casts = [
+        'invoiceRequestDataDto' => 'array',
+        'invoiceResponseDataDto' => 'array',
+        'securityElementsDto' => 'array',
     ];
 
 

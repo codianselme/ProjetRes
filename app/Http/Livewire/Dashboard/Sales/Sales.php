@@ -29,7 +29,7 @@ class Sales extends Component
     public $invoice_number;
     public $items = [];
     public $searchTerm;
-    public $payment_method = 'cash';
+    public $payment_method;
     public $paid_amount = 0;
     public $notes;
     public $showInvoice = false;
@@ -37,7 +37,7 @@ class Sales extends Component
 
     // Nouveaux champs
     public $aib_amount;
-    // public $tax_group;
+    public $tax_group;
     public $phone_client;
     public $client_ifu;
     public $client_fullname;
@@ -53,17 +53,17 @@ class Sales extends Component
     protected $rules = [
         'items' => 'required|array|min:1',
         'items.*.quantity' => 'required|numeric|min:1',
-        'payment_method' => 'required|in:cash,card,mobile_money',
+        'payment_method' => 'required', //'required|in:cash,card,mobile_money',
         'paid_amount' => 'required|numeric|min:0',
-        'aib_amount' => 'nullable|numeric',
+        'aib_amount' => 'required', //'nullable|numeric',
         // 'tax_group' => 'nullable|string',
         'phone_client' => 'nullable|string',
-        'client_ifu' => 'nullable|string',
+        //'client_ifu' => 'nullable|string',
         'client_fullname' => 'nullable|string',
-        'client_address' => 'nullable|string',
-        'identify_of_mobile_transaction' => 'nullable|string',
-        'reference_of_cheque' => 'nullable|string',
-        'name_banque_of_cheque' => 'nullable|string',
+        //'client_address' => 'nullable|string',
+        //'identify_of_mobile_transaction' => 'nullable|string',
+        //'reference_of_cheque' => 'nullable|string',
+        //'name_banque_of_cheque' => 'nullable|string',
     ];
 
     protected $messages = [
@@ -73,7 +73,7 @@ class Sales extends Component
         'items.*.quantity.numeric' => 'La quantité doit être un nombre.',
         'items.*.quantity.min' => 'La quantité doit être au moins 1.',
         'payment_method.required' => 'Le mode de paiement est requis.',
-        'payment_method.in' => 'Le mode de paiement sélectionné n\'est pas valide.',
+        // 'payment_method.in' => 'Le mode de paiement sélectionné n\'est pas valide.',
         'paid_amount.required' => 'Le montant payé est requis.',
         'paid_amount.numeric' => 'Le montant payé doit être un nombre.',
         'paid_amount.min' => 'Le montant payé ne peut pas être négatif.',
@@ -135,6 +135,7 @@ class Sales extends Component
 
     public function saveSale()
     {
+        // dd($this->items, $this->payment_method, $this->paid_amount, $this->aib_amount, $this->phone_client, $this->client_fullname);
         $this->validate();
 
         $caisse = Caisse::whereDate('date', now()->toDateString())->first();
@@ -152,7 +153,7 @@ class Sales extends Component
                 'payment_method' => $this->payment_method,
                 'notes' => $this->notes,
                 'aib_amount' => $this->aib_amount,
-                // 'tax_group' => $this->tax_group,
+                'tax_group' => 'B', //$this->tax_group,
                 'phone_client' => $this->phone_client,
                 'client_ifu' => $this->client_ifu,
                 'client_fullname' => $this->client_fullname,
@@ -182,6 +183,7 @@ class Sales extends Component
 
             Alert::success('Succès', 'Vente enregistrée avec succès !');
         } catch (\Exception $e) {
+            dd($e);
             $this->dispatchBrowserEvent('swal:error', [
                 'title' => 'Erreur!',
                 'text' => "Une erreur s'est produite lors de l'enregistrement : " . $e->getMessage(),

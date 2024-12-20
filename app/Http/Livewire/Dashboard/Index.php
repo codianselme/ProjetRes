@@ -24,6 +24,7 @@ class Index extends Component
     public $totalDrinkStock;
     public $totalUsers;
     public $isCashRegisterOpen;
+    public $dataCaisse;
 
     public function mount()
     {
@@ -37,13 +38,21 @@ class Index extends Component
         $this->totalDrinkStock = $this->getTotalDrinkStock();
         $this->totalUsers = User::count();
         $this->isCashRegisterOpen = $this->checkCashRegisterStatus();
+        $this->dataCaisse = $this->checkDataCaisse();
     }
 
     public function checkCashRegisterStatus()
     {
         $today_caisse = Caisse::whereDate('date', now()->toDateString())->exists();
-        // dd($today_caisse);
-        return true;
+        return $today_caisse;
+    }
+
+
+    public function checkDataCaisse()
+    {
+        $today_caisse = Caisse::whereDate('date', Carbon::now()->format('Y-m-d'))->first();
+        $dataCaisse = $today_caisse ?? Caisse::whereDate('date', Carbon::now()->subDay(1)->format('Y-m-d'))->first();
+        return $dataCaisse;
     }
 
     public function getMonthlySalesData()

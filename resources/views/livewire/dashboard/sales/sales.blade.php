@@ -93,6 +93,7 @@
                                         <div class="form-group">
                                             <label class="form-label">Mode de paiement</label>
                                             <select class="form-select" wire:model="payment_method">
+                                                <option value="">Sélectionnez un Moyen</option>
                                                 <option value="ESPECES">1. Espèce</option>
                                                 <option value="MOBILEMONEY">2. Mobile Money</option>
                                                 <option value="CHEQUES">3. Chèque</option>
@@ -139,27 +140,32 @@
                                         <div class="form-group row">
                                             <div class="col-md-6">
                                                 <label class="form-label">Nom Complet du Client</label>
-                                                <input type="text" class="form-control" wire:model="client_fullname">
+                                                <input type="text" class="form-control @error('client_fullname') is-invalid @enderror" wire:model="client_fullname">
+                                                @error('client_fullname') <span class="invalid-feedback">{{ $message }}</span> @enderror
                                             </div>
                                             <div class="col-md-6">
                                                 <label class="form-label">Adresse du Client</label>
-                                                <input type="text" class="form-control" wire:model="client_address">
+                                                <input type="text" class="form-control @error('client_address') is-invalid @enderror" wire:model="client_address">
+                                                @error('client_address') <span class="invalid-feedback">{{ $message }}</span> @enderror
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <div class="col-md-6">
                                                 <label class="form-label">Téléphone Client</label>
-                                                <input type="text" class="form-control" wire:model="phone_client">
+                                                <input type="text" class="form-control @error('phone_client') is-invalid @enderror" wire:model="phone_client">
+                                                @error('phone_client') <span class="invalid-feedback">{{ $message }}</span> @enderror
                                             </div>
                                             <div class="col-md-6">
                                                 <label class="form-label">Client IFU</label>
-                                                <input type="text" class="form-control" wire:model="client_ifu">
+                                                <input type="text" class="form-control @error('client_ifu') is-invalid @enderror" wire:model="client_ifu">
+                                                @error('client_ifu') <span class="invalid-feedback">{{ $message }}</span> @enderror
                                             </div>
                                         </div>
                                         
                                         <div class="form-group">
                                             <label class="form-label">Notes</label>
                                             <textarea class="form-control" wire:model="notes" rows="2"></textarea>
+                                            @error('notes') <span class="invalid-feedback">{{ $message }}</span> @enderror
                                         </div>
 
                                         <!-- Champs supplémentaires -->

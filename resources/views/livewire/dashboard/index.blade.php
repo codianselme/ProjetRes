@@ -74,20 +74,6 @@
                     </div>
 
                     <div class="row g-gs">
-                        <div class="col-md-3 mb-4">
-                            <div class="card card-bordered card-full">
-                                <div class="card-inner">
-                                    <div class="card-title-group align-start mb-0">
-                                        <div class="card-title">
-                                            <h4 class="title">Stock Total d'Aliments</h4>
-                                        </div>
-                                    </div>
-                                    <div class="card-amount">
-                                        <span class="amount text-right">{{ $totalFoodStock }}</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
                         <div class="col-md-3 mb-4">
                             <div class="card card-bordered card-full">
@@ -128,7 +114,27 @@
                                         </div>
                                     </div>
                                     <div class="card-amount">
-                                        <span class="amount text-right">{{ $isCashRegisterOpen ? 'Caisse Ouverte' : 'Caisse Fermée' }}</span>
+                                        <span class="amount text-right" style="color: {{ $isCashRegisterOpen ? 'green' : 'red' }}">{{ $isCashRegisterOpen ? 'Caisse Ouverte' : 'Caisse Fermée' }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 mb-4">
+                            <div class="card card-bordered card-full">
+                                <div class="card-inner">
+                                    <div class="card-title-group align-start mb-0">
+                                        <div class="card-title">
+                                            <h5 class="title">Dernier Solde : {{ \Carbon\Carbon::parse($dataCaisse?->date)->format('d/m/Y') ?? "-"}}</h5>
+                                        </div>
+                                    </div>
+                                    <div class="card-amount">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <span class="amount" style="font-size: 14px;">Espèces : {{ $dataCaisse->solde_especes_final ?? 0 }} FCFA</span> &nbps;&nbsp;
+                                                <span class="amount" style="font-size: 14px;">Mobile Money : {{ $dataCaisse->solde_momo_final ?? 0 }} FCFA</span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

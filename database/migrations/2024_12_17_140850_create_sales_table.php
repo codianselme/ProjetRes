@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('invoice_number')->unique()->comment('Numéro unique de la facture');
             $table->decimal('total_amount', 10, 2)->comment('Montant total de la vente');
             $table->decimal('paid_amount', 10, 2)->comment('Montant payé');
-            $table->string('payment_method')->default('cash')->comment('Méthode de paiement utilisée');
+            $table->string('payment_method')->comment('Méthode de paiement utilisée');
             $table->string('status')->default('completed')->comment('État de la vente');
             $table->string('aib_amount')->nullable()->comment("Montant de l'aib");
             $table->string('tax_group')->nullable()->comment("Groupe d'imposition");

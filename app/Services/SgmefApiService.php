@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Log;
 class SgmefApiService implements SgmefApiContract
 {
     protected string $apiBaseUrl;
-    protected string $apiKey;
+    protected string $apiKey; 
     protected HttpClient $httpClient;
 
     public function __construct(HttpClient $httpClient)

@@ -59,10 +59,6 @@
                             </address>
                         </div>
 
-                        @php
-                            $data = json_decode($data, true);
-                        @endphp
-
                         <div class="col-auto">
                             <h5 class="">{{ $data['type'] === 'FV' ? 'FACTURE DE VENTE' : 'FACTURE D\'AVOIR' }}</h5>
                             @php

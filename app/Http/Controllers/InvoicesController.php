@@ -390,11 +390,12 @@ class InvoicesController extends Controller
                 return redirect()->route('sales.index');
             }
 
-            // dd($invoice->invoiceResponseDataDto, $invoice_id);
+            // dd($invoice->invoiceResponseDataDto, $invoice_id); 
             //dd($invoice->invoiceResponseDataDto, json_decode($invoice->invoiceResponseDataDto, true)['uid']);
-            $uid = json_decode($invoice->invoiceResponseDataDto, true)['uid']   ;
+            // $uid = json_decode($invoice->invoiceResponseDataDto, true)['uid'];
             // dd($uid);
-            $securityElementsDto = $this->processInvoiceQrCode($uid, 'confirm', $invoice_id);
+            // dd($invoice->invoiceResponseDataDto);
+            $securityElementsDto = $this->processInvoiceQrCode($invoice->invoiceResponseDataDto, 'confirm', $invoice_id);
 
             if (isset($securityElementsDto['errorDesc'])) {
                 Log::channel('invoice')->error('Error creating QR code for confirmation', [
