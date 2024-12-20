@@ -13,7 +13,19 @@ class Dish extends Model
         'name', 
         'description', 
         'price', 
-        // 'category_id', 
+        'category_id', 
         'is_available'
     ];
+
+    
+    /**
+     * Relation : Un approvisionnement appartient à une catégorie de boisson.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function category()
+    {
+        return $this->belongsTo(DishCategory::class, 'category_id');
+    }
+
 }

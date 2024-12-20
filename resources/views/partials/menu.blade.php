@@ -91,7 +91,7 @@
                     <li class="nk-menu-item has-sub">
                         <a href="#" class="nk-menu-link nk-menu-toggle">
                             <span class="nk-menu-icon"><em class="icon ni ni-tile-thumb"></em></span>
-                            <span class="nk-menu-text">Gestion des Approvs</span> 
+                            <span class="nk-menu-text">Gestion des Categories</span> 
                         </a>
                         <ul class="nk-menu-sub">
                             <li class="nk-menu-item">
@@ -101,11 +101,26 @@
                                 <a href="{{ route('dashboard.drink.category') }}" class="nk-menu-link"><span class="nk-menu-text">Catégories de Boisson</span></a>
                             </li>
                             <li class="nk-menu-item">
-                                <a href="{{ route('dashboard.food.supply') }}" class="nk-menu-link"><span class="nk-menu-text">Approvs en Aliments</span></a>
+                                <a href="{{ route('dashboard.dish.category') }}" class="nk-menu-link"><span class="nk-menu-text">Catégories des plats</span></a>
+                            </li>
+                        </ul><!-- .nk-menu-sub -->
+                    </li><!-- .nk-menu-item -->
+
+                    <li class="nk-menu-item has-sub">
+                        <a href="#" class="nk-menu-link nk-menu-toggle">
+                            <span class="nk-menu-icon"><em class="icon ni ni-tile-thumb"></em></span>
+                            <span class="nk-menu-text">Gestion des Approvs</span> 
+                        </a>
+                        <ul class="nk-menu-sub">
+                            <li class="nk-menu-item">
+                                <a href="{{ route('dashboard.food.category') }}" class="nk-menu-link"><span class="nk-menu-text">Catégories d'Aliments</span></a>
                             </li>
                             <li class="nk-menu-item">
-                                <a href="{{ route('dashboard.drink.supply') }}" class="nk-menu-link"><span class="nk-menu-text">Approvs en Boisson</span></a>
+                                <a href="{{ route('dashboard.drink.category') }}" class="nk-menu-link"><span class="nk-menu-text">Catégories de Boisson</span></a>
                             </li>
+                            {{-- <li class="nk-menu-item">
+                                <a href="{{ route('dashboard.food.dish') }}" class="nk-menu-link"><span class="nk-menu-text">Approvs des Plats</span></a>
+                            </li> --}}
                         </ul><!-- .nk-menu-sub -->
                     </li><!-- .nk-menu-item -->
 

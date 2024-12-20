@@ -58,7 +58,7 @@ Route::get('/invoice/finalinvoice/{invoice}', [InvoicesController::class, 'final
 
 Route::get('/generate-credit-invoice/{invoiceId}/{ids}/{typeVendeur}', [InvoicesController::class, 'createCreditInvoice'])->name('generate.credit.invoice');
 
-// Route::get('/invoices', FactureComponent::class)->name('invoices.list');
+// Route::get('/invoices', FactureComponent::class)->name('invoices.list'); 
 
 Route::get('/invoice/avoir/{invoice_number}', [InvoicesController::class, 'returnviewaftercancelinvoice'])->name('after.cancel.invoice');
 
@@ -96,6 +96,7 @@ Route::middleware([ 'auth:sanctum', config('jetstream.auth_session'), 'verified'
         Route::get('food/category/', App\Http\Livewire\Dashboard\Food\Category::class)->name('dashboard.food.category');
         Route::get('food/supply/', App\Http\Livewire\Dashboard\Food\Supply::class)->name('dashboard.food.supply');
         
+        Route::get('dish/category', App\Http\Livewire\Dashboard\Food\DDishCategory::class)->name('dashboard.dish.category');
         Route::get('food/dish/', App\Http\Livewire\Dashboard\Food\Dishs::class)->name('dashboard.food.dish');
 
         Route::get('stock/drink/', App\Http\Livewire\Dashboard\Stock\Food::class)->name('dashboard.stock.food');

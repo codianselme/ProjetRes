@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Dashboard\Food;
 
 use Livewire\Component;
 use App\Models\Dish;
+use App\Models\DishCategory;
 use Livewire\WithPagination;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -20,6 +21,7 @@ class Dishs extends Component
     public $dishId;
     public $searchTerm;
     public $isEditing = false;
+    public $category_id;
 
     protected $listeners = ['deleteConfirmed'];
 
@@ -27,7 +29,8 @@ class Dishs extends Component
         'name' => 'required|min:3',
         'description' => 'required',
         'price' => 'required|numeric|min:0',
-        'is_available' => 'boolean'
+        'is_available' => 'boolean',
+        'category_id' => 'required|exists:dish_categories,id'
     ];
 
     protected $messages = [
@@ -36,7 +39,9 @@ class Dishs extends Component
         'description.required' => 'La description est obligatoire',
         'price.required' => 'Le prix est obligatoire',
         'price.numeric' => 'Le prix doit être un nombre',
-        'price.min' => 'Le prix doit être positif'
+        'price.min' => 'Le prix doit être positif',
+        'category_id.required' => 'La catégorie est obligatoire',
+        'category_id.exists' => 'La catégorie sélectionnée n\'est pas valide'
     ];
 
     public function store()
@@ -48,7 +53,8 @@ class Dishs extends Component
                 'name' => $this->name,
                 'description' => $this->description,
                 'price' => $this->price,
-                'is_available' => $this->is_available
+                'is_available' => $this->is_available,
+                'category_id' => $this->category_id
             ]);
 
             $this->resetInputFields();
@@ -70,6 +76,7 @@ class Dishs extends Component
             $this->description = $dish->description;
             $this->price = $dish->price;
             $this->is_available = $dish->is_available;
+            $this->category_id = $dish->category_id;
             $this->isEditing = true;
             
             $this->dispatchBrowserEvent('show-modal');
@@ -88,7 +95,8 @@ class Dishs extends Component
                 'name' => $this->name,
                 'description' => $this->description,
                 'price' => $this->price,
-                'is_available' => $this->is_available
+                'is_available' => $this->is_available,
+                'category_id' => $this->category_id
             ]);
 
             $this->resetInputFields();
@@ -140,8 +148,11 @@ class Dishs extends Component
             ->orderBy('created_at', 'desc')
             ->paginate(10);
 
+        $categories = DishCategory::all();
+
         return view('livewire.dashboard.food.dishs', [
-            'dishes' => $dishes
+            'dishes' => $dishes,
+            'categories' => $categories
         ])->extends('layouts.base')
             ->section('content');
     }
