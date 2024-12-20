@@ -394,8 +394,8 @@ class InvoicesController extends Controller
             //dd($invoice->invoiceResponseDataDto, json_decode($invoice->invoiceResponseDataDto, true)['uid']);
             // $uid = json_decode($invoice->invoiceResponseDataDto, true)['uid'];
             // dd($uid);
-            // dd($invoice->invoiceResponseDataDto);
-            $securityElementsDto = $this->processInvoiceQrCode($invoice->invoiceResponseDataDto, 'confirm', $invoice_id);
+            // dd($invoice->invoiceResponseDataDto['uid']);
+            $securityElementsDto = $this->processInvoiceQrCode($invoice->invoiceResponseDataDto['uid'], 'confirm', $invoice_id);
 
             if (isset($securityElementsDto['errorDesc'])) {
                 Log::channel('invoice')->error('Error creating QR code for confirmation', [
@@ -522,6 +522,8 @@ class InvoicesController extends Controller
         // Log initial à l'appel de la fonction
         $currentUser = Auth::user();
         $currentDateTime = now();
+
+        dd($currentUser);
         Log::channel('invoice')->info('Appel de la méthode finalinvoice', [
             'user_id' => $currentUser->id,
             'username' => $currentUser->name,
