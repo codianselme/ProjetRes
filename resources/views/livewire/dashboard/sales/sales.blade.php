@@ -209,7 +209,6 @@
                                             <th>Payé</th>
                                             <th>Mode</th>
                                             <th>Actions</th>
-                                            <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -221,14 +220,34 @@
                                             <td>{{ number_format($sale->paid_amount, 0) }} FCFA</td>
                                             <td>{{ ucfirst( str_replace('_', ' ', $sale->payment_method)) }}</td>
                                             <td>
-                                                <button class="btn btn-icon btn-sm btn-primary" wire:click="showInvoice({{ $sale->id }})">
-                                                    <em class="icon ni ni-file-text"></em>
-                                                </button>
-                                            </td>
-                                            <td>
-                                                <button class="btn btn-icon btn-sm btn-primary" wire:click="genererFacture('{{ $sale->invoice_number }}')">
-                                                    Générer Qr
-                                                </button>
+
+                                                @php
+                                                    $invoices_exist = App\Models\Invoice::where('invoice_number', $sale->invoice_number)
+                                                    ->where('securityElementsDto', "!=", null)
+                                                    ->exists();
+                                                @endphp
+
+                                                <div class="drodown">
+                                                    <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-bs-toggle="dropdown">
+                                                        <em class="icon ni ni-more-h"></em>
+                                                    </a>
+                                                    <div class="dropdown-menu dropdown-menu-end">
+                                                        <ul class="link-list-opt no-bdr">
+                                                            <li>
+                                                                <button class="btn btn-link" wire:click="showInvoice({{ $sale->id }})">
+                                                                    <em class="icon ni ni-eye"></em>
+                                                                    <span>Détails Vente</span>
+                                                                </button>
+                                                            </li>
+                                                            <li>
+                                                                <button class="btn btn-link" wire:click="genererFacture('{{ $sale->invoice_number }}')">
+                                                                    <em class="icon ni ni-edit"></em>
+                                                                    <span>{{ $invoices_exist == true ? 'Consulter Facture' : 'Générer Qr Code' }}</span>
+                                                                </button>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
                                             </td>
                                         </tr>
                                         @endforeach
@@ -296,25 +315,25 @@
                                 </tbody>
                                 <tfoot>
                                     <tr class="table-active">
-                                        <th colspan="3" class="text-end">Total TTC</th>
-                                        <th class="text-end">{{ number_format($currentSale->total_amount, 0, ',', ' ') }}</th>
+                                        <th colspan="2" class="text-end">{{-- Total --}}</th>
+                                        <th colspan="2" class="text-end">{{ number_format($currentSale->total_amount, 0, ',', ' ') }}</th>
                                     </tr>
                                 </tfoot>
                             </table>
                         </div>
 
-                        <div class="qr-code-section text-center mb-4">
+                        {{-- <div class="qr-code-section text-center mb-4">
                             <img 
                                 src="{{ asset('https://fiches-pratiques.e-marketing.fr/Assets/Img/FICHEPRATIQUE/2021/10/365359/Comment-generer-facilement-code--F.jpg') }}" 
                                 alt="QR Code" 
                                 class="img-fluid rounded shadow" 
                                 style="max-width: 120px;"
                             >
-                        </div>
+                        </div> --}}
 
-                        <div class="invoice-footer text-center mt-4">
+                        {{-- <div class="invoice-footer text-center mt-4">
                             <small class="text-muted">Merci pour votre visite</small>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 <div class="modal-footer">

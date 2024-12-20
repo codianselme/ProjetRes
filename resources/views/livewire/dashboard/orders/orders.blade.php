@@ -18,8 +18,8 @@
                                                 <div class="col-md-6">
                                                     <select class="form-select" wire:model="orders.{{ $index }}.dish_id">
                                                         <option value="">Sélectionner un plat</option>
-                                                        @foreach($dishes as $dish)
-                                                            <option value="{{ $dish->id }}">{{ $dish->name }}</option>
+                                                        @foreach($dishes as $k => $dish)
+                                                            <option value="{{ $dish->id }}">{{ $k + 1 }}. {{ $dish->name }}</option>
                                                         @endforeach
                                                     </select>
                                                     @error('orders.'.$index.'.dish_id') <span class="text-danger">{{ $message }}</span> @enderror
@@ -82,7 +82,7 @@
                                             <td>{{ $order->created_at->format('d/m/Y H:i') }}</td>
                                             <td>{{ $order->dish->name }}</td>
                                             <td>{{ number_format($order->quantity, 0) }} Plat(s)</td>
-                                            <td>{{ $order->status }}</td>
+                                            <td>{{ $order->status == "pending" ? "En attente de préparation" : "Plats Préparé" }}</td>
                                         </tr>
                                         @endforeach
                                     </tbody>

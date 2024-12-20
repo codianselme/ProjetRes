@@ -5,6 +5,7 @@
             <div class="nk-content-inner">
                 <div class="nk-content-body">
                     <div class="nk-block">
+                        <!-- Carte pour Préparer une Commande -->
                         <div class="card card-bordered">
                             <div class="card-inner">
                                 <h5 class="title">Préparer une Commande</h5>
@@ -21,7 +22,7 @@
                                             <select id="order_id" class="form-select" wire:model="order_id">
                                                 <option value="">Sélectionner une commande</option>
                                                 @foreach($orders as $k => $order)
-                                                    <option value="{{ $order->id }}">{{ $k + 1 }}. {{ $order->dish->name }} - {{ $order->quantity }}</option>
+                                                    <option value="{{ $order->id }}">{{ $k + 1 }}. {{ $order->dish->name }} - {{ $order->quantity > 1 ? $order->quantity . " Plats" : $order->quantity . ' Plat' }}</option>
                                                 @endforeach
                                             </select>
                                             @error('order_id') <span class="text-danger">{{ $message }}</span> @enderror
@@ -35,9 +36,9 @@
                                     </div>
 
                                     <div class="mb-3">
-                                        <label for="selected_ingredient_id" class="form-label">Ingrédients utilisés</label>
                                         <div class="row" id="ingredients-container">
                                             <div class="col-md-6">
+                                                <label for="selected_ingredient_id" class="form-label">Ingrédients utilisés</label>
                                                 <select id="selected_ingredient_id" class="form-select" wire:model="selected_ingredient_id">
                                                     <option value="">Sélectionner un ingrédient</option>
                                                     @foreach($food_supplies as $l => $supply)
@@ -68,7 +69,12 @@
                                         <br>
                                         <button type="button" class="btn btn-secondary mt-2 float-end" wire:click="addIngredient">Ajouter Ingrédient</button>
                                     </div>
+                                </div>
+                            </div>
 
+                        <!-- Carte pour Ingrédients ajoutés -->
+                        <div class="card card-bordered mt-4">
+                            <div class="card-inner">
                                     <div class="mb-3">
                                         <h6>Ingrédients ajoutés :</h6>
                                         <table class="table">
@@ -96,7 +102,12 @@
                                     <br><br>
                                     <button type="submit" class="btn btn-success float-end">Préparer Commande</button>
                                 </form>
+                            </div>
+                        </div>
 
+                        <!-- Carte pour Liste des Plats et Détails -->
+                        <div class="card card-bordered mt-4">
+                            <div class="card-inner">
                                 <h5 class="mt-5">Liste des Plats et Détails</h5>
                                 <table class="table mt-3">
                                     <thead>

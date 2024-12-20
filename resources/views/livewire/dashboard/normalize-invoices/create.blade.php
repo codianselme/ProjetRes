@@ -1,7 +1,7 @@
 @extends('layouts.invoices')
 @section('main-content')
     <main>
-        <a href="{{ route('dashboard.food.dish') }}" class="btn btn-primary" style="display: inline-flex; align-items: center; padding: 10px 15px; text-decoration: none; color: white;">
+        <a href="{{ route('dashboard.sales.sales') }}" class="btn btn-primary" style="display: inline-flex; align-items: center; padding: 10px 15px; text-decoration: none; color: white;">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="transform: scaleX(1.5);">
                 <path d="M20 12H4M4 12L10 6M4 12L10 18" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
@@ -277,7 +277,7 @@
                 <div class="footer-info" style="margin-top: 5%;">
                     <!-- Logo -->
                     <div style="margin-right: -40px">
-                        <a href="{{ route('dashboard.food.dish') }}"><img src="{{ asset('home/site-images/logo.png') }}" width="70px" alt="Fagal"></a>
+                        <a href="{{ route('dashboard.sales.sales') }}"><img src="{{ asset('home/site-images/logo.png') }}" width="70px" alt="Fagal"></a>
                     </div>
 
                     <!-- Nouvelle ligne -->

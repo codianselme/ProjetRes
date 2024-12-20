@@ -117,8 +117,10 @@
                                     <input type="number" class="form-control" id="apport_momo" wire:model="apport_momo" min="0">
                                 </div>
 
-                                @if($caisse_today_data->status)
-                                    <button class="btn btn-primary" wire:click="closeCaisse">Clôturer la Caisse</button>
+                                @if($caisse_today_data->status == 0)
+                                    <div class="text-right" style="text-align: right;">
+                                        <button class="btn btn-primary" wire:click="closeCaisse">Clôturer la Caisse</button>
+                                    </div>
                                 @endif
                             </div>
                         </div>
