@@ -113,11 +113,18 @@
                         </a>
                         <ul class="nk-menu-sub">
                             <li class="nk-menu-item">
+                                <a href="{{ route('dashboard.food.supply') }}" class="nk-menu-link"><span class="nk-menu-text">Approvs en Aliments</span></a>
+                            </li>
+                            <li class="nk-menu-item">
+                                <a href="{{ route('dashboard.drink.supply') }}" class="nk-menu-link"><span class="nk-menu-text">Approvs en Boisson</span></a>
+                            </li>
+
+                            {{-- <li class="nk-menu-item">
                                 <a href="{{ route('dashboard.food.category') }}" class="nk-menu-link"><span class="nk-menu-text">Catégories d'Aliments</span></a>
                             </li>
                             <li class="nk-menu-item">
                                 <a href="{{ route('dashboard.drink.category') }}" class="nk-menu-link"><span class="nk-menu-text">Catégories de Boisson</span></a>
-                            </li>
+                            </li> --}}
                             {{-- <li class="nk-menu-item">
                                 <a href="{{ route('dashboard.food.dish') }}" class="nk-menu-link"><span class="nk-menu-text">Approvs des Plats</span></a>
                             </li> --}}

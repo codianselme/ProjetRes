@@ -102,7 +102,7 @@
     </div>
 
     <!-- Modal Form -->
-    <div class="modal fade" id="modalForm" tabindex="-1" aria-labelledby="modalFormLabel" aria-hidden="true">
+    <div wire:ignore.self class="modal fade" id="modalForm" tabindex="-1" aria-labelledby="modalFormLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -115,7 +115,7 @@
                             <label class="form-label" for="category_id">Catégorie</label>
                             <div class="form-control-wrap">
                                 <select class="form-control @error('category_id') is-invalid @enderror" id="category_id" 
-                                    wire:model.defer="category_id">
+                                    wire:model="category_id">
                                     <option value="">Sélectionnez une catégorie</option>
                                     @foreach($categories as $k => $category)
                                         <option value="{{ $category->id }}">{{ $k + 1 }}. {{ $category->name }}</option>
@@ -130,7 +130,7 @@
                             <label class="form-label" for="name">Nom du Plat</label>
                             <div class="form-control-wrap">
                                 <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" 
-                                    wire:model.defer="name" placeholder="Nom du plat">
+                                    wire:model="name" placeholder="Nom du plat">
                                 @error('name')
                                     <span class="invalid-feedback">{{ $message }}</span>
                                 @enderror
@@ -140,7 +140,7 @@
                             <label class="form-label" for="description">Description</label>
                             <div class="form-control-wrap">
                                 <textarea class="form-control @error('description') is-invalid @enderror" id="description" 
-                                    wire:model.defer="description" rows="3" placeholder="Description du plat"></textarea>
+                                    wire:model="description" rows="3" placeholder="Description du plat"></textarea>
                                 @error('description')
                                     <span class="invalid-feedback">{{ $message }}</span>
                                 @enderror
@@ -150,7 +150,7 @@
                             <label class="form-label" for="price">Prix (FCFA)</label>
                             <div class="form-control-wrap">
                                 <input type="number" class="form-control @error('price') is-invalid @enderror" id="price" 
-                                    wire:model.defer="price" min="0">
+                                    wire:model="price" min="0">
                                 @error('price')
                                     <span class="invalid-feedback">{{ $message }}</span>
                                 @enderror
@@ -159,7 +159,7 @@
                         <div class="form-group">
                             <div class="custom-control custom-switch">
                                 <input type="checkbox" class="custom-control-input" id="is_available" 
-                                    wire:model.defer="is_available">
+                                    wire:model="is_available">
                                 <label class="custom-control-label" for="is_available">Disponible</label>
                             </div>
                         </div>

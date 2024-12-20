@@ -61,6 +61,7 @@ class Dishs extends Component
             $this->dispatchBrowserEvent('close-modal');
             Alert::success('Succès', 'Plat ajouté avec succès !');
         } catch (\Exception $e) {
+            dd($e);
             Alert::error('Erreur', "Une erreur est survenue lors de l'ajout du plat.");
         }
 
