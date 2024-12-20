@@ -44,7 +44,7 @@ class DishCategory extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function drinks()
+    public function dishes()
     {
         return $this->hasMany(Dish::class, 'category_id');
     }

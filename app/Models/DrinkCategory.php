@@ -44,7 +44,7 @@ class DrinkCategory extends Model
      */
     public function drinks()
     {
-        return $this->hasMany(Drink::class, 'category_id');
+        return $this->hasMany(DrinkSupply::class, 'category_id');
     }
 
     /**

@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Http\Controllers\InvoicesController;
+use App\Models\DishCategory;
+use App\Models\DrinkCategory;
 
 class Sales extends Component
 {
@@ -172,8 +174,15 @@ class Sales extends Component
         ->orderBy('created_at', 'desc')
         ->paginate(10);
 
-        $dishes = Dish::where('is_available', true)->get();
         $parametres = Parametre::where('id', 1)->first();
+
+        // Récupération des plats et des catégories
+        $dishes = Dish::where('is_available', true)->get();
+        $categories = DishCategory::with('dishes')->get(); // Assurez-vous que la relation est définie dans le modèle DishCategory
+
+        // Récupération des boissons et des catégories
+        $drinkCategories = DrinkCategory::with('drinks')->get(); // Récupération des catégories de boissons
+        //dd($drinkCategories);
 
         $drinks = DrinkSupply::select('id', 'drink_name', 'unit_price')
             ->groupBy('id', 'drink_name', 'unit_price')
@@ -184,7 +193,9 @@ class Sales extends Component
             'sales' => $sales,
             'dishes' => $dishes,
             'drinks' => $drinks,
-            'parametres' => $parametres
+            'parametres' => $parametres,
+            'categories' => $categories, // Passage des catégories de plats à la vue
+            'drinkCategories' => $drinkCategories // Passage des catégories de boissons à la vue
         ])->extends('layouts.base')->section('content');
     }
 }

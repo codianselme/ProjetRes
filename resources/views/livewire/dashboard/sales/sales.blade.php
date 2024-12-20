@@ -13,20 +13,28 @@
                                         <div class="form-group">
                                             <div class="row g-2">
                                                 <div class="col-md-6">
-                                                    <label class="form-label">Mets</label>
+                                                    <label class="form-label">Sélectionner un Plat</label>
                                                     <select class="form-select" wire:change="addItem('dish', $event.target.value)">
                                                         <option value="">Sélectionner un plat</option>
-                                                        @foreach($dishes as $dish)
-                                                            <option value="{{ $dish->id }}">{{ $dish->name }} - {{ number_format($dish->price, 0) }} FCFA</option>
+                                                        @foreach($categories as $category)
+                                                            <optgroup label="{{ $category->name }}">
+                                                                @foreach($category->dishes as $dish)
+                                                                    <option value="{{ $dish->id }}">{{ $dish->name }} - {{ number_format($dish->price, 0) }} FCFA</option>
+                                                                @endforeach
+                                                            </optgroup>
                                                         @endforeach
                                                     </select>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <label class="form-label">Boissons</label>
+                                                    <label class="form-label">Sélectionner une Boisson</label>
                                                     <select class="form-select" wire:change="addItem('drink', $event.target.value)">
                                                         <option value="">Sélectionner une boisson</option>
-                                                        @foreach($drinks as $drink)
-                                                            <option value="{{ $drink->id }}">{{ $drink->drink_name }} - {{ number_format($drink->unit_price, 0) }} FCFA</option>
+                                                        @foreach($drinkCategories as $drinkCategory)
+                                                            <optgroup label="{{ $drinkCategory->name }}">
+                                                                @foreach($drinkCategory->drinks as $drink)
+                                                                    <option value="{{ $drink->id }}">{{ $drink->drink_name }} - {{ number_format($drink->unit_price, 0) }} FCFA</option>
+                                                                @endforeach
+                                                            </optgroup>
                                                         @endforeach
                                                     </select>
                                                 </div>
