@@ -58,9 +58,12 @@
                                                         <td>{{ $item['name'] }}</td>
                                                         <td>{{ number_format($item['price'], 0) }} FCFA</td>
                                                         <td>
-                                                            <input type="number" class="form-control form-control-sm" 
+                                                            <input type="number" class="form-control form-control-sm @error('items.' . $index . '.quantity') is-invalid @enderror" 
                                                                 wire:change="updateQuantity({{ $index }}, $event.target.value)"
                                                                 value="{{ $item['quantity'] }}" min="1">
+                                                            @error('items.' . $index . '.quantity')
+                                                                <span class="invalid-feedback">{{ $message }}</span>
+                                                            @enderror
                                                         </td>
                                                         <td>{{ number_format($item['total'], 0) }} FCFA</td>
                                                         <td>
@@ -90,19 +93,82 @@
                                         <div class="form-group">
                                             <label class="form-label">Mode de paiement</label>
                                             <select class="form-select" wire:model="payment_method">
-                                                <option value="cash">Espèces</option>
-                                                <option value="card">Carte bancaire</option>
-                                                <option value="mobile_money">Mobile Money</option>
+                                                <option value="ESPECES">1. Espèce</option>
+                                                <option value="MOBILEMONEY">2. Mobile Money</option>
+                                                <option value="CHEQUES">3. Chèque</option>
+                                                <option value="VIREMENT">4. Virement</option>
+                                                <option value="CARTEBANCAIRE">5. Carte Bancaire</option>
                                             </select>
+                                            @error('payment_method') <span class="invalid-feedback">{{ $message }}</span> @enderror
                                         </div>
                                         <div class="form-group">
                                             <label class="form-label">Montant payé</label>
-                                            <input type="number" class="form-control" wire:model="paid_amount">
+                                            <input type="number" class="form-control @error('paid_amount') is-invalid @enderror" wire:model="paid_amount">
+                                            @error('paid_amount') <span class="invalid-feedback">{{ $message }}</span> @enderror
                                         </div>
+                                        @if($payment_method == "MOBILEMONEY")
+                                            <div class="form-group">
+                                                <label class="form-label">Référence de la Transaction Mobile</label>
+                                                <input type="text" class="form-control @error('identify_of_mobile_transaction') is-invalid @enderror" wire:model="identify_of_mobile_transaction">
+                                                @error('identify_of_mobile_transaction') <span class="invalid-feedback">{{ $message }}</span> @enderror
+                                            </div>
+                                        @endif
+                                        @if($payment_method == "CHEQUES")
+                                            <div class="form-group">
+                                                <label class="form-label">Nom de la Banque du Chèque</label>
+                                                <input type="text" class="form-control @error('name_banque_of_cheque') is-invalid @enderror" wire:model="name_banque_of_cheque">
+                                                @error('name_banque_of_cheque') <span class="invalid-feedback">{{ $message }}</span> @enderror
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-label">Référence du Chèque</label>
+                                                <input type="text" class="form-control @error('reference_of_cheque') is-invalid @enderror" wire:model="reference_of_cheque">
+                                                @error('reference_of_cheque') <span class="invalid-feedback">{{ $message }}</span> @enderror
+                                            </div>
+                                        @endif
+                                        <div class="form-group">
+                                            <label class="form-label">AIB Amount</label>
+                                            <select class="form-select" wire:model="aib_amount">
+                                                <option value="">Sélectionnez un AIB</option>
+                                                <option value="0">1. 0%</option>
+                                                <option value="1">2. 1%</option>
+                                                <option value="5">3. 5%</option>
+                                            </select>
+                                            @error('aib_amount') <span class="invalid-feedback">{{ $message }}</span> @enderror
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <div class="col-md-6">
+                                                <label class="form-label">Nom Complet du Client</label>
+                                                <input type="text" class="form-control" wire:model="client_fullname">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label">Adresse du Client</label>
+                                                <input type="text" class="form-control" wire:model="client_address">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-md-6">
+                                                <label class="form-label">Téléphone Client</label>
+                                                <input type="text" class="form-control" wire:model="phone_client">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label">Client IFU</label>
+                                                <input type="text" class="form-control" wire:model="client_ifu">
+                                            </div>
+                                        </div>
+                                        
                                         <div class="form-group">
                                             <label class="form-label">Notes</label>
                                             <textarea class="form-control" wire:model="notes" rows="2"></textarea>
                                         </div>
+
+                                        <!-- Champs supplémentaires -->
+                                        
+                                        {{-- <div class="form-group">
+                                            <label class="form-label">Tax Group</label>
+                                            <input type="text" class="form-control" wire:model="tax_group">
+                                        </div> --}}
+                                        
                                         <div class="form-group">
                                             <button class="btn btn-primary btn-block" wire:click="saveSale">
                                                 Enregistrer la vente
@@ -196,11 +262,9 @@
                         <div class="invoice-details row mb-4">
                             <div class="col-6">
                                 <small class="text-muted">Date : {{ $currentSale->created_at->format('d/m/Y à H:i:s') }} </small>
-                                {{-- <p class="fw-bold"></p> --}}
                             </div>
                             <div class="col-6 text-end">
                                 <small class="text-muted">Caissière : {{ auth()->user()->first_name }} {{ auth()->user()->last_name }}</small>
-                                {{-- <p class="fw-bold">{{ $currentSale->cashier_name }}</p> --}}
                             </div>
                         </div>
 
@@ -250,7 +314,6 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" wire:click="$set('showInvoice', false)">Fermer</button>
                     <button type="button" class="btn btn-primary" onclick="printDiv('printableArea')">Imprimer</button>
-                    {{-- <button type="button" class="btn btn-success" wire:click="genererFacture('{{ $currentSale->invoice_number }}')">Générer Qr</button> --}}
                 </div>
             </div>
         </div>
