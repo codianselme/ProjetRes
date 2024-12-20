@@ -32,7 +32,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="email">Email</label>
-                                        <input type="email" id="email" wire:model="email" class="form-control" required>
+                                        <input type="email" id="email" wire:model="email" class="form-control" disabled>
                                     </div>
                                     <div class="form-group">
                                         <label for="contact">Contact</label>

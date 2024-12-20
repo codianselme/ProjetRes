@@ -7,7 +7,7 @@
                         <h2 class="section-sub-heading">Connexion</h2>
                         <nav aria-label="breadcrumb" class="breadcrumb-nav">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="https://project.yahoobaba.net/restaurant-management">Accueil</a></li>
+                                <li class="breadcrumb-item"><a href="#{{ route('home.page') }}">Accueil</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Connexion</li>
                             </ol>
                         </nav>

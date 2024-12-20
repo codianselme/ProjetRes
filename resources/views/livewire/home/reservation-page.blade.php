@@ -7,7 +7,7 @@
                         <h2 class="section-sub-heading">Réservation</h2>
                         <nav aria-label="breadcrumb" class="breadcrumb-nav">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="https://project.yahoobaba.net/restaurant-management">Accueil</a></li>
+                                <li class="breadcrumb-item"><a href="{{ route('home.page') }}">Accueil</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Réservation</li>
                             </ol>
                         </nav>
@@ -21,19 +21,26 @@
                     <div class="col">
                         <h3 class="section-heading text-center">Réserver une table</h3>
                         <h4 class="section-sub-heading text-center">Faites une réservation</h4>
-                        <form class="row bg-white position-relative" id="check-tables" method="POST">
-                            <input type="hidden" name="_token" value="jdW0PBQGLuNRcSbtdExCi4VaSGZUC3KKsVT82JZZ">
+
+                        @if (session()->has('success'))
+                            <div class="alert alert-success mt-3">{{ session('success') }}</div>
+                        @endif
+
+                        <form class="row bg-white position-relative" wire:submit.prevent="submit">
                             <div class="form-group col-md-4 mb-4">
-                                <input type="number" class="form-control" name="persons" placeholder="Personnes" required>
+                                <input type="number" class="form-control" wire:model="persons" placeholder="Personnes" required>
+                                @error('persons') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
                             <div class="form-group col-md-4 mb-4">
-                                <input type="date" class="form-control" name="date" value="2024-12-19" required>
+                                <input type="date" class="form-control" wire:model="date" required>
+                                @error('date') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
                             <div class="form-group col-md-4 mb-4">
-                                <input type="time" class="form-control" name="time" value="03:28" required>
+                                <input type="time" class="form-control" wire:model="time" required>
+                                @error('time') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
                             <div class="form-group col-md-12 text-center">
-                                <input type="submit" class="btn link-button" value="Vérifier la disponibilité">
+                                <button type="submit" class="btn link-button">Vérifier la disponibilité</button>
                             </div>
                         </form>
                     </div>

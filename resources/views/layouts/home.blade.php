@@ -124,7 +124,7 @@
                 </div>
             </div>        
         </footer>
-        <input type="text" id="url" value="https://project.yahoobaba.net/restaurant-management" hidden>
+        <input type="text" id="url" value="#" hidden>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="{{ asset('home/assets/public/js/bootstrap.min.js') }}"></script>
