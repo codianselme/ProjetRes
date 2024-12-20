@@ -4,12 +4,12 @@
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="author" content="themeholy">
-        <meta name="description" content="{{config('app.name', 'DA DIGIT ALL') }} - Facture">
-        <meta name="keywords" content="{{config('app.name', 'DA DIGIT ALL') }} - Facture" />
+        <meta name="description" content="{{config('app.name', 'Les Saveurs Du Coridor') }} - Facture">
+        <meta name="keywords" content="{{config('app.name', 'Les Saveurs Du Coridor') }} - Facture" />
         <meta name="robots" content="INDEX,FOLLOW">
-        <meta content="GestStock - Sales Inventory Admin & Dashboard " name="description" />
-        <meta content="Banel SEMASSOUSSI " name="author"/>
-        <meta content="+229 62 84 35 85" name="phone">
+        <meta content="Invoice" name="description" />
+        <meta content="Anselme" name="author"/>
+        <meta content="+229 96 86 52 00" name="phone">
 
         <!-- Mobile Specific Metas -->
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -89,11 +89,5 @@
                 visibility: hidden;
             }
         </style>
-
-
-
-
     </body>
-
-
 </html>

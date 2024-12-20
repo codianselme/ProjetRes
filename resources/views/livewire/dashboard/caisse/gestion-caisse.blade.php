@@ -34,9 +34,9 @@
                                         </tr>
                                         <tr>
                                             <td>Jour</td>
-                                            <td>{{ $caisse_last_day->date ?? "Non trouvé" }}</td>
-                                            <td>{{ $caisse_last_day->solde_especes_final ?? 0 }}</td>
-                                            <td>{{ $caisse_last_day->solde_momo_final ?? 0 }}</td>
+                                            <td>{{ $caisse_today_data->date ?? "Non trouvé" }}</td>
+                                            <td>{{ $caisse_today_data->solde_especes_final ?? 0 }}</td>
+                                            <td>{{ $caisse_today_data->solde_momo_final ?? 0 }}</td>
                                         </tr>
                                     </tbody>
                                 </table>

@@ -131,7 +131,9 @@
                                     <div class="card-amount">
                                         <div class="row">
                                             <div class="col-12">
-                                                <span class="amount" style="font-size: 14px;">Espèces : {{ $dataCaisse->solde_especes_final ?? 0 }} FCFA</span> &nbps;&nbsp;
+                                                <span class="amount" style="font-size: 14px;">Espèces : {{ $dataCaisse->solde_especes_final ?? 0 }} FCFA</span>
+                                            </div>
+                                            <div class="col-12">
                                                 <span class="amount" style="font-size: 14px;">Mobile Money : {{ $dataCaisse->solde_momo_final ?? 0 }} FCFA</span>
                                             </div>
                                         </div>

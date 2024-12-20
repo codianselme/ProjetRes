@@ -1,7 +1,7 @@
 @extends('layouts.invoices')
 @section('main-content')
     <main>
-        <a href="{{ route('login') }}" class="btn btn-primary" style="display: inline-flex; align-items: center; padding: 10px 15px; text-decoration: none; color: white;">
+        <a href="{{ route('dashboard.food.dish') }}" class="btn btn-primary" style="display: inline-flex; align-items: center; padding: 10px 15px; text-decoration: none; color: white;">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="transform: scaleX(1.5);">
                 <path d="M20 12H4M4 12L10 6M4 12L10 18" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
@@ -19,23 +19,22 @@
                         <div class="col-auto">
                             <div class="header-logo" style="display: flex; align-items: center; margin-top: -50px; margin-left: -30px;">
                                 <!-- Image à gauche -->
-                                <img src="{{ asset('logo_mtn/logo-mtn.png') }}" alt="Logo" style="width: 80px; height: auto; margin-right: 10px;">
+                                <img src="{{ asset('home/site-images/logo.png') }}" alt="Logo" style="width: 80px; height: auto; margin-right: 10px;">
 
                                 <!-- Barre verticale -->
                                 <div style="border-left: 1px solid #000; height: 40px; margin-right: 10px;"></div>
 
                                 <!-- Nom de l'agence -->
-                                <address style="margin-top: 25px;">
-                                    <strong style="font-size: 18px">{{ auth()->user()?->structure?->name ?? 'DIRECTION : '.auth()->user()?->structure?->name ?? '' }}</strong>
+                                <address style="margin-top: 10px; text-align: center;">
+                                    <strong style="font-size: 20px; font-family: Stencil Std, fantasy;">BAR RESTAURANT <br> LES SAVEURS DU CORIDOR</strong>
                                     <br>
-                                    {{--Powered by Faghal--}}
                                 </address>
                             </div>
 
                             <!-- Informations du vendeur -->
                             <address>
                                 <p class="mt-2" style="font-size: 16px; margin-left: -30px; margin-top: 10px;">
-                                    Généré par &nbsp;: <small>{{ $data['operator']['id'] ?? '' }}</small>
+                                    Généré par &nbsp;: {{-- <small>{{ $data['operator']['id'] ?? '' }}</small> --}}
                                     @php
                                     // Séparer le nom du vendeur par des espaces
                                     $names = explode(' ', $data['operator']['name'] ?? '');
@@ -59,14 +58,13 @@
                             </address>
                         </div>
 
-                        <div class="col-auto">
+                        <div class="col-auto" style="margin-right: 50px;">
                             <h5 class="">{{ $data['type'] === 'FV' ? 'FACTURE DE VENTE' : 'FACTURE D\'AVOIR' }}</h5>
                             @php
-                                //dd($invoice);
                                 $reference = $data['type'] === 'FA' ?   $data['reference'] : $data['reference'];
-                                    $date = (new DateTime($invoice->created_at))->format('Y-m-d');
+                                $date = (new DateTime($invoice->created_at))->format('Y-m-d');
                             @endphp
-                            <p class="invoice-date"><b>{{ $data['type'] === 'FA' ? 'Ref.fact.orig: ' : 'Facture N°:   #' }} </b> {{ $reference ?? '' }}</p>
+                            <p class=""><b>{{ $data['type'] === 'FA' ? 'Ref.fact.orig: ' : 'Facture N° :   #' }} </b> {{ $reference ?? '' }}</p>
                             <p class="invoice-date"><b>Date:</b> {{ $date ?? '' }}</p>
                         </div>
                     </div>
@@ -158,11 +156,6 @@
                                 <td>{{ $data['type'] == 'FA' ? '-' : '' }}  {{ (round($price) * $quantity) }} FCFA</td>
                             </tr>
                         @endforeach
-                        {{-- <tr>
-                            <td colspan="4" class="text-center h3"> Total</td>
-                             <td class="text-center h3">{{ $data['type'] == 'FA' ? '-' : $total }} FCFA</td><
-                             /tr>--}}
-
                     </tbody>
                 </table>
 
@@ -186,9 +179,6 @@
                                             <strong>Erreur:</strong> {{ $securityElementsDto['errorDesc'] }}
                                         </div>
                                     @endisset
-                                    {{-- @isset($securityElementsDto['qrCode'])
-                                        A/C Name : {{ $securityElementsDto['qrCode'] }}<br>
-                                    @endisset --}}
                                 </p>
                             @else
                                 <p class="mb-0">
@@ -215,14 +205,14 @@
                             @endif
                         </div>
 
-                        <div class="invoice-note2 mt-25">
+                        {{-- <div class="invoice-note2 mt-25">
                             @if(isset($data['items'][0]['priceModification']) && isset($data['items'][0]['originalPrice']))
                                 <p class="mb-0"><b>NOTE:</b> {{ $data['items'][0]['priceModification'] }} des {{$data['items'][0]['originalPrice']}} </p>
                             @endif
                                 <p class="mb-0"> Nous vous remercions de votre confiance. </p>
                                 <br>
                                 {{ $data['reference'] ?? '' }}
-                        </div><br>
+                        </div><br> --}}
                     </div>
                     <div class="col-auto">
                         <table class="total-table">
@@ -287,7 +277,7 @@
                 <div class="footer-info" style="margin-top: 5%;">
                     <!-- Logo -->
                     <div style="margin-right: -40px">
-                        <a href="{{ route('login') }}"><img src="{{ asset('assetsinvoice/img/logofaghal.png') }}" width="120px" alt="Fagal"></a>
+                        <a href="{{ route('dashboard.food.dish') }}"><img src="{{ asset('home/site-images/logo.png') }}" width="70px" alt="Fagal"></a>
                     </div>
 
                     <!-- Nouvelle ligne -->
