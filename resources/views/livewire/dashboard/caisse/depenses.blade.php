@@ -10,35 +10,44 @@
                         <div class="card-inner">
                             <h3 class="nk-block-title">Enregistrer une Dépense</h3>
                             <form wire:submit.prevent="store">
-                                <div class="form-group">
-                                    <label for="date">Date</label>
-                                    <input type="date" class="form-control @error('date') is-invalid @enderror" id="date" wire:model="date">
-                                    @error('date')
-                                        <span class="invalid-feedback">{{ $message }}</span>
-                                    @enderror
-                                </div>
 
-                                <div class="form-group">
-                                    <label for="montant">Montant</label>
-                                    <input type="number" class="form-control @error('montant') is-invalid @enderror" id="montant" wire:model="montant" min="1">
-                                    @error('montant')
-                                        <span class="invalid-feedback">{{ $message }}</span>
-                                    @enderror
-                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="date">Date</label>
+                                            <input type="date" class="form-control @error('date') is-invalid @enderror" id="date" wire:model="date">
+                                            @error('date')
+                                                <span class="invalid-feedback">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
 
-                                <div class="form-group">
-                                    <label for="nature">Nature</label>
-                                    <select class="form-select @error('nature') is-invalid @enderror" id="nature" wire:model="nature">
-                                        <option value="">Sélectionnez une nature</option>
-                                        <option value="mobile_money">1. Mobile Money</option>
-                                        <option value="cash">2. Espèce</option>
-                                        {{-- <option value="services">3. Services</option>
-                                        <option value="deplacement">4. Déplacement</option>
-                                        <option value="autres">5. Autres</option> --}}
-                                    </select>
-                                    @error('nature')
-                                        <span class="invalid-feedback">{{ $message }}</span>
-                                    @enderror
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="montant">Montant</label>
+                                            <input type="number" class="form-control @error('montant') is-invalid @enderror" id="montant" wire:model="montant" min="1">
+                                            @error('montant')
+                                                <span class="invalid-feedback">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="nature">Nature</label>
+                                            <select class="form-select @error('nature') is-invalid @enderror" id="nature" wire:model="nature">
+                                                <option value="">Sélectionnez une nature</option>
+                                                <option value="mobile_money">1. Mobile Money</option>
+                                                <option value="cash">2. Espèce</option>
+                                                {{-- <option value="services">3. Services</option>
+                                                <option value="deplacement">4. Déplacement</option>
+                                                <option value="autres">5. Autres</option> --}}
+                                            </select>
+                                            @error('nature')
+                                                <span class="invalid-feedback">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div class="form-group">
@@ -76,20 +85,26 @@
                                     <div class="nk-tb-col tb-col-md"><span class="sub-text">Montant</span></div>
                                 </div>
                                 @foreach($depenses as $depense)
-                                <div class="nk-tb-item">
-                                    <div class="nk-tb-col">
-                                        <span class="tb-lead">{{ $depense->operateur }}</span>
+                                    <div class="nk-tb-item">
+                                        <div class="nk-tb-col">
+                                            <span class="tb-lead">{{ $depense->operateur }}</span>
+                                        </div>
+                                        <div class="nk-tb-col tb-col-mb">
+                                            <span class="tb-lead">{{ $depense->date }}</span>
+                                        </div>
+                                        <div class="nk-tb-col tb-col-md">
+                                            <span class="tb-lead">
+                                                @if ($depense->nature == "cash")
+                                                    Espèces
+                                                @elseif ($depense->nature == "mobile_money")
+                                                    Mobile Money
+                                                @endif
+                                            </span>
+                                        </div>
+                                        <div class="nk-tb-col tb-col-md">
+                                            <span class="tb-lead">{{ number_format($depense->montant, 2) }} FCFA</span>
+                                        </div>
                                     </div>
-                                    <div class="nk-tb-col tb-col-mb">
-                                        <span class="tb-lead">{{ $depense->date }}</span>
-                                    </div>
-                                    <div class="nk-tb-col tb-col-md">
-                                        <span class="tb-lead">{{ $depense->nature }}</span>
-                                    </div>
-                                    <div class="nk-tb-col tb-col-md">
-                                        <span class="tb-lead">{{ number_format($depense->montant, 2) }} FCFA</span>
-                                    </div>
-                                </div>
                                 @endforeach
                             </div>
 

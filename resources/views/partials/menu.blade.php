@@ -4,11 +4,12 @@
             <a href="#" class="nk-nav-toggle nk-quick-nav-icon d-xl-none" data-target="sidebarMenu"><em class="icon ni ni-arrow-left"></em></a>
             <a href="#" class="nk-nav-compact nk-quick-nav-icon d-none d-xl-inline-flex" data-target="sidebarMenu"><em class="icon ni ni-menu"></em></a>
         </div>
-        <div class="nk-sidebar-brand">
+        <div class="nk-sidebar-brand d-flex justify-content-between align-items-center" style="gap: 10px;">
             <a href="{{ route('dashboard') }}" class="logo-link nk-sidebar-logo">
-                <img class="logo-light logo-img" src="{{ asset('files/images/logo.png') }}" srcset="{{ asset('files/images/logo2x.png 2x') }}" alt="logo">
-                <img class="logo-dark logo-img" src="{{ asset('files/images/logo-dark.png') }}" srcset="{{ asset('files/images/logo-dark2x.png 2x') }}" alt="logo-dark">
+                <img class="logo-light logo-img" src="{{ asset('home/site-images/logo.png') }}" srcset="{{ asset('home/site-images/logo.png 2x') }}" alt="logo">
+                <img class="logo-dark logo-img" src="{{ asset('home/site-images/logo.png') }}" srcset="{{ asset('home/site-images/logo.png 2x') }}" alt="logo-dark">
             </a>
+            <a href="{{ route('dashboard') }}" class="text-white" style="font-size: 30px; font-family: Apple Chancery, cursive;">Accueil</a>
         </div>
     </div><!-- .nk-sidebar-element -->
     <div class="nk-sidebar-element nk-sidebar-body">
@@ -108,7 +109,7 @@
 
                     <li class="nk-menu-item has-sub">
                         <a href="#" class="nk-menu-link nk-menu-toggle">
-                            <span class="nk-menu-icon"><em class="icon ni ni-tile-thumb"></em></span>
+                            <span class="nk-menu-icon"><em class="icon ni ni-puzzle"></em></span>
                             <span class="nk-menu-text">Gestion des Approvs</span> 
                         </a>
                         <ul class="nk-menu-sub">
@@ -163,7 +164,7 @@
 
                     <li class="nk-menu-item has-sub">
                         <a href="#" class="nk-menu-link nk-menu-toggle">
-                            <span class="nk-menu-icon"><em class="icon ni ni-file-docs"></em></span>
+                            <span class="nk-menu-icon"><em class="icon ni ni-dot-box"></em></span>
                             <span class="nk-menu-text">Gestion de la Caisse</span>
                         </a>
                         <ul class="nk-menu-sub">
@@ -197,7 +198,7 @@
                     
                     <li class="nk-menu-item has-sub">
                         <a href="#" class="nk-menu-link nk-menu-toggle">
-                            <span class="nk-menu-icon"><em class="icon ni ni-file-docs"></em></span>
+                            <span class="nk-menu-icon"><em class="icon ni ni-card-view"></em></span>
                             <span class="nk-menu-text">Rapport</span>
                         </a>
                         <ul class="nk-menu-sub">

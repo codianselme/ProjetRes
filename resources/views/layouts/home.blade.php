@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yb Restaurant</title>
+    <title>Bar Restaurant Les Saveurs du Corridor</title>
     <link href="https://fonts.googleapis.com/css2?family=Poetsen+One&family=Poppins:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -22,10 +22,10 @@
         <header id="header">
             <div class="header-top d-flex flex-row justify-content-between">
                 <ul>
-                    <li><a href="https://www.facebook.com/yahooobaba/"><i class="fab fa-facebook"></i></a></li>
-                    <li><a href="https://twitter.com/yahooobaba"><i class="fab fa-twitter"></i></a></li>
-                    <li><a href="https://www.instagram.com/yahoo_baba/"><i class="fab fa-instagram"></i></a></li>
-                    <li><a href="https://www.youtube.com/yahoobaba"><i class="fab fa-youtube"></i></a></li>
+                    <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="#"><i class="fab fa-youtube"></i></a></li>
                 </ul>
                 <ul>
                     <li><a href="{{ route('connexion.page') }}">Connexion</a></li>
@@ -43,7 +43,7 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-0 ms-lg-5">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Accueil</a>
+                                <a class="nav-link active" aria-current="page" href="{{ route('home.page') }}">Accueil</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="#category-section">Menu</a>

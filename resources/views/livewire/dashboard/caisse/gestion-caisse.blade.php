@@ -47,7 +47,7 @@
                     <!-- Récapitulatif des ventes -->
                     <div class="card card-bordered mt-4">
                         <div class="card-inner">
-                            <h4 class="nk-block-title">Récapitulatif des Ventes</h4>
+                            <h4 class="nk-block-title">Récapitulatif des Ventes du {{ \Carbon\Carbon::now()->format('d-m-Y') }}</h4>
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
@@ -72,7 +72,7 @@
                     <!-- Récapitulatif des dépenses -->
                     <div class="card card-bordered mt-4">
                         <div class="card-inner">
-                            <h4 class="nk-block-title">Récapitulatif des Dépenses</h4>
+                            <h4 class="nk-block-title">Récapitulatif des Dépenses du {{ \Carbon\Carbon::now()->format('d-m-Y') }}</h4>
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
@@ -84,7 +84,14 @@
                                     <tbody>
                                         @foreach($expensesSummary as $expense)
                                             <tr>
-                                                <td>{{ ucfirst($expense->nature) }}</td>
+                                                <td>
+                                                    @if ($expense->nature == "cash")
+                                                        Espèces
+                                                    @elseif ($expense->nature == "mobile_money")
+                                                        Mobile Money
+                                                    @endif
+                                                    {{-- {{ ucfirst($expense->nature) }} --}}
+                                                </td>
                                                 <td>{{ number_format($expense->total_expenses, 2) }}</td>
                                             </tr>
                                         @endforeach

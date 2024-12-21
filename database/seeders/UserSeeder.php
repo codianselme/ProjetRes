@@ -24,38 +24,64 @@ class UserSeeder extends Seeder
                 'password' => bcrypt('codianselme@gmail.com'), 
                 'gender' => 'Masculin', 
                 'address' => 'Ab-Calavi', 
-                'status' => true
+                'status' => true,
+                'role' => 'Super Admin'
             ],
-
             [
-                'first_name' => 'METCHONHOUN', 
-                'last_name' => 'Marius', 
-                'name' => 'METCHONHOUN Marius', 
-                'contact' => '0197000000', 
-                'poste' => 'Commercial', 
-                'email' => 'mariooneday@gmail.com', 
-                'password' => bcrypt('mariooneday@gmail.com'), 
+                'first_name' => 'Sylvie', 
+                'last_name' => 'Dupont', 
+                'name' => 'Sylvie Dupont', 
+                'contact' => '0123456789', 
+                'poste' => 'Serveuse', 
+                'email' => 'serveuse@lessaveursducoridor.com', 
+                'password' => bcrypt('serveuse@lessaveursducoridor.com'), 
+                'gender' => 'Feminin', 
+                'address' => 'Paris', 
+                'status' => true,
+                'role' => 'Serveur'
+            ],
+            [
+                'first_name' => 'Jean', 
+                'last_name' => 'Pierre', 
+                'name' => 'Jean Pierre', 
+                'contact' => '0987654321', 
+                'poste' => 'Cuisinier', 
+                'email' => 'cuisinier@lessaveursducoridor.com', 
+                'password' => bcrypt('cuisinier@lessaveursducoridor.com'), 
                 'gender' => 'Masculin', 
-                'address' => 'Ab-Calavi', 
-                'status' => true
+                'address' => 'Lyon', 
+                'status' => true,
+                'role' => 'Cuisinier'
             ],
-
             [
-                'first_name' => 'MBAREDOUN', 
-                'last_name' => 'Gloria', 
-                'name' => 'MBAREDOUN Gloria', 
-                'contact' => '0196000000', 
+                'first_name' => 'Marie', 
+                'last_name' => 'Lefebvre', 
+                'name' => 'Marie Lefebvre', 
+                'contact' => '0112233445', 
+                'poste' => 'Caissière', 
+                'email' => 'caissiere@lessaveursducoridor.com', 
+                'password' => bcrypt('caissiere@lessaveursducoridor.com'), 
+                'gender' => 'Feminin', 
+                'address' => 'Marseille', 
+                'status' => true,
+                'role' => 'Caissière'
+            ],
+            [
+                'first_name' => 'Sophie', 
+                'last_name' => 'Martin', 
+                'name' => 'Sophie Martin', 
+                'contact' => '0223344556', 
                 'poste' => 'Gérante', 
-                'email' => 'lessaveursducorridor@gmail.com', 
-                'password' => bcrypt('lessaveursducorridor@gmail.com'), 
+                'email' => 'gerante@lessaveursducoridor.com', 
+                'password' => bcrypt('gerante@lessaveursducoridor.com'), 
                 'gender' => 'Féminin', 
-                'address' => 'Ab-Calavi', 
-                'status' => true
+                'address' => 'Bordeaux', 
+                'status' => true,
+                'role' => 'Gérante'
             ],
         ];
 
-        foreach ($users as $key => $value) {
-            // dump($value);
+        foreach ($users as $value) {
             $user = User::create([
                 'first_name' => $value['first_name'],
                 'last_name'  => $value['last_name'],
@@ -68,7 +94,7 @@ class UserSeeder extends Seeder
                 'status'    => $value['status'],
                 'address'   => $value['address'],
             ]);
-            $user->assignRole('Admin');
+            $user->assignRole($value['role']);
         }
     }
 }
