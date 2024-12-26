@@ -253,7 +253,7 @@
                                                             
                                                             @if (!empty($invoice->securityElementsDto) && is_array($invoice->securityElementsDto) && isset($invoice->securityElementsDto['nim']) && !empty($invoice->securityElementsDto['nim']))
                                                                 <li>
-                                                                    <button class="btn btn-link" wire:click="avoirFacture('{{ $sale->invoice_number }}')">
+                                                                    <button class="btn btn-link" wire:click="confirmAvoirFacture('{{ $sale->invoice_number }}')">
                                                                         <em class="icon ni ni-trash"></em>
                                                                         <span>Annuler Facture</span>
                                                                     </button>
@@ -376,6 +376,21 @@
             title: event.detail.title,
             text: event.detail.text,
             icon: 'error',
+        });
+    });
+
+    window.addEventListener('swal:confirm', event => {
+        Swal.fire({
+            title: event.detail.title,
+            text: event.detail.text,
+            icon: event.detail.icon,
+            showCancelButton: true,
+            confirmButtonText: event.detail.confirmButtonText,
+            cancelButtonText: event.detail.cancelButtonText,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                @this.avoirFacture(event.detail.invoiceNumber);
+            }
         });
     });
 

@@ -7,12 +7,14 @@ use App\Models\Sale;
 use App\Models\Caisse;
 use App\Models\Invoice;
 use Livewire\Component;
+use App\Models\SaleItem;
 use App\Models\Parametre;
+use App\Models\DrinkStock;
 use App\Models\DrinkSupply;
 use Illuminate\Support\Str;
+
 use App\Models\DishCategory;
 use Livewire\WithPagination;
-
 use App\Models\DrinkCategory;
 use App\Services\InvoiceService;
 use App\Services\SgmefApiService;
@@ -173,6 +175,15 @@ class Sales extends Component
                     'unit_price' => $item['price'],
                     'total_price' => $item['total'],
                 ]);
+
+                // Décompte de la quantité si c'est une boisson
+                if ($item['type'] === 'drink') {
+                    $drinkStock = DrinkStock::where('id', $item['id'])->first();
+                    if ($drinkStock) {
+                        $drinkStock->quantity -= $item['quantity'];
+                        $drinkStock->save();
+                    }
+                }
             }
 
             $this->reset(['items', 'payment_method', 'paid_amount', 'notes']);
@@ -205,7 +216,6 @@ class Sales extends Component
     public function genererFacture($code_vente)
     {
         $id = Sale::where('invoice_number', $code_vente)->first()->id;
-        //dd($id, Auth::user()->id);
 
         return redirect()->route('invoices.show', [
             'id' => $id,
@@ -213,8 +223,6 @@ class Sales extends Component
             "user_id" => Auth::user()->id,
             // "structure_id" => Auth::user()->structure_id 
         ]);
-
-        // $this->dispatchBrowserEvent('openFactureInNewTab', ['url' => $url, 'code_vente' => $code_vente]);
     }
 
 
@@ -233,9 +241,32 @@ class Sales extends Component
             $this->invoiceController->confirmInvoiceQrCode($createCreditInvoicedatafinal['creditInvoice']->id);
 
             Log::channel('invoice')->info('QR code de la facture confirmé.');
-            return redirect()->route('after.cancel.invoice', $createCreditInvoicedatafinal['origineReference']);
 
+            $sale = Sale::where('id', $facture->vente_id)->first();
+            $saleItems = SaleItem::where('sale_id', $sale->id)->get();
+            if($sale){
+                // Récupérer et restaurer la quantité des boissons
+                foreach ($saleItems as $saleItem) {
+                    if ($saleItem->itemable_type === DrinkSupply::class) {
+                        $drinkStock = DrinkStock::where('id', $saleItem->itemable_id)->first();
+                        if ($drinkStock) {
+                            $drinkStock->quantity += $saleItem->quantity; // Restituer la quantité
+                            $drinkStock->save();
+                        }
+                    }
+                }
+
+                $sale->delete();
+                if ($saleItems) {
+                    foreach ($saleItems as $saleItem) {
+                        $saleItem->delete();
+                    }
+                }
+            }
+
+            return redirect()->route('after.cancel.invoice', $createCreditInvoicedatafinal['origineReference']);
         } catch (\Exception $exception) {
+            dd($exception);
             $this->handleException($exception);
             return redirect()->back();
         }
@@ -249,6 +280,18 @@ class Sales extends Component
         }
 
         return empty($data['createCreditInvoice']) || empty($data['creditInvoiceData']) || empty($data['creditInvoice']);
+    }
+
+    public function confirmAvoirFacture($invoiceNumber)
+    {
+        $this->dispatchBrowserEvent('swal:confirm', [
+            'title' => 'Confirmation',
+            'text' => 'Êtes-vous sûr de vouloir annuler cette facture ?',
+            'icon' => 'warning',
+            'confirmButtonText' => 'Oui, annuler',
+            'cancelButtonText' => 'Non, garder',
+            'invoiceNumber' => $invoiceNumber,
+        ]);
     }
 
 

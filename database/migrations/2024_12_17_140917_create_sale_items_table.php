@@ -28,6 +28,7 @@ return new class extends Migration
             $table->decimal('total_price', 10, 2)->comment('Prix total');
             $table->foreignId('sale_id')->constrained()->onDelete('cascade')->comment('Référence à la vente');
             $table->string('operateur')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
