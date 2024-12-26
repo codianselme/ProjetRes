@@ -223,8 +223,8 @@
 
                                                 @php
                                                     $invoices_exist = App\Models\Invoice::where('invoice_number', $sale->invoice_number)
-                                                    ->where('securityElementsDto', "!=", null)
-                                                    ->exists();
+                                                        ->where('securityElementsDto', "!=", null)
+                                                        ->exists();
                                                 @endphp
 
                                                 <div class="drodown">
@@ -245,6 +245,20 @@
                                                                     <span>{{ $invoices_exist == true ? 'Consulter Facture' : 'Générer Qr Code' }}</span>
                                                                 </button>
                                                             </li>
+                                                            @php
+                                                                $invoice = App\Models\Invoice::where('invoice_number', $sale->invoice_number)
+                                                                    ->where("securityElementsDto", "!=", null)
+                                                                    ->first();
+                                                            @endphp
+                                                            
+                                                            @if (!empty($invoice->securityElementsDto) && is_array($invoice->securityElementsDto) && isset($invoice->securityElementsDto['nim']) && !empty($invoice->securityElementsDto['nim']))
+                                                                <li>
+                                                                    <button class="btn btn-link" wire:click="avoirFacture('{{ $sale->invoice_number }}')">
+                                                                        <em class="icon ni ni-trash"></em>
+                                                                        <span>Annuler Facture</span>
+                                                                    </button>
+                                                                </li>
+                                                            @endif
                                                         </ul>
                                                     </div>
                                                 </div>

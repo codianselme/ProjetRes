@@ -64,7 +64,7 @@
                                 $reference = $data['type'] === 'FA' ?   $data['reference'] : $data['reference'];
                                 $date = (new DateTime($invoice->created_at))->format('Y-m-d');
                             @endphp
-                            <p class=""><b>{{ $data['type'] === 'FA' ? 'Ref.fact.orig: ' : 'Facture N° :   #' }} </b> {{ $reference ?? '' }}</p>
+                            <p class=""><b>{{ $data['type'] === 'FA' ? 'Ref.fact.orig: ' : 'Facture N° :   #' }} <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ $reference ?? '' }}</p>
                             <p class="invoice-date"><b>Date:</b> {{ $date ?? '' }}</p>
                         </div>
                     </div>
@@ -129,11 +129,11 @@
                 <table class="text-black invoice-table table-stripe4">
                     <thead>
                         <tr style="color: black;">
-                            <th style="color: black;">Code de produit</th>
-                            <th style="color: black;">Nom</th>
-                            <th style="color: black;">Prix</th>
-                            <th style="color: black;">Quantité</th>
-                            <th style="color: black;">Montant</th>
+                            {{-- <th style="color: black;">Code de produit</th> --}}
+                            <th style="color: black; text-align: center">Nom</th>
+                            <th style="color: black; text-align: center">Prix</th>
+                            <th style="color: black; text-align: center">Quantité</th>
+                            <th style="color: black; text-align: center">Montant</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -144,16 +144,16 @@
                             @php($total += $price * $quantity)
                             @php($name_parts = explode('  ', $item['name'] ?? '-'))
                             <tr>
-                                <td>{{ $item['code'] ?? '-' }}</td>
+                                {{-- <td>{{ $item['code'] ?? '-' }}</td> --}}
                                 <td>
                                     {{ $name_parts[0] ?? '-' }}
                                     <small>{{ isset($item['taxGroup']) ? '(' . $item['taxGroup'] . ')' : '-' }}</small>
                                     <br>
                                     <em>{{ isset($name_parts[1]) ? $name_parts[1] : '' }}</em>
                                 </td>
-                                <td>{{ $data['type'] == 'FA' ? '-' : '' }}  {{ round($price) }} FCFA</td>
-                                <td>{{ $quantity }}</td>
-                                <td>{{ $data['type'] == 'FA' ? '-' : '' }}  {{ (round($price) * $quantity) }} FCFA</td>
+                                <td style="text-align: center">{{ $data['type'] == 'FA' ? '-' : '' }}  {{ round($price) }} FCFA</td>
+                                <td style="text-align: center">{{ $quantity }}</td>
+                                <td style="text-align: center">{{ $data['type'] == 'FA' ? '-' : '' }}  {{ (round($price) * $quantity) }} FCFA</td>
                             </tr>
                         @endforeach
                     </tbody>

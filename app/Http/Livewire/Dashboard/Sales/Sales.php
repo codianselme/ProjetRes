@@ -5,20 +5,22 @@ namespace App\Http\Livewire\Dashboard\Sales;
 use App\Models\Dish;
 use App\Models\Sale;
 use App\Models\Caisse;
+use App\Models\Invoice;
 use Livewire\Component;
 use App\Models\Parametre;
 use App\Models\DrinkSupply;
 use Illuminate\Support\Str;
+use App\Models\DishCategory;
 use Livewire\WithPagination;
+
+use App\Models\DrinkCategory;
 use App\Services\InvoiceService;
 use App\Services\SgmefApiService;
-
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Http\Controllers\InvoicesController;
-use App\Models\DishCategory;
-use App\Models\DrinkCategory;
 
 class Sales extends Component
 {
@@ -209,11 +211,46 @@ class Sales extends Component
             'id' => $id,
             // 'typeVendeur' => 'vente_physiques',
             "user_id" => Auth::user()->id,
-            // "structure_id" => Auth::user()->structure_id
+            // "structure_id" => Auth::user()->structure_id 
         ]);
 
         // $this->dispatchBrowserEvent('openFactureInNewTab', ['url' => $url, 'code_vente' => $code_vente]);
     }
+
+
+    public function avoirFacture($code_vente){
+        try {
+            $facture = Invoice::where('invoice_number', $code_vente)->first();
+            Log::channel('invoice')->info('Début du traitement de la facture ID : ' . $facture->id . ' Numéro de la Facture : ' . $code_vente);
+            $vente_id = $facture->vente_id;
+            $createCreditInvoicedatafinal = $this->invoiceController->createCreditInvoice($facture->id, $vente_id);
+            
+            if ($this->isCreditInvoiceDataInvalid($createCreditInvoicedatafinal)) {
+                Alert::error('Erreur', 'Une erreur s\'est produite. Veuillez réessayer.');
+                return redirect()->back();
+            }
+
+            $this->invoiceController->confirmInvoiceQrCode($createCreditInvoicedatafinal['creditInvoice']->id);
+
+            Log::channel('invoice')->info('QR code de la facture confirmé.');
+            return redirect()->route('after.cancel.invoice', $createCreditInvoicedatafinal['origineReference']);
+
+        } catch (\Exception $exception) {
+            $this->handleException($exception);
+            return redirect()->back();
+        }
+    }
+
+    private function isCreditInvoiceDataInvalid($data)
+    {
+        // dd($data);
+        if (!is_array($data)) {
+            return true;
+        }
+
+        return empty($data['createCreditInvoice']) || empty($data['creditInvoiceData']) || empty($data['creditInvoice']);
+    }
+
 
     public function render()
     {

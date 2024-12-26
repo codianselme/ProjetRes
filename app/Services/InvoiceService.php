@@ -190,7 +190,6 @@ class InvoiceService
     public function invoiceRequestDataDto(array $data, int $id, int $user_id, ?string $origineReference = null)
     {
         DB::beginTransaction();
-        
 
         $venteInfo = DB::table('sales')
                         ->where('id', $id)

@@ -133,22 +133,24 @@ class InvoicesController extends Controller
     }
 
 
-    public function createCreditInvoice($invoiceId, $ids, $typeVendeur)
+    public function createCreditInvoice($invoiceId, $id)
     {
         Log::channel('invoice')->info('Starting creation of credit invoice', ['invoice_id' => $invoiceId]);
 
         try {
             // Decode IDs and validate
-            $idsArray = json_decode($ids, true);
-            if (json_last_error() !== JSON_ERROR_NONE) {
-                throw new Exception('Invalid JSON format for IDs.');
-            }
+            // $idsArray = json_decode($ids, true);
+            // if (json_last_error() !== JSON_ERROR_NONE) {
+            //     throw new Exception('Invalid JSON format for IDs.');
+            // }
 
             // Fetch sales based on vendor type
-            $ventes = $this->fetchSalesByType($typeVendeur, $idsArray);
+            // $ventes = $this->fetchSalesByType($typeVendeur, $idsArray);
+            $vente = Sale::where('id', $id)->first();
 
             // Retrieve the original invoice
             $invoice = Invoice::find($invoiceId);
+
             if (!$invoice) {
                 Log::channel('invoice')->error('Original invoice not found', ['invoice_id' => $invoiceId]);
                 throw new Exception('Original invoice not found.');
@@ -192,10 +194,10 @@ class InvoicesController extends Controller
             $invoiceService = new InvoiceService();
             $creditInvoiceRequestDataDto = $invoiceService->invoiceRequestDataDto(
                 $creditInvoiceData,
-                $idsArray,
-                $typeVendeur,
+                $id,
+                // $typeVendeur,
                 $invoice->user_id,
-                $invoice->structure_id,
+                // $invoice->structure_id,
                 $origineReference
             );
             Log::channel('invoice')->info('Credit invoice request data created', ['creditInvoiceRequestDataDto' => $creditInvoiceRequestDataDto]);
@@ -208,8 +210,8 @@ class InvoicesController extends Controller
             // Update the invoice with the response data
             $creditInvoiceResponseDataDto = $invoiceService->invoiceResponseDataDto(
                 $createCreditInvoice,
-                $idsArray,
-                $typeVendeur,
+                $id,
+                // $typeVendeur,
                 'FA',
                 $origineReference
             );
@@ -242,19 +244,19 @@ class InvoicesController extends Controller
 
 
 
-    private function fetchSalesByType($typeVendeur, array $idsArray)
-    {
-        switch ($typeVendeur) {
-            case 'vente_masters':
-                return VenteMasters::whereIn('id', $idsArray)->get();
-            case 'vente_physiques':
-                return VentePhysique::whereIn('id', $idsArray)->get();
-            case 'vente_commercials':
-                return VenteCommercial::whereIn('id', $idsArray)->get();
-            default:
-                throw new Exception('Unsupported vendor type: ' . $typeVendeur);
-        }
-    }
+    // private function fetchSalesByType($typeVendeur, array $idsArray)
+    // {
+    //     switch ($typeVendeur) {
+    //         case 'vente_masters':
+    //             return VenteMasters::whereIn('id', $idsArray)->get();
+    //         case 'vente_physiques':
+    //             return VentePhysique::whereIn('id', $idsArray)->get();
+    //         case 'vente_commercials':
+    //             return VenteCommercial::whereIn('id', $idsArray)->get();
+    //         default:
+    //             throw new Exception('Unsupported vendor type: ' . $typeVendeur);
+    //     }
+    // }
 
 
     
@@ -356,7 +358,7 @@ class InvoicesController extends Controller
         $existingInvoice = Invoice::where('invoice_number', $invoice_number)->first();
 
         Flashy::success('Facture d\'avoir générée .');
-        return view('livewire.direction.normalize-invoices.create', [
+        return view('livewire.dashboard.normalize-invoices.create', [
             'createInvoice' => $existingInvoice?->invoiceResponseDataDto,
             'data' => $existingInvoice?->invoiceRequestDataDto,
             'invoice' => $existingInvoice,
