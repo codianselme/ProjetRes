@@ -92,7 +92,7 @@
                 <div class="row justify-content-between mb-30">
                     <div class="col-auto">
                         <div class="invoice-left">
-                            <b>Date de la Numérisation :</b>
+                            <b>Date de la Numérisation </b>
                             @if (isset($securityElementsDto) && isset($securityElementsDto['dateTime']))
                                 <address>
                                     {{ $securityElementsDto['dateTime'] }}
@@ -106,7 +106,7 @@
                     </div>
                     <div class="col-auto">
                         <div class="invoice-right">
-                            <b>Mode de paiement : </b>
+                            <b>Mode de paiement </b>
                             <address>
                                 @php
                                     $payment = Arr::get($data['payment'], 0, []);
@@ -244,7 +244,7 @@
                     </div>
                 </div>
 
-                <div class="body-shape1">
+                <div class="body-shape1" >
                     <svg width="850" height="145" viewBox="0 0 850 145" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -253,8 +253,8 @@
                         <defs>
                             <linearGradient id="paint0_linear_310_4187" x1="572.75" y1="-78.9907" x2="572.75"
                                 y2="125.633" gradientUnits="userSpaceOnUse">
-                                <stop offset="0.1344" stop-color="#FFCB05" />
-                                <stop offset="1" stop-color="#FFCB05" />
+                                <stop offset="0.1344" stop-color="#fb9f0d" />
+                                <stop offset="1" stop-color="#fb9f0d" />
                             </linearGradient>
                         </defs>
                     </svg>
@@ -268,8 +268,8 @@
                         <defs>
                             <linearGradient id="paint0_linear_310_4323" x1="277.25" y1="200.819" x2="277.25"
                                 y2="17.3636" gradientUnits="userSpaceOnUse">
-                                <stop offset="0.1344" stop-color="#FFCB05" />
-                                <stop offset="1" stop-color="#FFCB05" />
+                                <stop offset="0.1344" stop-color="#fb9f0d"/>
+                                <stop offset="1" stop-color="#fb9f0d" />
                             </linearGradient>
                         </defs>
                     </svg>

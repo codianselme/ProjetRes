@@ -79,21 +79,67 @@ class UserSeeder extends Seeder
                 'status' => true,
                 'role' => 'Gérante'
             ],
+
+            [
+                'first_name' => 'KPEHOUN', 
+                'last_name' => 'Kenneth', 
+                'name' => 'KPEHOUN Kenneth', 
+                'contact' => '0196000000', 
+                'poste' => 'Admin', 
+                'email' => 'kpehounkenneth@gmail.com', 
+                'password' => bcrypt('kpehounkenneth@gmail.com'), 
+                'gender' => 'Masculin', 
+                'address' => 'Cotonou', 
+                'status' => true,
+                'role' => 'Admin'
+            ],
+
+            [
+                'first_name' => 'YETONDJI', 
+                'last_name' => 'S', 
+                'name' => 'S YETONDJI', 
+                'contact' => '0196000000', 
+                'poste' => 'Admin', 
+                'email' => 'syetondji@yahoo.fr', 
+                'password' => bcrypt('syetondji@yahoo.fr'), 
+                'gender' => 'Masculin', 
+                'address' => 'Cotonou', 
+                'status' => true,
+                'role' => 'Admin'
+            ],
+
+            [
+                'first_name' => 'SOSSOU', 
+                'last_name' => 'Egy', 
+                'name' => 'SOSSOU Egy', 
+                'contact' => '0196000000', 
+                'poste' => 'Admin', 
+                'email' => 'egysossou@gmail.com', 
+                'password' => bcrypt('egysossou@gmail.com'), 
+                'gender' => 'Masculin', 
+                'address' => 'Cotonou', 
+                'status' => true,
+                'role' => 'Admin'
+            ],
         ];
 
         foreach ($users as $value) {
-            $user = User::create([
-                'first_name' => $value['first_name'],
-                'last_name'  => $value['last_name'],
-                'name'      => $value['name'],
-                'contact'   => $value['contact'],
-                'poste'     => $value['poste'],
-                'email'     => $value['email'],
-                'password'  => $value['password'],
-                'gender'    => $value['gender'],
-                'status'    => $value['status'],
-                'address'   => $value['address'],
-            ]);
+            // Vérifier si l'utilisateur existe déjà par e-mail
+            $user = User::updateOrCreate(
+                ['email' => $value['email']], // Condition de recherche
+                [
+                    'first_name' => $value['first_name'],
+                    'last_name'  => $value['last_name'],
+                    'name'      => $value['name'],
+                    'contact'   => $value['contact'],
+                    'poste'     => $value['poste'],
+                    'password'  => $value['password'],
+                    'gender'    => $value['gender'],
+                    'status'    => $value['status'],
+                    'address'   => $value['address'],
+                ]
+            );
+            // Assigner le rôle à l'utilisateur
             $user->assignRole($value['role']);
         }
     }
