@@ -106,8 +106,9 @@ Route::middleware([ 'auth:sanctum', config('jetstream.auth_session'), 'verified'
         Route::get('commands/', App\Http\Livewire\Dashboard\Orders\Orders::class)->name('dashboard.gestion.commands');
         Route::get('preparation/', App\Http\Livewire\Dashboard\Preparations\Preparations::class)->name('dashboard.gestion.preparation');
         
-        Route::get('repports/sales/',  App\Http\Livewire\Dashboard\Repports\RSale::class)->name('dashboard.repport.sales');
-        Route::get('repports/supply/', App\Http\Livewire\Dashboard\Repports\RSupply::class)->name('dashboard.repport.supply');
+        Route::get('rapport/sales/',  App\Http\Livewire\Dashboard\Repports\RSale::class)->name('dashboard.repport.sales');
+        Route::get('rapport/supply/', App\Http\Livewire\Dashboard\Repports\RSupply::class)->name('dashboard.repport.supply');
+        Route::get('rapport/commandes/', App\Http\Livewire\Dashboard\Repports\RKitchen::class)->name('dashboard.repport.kitchen');
         
         Route::get('profile', App\Http\Livewire\Dashboard\Profile\Profile::class)->name('dashboard.profile');
         

@@ -203,10 +203,13 @@
                         </a>
                         <ul class="nk-menu-sub">
                             <li class="nk-menu-item">
-                                <a href="{{ route('dashboard.repport.supply') }}" class="nk-menu-link"><span class="nk-menu-text">Approvs</span></a>
+                                <a href="{{ route('dashboard.repport.supply') }}" class="nk-menu-link"><span class="nk-menu-text">Approvisionnement</span></a>
                             </li>
                             <li class="nk-menu-item">
-                                <a href="{{ route('dashboard.repport.sales') }}" class="nk-menu-link"><span class="nk-menu-text">Ventes</span></a>
+                                <a href="{{ route('dashboard.repport.sales') }}" class="nk-menu-link"><span class="nk-menu-text">Ventes et Facturation</span></a>
+                            </li>
+                            <li class="nk-menu-item">
+                                <a href="{{ route('dashboard.repport.kitchen') }}" class="nk-menu-link"><span class="nk-menu-text">Commandes Cuisine</span></a>
                             </li>
                         </ul><!-- .nk-menu-sub -->
                     </li><!-- .nk-menu-item -->
