@@ -19,7 +19,7 @@
                     
                     <br><br>
                     <li class="nk-menu-item has-sub">
-                        @can("menu_gestion_des_utilisateurs")
+                        @can("_menu_gestion_des_utilisateurs")
                             <a href="#" class="nk-menu-link nk-menu-toggle">
                                 <span class="nk-menu-icon"><em class="icon ni ni-users"></em></span>
                                 <span class="nk-menu-text">Gestion des Utilisateurs</span>
@@ -27,22 +27,22 @@
                         @endcan
                         
                         <ul class="nk-menu-sub">
-                            @can("sous_menu_liste_utilisateurs") 
+                            @can("_sous_menu_liste_utilisateurs") 
                                 <li class="nk-menu-item">
                                     <a href="{{ route('dashboard.utilisateurs') }}" class="nk-menu-link"><span class="nk-menu-text">Utilisateurs</span></a>
                                 </li>
                             @endcan
-                            @can("sous_menu_liste_utilisateurs_archives") 
+                            @can("_sous_menu_liste_utilisateurs_archives") 
                                 <li class="nk-menu-item">
                                     <a href="{{ route('dashboard.utilisateurs-archives') }}" class="nk-menu-link"><span class="nk-menu-text">Utilisateurs archivés</span></a>
                                 </li>
                             @endcan
-                            @can("sous_menu_liste_profils_utilisateurs") 
+                            @can("_sous_menu_liste_profils_utilisateurs") 
                                 <li class="nk-menu-item">
                                     <a href="{{ route('dashboard.roles') }}" class="nk-menu-link"><span class="nk-menu-text">Profils Utilisateurs</span></a>
                                 </li>
                             @endcan
-                            @can("sous_menu_liste_permissions") 
+                            @can("_sous_menu_liste_permissions") 
                                 <li class="nk-menu-item">
                                     <a href="{{ route('dashboard.permissions') }}" class="nk-menu-link"><span class="nk-menu-text">Permissions</span></a>
                                 </li>
@@ -51,7 +51,7 @@
                     </li><!-- .nk-menu-item -->
 
                     <li class="nk-menu-item has-sub">
-                    @can("menu_gestion_des_categories") 
+                    @can("_menu_gestion_des_categories") 
                         <a href="#" class="nk-menu-link nk-menu-toggle">
                             <span class="nk-menu-icon"><em class="icon ni ni-tile-thumb"></em></span>
                             <span class="nk-menu-text">Gestion des Categories</span> 
@@ -59,17 +59,17 @@
                     @endcan
                         
                         <ul class="nk-menu-sub">
-                            @can("sous_menu_categories_aliments") 
+                            @can("_sous_menu_categories_aliments") 
                                 <li class="nk-menu-item">
                                     <a href="{{ route('dashboard.food.category') }}" class="nk-menu-link"><span class="nk-menu-text">Catégories d'Aliments</span></a>
                                 </li>
                             @endcan
-                            @can("sous_menu_categories_boisson") 
+                            @can("_sous_menu_categories_boisson") 
                                 <li class="nk-menu-item">
                                     <a href="{{ route('dashboard.drink.category') }}" class="nk-menu-link"><span class="nk-menu-text">Catégories de Boisson</span></a>
                                 </li>
                             @endcan
-                            @can("sous_menu_categories_plats") 
+                            @can("_sous_menu_categories_plats") 
                                 <li class="nk-menu-item">
                                     <a href="{{ route('dashboard.dish.category') }}" class="nk-menu-link"><span class="nk-menu-text">Catégories des plats</span></a>
                                 </li>
@@ -78,19 +78,19 @@
                     </li><!-- .nk-menu-item -->
 
                     <li class="nk-menu-item has-sub">
-                    @can("menu_gestion_des_approvisionnements") 
+                    @can("_menu_gestion_des_approvisionnements") 
                         <a href="#" class="nk-menu-link nk-menu-toggle">
                             <span class="nk-menu-icon"><em class="icon ni ni-puzzle"></em></span>
                             <span class="nk-menu-text">Gestion des Approvs</span> 
                         </a>
                     @endcan
                         <ul class="nk-menu-sub">
-                            @can("sous_menu_approvisionnement_aliments") 
+                            @can("_sous_menu_approvisionnement_aliments") 
                                 <li class="nk-menu-item">
                                     <a href="{{ route('dashboard.food.supply') }}" class="nk-menu-link"><span class="nk-menu-text">Approvs en Aliments</span></a>
                                 </li>
                             @endcan
-                            @can("sous_menu_approvisionnement_boisson") 
+                            @can("_sous_menu_approvisionnement_boisson") 
                                 <li class="nk-menu-item">
                                     <a href="{{ route('dashboard.drink.supply') }}" class="nk-menu-link"><span class="nk-menu-text">Approvs en Boisson</span></a>
                                 </li>
@@ -99,7 +99,7 @@
                     </li><!-- .nk-menu-item -->
 
                     <li class="nk-menu-item has-sub">
-                    @can("menu_gestion_du_stock") 
+                    @can("_menu_gestion_du_stock") 
                         <a href="#" class="nk-menu-link nk-menu-toggle">
                             <span class="nk-menu-icon"><em class="icon ni ni-user-list"></em></span>
                             <span class="nk-menu-text">Gestion du Stock</span>
@@ -107,12 +107,12 @@
                     @endcan
                         
                         <ul class="nk-menu-sub">
-                            @can("sous_menu_stock_aliment") 
+                            @can("_sous_menu_stock_aliment") 
                                 {{-- <li class="nk-menu-item">
                                     <a href="{{ route('dashboard.stock.food') }}" class="nk-menu-link"><span class="nk-menu-text">Stock Aliment</span></a>
                                 </li> --}}
                             @endcan
-                            @can("sous_menu_stock_boissson") 
+                            @can("_sous_menu_stock_boissson") 
                                 <li class="nk-menu-item">
                                     <a href="{{ route('dashboard.stock.drink') }}" class="nk-menu-link"><span class="nk-menu-text">Stock Boissson</span></a>
                                 </li>
@@ -121,14 +121,14 @@
                     </li><!-- .nk-menu-item -->
 
                     <li class="nk-menu-item has-sub">
-                    @can("menu_gestion_des_repas") 
+                    @can("_menu_gestion_des_repas") 
                         <a href="#" class="nk-menu-link nk-menu-toggle">
                             <span class="nk-menu-icon"><em class="icon ni ni-tranx"></em></span>
                             <span class="nk-menu-text">Gestion des repas</span>
                         </a>
                     @endcan
                         <ul class="nk-menu-sub">
-                            @can("sous_menu_liste_des_mets") 
+                            @can("_sous_menu_liste_des_mets") 
                                 <li class="nk-menu-item">
                                     <a href="{{ route('dashboard.food.dish') }}" class="nk-menu-link"><span class="nk-menu-text">Liste des Mets</span></a>
                                 </li>
@@ -137,19 +137,19 @@
                     </li><!-- .nk-menu-item -->
 
                     <li class="nk-menu-item has-sub">
-                    @can("menu_gestion_de_la_caisse") 
+                    @can("_menu_gestion_de_la_caisse") 
                         <a href="#" class="nk-menu-link nk-menu-toggle">
                             <span class="nk-menu-icon"><em class="icon ni ni-dot-box"></em></span>
                             <span class="nk-menu-text">Gestion de la Caisse</span>
                         </a>
                     @endcan
                         <ul class="nk-menu-sub">
-                            @can("sous_menu_liste_des_depenses") 
+                            @can("_sous_menu_liste_des_depenses") 
                                 <li class="nk-menu-item">
                                     <a href="{{ route('dashboard.caisse.depenses') }}" class="nk-menu-link"><span class="nk-menu-text">Les dépenses</span></a>
                                 </li>
                             @endcan
-                            @can("sous_menu_la_caise") 
+                            @can("_sous_menu_la_caise") 
                                 <li class="nk-menu-item">
                                     <a href="{{ route('dashboard.caisse.gestion-caisse') }}" class="nk-menu-link"><span class="nk-menu-text">La Caisse</span></a>
                                 </li>
@@ -158,24 +158,24 @@
                     </li>
 
                     <li class="nk-menu-item has-sub">
-                    @can("menu_vente_et_facturation") 
+                    @can("_menu_vente_et_facturation") 
                         <a href="#" class="nk-menu-link nk-menu-toggle">
                             <span class="nk-menu-icon"><em class="icon ni ni-file-docs"></em></span>
                             <span class="nk-menu-text">Ventes et Facturation</span>
                         </a>
                     @endcan
                         <ul class="nk-menu-sub">
-                            @can("sous_menu_gestion_des_commandes") 
+                            @can("_sous_menu_gestion_des_commandes") 
                                 <li class="nk-menu-item">
                                     <a href="{{ route('dashboard.gestion.commands') }}" class="nk-menu-link"><span class="nk-menu-text">Gestion des commandes</span></a>
                                 </li>
                             @endcan
-                            @can("sous_menu_gestion_des_preparations") 
+                            @can("_sous_menu_gestion_des_preparations") 
                                 <li class="nk-menu-item">
                                     <a href="{{ route('dashboard.gestion.preparation') }}" class="nk-menu-link"><span class="nk-menu-text">Gestion des Preparations</span></a>
                                 </li>
                             @endcan
-                            @can("sous_menu_liste_des_ventes") 
+                            @can("_sous_menu_liste_des_ventes") 
                                 <li class="nk-menu-item">
                                     <a href="{{ route('dashboard.sales.sales') }}" class="nk-menu-link"><span class="nk-menu-text">Liste des Ventes</span></a>
                                 </li>
@@ -185,24 +185,24 @@
 
                     
                     <li class="nk-menu-item has-sub">
-                    @can("menu_rapport") 
+                    @can("_menu_rapport") 
                         <a href="#" class="nk-menu-link nk-menu-toggle">
                             <span class="nk-menu-icon"><em class="icon ni ni-card-view"></em></span>
                             <span class="nk-menu-text">Rapport</span>
                         </a>
                     @endcan
                         <ul class="nk-menu-sub">
-                            @can("sous_menu_approvisionnements") 
+                            @can("_sous_menu_approvisionnements") 
                                 <li class="nk-menu-item">
                                     <a href="{{ route('dashboard.repport.supply') }}" class="nk-menu-link"><span class="nk-menu-text">Approvisionnement</span></a>
                                 </li>
                             @endcan
-                            @can("sous_menu_ventes_et_facturation") 
+                            @can("_sous_menu_ventes_et_facturation") 
                                 <li class="nk-menu-item">
                                     <a href="{{ route('dashboard.repport.sales') }}" class="nk-menu-link"><span class="nk-menu-text">Ventes et Facturation</span></a>
                                 </li> 
                             @endcan
-                            @can("sous_menu_commandes_cuisine") 
+                            @can("_sous_menu_commandes_cuisine") 
                                 <li class="nk-menu-item">
                                     <a href="{{ route('dashboard.repport.kitchen') }}" class="nk-menu-link"><span class="nk-menu-text">Commandes Cuisine</span></a>
                                 </li>
@@ -210,7 +210,7 @@
                         </ul><!-- .nk-menu-sub -->
                     </li><!-- .nk-menu-item --> 
                     <li class="nk-menu-item">
-                    @can("menu_parametre") 
+                    @can("_menu_parametre") 
                         <a href="{{ route('dashboard.Parametre.Parametrage') }}" class="nk-menu-link">
                             <span class="nk-menu-icon"><em class="icon ni ni-setting"></em></span>
                             <span class="nk-menu-text">Paramétrage</span>
