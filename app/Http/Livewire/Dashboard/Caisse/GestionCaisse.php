@@ -40,25 +40,133 @@ class GestionCaisse extends Component
         $this->caisse_last_day = Caisse::whereDate('date', Carbon::now()->subDay(1)->format('Y-m-d'))->first();
     }
 
+    // public function openCaisse()
+    // {
+    //     // Récupérer la dernière caisse en triant par date croissante
+    //     $lastCaisse = Caisse::orderBy('date', 'asc')->latest()->first();
+
+    //     if ($lastCaisse) {
+    //         $lastCaisseDate = Carbon::parse($lastCaisse->date);
+    //         $yesterday = Carbon::now()->subDay(1)->format('Y-m-d');
+
+    //         // Vérifier si la date de la dernière caisse est différente de celle de la veille
+    //         if ($lastCaisseDate->format('Y-m-d') !== $yesterday) {
+    //             // Boucle pour chaque date entre la dernière caisse et aujourd'hui
+    //             $currentDate = $lastCaisseDate->addDay(); // Commencer à partir du jour suivant
+
+    //             while ($currentDate->lte(now())) {
+    //                 $data_veille = Caisse::where('date', $currentDate->subDay()->format('Y-m-d'))->first();
+
+    //                 // Créer une nouvelle caisse pour la date actuelle
+    //                 $this->caisse = Caisse::create([
+    //                     'date' => $currentDate->format('Y-m-d'),
+    //                     'solde_especes_initial' => $data_veille ? $data_veille->solde_especes_final : 0,
+    //                     'solde_momo_initial' => $data_veille ? $data_veille->solde_momo_final : 0,
+    //                     'apport_espece' => 0,
+    //                     'apport_momo' => 0,
+    //                     'vente_espece' => 0,
+    //                     'vente_momo' => 0,
+    //                     'decaissement_espece' => 0,
+    //                     'decaissement_momo' => 0,
+    //                     'solde_especes_final' => 0,
+    //                     'solde_momo_final' => 0,
+    //                     'operateur' => Auth::user()->first_name . ' ' . Auth::user()->last_name,
+    //                 ]);
+
+    //                 $currentDate->addDay(); // Passer au jour suivant
+    //             }
+    //         } else {
+    //             // Si la date de la dernière caisse est celle de la veille, créer une caisse pour aujourd'hui
+    //             $this->caisse = Caisse::create([
+    //                 'date' => now()->toDateString(),
+    //                 'solde_especes_initial' => 0,
+    //                 'solde_momo_initial' => 0,
+    //                 'apport_espece' => 0,
+    //                 'apport_momo' => 0,
+    //                 'vente_espece' => 0,
+    //                 'vente_momo' => 0,
+    //                 'decaissement_espece' => 0,
+    //                 'decaissement_momo' => 0,
+    //                 'solde_especes_final' => 0,
+    //                 'solde_momo_final' => 0,
+    //                 'operateur' => Auth::user()->first_name . ' ' . Auth::user()->last_name,
+    //             ]);
+    //         }
+    //     } else {
+    //         // Si aucune caisse n'existe, créer une caisse pour aujourd'hui
+    //         $this->caisse = Caisse::create([
+    //             'date' => now()->toDateString(),
+    //             'solde_especes_initial' => 0,
+    //             'solde_momo_initial' => 0,
+    //             'apport_espece' => 0,
+    //             'apport_momo' => 0,
+    //             'vente_espece' => 0,
+    //             'vente_momo' => 0,
+    //             'decaissement_espece' => 0,
+    //             'decaissement_momo' => 0,
+    //             'solde_especes_final' => 0,
+    //             'solde_momo_final' => 0,
+    //             'operateur' => Auth::user()->first_name . ' ' . Auth::user()->last_name,
+    //         ]);
+    //     }
+
+    //     session()->flash('message', 'Caisse ouverte avec succès.');
+    //     return redirect()->route('dashboard.caisse.gestion-caisse');
+    // }
+
+
     public function openCaisse()
     {
-        $this->caisse = Caisse::create([
-            'date' => now()->toDateString(),
-            'solde_especes_initial' => 0,
-            'solde_momo_initial' => 0,
+        // Récupérer la dernière caisse
+        $lastCaisse = Caisse::orderBy('date', 'desc')->first();
+
+        // Si une caisse existe, analyser les dates
+        if ($lastCaisse) {
+            $lastCaisseDate = Carbon::parse($lastCaisse->date);
+            $yesterday = Carbon::yesterday();
+
+            // Compléter les jours manquants si nécessaire
+            while ($lastCaisseDate->lt($yesterday)) {
+                $lastCaisseDate = $lastCaisseDate->addDay(); // Avancer au jour suivant
+                $this->createCaisseForDate($lastCaisseDate);
+            }
+        }
+
+        // Créer une caisse pour aujourd'hui
+        $this->createCaisseForDate(Carbon::today());
+
+        // Message de confirmation
+        session()->flash('message', 'Caisse ouverte avec succès.');
+        return redirect()->route('dashboard.caisse.gestion-caisse');
+    }
+
+    /**
+     * Crée une caisse pour une date donnée
+     */
+    private function createCaisseForDate(Carbon $date)
+    {
+        // Récupérer la caisse de la veille
+        $data_veille = Caisse::where('date', $date->copy()->subDay()->format('Y-m-d'))->first();
+
+        // Définir les soldes initiaux à partir des soldes finaux de la veille
+        $soldeEspecesInitial = $data_veille->solde_especes_final ?? 0;
+        $soldeMomoInitial = $data_veille->solde_momo_final ?? 0;
+
+        // Créer la caisse pour la date spécifiée
+        Caisse::create([
+            'date' => $date->toDateString(),
+            'solde_especes_initial' => $soldeEspecesInitial,
+            'solde_momo_initial' => $soldeMomoInitial,
             'apport_espece' => 0,
             'apport_momo' => 0,
             'vente_espece' => 0,
             'vente_momo' => 0,
             'decaissement_espece' => 0,
             'decaissement_momo' => 0,
-            'solde_especes_final' => 0,
-            'solde_momo_final' => 0,
+            'solde_especes_final' => $soldeEspecesInitial, 
+            'solde_momo_final' => $soldeMomoInitial, 
             'operateur' => Auth::user()->first_name . ' ' . Auth::user()->last_name,
         ]);
-
-        session()->flash('message', 'Caisse ouverte avec succès.');
-        return redirect()->route('dashboard.caisse.gestion-caisse');
     }
 
     public function closeCaisse()
