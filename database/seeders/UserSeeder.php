@@ -27,58 +27,58 @@ class UserSeeder extends Seeder
                 'status' => true,
                 'role' => 'Super Admin'
             ],
-            [
-                'first_name' => 'Sylvie', 
-                'last_name' => 'Dupont', 
-                'name' => 'Sylvie Dupont', 
-                'contact' => '0123456789', 
-                'poste' => 'Serveuse', 
-                'email' => 'serveuse@lessaveursducoridor.com', 
-                'password' => bcrypt('serveuse@lessaveursducoridor.com'), 
-                'gender' => 'Feminin', 
-                'address' => 'Paris', 
-                'status' => true,
-                'role' => 'Serveur'
-            ],
-            [
-                'first_name' => 'Jean', 
-                'last_name' => 'Pierre', 
-                'name' => 'Jean Pierre', 
-                'contact' => '0987654321', 
-                'poste' => 'Cuisinier', 
-                'email' => 'cuisinier@lessaveursducoridor.com', 
-                'password' => bcrypt('cuisinier@lessaveursducoridor.com'), 
-                'gender' => 'Masculin', 
-                'address' => 'Lyon', 
-                'status' => true,
-                'role' => 'Cuisinier'
-            ],
-            [
-                'first_name' => 'Marie', 
-                'last_name' => 'Lefebvre', 
-                'name' => 'Marie Lefebvre', 
-                'contact' => '0112233445', 
-                'poste' => 'Caissière', 
-                'email' => 'caissiere@lessaveursducoridor.com', 
-                'password' => bcrypt('caissiere@lessaveursducoridor.com'), 
-                'gender' => 'Feminin', 
-                'address' => 'Marseille', 
-                'status' => true,
-                'role' => 'Caissière'
-            ],
-            [
-                'first_name' => 'Sophie', 
-                'last_name' => 'Martin', 
-                'name' => 'Sophie Martin', 
-                'contact' => '0223344556', 
-                'poste' => 'Gérante', 
-                'email' => 'gerante@lessaveursducoridor.com', 
-                'password' => bcrypt('gerante@lessaveursducoridor.com'), 
-                'gender' => 'Féminin', 
-                'address' => 'Bordeaux', 
-                'status' => true,
-                'role' => 'Gérante'
-            ],
+            // [
+            //     'first_name' => 'Sylvie', 
+            //     'last_name' => 'Dupont', 
+            //     'name' => 'Sylvie Dupont', 
+            //     'contact' => '0123456789', 
+            //     'poste' => 'Serveuse', 
+            //     'email' => 'serveuse@lessaveursducoridor.com', 
+            //     'password' => bcrypt('serveuse@lessaveursducoridor.com'), 
+            //     'gender' => 'Feminin', 
+            //     'address' => 'Paris', 
+            //     'status' => true,
+            //     'role' => 'Serveur'
+            // ],
+            // [
+            //     'first_name' => 'Jean', 
+            //     'last_name' => 'Pierre', 
+            //     'name' => 'Jean Pierre', 
+            //     'contact' => '0987654321', 
+            //     'poste' => 'Cuisinier', 
+            //     'email' => 'cuisinier@lessaveursducoridor.com', 
+            //     'password' => bcrypt('cuisinier@lessaveursducoridor.com'), 
+            //     'gender' => 'Masculin', 
+            //     'address' => 'Lyon', 
+            //     'status' => true,
+            //     'role' => 'Cuisinier'
+            // ],
+            // [
+            //     'first_name' => 'Marie', 
+            //     'last_name' => 'Lefebvre', 
+            //     'name' => 'Marie Lefebvre', 
+            //     'contact' => '0112233445', 
+            //     'poste' => 'Caissière', 
+            //     'email' => 'caissiere@lessaveursducoridor.com', 
+            //     'password' => bcrypt('caissiere@lessaveursducoridor.com'), 
+            //     'gender' => 'Feminin', 
+            //     'address' => 'Marseille', 
+            //     'status' => true,
+            //     'role' => 'Caissière'
+            // ],
+            // [
+            //     'first_name' => 'Sophie', 
+            //     'last_name' => 'Martin', 
+            //     'name' => 'Sophie Martin', 
+            //     'contact' => '0223344556', 
+            //     'poste' => 'Gérante', 
+            //     'email' => 'gerante@lessaveursducoridor.com', 
+            //     'password' => bcrypt('gerante@lessaveursducoridor.com'), 
+            //     'gender' => 'Féminin', 
+            //     'address' => 'Bordeaux', 
+            //     'status' => true,
+            //     'role' => 'Gérante'
+            // ],
 
             [
                 'first_name' => 'KPEHOUN', 
@@ -120,6 +120,20 @@ class UserSeeder extends Seeder
                 'address' => 'Cotonou', 
                 'status' => true,
                 'role' => 'Admin'
+            ],
+
+            [
+                'first_name' => 'MBAREDOUN', 
+                'last_name' => 'Gloria', 
+                'name' => 'Mbaredoun Gloria', 
+                'contact' => '0196000000', 
+                'poste' => 'Gérante', 
+                'email' => 'mbaredoungloria@gmail.com', 
+                'password' => bcrypt('mbaredoungloria@gmail.com'), 
+                'gender' => 'Feminin', 
+                'address' => 'Cotonou', 
+                'status' => true,
+                'role' => 'Gérante'
             ],
         ];
 
