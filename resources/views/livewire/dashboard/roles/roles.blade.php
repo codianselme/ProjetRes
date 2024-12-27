@@ -11,7 +11,7 @@
                             <div class="nk-block-head-content">
                                 <h3 class="nk-block-title page-title">Liste des Rôles</h3>
                                 <div class="nk-block-des text-soft">
-                                    <p>Vous avez au total {{ $roles->count() }} rôles.</p>
+                                    <p>Vous avez au total {{ $roles->total() }} rôles.</p>
                                 </div>
                             </div>
                             <div class="nk-block-head-content">
@@ -39,6 +39,23 @@
                                                             @enderror
                                                         </div>
                                                     </div>
+
+                                                    <div class="form-group mt-3">
+                                                        <label class="form-label">Permissions</label>
+                                                        <div class="form-control-wrap">
+                                                            @foreach($permissions as $permission)
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="checkbox" value="{{ $permission->id }}" wire:model.defer="selectedPermissions" id="permission{{ $permission->id }}">
+                                                                    <label class="form-check-label" for="permission{{ $permission->id }}">
+                                                                        {{ ucFirst(str_replace('_', ' ', $permission->name)) }}
+                                                                    </label>
+                                                                </div>
+                                                            @endforeach
+                                                            @error('selectedPermissions')
+                                                                <span class="invalid-feedback d-block">{{ $message }}</span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 <div class="modal-footer bg-light">
                                                     <button type="submit" class="btn btn-primary">Enregistrer</button>
@@ -48,6 +65,53 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <!-- Modal d'édition de Rôle -->
+                                <div wire:ignore.self class="modal fade" id="modalEditRole">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Modifier le Rôle</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <form wire:submit.prevent="updateRole">
+                                                <div class="modal-body">
+                                                    <div class="form-group">
+                                                        <label class="form-label" for="nameEdit">Nom du Rôle</label>
+                                                        <div class="form-control-wrap">
+                                                            <input type="text" class="form-control @error('name') is-invalid @enderror" id="nameEdit" wire:model.defer="name" required placeholder="Entrez le nom du rôle">
+                                                            @error('name')
+                                                                <div class="invalid-feedback">{{ $message }}</div>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group mt-3">
+                                                        <label class="form-label">Permissions</label>
+                                                        <div class="form-control-wrap">
+                                                            @foreach($permissions as $permission)
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="checkbox" value="{{ $permission->id }}" wire:model.defer="selectedPermissions" id="permissionEdit{{ $permission->id }}">
+                                                                    <label class="form-check-label" for="permissionEdit{{ $permission->id }}">
+                                                                        {{ ucFirst(str_replace('_', ' ', $permission->name)) }}
+                                                                    </label>
+                                                                </div>
+                                                            @endforeach
+                                                            @error('selectedPermissions')
+                                                                <span class="invalid-feedback d-block">{{ $message }}</span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer bg-light">
+                                                    <button type="submit" class="btn btn-primary">Mettre à jour</button>
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -65,20 +129,24 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <!-- Liste des Rôles -->
                                 <div class="card-inner p-0">
                                     <div class="nk-tb-list nk-tb-ulist">
                                         <div class="nk-tb-item nk-tb-head">
                                             <div class="nk-tb-col"><span class="sub-text">Nom du Rôle</span></div>
-                                            <div class="nk-tb-col nk-tb-col-tools text-end">
-                                                <div class="dropdown">
-                                                    <a href="#" class="btn btn-xs btn-outline-light btn-icon dropdown-toggle" data-bs-toggle="dropdown" data-offset="0,5"><em class="icon ni ni-plus"></em></a>
-                                                </div>
-                                            </div>
+                                            <div class="nk-tb-col"><span class="sub-text">Permissions</span></div>
+                                            <div class="nk-tb-col nk-tb-col-tools text-end"><span class="sub-text">Actions</span></div>
                                         </div>
                                         @foreach($roles as $role)
                                             <div class="nk-tb-item">
                                                 <div class="nk-tb-col">
                                                     <span class="tb-lead">{{ $role->name }}</span>
+                                                </div>
+                                                <div class="nk-tb-col">
+                                                    @foreach($role->permissions as $permission)
+                                                        <span class="badge bg-info text-white">{{ ucFirst(str_replace('_', ' ', $permission->name)) }}</span>
+                                                    @endforeach
                                                 </div>
                                                 <div class="nk-tb-col nk-tb-col-tools">
                                                     <ul class="nk-tb-actions gx-1">
@@ -88,43 +156,22 @@
                                                             </a>
                                                         </li>
                                                         <li>
-                                                            <a href="#" wire:click.prevent="deleteRole({{ $role->id }})" class="btn btn-icon btn-trigger">
+                                                            <a href="#" wire:click.prevent="confirmDelete({{ $role->id }})" class="btn btn-icon btn-trigger">
                                                                 <em class="icon ni ni-trash"></em>
                                                             </a>
                                                         </li>
                                                     </ul>
                                                 </div>
-                                            </div>
 
-                                            <!-- Modal de nouveau Rôle -->
-                                            <div wire:ignore.self class="modal fade" id="modalEditRole">
-                                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title">Enregistrer un nouveau rôle</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <form wire:submit.prevent="store">
-                                                            <div class="modal-body">
-                                                                <div class="form-group">
-                                                                    <label class="form-label" for="name">Nom du Rôle</label>
-                                                                    <div class="form-control-wrap">
-                                                                        <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" wire:model.defer="name" required placeholder="Entrez le nom du rôle">
-                                                                        @error('name')
-                                                                            <div class="invalid-feedback">{{ $message }}</div>
-                                                                        @enderror
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="modal-footer bg-light">
-                                                                <button type="submit" class="btn btn-primary">Enregistrer</button>
-                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                </div>
+                                                <!-- Modal d'édition de Rôle (Déjà inclus ci-dessus) -->
                                             </div>
                                         @endforeach
+                                    </div>
+                                    <!-- Pagination -->
+                                    <div class="card-inner">
+                                        <div class="d-flex justify-content-center">
+                                            {{ $roles->links() }}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -135,11 +182,8 @@
             </div>
         </div>
     </div>
-</div>
 
-
-
-@section('js')
+    @section('js')
     <script>
         window.addEventListener('swal:confirm', event => {
             Swal.fire({
@@ -153,7 +197,7 @@
                 cancelButtonText: 'Annuler'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    @this.deleteRole(event.detail.id)
+                    Livewire.emit('deleteConfirmed', event.detail.id);
                 }
             });
         });
@@ -164,10 +208,12 @@
         
         window.addEventListener('close-modal', event => {
             $('#modalNewRole').modal('hide');
+            $('#modalEditRole').modal('hide');
         });
 
         window.addEventListener('hide-modal', event => {
             $('#' + event.detail.modal).modal('hide');
         });
     </script>
-@endsection
+    @endsection
+</div>

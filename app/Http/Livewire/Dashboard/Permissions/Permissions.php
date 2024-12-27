@@ -3,19 +3,41 @@
 namespace App\Http\Livewire\Dashboard\Permissions;
 
 use Livewire\Component;
+use Livewire\WithPagination;
 use Spatie\Permission\Models\Permission;
 use RealRashid\SweetAlert\Facades\Alert;
 
+
 class Permissions extends Component
 {
+    use WithPagination;
+
     public $name;
     public $permissionId;
     public $searchTerm;
+    public $isEditing = false;
+
+    protected $paginationTheme = 'bootstrap';
 
     protected $rules = [
         'name' => 'required|unique:permissions,name',
     ];
 
+    protected $listeners = [
+        'deleteConfirmed' => 'deletePermission',
+    ];
+
+    /**
+     * Valide les propriétés mises à jour en temps réel.
+     */
+    public function updated($propertyName)
+    {
+        $this->validateOnly($propertyName);
+    }
+
+    /**
+     * Stocke une nouvelle permission.
+     */
     public function store()
     {
         $this->validate();
@@ -24,26 +46,31 @@ class Permissions extends Component
             Permission::create(['name' => $this->name]);
             Alert::success('Succès', 'Permission créée avec succès.');
             $this->resetInputFields();
+            $this->dispatchBrowserEvent('close-modal');
         } catch (\Exception $e) {
             Alert::error('Erreur', "Une erreur est survenue lors de la création de la permission.");
         }
-
-        return redirect()->route('dashboard.permissions');
     }
 
-    public function editPermission($id)
+    /**
+     * Édite une permission existante.
+     *
+     * @param  int  $id
+     */
+    public function edit($id)
     {
-        try {
-            $permission = Permission::findOrFail($id);
-            $this->permissionId = $permission->id;
-            $this->name = $permission->name;
-            $this->dispatchBrowserEvent('show-modal', ['modal' => 'modalEditPermission']);
-        } catch (\Exception $e) {
-            Alert::error('Erreur', "Une erreur est survenue lors de la récupération des données.");
-        }
+        $permission = Permission::findOrFail($id);
+        $this->permissionId = $permission->id;
+        $this->name = $permission->name;
+        $this->isEditing = true;
+
+        $this->dispatchBrowserEvent('show-modal');
     }
 
-    public function updatePermission()
+    /**
+     * Met à jour une permission existante.
+     */
+    public function update()
     {
         $this->validate([
             'name' => 'required|unique:permissions,name,' . $this->permissionId,
@@ -54,36 +81,63 @@ class Permissions extends Component
             $permission->update(['name' => $this->name]);
             Alert::success('Succès', 'Permission mise à jour avec succès.');
             $this->resetInputFields();
+            $this->dispatchBrowserEvent('close-modal');
         } catch (\Exception $e) {
             Alert::error('Erreur', "Une erreur est survenue lors de la mise à jour de la permission.");
         }
-
-        return redirect()->route('dashboard.permissions');
     }
 
+    /**
+     * Déclenche la confirmation de suppression.
+     *
+     * @param  int  $id
+     */
+    public function delete($id)
+    {
+        $this->dispatchBrowserEvent('swal:confirm', [
+            'title' => 'Êtes-vous sûr?',
+            'text' => 'Cette action est irréversible!',
+            'type' => 'warning',
+            'id' => $id
+        ]);
+    }
+
+    /**
+     * Supprime la permission confirmée.
+     *
+     * @param  int  $id
+     */
     public function deletePermission($id)
     {
         try {
             $permission = Permission::findOrFail($id);
-            $permission->delete();
+            if($permission){
+                $permission->delete();
+            }
             Alert::success('Succès', 'Permission supprimée avec succès.');
         } catch (\Exception $e) {
+            dd($e);
             Alert::error('Erreur', "Une erreur est survenue lors de la suppression de la permission.");
         }
-
-        return redirect()->route('dashboard.permissions');
     }
 
+    /**
+     * Réinitialise les champs du formulaire.
+     */
     private function resetInputFields()
     {
         $this->name = '';
         $this->permissionId = null;
+        $this->isEditing = false;
     }
 
+    /**
+     * Rendu du composant.
+     */
     public function render()
     {
-        $searchTerm = '%' . $this->searchTerm . '%';
-        $permissions = Permission::where('name', 'like', $searchTerm)->get();
+        $search = '%' . $this->searchTerm . '%';
+        $permissions = Permission::where('name', 'like', $search)->paginate(10);
 
         return view('livewire.dashboard.permissions.permissions', [
             'permissions' => $permissions,
