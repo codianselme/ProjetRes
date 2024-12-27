@@ -14,15 +14,19 @@ class ParametreSeeder extends Seeder
     public function run(): void
     {
         DB::table('parametres')->insert([
-            'type' => 'BAR RESTAURANT', // Nom du restaurant ou de la structure
-            'name' => 'LES SAVEURS DU CORRIDOR', // Nom du restaurant ou de la structure
-            'address' => '123 Rue de la Gastronomie, Cotonou, Bénin', // Adresse
+            'type'            => 'BAR RESTAURANT', // Nom du restaurant ou de la structure
+            'name'            => 'LES SAVEURS DU CORRIDOR', // Nom du restaurant ou de la structure 
+            'address'         => '123 Rue de la Gastronomie, Cotonou, Bénin', // Adresse
             'contact_phone_1' => '+229 0151616130', // Numéro de contact
             'contact_phone_2' => '+229 0197918228', // Numéro de contact
             'contact_phone_3' => '+229 0190085807', // Numéro de contact
-            'email' => 'contact@saveursducorridor.com', // Email (facultatif)
-            'website' => 'www.saveursducorridor.com', // Site web (facultatif)
-            'description' => 'Restaurant et bar spécialisé dans les mets locaux et les boissons variées, offrant une expérience gastronomique unique.', // Description
+            'email'           => 'contact@saveursducorridor.com', // Email (facultatif)
+            'website'         => 'les-saveurs-du-corridor.com', // Site web (facultatif)
+            'description'     => 'Restaurant et bar spécialisé dans les mets locaux et les boissons variées, offrant une expérience gastronomique unique.', // Description
+            'facebook'        => '#',
+            'twitter'         => '#',
+            'instagram'       => '#',
+            'youtube'         => '#',
         ]);
     }
 }

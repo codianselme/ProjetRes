@@ -22,6 +22,10 @@ return new class extends Migration
             $table->string('email')->nullable()->comment('Email de contact');
             $table->string('website')->nullable()->comment('Site web de la structure');
             $table->text('description')->nullable()->comment('Description de la structure');
+            $table->string('facebook')->nullable()->comment('compte facebook de la structure');
+            $table->string('twitter')->nullable()->comment('compte twitter de la structure');
+            $table->string('instagram')->nullable()->comment('compte instagram de la structure');
+            $table->string('youtube')->nullable()->comment('compte youtube de la structure');
             $table->timestamps();
         });
     }

@@ -114,6 +114,8 @@ Route::middleware([ 'auth:sanctum', config('jetstream.auth_session'), 'verified'
         
         Route::get('caisse/operation', App\Http\Livewire\Dashboard\Caisse\Depenses::class)->name('dashboard.caisse.depenses');
         Route::get('caisse/gestion', App\Http\Livewire\Dashboard\Caisse\GestionCaisse::class)->name('dashboard.caisse.gestion-caisse');
+        
+        Route::get('parametrage/', App\Http\Livewire\Dashboard\Parametre\Parametrage::class)->name('dashboard.Parametre.Parametrage');
 
     });
 });

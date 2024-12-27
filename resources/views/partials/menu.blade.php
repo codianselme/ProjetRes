@@ -212,6 +212,12 @@
                                 <a href="{{ route('dashboard.repport.kitchen') }}" class="nk-menu-link"><span class="nk-menu-text">Commandes Cuisine</span></a>
                             </li>
                         </ul><!-- .nk-menu-sub -->
+                    </li><!-- .nk-menu-item --> 
+                    <li class="nk-menu-item">
+                        <a href="{{ route('dashboard.Parametre.Parametrage') }}" class="nk-menu-link">
+                            <span class="nk-menu-icon"><em class="icon ni ni-setting"></em></span>
+                            <span class="nk-menu-text">Paramétrage</span>
+                        </a>
                     </li><!-- .nk-menu-item -->
                     
 
