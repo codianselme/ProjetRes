@@ -25,13 +25,13 @@
                                                     <input type="text" class="form-control" id="search" wire:model="searchTerm" placeholder="Rechercher...">
                                                 </div>
                                             </li>
-                                            @can('nouvelle_approvisionnement_boisson')
+                                            {{-- @can('nouvelle_approvisionnement_boisson') --}}
                                                 <li class="nk-block-tools-opt">
                                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalForm">
                                                         <em class="icon ni ni-plus"></em><span>Ajouter un Approvisionnement</span>
                                                     </button>
                                                 </li>
-                                            @endcan
+                                            {{-- @endcan --}}
                                         </ul>
                                     </div>
                                 </div>

@@ -25,13 +25,13 @@
                                                     <input type="text" class="form-control" id="search" wire:model="searchTerm" placeholder="Rechercher...">
                                                 </div>
                                             </li>
-                                            @can('nouveau_plat')
+                                            {{-- @can('nouveau_plat') --}}
                                                 <li class="nk-block-tools-opt">
                                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalForm">
                                                         <em class="icon ni ni-plus"></em><span>Ajouter un plat</span>
                                                     </button>
                                                 </li>
-                                            @endcan
+                                            {{-- @endcan --}}
                                         </ul>
                                     </div>
                                 </div>

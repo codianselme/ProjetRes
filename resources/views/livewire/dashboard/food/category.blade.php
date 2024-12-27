@@ -25,13 +25,13 @@
                                                     <input type="text" class="form-control" id="search" wire:model="searchTerm" placeholder="Rechercher...">
                                                 </div>
                                             </li>
-                                            @can('nouveau_aliment')
+                                            {{-- @can('nouveau_aliment') --}}
                                                 <li class="nk-block-tools-opt">
                                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalForm">
                                                         <em class="icon ni ni-plus"></em><span>Ajouter une Catégorie</span>
                                                     </button>
                                                 </li>
-                                            @endcan
+                                            {{-- @endcan --}}
                                         </ul>
                                     </div>
                                 </div>

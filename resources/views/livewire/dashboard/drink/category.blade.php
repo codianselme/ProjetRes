@@ -26,11 +26,11 @@
                                                 </div>
                                             </li>
                                             <li class="nk-block-tools-opt">
-                                                @can('nouvelle_boisson')
+                                                {{-- @can('nouvelle_boisson') --}}
                                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalForm">
                                                         <em class="icon ni ni-plus"></em><span>Ajouter une Catégorie</span>
                                                     </button>
-                                                @endcan
+                                                {{-- @endcan --}}
                                             </li>
                                         </ul>
                                     </div>
