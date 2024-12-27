@@ -15,10 +15,12 @@
                                 </div>
                             </div>
                             <div class="nk-block-head-content">
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalNewRole">
-                                    <em class="icon ni ni-plus"></em>
-                                    <span>Ajouter un Rôle</span>
-                                </button>
+                                @can('nouveau_profile')
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalNewRole">
+                                        <em class="icon ni ni-plus"></em>
+                                        <span>Ajouter un Rôle</span>
+                                    </button>
+                                @endcan
 
                                 <!-- Modal de nouveau Rôle -->
                                 <div wire:ignore.self class="modal fade" id="modalNewRole">
@@ -150,16 +152,21 @@
                                                 </div>
                                                 <div class="nk-tb-col nk-tb-col-tools">
                                                     <ul class="nk-tb-actions gx-1">
-                                                        <li>
-                                                            <a href="#" wire:click.prevent="editRole({{ $role->id }})" class="btn btn-icon btn-trigger">
-                                                                <em class="icon ni ni-edit"></em>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" wire:click.prevent="confirmDelete({{ $role->id }})" class="btn btn-icon btn-trigger">
-                                                                <em class="icon ni ni-trash"></em>
-                                                            </a>
-                                                        </li>
+                                                        @can('modifier_profile')
+                                                            <li>
+                                                                <a href="#" wire:click.prevent="editRole({{ $role->id }})" class="btn btn-icon btn-trigger">
+                                                                    <em class="icon ni ni-edit"></em>
+                                                                </a>
+                                                            </li>
+                                                        @endcan
+
+                                                        @can('supprimer_profile')
+                                                            <li>
+                                                                <a href="#" wire:click.prevent="confirmDelete({{ $role->id }})" class="btn btn-icon btn-trigger">
+                                                                    <em class="icon ni ni-trash"></em>
+                                                                </a>
+                                                            </li>
+                                                        @endcan
                                                     </ul>
                                                 </div>
 

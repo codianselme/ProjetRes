@@ -21,10 +21,12 @@
                                             {{-- <li><a href="#" class="btn btn-white btn-outline-light"><em class="icon ni ni-download-cloud"></em><span>Export</span></a></li> --}}
                                             <li class="nk-block-tools-opt">
                                                 <div class="drodown">
-                                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalNewUser">
-                                                        <em class="icon ni ni-plus"></em>
-                                                        <span>Ajouter un Utilisateur</span>
-                                                    </button>
+                                                    @can('nouvel_utilisateur')
+                                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalNewUser">
+                                                            <em class="icon ni ni-plus"></em>
+                                                            <span>Ajouter un Utilisateur</span>
+                                                        </button>
+                                                    @endcan
 
                                                     <!-- Modal de nouvelle Utilisateur -->
                                                     <div wire:ignore.self class="modal fade" id="modalNewUser">
@@ -404,24 +406,30 @@
                                                                     <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                                                     <div class="dropdown-menu dropdown-menu-end">
                                                                         <ul class="link-list-opt no-bdr">
-                                                                            <li>
-                                                                                <a href="#" wire:click.prevent="suspendUser({{ $user->id }})">
-                                                                                    <em class="icon ni ni-na"></em>
-                                                                                    <span>{{ $user->status == 0 ? 'Réactiver' : 'Suspendre' }}</span>
-                                                                                </a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a href="#" wire:click.prevent="editUser({{ $user->id }})">
-                                                                                    <em class="icon ni ni-edit"></em>
-                                                                                    <span>Modifier</span>
-                                                                                </a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a href="#" wire:click.prevent="confirmDelete({{ $user->id }})">
-                                                                                    <em class="icon ni ni-trash"></em>
-                                                                                    <span>Supprimer</span>
-                                                                                </a>
-                                                                            </li>
+                                                                            @can('suspendre_utilisateur')
+                                                                                <li>
+                                                                                    <a href="#" wire:click.prevent="suspendUser({{ $user->id }})">
+                                                                                        <em class="icon ni ni-na"></em>
+                                                                                        <span>{{ $user->status == 0 ? 'Réactiver' : 'Suspendre' }}</span>
+                                                                                    </a>
+                                                                                </li>
+                                                                            @endcan
+                                                                            @can('modifier_utilisateur')
+                                                                                <li>
+                                                                                    <a href="#" wire:click.prevent="editUser({{ $user->id }})">
+                                                                                        <em class="icon ni ni-edit"></em>
+                                                                                        <span>Modifier</span>
+                                                                                    </a>
+                                                                                </li>
+                                                                            @endcan
+                                                                            @can('supprimer_utilisateur')
+                                                                                <li>
+                                                                                    <a href="#" wire:click.prevent="confirmDelete({{ $user->id }})">
+                                                                                        <em class="icon ni ni-trash"></em>
+                                                                                        <span>Supprimer</span>
+                                                                                    </a>
+                                                                                </li>
+                                                                            @endcan
                                                                         </ul>
                                                                     </div>
                                                                 </div>

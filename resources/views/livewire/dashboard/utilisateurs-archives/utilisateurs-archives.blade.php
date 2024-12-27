@@ -241,16 +241,20 @@
                                                     </div>
                                                     <div class="nk-tb-col nk-tb-col-tools">
                                                         <ul class="nk-tb-actions gx-1">
-                                                            <li>
-                                                                <button wire:click="restoreUser({{ $user->id }})" class="btn btn-icon btn-trigger">
-                                                                    <em class="icon ni ni-reload"></em>
-                                                                </button>
-                                                            </li>
-                                                            <li>
-                                                                <button wire:click.prevent="deleteUserPermanently({{ $user->id }})" class="btn btn-icon btn-trigger">
-                                                                    <em class="icon ni ni-trash"></em>
-                                                                </button>
-                                                            </li>
+                                                            @can('restaurer_utilisateur')
+                                                                <li>
+                                                                    <button wire:click="restoreUser({{ $user->id }})" class="btn btn-icon btn-trigger">
+                                                                        <em class="icon ni ni-reload"></em>
+                                                                    </button>
+                                                                </li>
+                                                            @endcan
+                                                            @can('supprimer_definitivement_utilisateur')
+                                                                <li>
+                                                                    <button wire:click.prevent="deleteUserPermanently({{ $user->id }})" class="btn btn-icon btn-trigger">
+                                                                        <em class="icon ni ni-trash"></em>
+                                                                    </button>
+                                                                </li>
+                                                            @endcan
                                                         </ul>
                                                     </div>
                                                 </div><!-- .nk-tb-item -->

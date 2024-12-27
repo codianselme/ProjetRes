@@ -26,9 +26,11 @@
                                                 </div>
                                             </li>
                                             <li class="nk-block-tools-opt">
-                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalForm">
-                                                    <em class="icon ni ni-plus"></em><span>Ajouter une Catégorie</span>
-                                                </button>
+                                                @can('nouvelle_boisson')
+                                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalForm">
+                                                        <em class="icon ni ni-plus"></em><span>Ajouter une Catégorie</span>
+                                                    </button>
+                                                @endcan
                                             </li>
                                         </ul>
                                     </div>
@@ -62,16 +64,21 @@
                                             </div>
                                             <div class="nk-tb-col nk-tb-col-tools">
                                                 <ul class="nk-tb-actions gx-1">
-                                                    <li>
-                                                        <button class="btn btn-trigger btn-icon" wire:click="edit({{ $category->id }})">
-                                                            <em class="icon ni ni-edit"></em>
-                                                        </button>
-                                                    </li>
-                                                    <li>
-                                                        <button class="btn btn-trigger btn-icon" wire:click="delete({{ $category->id }})">
-                                                            <em class="icon ni ni-trash"></em>
-                                                        </button>
-                                                    </li>
+                                                    @can('modifier_boisson')
+                                                        <li>
+                                                            <button class="btn btn-trigger btn-icon" wire:click="edit({{ $category->id }})">
+                                                                <em class="icon ni ni-edit"></em>
+                                                            </button>
+                                                        </li>
+                                                    @endcan
+
+                                                    @can('supprimer_boisson')
+                                                        <li>
+                                                            <button class="btn btn-trigger btn-icon" wire:click="delete({{ $category->id }})">
+                                                                <em class="icon ni ni-trash"></em>
+                                                            </button>
+                                                        </li>
+                                                    @endcan
                                                 </ul>
                                             </div>
                                         </div>

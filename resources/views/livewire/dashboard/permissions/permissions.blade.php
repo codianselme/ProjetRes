@@ -43,9 +43,13 @@
                                                         <em class="icon ni ni-more-h"></em>
                                                     </a>
                                                     <div class="dropdown-menu dropdown-menu-end">
-                                                        <ul class="link-list-opt no-bdr">
-                                                            <li><a href="#" data-bs-toggle="modal" data-bs-target="#modalForm"><em class="icon ni ni-plus"></em><span>Ajouter une Permission</span></a></li>
-                                                        </ul>
+                                                        @can('nouvelle_permission')
+                                                            <ul class="link-list-opt no-bdr">
+                                                                <li>
+                                                                    <a href="#" data-bs-toggle="modal" data-bs-target="#modalForm"><em class="icon ni ni-plus"></em><span>Ajouter une Permission</span></a>
+                                                                </li>
+                                                            </ul>
+                                                        @endcan
                                                     </div>
                                                 </div>
                                             </div>
@@ -57,11 +61,13 @@
                                                 </div>
                                                 <div class="nk-tb-col nk-tb-col-tools">
                                                     <ul class="nk-tb-actions gx-1">
-                                                        <li>
-                                                            <button class="btn btn-trigger btn-icon" wire:click="edit({{ $permission->id }})">
-                                                                <em class="icon ni ni-edit"></em>
-                                                            </button>
-                                                        </li>
+                                                        @can('modifier_permission')
+                                                            <li>
+                                                                <button class="btn btn-trigger btn-icon" wire:click="edit({{ $permission->id }})">
+                                                                    <em class="icon ni ni-edit"></em>
+                                                                </button>
+                                                            </li>
+                                                        @endcan
                                                         {{-- <li>
                                                             <button class="btn btn-trigger btn-icon" wire:click="delete({{ $permission->id }})">
                                                                 <em class="icon ni ni-trash"></em>
