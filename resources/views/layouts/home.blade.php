@@ -95,7 +95,7 @@
                                 <h4>Appel pour commande</h4>
                                 <ul>
                                     <li><span>+229 015161630</span></li>
-                                    <li>email@email.com</li>
+                                    <li>lessaveursducorridor@gmail.com</li>
                                 </ul>
                             </div>
                         </div>

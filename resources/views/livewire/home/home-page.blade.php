@@ -172,8 +172,8 @@
                 </div>
                 <div class="col-lg-5 d-lg-block d-md-none">
                     <ul class="text-md-center">
-                        <li>Ouvert le ......... 10:00</li>
-                        <li>Fermé le ......... 23:00</li>
+                        <li>Ouvert le ......... 11:00</li>
+                        <li>Fermé le ......... 00:00</li>
                         <li>Ouvert tous les jours</li>
                     </ul>
                 </div>
