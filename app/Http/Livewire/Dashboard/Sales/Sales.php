@@ -38,9 +38,10 @@ class Sales extends Component
     public $notes;
     public $showInvoice = false;
     public $currentSale;
+    public $sale_date;
 
     // Nouveaux champs
-    public $aib_amount;
+    // public $aib_amount;
     public $tax_group;
     public $phone_client;
     public $client_ifu;
@@ -59,11 +60,12 @@ class Sales extends Component
         'items.*.quantity' => 'required|numeric|min:1',
         'payment_method' => 'required', //'required|in:cash,card,mobile_money',
         'paid_amount' => 'required|numeric|min:0',
-        'aib_amount' => 'required', //'nullable|numeric',
+        // 'aib_amount' => 'required', //'nullable|numeric',
         // 'tax_group' => 'nullable|string',
         'phone_client' => 'nullable|string',
         //'client_ifu' => 'nullable|string',
         'client_fullname' => 'nullable|string',
+        'sale_date' => 'required|date',
         //'client_address' => 'nullable|string',
         //'identify_of_mobile_transaction' => 'nullable|string',
         //'reference_of_cheque' => 'nullable|string',
@@ -81,7 +83,7 @@ class Sales extends Component
         'paid_amount.required' => 'Le montant payé est requis.',
         'paid_amount.numeric' => 'Le montant payé doit être un nombre.',
         'paid_amount.min' => 'Le montant payé ne peut pas être négatif.',
-        'aib_amount.numeric' => 'Le montant AIB doit être un nombre.',
+        // 'aib_amount.numeric' => 'Le montant AIB doit être un nombre.',
         'phone_client.string' => 'Le numéro de téléphone doit être une chaîne de caractères.',
         'client_ifu.string' => 'L\'IFU du client doit être une chaîne de caractères.',
         'client_fullname.string' => 'Le nom complet du client doit être une chaîne de caractères.',
@@ -89,6 +91,8 @@ class Sales extends Component
         'identify_of_mobile_transaction.string' => 'L\'identifiant de la transaction mobile doit être une chaîne de caractères.',
         'reference_of_cheque.string' => 'La référence du chèque doit être une chaîne de caractères.',
         'name_banque_of_cheque.string' => 'Le nom de la banque du chèque doit être une chaîne de caractères.',
+        'sale_date.required' => 'La date de vente est requise.',
+        'sale_date.date' => 'La date de vente doit быть une date valide.',
     ];
 
     public function boot(SgmefApiService $sgmefApiService, InvoiceService $invoiceService)
@@ -156,7 +160,7 @@ class Sales extends Component
                 'paid_amount' => $this->paid_amount,
                 'payment_method' => $this->payment_method,
                 'notes' => $this->notes,
-                'aib_amount' => $this->aib_amount,
+                'aib_amount' => 0, //$this->aib_amount,
                 'tax_group' => 'B', //$this->tax_group,
                 'phone_client' => $this->phone_client,
                 'client_ifu' => $this->client_ifu,
@@ -165,6 +169,7 @@ class Sales extends Component
                 'identify_of_mobile_transaction' => $this->identify_of_mobile_transaction,
                 'reference_of_cheque' => $this->reference_of_cheque,
                 'name_banque_of_cheque' => $this->name_banque_of_cheque,
+                'date' => $this->sale_date . ' ' . now()->format('H:i:s'),
             ]);
 
             foreach ($this->items as $item) {

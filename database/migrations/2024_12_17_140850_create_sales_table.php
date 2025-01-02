@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('sales', function (Blueprint $table) {
             $table->id();
+            $table->dateTime('date')->unique()->comment('Date de vente');
             $table->string('invoice_number')->unique()->comment('Numéro unique de la facture');
             $table->decimal('total_amount', 10, 2)->comment('Montant total de la vente');
             $table->decimal('paid_amount', 10, 2)->comment('Montant payé');

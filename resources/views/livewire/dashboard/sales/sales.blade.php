@@ -80,6 +80,11 @@
                                                         <th>{{ number_format($this->getTotal(), 0) }} FCFA</th>
                                                         <th></th>
                                                     </tr>
+                                                    <tr>
+                                                        <th colspan="3">Reliquat</th>
+                                                        <th>{{ $paid_amount - $this->getTotal() }} FCFA</th>
+                                                        <th></th>
+                                                    </tr>
                                                 </tfoot>
                                             </table>
                                         </div>
@@ -89,6 +94,10 @@
                                         <div class="form-group">
                                             <label class="form-label">N° Facture</label>
                                             <input type="text" class="form-control" value="{{ $invoice_number }}" readonly>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label">Date de la Vente</label>
+                                            <input type="date" class="form-control" wire:model="sale_date" value="{{ date('Y-m-d') }}">
                                         </div>
                                         <div class="form-group">
                                             <label class="form-label">Mode de paiement</label>
@@ -126,7 +135,7 @@
                                                 @error('reference_of_cheque') <span class="invalid-feedback">{{ $message }}</span> @enderror
                                             </div>
                                         @endif
-                                        <div class="form-group">
+                                        {{-- <div class="form-group">
                                             <label class="form-label">AIB Amount</label>
                                             <select class="form-select" wire:model="aib_amount">
                                                 <option value="">Sélectionnez un AIB</option>
@@ -135,7 +144,7 @@
                                                 <option value="5">3. 5%</option>
                                             </select>
                                             @error('aib_amount') <span class="invalid-feedback">{{ $message }}</span> @enderror
-                                        </div>
+                                        </div> --}}
 
                                         <div class="form-group row">
                                             <div class="col-md-6">
@@ -208,17 +217,34 @@
                                             <th>Total</th>
                                             <th>Payé</th>
                                             <th>Mode</th>
+                                            <th>Normalisé</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+
                                         @foreach($sales as $sale)
+                                        
+                                            @php
+                                                $invoice = App\Models\Invoice::where('invoice_number', $sale->invoice_number)
+                                                    ->where("securityElementsDto", "!=", null)
+                                                    ->first();
+                                            @endphp
+
                                         <tr>
                                             <td>{{ $sale->invoice_number }}</td>
-                                            <td>{{ $sale->created_at->format('d/m/Y H:i') }}</td>
+                                            <td>{{ \Carbon\Carbon::parse($sale->date)->format('d/m/Y H:i:s') }}</td>
+                                            {{-- <td>{{ $sale->created_at->format('d/m/Y H:i') }}</td> --}}
                                             <td>{{ number_format($sale->total_amount, 0) }} FCFA</td>
                                             <td>{{ number_format($sale->paid_amount, 0) }} FCFA</td>
                                             <td>{{ ucfirst( str_replace('_', ' ', $sale->payment_method)) }}</td>
+                                            <td>
+                                                @if (!empty($invoice->securityElementsDto) && is_array($invoice->securityElementsDto) && isset($invoice->securityElementsDto['nim']) && !empty($invoice->securityElementsDto['nim']))
+                                                    <span class="badge bg-success">Oui</span>
+                                                @else
+                                                    <span class="badge bg-warning">Non</span>
+                                                @endif
+                                            </td>
                                             <td>
 
                                                 @php
@@ -245,11 +271,6 @@
                                                                     <span>{{ $invoices_exist == true ? 'Consulter Facture' : 'Générer Qr Code' }}</span>
                                                                 </button>
                                                             </li>
-                                                            @php
-                                                                $invoice = App\Models\Invoice::where('invoice_number', $sale->invoice_number)
-                                                                    ->where("securityElementsDto", "!=", null)
-                                                                    ->first();
-                                                            @endphp
                                                             
                                                             @if (!empty($invoice->securityElementsDto) && is_array($invoice->securityElementsDto) && isset($invoice->securityElementsDto['nim']) && !empty($invoice->securityElementsDto['nim']))
                                                                 <li>

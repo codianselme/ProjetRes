@@ -103,7 +103,7 @@
                             <div class="footer-widget text-center">
                                 <h4>Emplacement</h4>
                                 <ul>
-                                    <li>Cotonou, Bénin</li>
+                                    <li>Fidrossè, 100m à gauche de "Bénin Atlantic Beach Hotel" en allant vers le CEG Fiyegnon</li>
                                 </ul>
                             </div>
                         </div>

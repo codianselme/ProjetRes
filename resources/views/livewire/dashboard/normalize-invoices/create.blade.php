@@ -289,7 +289,7 @@
                     <div style="display: flex; align-items: center; justify-content: space-between;"
                         <!-- Informations -->
                         <div style="text-align: left; margin-bottom: -35px; margin-right: -40px;">
-                            <p style="display: inline-block;">(+229) 66 68 68 89 / 54 37 37 40</p> |
+                            <p style="display: inline-block;">(+229) 01 51 61 61 30 / 01 97 91 82 28{{--  / 01 90 08 58 07 --}}</p> |
                             <p style="display: inline-block;">IFU : {{ env('SGMEF_IFU') }}</p>
                         </div>
                     </div>

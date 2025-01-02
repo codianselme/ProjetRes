@@ -107,7 +107,7 @@
                                         @foreach($sales as $sale)
                                         <tr>
                                             <td>{{ $sale->invoice_number }}</td>
-                                            <td>{{ $sale->created_at->format('d/m/Y') }}</td>
+                                            <td>{{ \Carbon\Carbon::parse($sale->date)->format('d/m/Y') }}</td>
                                             <td>{{ number_format($sale->total_amount, 0) }} FCFA</td>
                                             <td>{{ number_format($sale->paid_amount, 0) }} FCFA</td>
                                             <td>{{ ucfirst($sale->payment_method) }}</td>

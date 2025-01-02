@@ -57,8 +57,8 @@ class Index extends Component
 
     public function getMonthlySalesData()
     {
-        return Sale::selectRaw('MONTH(created_at) as month, SUM(total_amount) as total')
-            ->whereYear('created_at', Carbon::now()->year)
+        return Sale::selectRaw('MONTH(date) as month, SUM(total_amount) as total')
+            ->whereYear('date', Carbon::now()->year)
             ->groupBy('month')
             ->orderBy('month')
             ->pluck('total')

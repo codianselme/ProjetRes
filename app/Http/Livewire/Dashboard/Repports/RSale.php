@@ -33,14 +33,14 @@ class RSale extends Component
     public function getSalesData()
     {
         $query = Sale::with('items.itemable')
-            ->whereBetween('created_at', [$this->startDate." 00:00:00", $this->endDate." 23:59:59"]);
+            ->whereBetween('date', [$this->startDate." 00:00:00", $this->endDate." 23:59:59"]);
 
         if ($this->searchTerm) {
             $searchTerm = '%' . $this->searchTerm . '%';
             $query->where('invoice_number', 'like', $searchTerm);
         }
 
-        return $query->orderBy('created_at', 'desc')->paginate(10);
+        return $query->orderBy('date', 'desc')->paginate(10);
     }
 
     public function showInvoice($id)
@@ -74,7 +74,7 @@ class RSale extends Component
         $handle = fopen($filename, 'w');
 
         foreach ($sales as $sale) {
-            $line = "Numéro de Facture: {$sale->invoice_number}, Date: {$sale->created_at->format('d/m/Y')}, Montant Total: {$sale->total_amount} FCFA, Montant Payé: {$sale->paid_amount} FCFA\n";
+            $line = "Numéro de Facture: {$sale->invoice_number}, Date: {$sale->date->format('d/m/Y')}, Montant Total: {$sale->total_amount} FCFA, Montant Payé: {$sale->paid_amount} FCFA\n";
             fwrite($handle, $line);
         }
 

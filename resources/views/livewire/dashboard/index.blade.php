@@ -74,7 +74,6 @@
                     </div>
 
                     <div class="row g-gs">
-
                         <div class="col-md-3 mb-4">
                             <div class="card card-bordered card-full">
                                 <div class="card-inner">
@@ -183,7 +182,7 @@
                                         @foreach(App\Models\Sale::orderBy('created_at', 'desc')->take(5)->get() as $sale)
                                         <tr>
                                             <td>{{ $sale->invoice_number }}</td>
-                                            <td>{{ $sale->created_at->format('d/m/Y') }}</td>
+                                            <td>{{ \Carbon\Carbon::parse($sale->date)->format('d/m/Y') }}</td>
                                             <td>{{ number_format($sale->total_amount, 0) }} FCFA</td>
                                             <td>{{ number_format($sale->paid_amount, 0) }} FCFA</td>
                                         </tr>
