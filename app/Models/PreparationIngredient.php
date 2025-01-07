@@ -17,4 +17,10 @@ class PreparationIngredient extends Model
         'preparation_id',
         'operateur',
     ];
+
+    public function preparation()
+    {
+        return $this->belongsTo(Preparation::class);
+    }
+    
 }

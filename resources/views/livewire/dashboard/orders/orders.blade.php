@@ -8,7 +8,8 @@
                     <div class="nk-block">
                         <div class="card card-bordered">
                             <div class="card-inner">
-                                <h5 class="title">Passer des Commandes</h5>
+                                {{-- <h5 class="title">Passer des Commandes</h5> --}}
+                                <h5 class="title">Passer une Nouvelle Commande - Client N° {{ $client_number }}</h5>
                                 <br><br>
 
                                 <form wire:submit.prevent="createOrders">
@@ -57,7 +58,7 @@
                             <div class="card-inner">
                                 <div class="card-title-group">
                                     <div class="card-title">
-                                        <h5 class="title">Commandes en Attente</h5>
+                                        <h5 class="title">Commandes en Attente</h5> <br><br>
                                     </div>
                                     <div class="card-tools">
                                         <div class="form-control-wrap">
@@ -65,7 +66,36 @@
                                         </div>
                                     </div>
                                 </div>
-                                <table class="table">
+
+                                 @foreach($pendingOrders as $clientNumber => $orders)
+                                    <div class="client-orders mb-4">
+                                        <h6 class="mb-3">Client N° {{ $clientNumber }}</h6>
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Date de la commande</th>
+                                                    <th>Plat</th>
+                                                    <th>Quantité Commandé</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach($orders as $index => $order)
+                                                    <tr>
+                                                        <td>{{ $index + 1 }}</td>
+                                                        <td>{{ $order->created_at->format('d/m/Y H:i') }}</td>
+                                                        <td>{{ $order->dish->name }}</td>
+                                                        <td>{{ $order->quantity }}</td>
+                                                        <td>{{ $order->status == "pending" ? "En attente de préparation" : "Plats Préparé" }}</td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                @endforeach
+
+                                {{-- <table class="table">
                                     <thead>
                                         <tr>
                                             <th>#</th>
@@ -86,7 +116,7 @@
                                         </tr>
                                         @endforeach
                                     </tbody>
-                                </table>
+                                </table> --}}
                             </div>
                         </div>
                     </div>

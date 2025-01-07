@@ -24,6 +24,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Http\Controllers\InvoicesController;
+use App\Models\Order;
 
 class NewSales extends Component
 {
@@ -52,6 +53,7 @@ class NewSales extends Component
     public $identify_of_mobile_transaction;
     public $reference_of_cheque;
     public $name_banque_of_cheque;
+    public $selected_client_number;
 
     protected $sgmefApiService;
     protected $invoiceService;
@@ -143,6 +145,28 @@ class NewSales extends Component
         return collect($this->items)->sum('total');
     }
 
+    public function loadClientOrders($clientNumber)
+    {
+        $this->selected_client_number = $clientNumber;
+        $orders = Order::with('dish')
+                      ->where('client_number', $clientNumber)
+                      // ->where('status', 'pending')
+                      ->get();
+
+        // dd($clientNumber, $orders);
+
+        foreach ($orders as $order) {
+            $this->items[] = [
+                'id' => $order->dish_id,
+                'type' => 'dish',
+                'name' => $order->dish->name,
+                'price' => $order->dish->price,
+                'quantity' => $order->quantity,
+                'total' => $order->dish->price * $order->quantity,
+            ];
+        }
+    }
+
     public function saveSale()
     {
         // dd($this->items, $this->payment_method, $this->paid_amount, $this->aib_amount, $this->phone_client, $this->client_fullname);
@@ -202,6 +226,13 @@ class NewSales extends Component
             ]);
 
             Alert::success('Succès', 'Vente enregistrée avec succès !');
+
+            // Mettre à jour le statut des commandes
+            if ($this->selected_client_number) {
+                Order::where('client_number', $this->selected_client_number)
+                     ->where('status', 'pending')
+                     ->update(['status' => 'completed']);
+            }
         } catch (\Exception $e) {
             dd($e);
             $this->dispatchBrowserEvent('swal:error', [
@@ -328,13 +359,19 @@ class NewSales extends Component
             ->having(DB::raw('SUM(quantity)'), '>', 0)
             ->get();
 
+        $pendingClientOrders = Order::where('status', 'pending')
+            ->select('client_number')
+            ->distinct()
+            ->get();
+
         return view('livewire.dashboard.sales.new-sales', [
             'sales' => $sales,
             'dishes' => $dishes,
             'drinks' => $drinks,
             'parametres' => $parametres,
             'categories' => $categories, // Passage des catégories de plats à la vue
-            'drinkCategories' => $drinkCategories // Passage des catégories de boissons à la vue
+            'drinkCategories' => $drinkCategories, // Passage des catégories de boissons à la vue
+            'pendingClientOrders' => $pendingClientOrders,
         ])->extends('layouts.base')->section('content');
     }
 }

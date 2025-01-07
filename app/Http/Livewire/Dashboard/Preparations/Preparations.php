@@ -19,11 +19,24 @@ class Preparations extends Component
 
     protected $rules = [
         'order_id' => 'required|exists:orders,id',
-        'quantity_used' => 'required|integer|min:1',
+        // 'quantity_used' => 'required|integer|min:1',
+        
         // 'selected_ingredient_id' => 'required|exists:food_supplies,id',
         // 'ingredient_quantity' => 'required|integer|min:1',
         // 'selected_unit' => 'required|string',
     ];
+
+    public function updatedOrderId($value)
+    {
+        if ($value) {
+            $order = Order::find($value);
+            if ($order) {
+                $this->quantity_used = $order->quantity;
+            }
+        } else {
+            $this->quantity_used = null;
+        }
+    }
 
     public function addIngredient()
     {
@@ -79,6 +92,7 @@ class Preparations extends Component
     public function render()
     {
         $orders = Order::where('status', 'pending')->get();
+        // dd($orders);
         $food_supplies = FoodSupply::all();
         $units = ['1/8l', '1/4l', '1/2l', 'l',  '1/8kg',  '1/4kg',  '1/2kg',  'kg',  '1', 'kg', 'g', 'ml', 'paquet', 'pièce', 'boite', 'casier', 'carton', 'un', 'aucun'];
 

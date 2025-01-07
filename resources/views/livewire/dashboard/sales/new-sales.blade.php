@@ -22,11 +22,22 @@
                             <div class="card-inner">
                                 <div class="row g-3">
                                     <div class="col-lg-8">
+                                        <div class="form-group mb-4">
+                                            <label class="form-label">Sélectionner un Client</label>
+                                            <select class="form-select" wire:change="loadClientOrders($event.target.value)">
+                                                <option value="">Sélectionner un client</option>
+                                                @foreach($pendingClientOrders as $clientOrder)
+                                                    <option value="{{ $clientOrder->client_number }}">
+                                                        Client N° {{ $clientOrder->client_number }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
                                         <div class="form-group">
                                             <div class="row g-2">
                                                 <div class="col-md-6">
                                                     <label class="form-label">Sélectionner un Plat</label>
-                                                    <select class="form-select" wire:change="addItem('dish', $event.target.value)">
+                                                    <select class="form-select" wire:change="addItem('dish', $event.target.value)" disabled>
                                                         <option value="">Sélectionner un plat</option>
                                                         @foreach($categories as $category)
                                                             <optgroup label="{{ $category->name }}">

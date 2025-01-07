@@ -22,7 +22,7 @@
                                             <select id="order_id" class="form-select" wire:model="order_id">
                                                 <option value="">Sélectionner une commande</option>
                                                 @foreach($orders as $k => $order)
-                                                    <option value="{{ $order->id }}">{{ $k + 1 }}. {{ $order->dish->name }} - {{ $order->quantity > 1 ? $order->quantity . " Plats" : $order->quantity . ' Plat' }}</option>
+                                                    <option value="{{ $order->id }}">{{ $k + 1 }}. {{ $order->dish->name }} - {{ $order->quantity > 1 ? $order->quantity . " Plats" : $order->quantity . ' Plat' }} - Client : {{ $order->client_number }}</option>
                                                 @endforeach
                                             </select>
                                             @error('order_id') <span class="text-danger">{{ $message }}</span> @enderror
@@ -30,7 +30,14 @@
 
                                         <div class="col-md-6">
                                             <label for="quantity_used" class="form-label">Quantité de Plat</label>
-                                            <input type="number" id="quantity_used" class="form-control" wire:model="quantity_used" placeholder="Quantité utilisée" min="1">
+                                            <input type="number" 
+                                                   id="quantity_used" 
+                                                   class="form-control" 
+                                                   wire:model="quantity_used" 
+                                                   placeholder="Quantité utilisée" 
+                                                   min="1"
+                                                   disabled
+                                                   readonly>
                                             @error('quantity_used') <span class="text-danger">{{ $message }}</span> @enderror
                                         </div>
                                     </div>
