@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id')->comment('Référence à l\'utilisateur qui a passé la commande');
             $table->unsignedBigInteger('dish_id')->comment('Référence au plat commandé');
+            $table->string('client_number')->comment('Numéro de client');
             $table->integer('quantity')->comment('Quantité commandée');
             $table->string('status')->default('pending')->comment('Statut de la commande');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

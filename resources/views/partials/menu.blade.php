@@ -177,6 +177,16 @@
                             {{-- @endcan --}}
                             {{-- @can("_sous_menu_liste_des_ventes")  --}}
                                 <li class="nk-menu-item">
+                                    <a href="{{ route('dashboard.old.sales') }}" class="nk-menu-link"><span class="nk-menu-text">Inscrire Ancienne Vente</span></a>
+                                </li>
+                            {{-- @endcan --}}
+                            {{-- @can("_sous_menu_liste_des_ventes")  --}}
+                                <li class="nk-menu-item">
+                                    <a href="{{ route('dashboard.new.sales') }}" class="nk-menu-link"><span class="nk-menu-text">Inscrire Nouvelle Vente</span></a>
+                                </li>
+                            {{-- @endcan --}}
+                            {{-- @can("_sous_menu_liste_des_ventes")  --}}
+                                <li class="nk-menu-item">
                                     <a href="{{ route('dashboard.sales.sales') }}" class="nk-menu-link"><span class="nk-menu-text">Liste des Ventes</span></a>
                                 </li>
                             {{-- @endcan --}}

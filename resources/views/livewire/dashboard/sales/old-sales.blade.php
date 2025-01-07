@@ -8,16 +8,16 @@
                     <div class="nk-block-head nk-block-head-sm">
                         <div class="nk-block-between">
                             <div class="nk-block-head-content">
-                                <h3 class="nk-block-title page-title">Liste des Ventes</h3>
-                                <div class="nk-block-des text-soft">
+                                <h3 class="nk-block-title page-title">Inscrire une ancienne Ventes</h3>
+                                {{-- <div class="nk-block-des text-soft">
                                     <p>Vous avez au total {{ $sales->total() }} ventes enrégistrées.</p>
-                                </div>
+                                </div> --}}
                             </div><!-- .nk-block-head-content -->
                         </div><!-- .nk-block-between -->
                     </div><!-- .nk-block-head -->
 
                     <!-- Nouvelle Vente -->
-                    {{-- <div class="nk-block">
+                    <div class="nk-block">
                         <div class="card card-bordered">
                             <div class="card-inner">
                                 <div class="row g-3">
@@ -158,7 +158,7 @@
                                             @error('aib_amount') <span class="invalid-feedback">{{ $message }}</span> @enderror
                                         </div> --}}
 
-                                        {{-- <div class="form-group row">
+                                        <div class="form-group row">
                                             <div class="col-md-6">
                                                 <label class="form-label">Nom Complet du Client</label>
                                                 <input type="text" class="form-control @error('client_fullname') is-invalid @enderror" wire:model="client_fullname">
@@ -187,7 +187,7 @@
                                             <label class="form-label">Notes</label>
                                             <textarea class="form-control" wire:model="notes" rows="2"></textarea>
                                             @error('notes') <span class="invalid-feedback">{{ $message }}</span> @enderror
-                                        </div> --}}
+                                        </div>
 
                                         <!-- Champs supplémentaires -->
                                         
@@ -196,7 +196,7 @@
                                             <input type="text" class="form-control" wire:model="tax_group">
                                         </div> --}}
                                         
-                                        {{-- <div class="form-group">
+                                        <div class="form-group">
                                             <button class="btn btn-primary btn-block" wire:click="saveSale">
                                                 Enregistrer la vente
                                             </button>
@@ -205,10 +205,10 @@
                                 </div>
                             </div>
                         </div>
-                    </div> --}}
+                    </div>
 
                     <!-- Liste des Ventes -->
-                    <div class="nk-block">
+                    {{-- <div class="nk-block">
                         <div class="card card-bordered">
                             <div class="card-inner">
                                 <div class="card-title-group">
@@ -247,7 +247,7 @@
                                             <td>{{ $sale->invoice_number }}</td>
                                             <td>{{ \Carbon\Carbon::parse($sale->date)->format('d/m/Y H:i:s') }}</td>
                                             {{-- <td>{{ $sale->created_at->format('d/m/Y H:i') }}</td> --}}
-                                            <td>{{ number_format($sale->total_amount, 0) }} FCFA</td>
+                                            {{-- <td>{{ number_format($sale->total_amount, 0) }} FCFA</td>
                                             <td>{{ number_format($sale->paid_amount, 0) }} FCFA</td>
                                             <td>{{ ucfirst( str_replace('_', ' ', $sale->payment_method)) }}</td>
                                             <td>
@@ -305,7 +305,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
