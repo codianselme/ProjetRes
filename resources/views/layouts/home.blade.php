@@ -60,7 +60,7 @@
                         </ul>
                         <ul class="header-nav-right">
                             <li>
-                                <a href="{{ route('home.page') }}"><i class="fa fa-phone"></i>+229015161630</a>
+                                <a href="{{ route('home.page') }}"><i class="fa fa-phone"></i>+2290151616130</a>
                             </li>
                             <li>
                                 <a href="{{ route('reservation.page') }}" class="link-button">Réserver une table</a>
@@ -94,7 +94,7 @@
                             <div class="footer-widget text-center">
                                 <h4>Appel pour commande</h4>
                                 <ul>
-                                    <li><span>+229 015161630</span></li>
+                                    <li><span>+229 0151616130</span></li>
                                     <li>lessaveursducorridor@gmail.com</li>
                                 </ul>
                             </div>

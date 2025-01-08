@@ -87,6 +87,62 @@
                     </div>
                 </div>
             </div>
+            {{-- <div class="row">
+                <div class="col-lg-4 col-md-6 h-100">
+                    <div class="category-box">
+                        <img src="{{ asset('home/pub/8.jpeg') }}" alt="image name" style="width: 100%; height: 40%; object-fit: cover; object-position: center; ">
+                        <div class="content d-flex flex-row justify-content-between">
+                            <h4 class="align-self-center m-0"><a href="#">IGNAME PILÉE</a></h4>
+                            <a href="#" class="read-more"><i class="fa fa-angle-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 h-100">
+                    <div class="category-box">
+                        <img src="{{ asset('home/pub/2.png') }}" alt="image name">
+                        <div class="content d-flex flex-row justify-content-between">
+                            <h4 class="align-self-center m-0"><a href="#">Indien</a></h4>
+                            <a href="#" class="read-more"><i class="fa fa-angle-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 h-100">
+                    <div class="category-box">
+                        <img src="{{ asset('home/manage_category/kelvin-t-AcA8moIiD3g-unsplash.jpg') }}" alt="image name">
+                        <div class="content d-flex flex-row justify-content-between">
+                            <h4 class="align-self-center m-0"><a href="#">Pizza</a></h4>
+                            <a href="#" class="read-more"><i class="fa fa-angle-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 h-100">
+                    <div class="category-box">
+                        <img src="{{ asset('home/manage_category/bluebird-provisions-CjmlUpo3eAw-unsplash.jpg') }}" alt="image name">
+                        <div class="content d-flex flex-row justify-content-between">
+                            <h4 class="align-self-center m-0"><a href="#">Soupes</a></h4>
+                            <a href="#" class="read-more"><i class="fa fa-angle-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 h-100">
+                    <div class="category-box">
+                        <img src="{{ asset('home/manage_category/katherine-sousa-ln2R1wJ8TCM-unsplash.jpg') }}" alt="image name">
+                        <div class="content d-flex flex-row justify-content-between">
+                            <h4 class="align-self-center m-0"><a href="#">Boissons</a></h4>
+                            <a href="#" class="read-more"><i class="fa fa-angle-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 h-100">
+                    <div class="category-box">
+                        <img src="{{ asset('home/pub/5.jpeg') }}" alt="image name">
+                        <div class="content d-flex flex-row justify-content-between">
+                            <h4 class="align-self-center m-0"><a href="#">Gâteau</a></h4>
+                            <a href="#" class="read-more"><i class="fa fa-angle-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div> --}}
         </div>
     </section>
 
@@ -113,44 +169,44 @@
             <div class="row">
                 <div class="col-lg-3 col-md-4">
                     <a href="menu/Breakfast.html" class="menu-box">
-                        <img src="{{ asset('home/menu_type/brooke-lark-HlNcigvUi4Q-unsplash.jpg') }}" alt="image name">
-                        <h4>Petit déjeuner</h4>
+                        <img src="{{ asset('home/pub/30.jpeg') }}" alt="image name">
+                        <h4>Riz au poisson frite</h4>
                     </a>
                 </div>
                 <div class="col-lg-3 col-md-4">
                     <a href="menu/Italian.html" class="menu-box">
-                        <img src="{{ asset('home/menu_type/sorin-popa-XAxvKp0tdwU-unsplash.jpg') }}" alt="image name">
-                        <h4>Italien</h4>
+                        <img src="{{ asset('home/pub/8.jpeg') }}" alt="image name">
+                        <h4>Igname pilée</h4>
                     </a>
                 </div>
                 <div class="col-lg-3 col-md-4">
                     <a href="menu/Chinese.html" class="menu-box">
-                        <img src="{{ asset('home/menu_type/orijit-chatterjee-wEBg_pYtynw-unsplash.jpg') }}" alt="image name">
-                        <h4>Chinois</h4>
+                        <img src="{{ asset('home/pub/20.jpeg') }}" alt="image name">
+                        <h4>Êba et monyo au poisson</h4>
                     </a>
                 </div>
                 <div class="col-lg-3 col-md-4">
                     <a href="menu/Mexican.html" class="menu-box">
-                        <img src="{{ asset('home/menu_type/roberto-carlos-roman-don-TS_g_856-CA-unsplash.jpg') }}" alt="image name">
-                        <h4>Mexicain</h4>
+                        <img src="{{ asset('home/pub/7.jpeg') }}" alt="image name">
+                        <h4>Télibo</h4>
                     </a>
                 </div>
                 <div class="col-lg-3 col-md-4">
                     <a href="menu/Desserts.html" class="menu-box">
-                        <img src="{{ asset('home/menu_type/joyful-vT5xrj3z1OE-unsplash.jpg') }}" alt="image name">
-                        <h4>Desserts</h4>
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-4">
-                    <a href="menu/Dinner.html" class="menu-box">
-                        <img src="{{ asset('home/menu_type/juliette-f-fb0_wj2MZk4-unsplash.jpg') }}" alt="image name">
-                        <h4>Dîner</h4>
+                        <img src="{{ asset('home/pub/6.jpeg') }}" alt="image name">
+                        <h4>Amiwo au poulet</h4>
                     </a>
                 </div>
                 <div class="col-lg-3 col-md-4">
                     <a href="menu/Lunch.html" class="menu-box">
-                        <img src="{{ asset('home/menu_type/brooke-lark-jUPOXXRNdcA-unsplash.jpg') }}" alt="image name">
-                        <h4>Déjeuner</h4>
+                        <img src="{{ asset('home/pub/29.jpeg') }}" alt="image name">
+                        <h4>Salade</h4>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-4">
+                    <a href="menu/Dinner.html" class="menu-box">
+                        <img src="{{ asset('home/pub/9.jpeg') }}" alt="image name">
+                        <h4>Dîner</h4>
                     </a>
                 </div>
                 <div class="col-lg-3 col-md-4">
