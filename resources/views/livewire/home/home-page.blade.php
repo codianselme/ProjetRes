@@ -34,54 +34,60 @@
             <div class="row">
                 <div class="col-lg-4 col-md-6 h-100">
                     <div class="category-box">
-                        <img src="{{ asset('home/manage_category/ilya-mashkov-mkVa2hLJgnI-unsplash.jpg') }}" alt="image name">
+                        {{-- <img src="{{ asset('home/manage_category/ilya-mashkov-mkVa2hLJgnI-unsplash.jpg') }}" alt="image name"> --}}
+                        <img src="{{ asset('home/pub/y.jpeg') }}" alt="image name">
                         <div class="content d-flex flex-row justify-content-between">
-                            <h4 class="align-self-center m-0"><a href="category/Burger.html">Burger</a></h4>
+                            <h4 class="align-self-center m-0"><a href="category/Burger.html">Ignape Pilée</a></h4>
                             <a href="category/Burger.html" class="read-more"><i class="fa fa-angle-right"></i></a>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 h-100">
                     <div class="category-box">
-                        <img src="{{ asset('home/manage_category/lai-yuching-WxePxgrIJbQ-unsplash.jpg') }}" alt="image name">
+                        {{-- <img src="{{ asset('home/manage_category/lai-yuching-WxePxgrIJbQ-unsplash.jpg') }}" alt="image name"> --}}
+                        <img src="{{ asset('home/pub/x.jpeg') }}" alt="image name">
                         <div class="content d-flex flex-row justify-content-between">
-                            <h4 class="align-self-center m-0"><a href="category/Indian.html">Indien</a></h4>
+                            <h4 class="align-self-center m-0"><a href="category/Indian.html">Les steaks</a></h4>
                             <a href="category/Indian.html" class="read-more"><i class="fa fa-angle-right"></i></a>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 h-100">
                     <div class="category-box">
-                        <img src="{{ asset('home/manage_category/kelvin-t-AcA8moIiD3g-unsplash.jpg') }}" alt="image name">
+                        {{-- <img src="{{ asset('home/manage_category/kelvin-t-AcA8moIiD3g-unsplash.jpg') }}" alt="image name"> --}}
+                        <img src="{{ asset('home/pub/t.jpeg') }}" alt="image name">
                         <div class="content d-flex flex-row justify-content-between">
-                            <h4 class="align-self-center m-0"><a href="category/Pizza.html">Pizza</a></h4>
+                            <h4 class="align-self-center m-0"><a href="category/Pizza.html">Nos sauces</a></h4>{{-- Burger --}}
                             <a href="category/Pizza.html" class="read-more"><i class="fa fa-angle-right"></i></a>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 h-100">
                     <div class="category-box">
-                        <img src="{{ asset('home/manage_category/bluebird-provisions-CjmlUpo3eAw-unsplash.jpg') }}" alt="image name">
+                        {{-- <img src="{{ asset('home/manage_category/bluebird-provisions-CjmlUpo3eAw-unsplash.jpg') }}" alt="image name"> --}}
+                        <img src="{{ asset('home/pub/u.jpeg') }}" alt="image name">
                         <div class="content d-flex flex-row justify-content-between">
-                            <h4 class="align-self-center m-0"><a href="category/Soups.html">Soupes</a></h4>
+                            <h4 class="align-self-center m-0"><a href="category/Soups.html">Fast Food</a></h4>
                             <a href="category/Soups.html" class="read-more"><i class="fa fa-angle-right"></i></a>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 h-100">
                     <div class="category-box">
-                        <img src="{{ asset('home/manage_category/katherine-sousa-ln2R1wJ8TCM-unsplash.jpg') }}" alt="image name">
+                        {{-- <img src="{{ asset('home/manage_category/katherine-sousa-ln2R1wJ8TCM-unsplash.jpg') }}" alt="image name"> --}}
+                        <img src="{{ asset('home/pub/w.jpeg') }}" alt="image name">
                         <div class="content d-flex flex-row justify-content-between">
-                            <h4 class="align-self-center m-0"><a href="category/Drinks.html">Boissons</a></h4>
+                            <h4 class="align-self-center m-0"><a href="category/Drinks.html">Coocktail</a></h4>
                             <a href="category/Drinks.html" class="read-more"><i class="fa fa-angle-right"></i></a>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 h-100">
                     <div class="category-box">
-                        <img src="{{ asset('home/manage_category/david-holifield-kPxsqUGneXQ-unsplash.jpg') }}" alt="image name">
+                        {{-- <img src="{{ asset('home/manage_category/david-holifield-kPxsqUGneXQ-unsplash.jpg') }}" alt="image name"> --}}
+                        <img src="{{ asset('home/pub/v.png') }}" alt="image name">
                         <div class="content d-flex flex-row justify-content-between">
-                            <h4 class="align-self-center m-0"><a href="category/Cake.html">Gâteau</a></h4>
+                            <h4 class="align-self-center m-0"><a href="category/Cake.html">Déserts</a></h4>
                             <a href="category/Cake.html" class="read-more"><i class="fa fa-angle-right"></i></a>
                         </div>
                     </div>
@@ -211,8 +217,9 @@
                 </div>
                 <div class="col-lg-3 col-md-4">
                     <a href="menu/Juice.html" class="menu-box">
-                        <img src="{{ asset('home/menu_type/zlatko-duric-U4QkDQW84sg-unsplash.jpg') }}" alt="image name">
-                        <h4>Jus</h4>
+                    <img src="{{ asset('home/pub/32.png') }}" alt="image name">
+                        {{-- <img src="{{ asset('home/menu_type/zlatko-duric-U4QkDQW84sg-unsplash.jpg') }}" alt="image name"> --}}
+                        <h4>Riz blanc au poisson frite</h4>
                     </a>
                 </div>
             </div>
