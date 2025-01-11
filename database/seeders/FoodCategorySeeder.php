@@ -30,6 +30,26 @@ class FoodCategorySeeder extends Seeder
             ['name' => 'Riz', 'description' => 'Céréale largement consommée dans le monde, utilisée comme accompagnement ou base de plats, comme le riz basmati, riz blanc, riz complet, etc.'],
             ['name' => 'Pâtes', 'description' => 'Produit de farine de blé, souvent utilisé dans des plats italiens comme les spaghettis, les penne, les raviolis, etc.'],
             ['name' => 'Pommes de Terre', 'description' => 'Légume féculent utilisé dans de nombreuses préparations, telles que les frites, purée, gratins, etc.'],
+            ['name' => 'Fruits Secs', 'description' => 'Fruits déshydratés et oléagineux comme les amandes, noix, raisins secs, abricots secs, etc.'],
+            ['name' => 'Légumineuses', 'description' => 'Sources de protéines végétales comme les lentilles, pois chiches, haricots rouges, fèves, etc.'],
+            ['name' => 'Champignons', 'description' => 'Variétés comestibles comme les champignons de Paris, shiitake, pleurotes, etc.'],
+            ['name' => 'Algues', 'description' => 'Végétaux marins comestibles comme le nori, le wakame, la spiruline, etc.'],
+            ['name' => 'Œufs', 'description' => 'Œufs de différentes volailles, utilisés dans de nombreuses préparations culinaires.'],
+            ['name' => 'Miel et Édulcorants', 'description' => 'Produits sucrants naturels ou artificiels comme le miel, sirop d\'érable, stévia, etc.'],
+            ['name' => 'Sauces', 'description' => 'Préparations liquides ou semi-liquides pour accompagner les plats, comme les sauces tomate, béchamel, pesto, etc.'],
+            ['name' => 'Snacks', 'description' => 'Aliments à grignoter comme les chips, crackers, fruits secs, etc.'],
+            ['name' => 'Desserts', 'description' => 'Préparations sucrées comme les gâteaux, glaces, mousses, etc.'],
+            ['name' => 'Superaliments', 'description' => 'Aliments particulièrement riches en nutriments comme les baies de goji, graines de chia, açaï, etc.'],
+            ['name' => 'Herbes Aromatiques', 'description' => 'Plantes fraîches ou séchées utilisées pour parfumer les plats comme le basilic, persil, coriandre, etc.'],
+            ['name' => 'Graines', 'description' => 'Graines comestibles comme le lin, le sésame, le pavot, les graines de tournesol, etc.'],
+            ['name' => 'Viandes Transformées', 'description' => 'Produits carnés transformés comme la charcuterie, les saucisses, le jambon, etc.'],
+            ['name' => 'Substituts de Viande', 'description' => 'Alternatives végétales à la viande comme le tofu, seitan, tempeh, protéines de soja texturées, etc.'],
+            ['name' => 'Plats Préparés', 'description' => 'Repas prêts à consommer ou à réchauffer, incluant les conserves et surgelés.'],
+            ['name' => 'Aliments Fermentés', 'description' => 'Aliments transformés par fermentation comme la choucroute, le kimchi, le kéfir, etc.'],
+            ['name' => 'Produits de la Ruche', 'description' => 'Produits issus des abeilles comme le miel, la propolis, la gelée royale, etc.'],
+            ['name' => 'Compléments Alimentaires', 'description' => 'Produits concentrés en nutriments comme les vitamines, minéraux, protéines en poudre, etc.'],
+            ['name' => 'Aliments pour Régimes Spéciaux', 'description' => 'Produits sans gluten, sans lactose, végans, ou adaptés à des régimes particuliers.'],
+            ['name' => 'Conserves', 'description' => 'Aliments conservés en bocaux ou boîtes comme les légumes, fruits, poissons en conserve, etc.']
         ];
 
         // Insertion des catégories dans la table food_categories

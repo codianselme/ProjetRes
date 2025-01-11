@@ -15,6 +15,60 @@
                 </div>
             </div>
         </div>
+        <section id="contact-info" class="py-5 bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 mb-4">
+                        <div class="contact-info-box">
+                            <i class="fas fa-map-marker-alt mb-3"></i>
+                            <h4>Notre Adresse</h4>
+                            <p>Fidrossè, 100m à gauche de "Bénin Atlantic Beach Hotel" en allant vers le CEG Fiyegnon</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 mb-4">
+                        <div class="contact-info-box">
+                            <i class="fas fa-phone mb-3"></i>
+                            <h4>Téléphones</h4>
+                            <p>+229 01 51 61 61 30	<br>
+                               +229 01 97 91 82 28</p>
+                            <p class="mt-2">WhatsApp: +229 01 90 08 58 07</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 mb-4">
+                        <div class="contact-info-box">
+                            <i class="fas fa-clock mb-3"></i>
+                            <h4>Heures d'ouverture</h4>
+                            <p>Lundi - Dimanche<br>
+                               11h00 - 00h00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="map-section" class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <h3 class="section-sub-heading text-center mb-4">Notre Localisation</h3>
+                        <div class="map-container">
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=..." 
+                                width="100%" 
+                                height="450" 
+                                style="border:0;" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="contact-form" class="py-5">
             <div class="container">
                 <div class="row">
@@ -57,3 +111,30 @@
         </section>
     </article>
 </div>
+
+<style>
+.contact-info-box {
+    text-align: center;
+    padding: 2rem;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    height: 100%;
+}
+
+.contact-info-box i {
+    font-size: 2.5rem;
+    color: #your-primary-color;
+}
+
+.contact-info-box h4 {
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.map-container {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+</style>
