@@ -10,85 +10,116 @@
                 size: 80mm 297mm;
             }
             body {
-                font-family: 'Courier New', monospace;
+                font-family: 'Arial', sans-serif;
                 margin: 4mm;
                 font-size: 8pt;
-                line-height: 1.2;
+                line-height: 1.3;
             }
             .invoice-header {
                 text-align: center;
-                margin-bottom: 2mm;
+                margin-bottom: 3mm;
+                padding-bottom: 2mm;
+                border-bottom: 1px solid #000;
             }
             .invoice-header h1 {
-                font-size: 9pt;
+                font-size: 10pt;
                 font-weight: bold;
                 margin: 1mm 0;
-                line-height: 1.1;
+                text-transform: uppercase;
+                letter-spacing: 0.5pt;
             }
             .invoice-header p {
                 margin: 0.3mm 0;
                 font-size: 7pt;
+                color: #333;
             }
-            .invoice-details, .invoice-items {
+            .invoice-details {
                 width: 100%;
-                border-collapse: collapse;
-                margin-bottom: 1mm;
+                margin: 2mm 0;
+                font-size: 7.5pt;
             }
             .invoice-details td {
-                padding: 1mm;
-                font-size: 8pt;
+                padding: 1mm 2mm;
+                vertical-align: top;
             }
-            .invoice-items td, .invoice-items th {
-                padding: 0.5mm 1mm;
-                font-size: 7pt;
-                white-space: nowrap;
+            .invoice-items {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 2mm 0;
+            }
+            .invoice-items th {
+                padding: 1.5mm 1mm;
+                font-size: 7.5pt;
+                text-transform: uppercase;
+                border-top: 1px dashed #000;
+                border-bottom: 1px dashed #000;
+                background-color: #f8f8f8;
+            }
+            .invoice-items td {
+                padding: 1mm;
+                font-size: 7.5pt;
+                border-bottom: 0.5px dotted #ddd;
+            }
+            .invoice-items tbody tr:last-child td {
+                border-bottom: none;
             }
             .invoice-items td:nth-child(2),
             .invoice-items td:nth-child(3),
             .invoice-items td:nth-child(4) {
                 text-align: right;
             }
-            .invoice-items th {
-                border-top: 1px dashed #000;
-                border-bottom: 1px dashed #000;
+            .totals-separator {
+                border-top: 1.5px dashed #000 !important;
+                font-weight: bold;
             }
             .total {
                 font-weight: bold;
+                text-transform: uppercase;
+                font-size: 8pt;
             }
             .invoice-footer {
-                font-size: 7pt;
-                margin-top: 2mm;
-                line-height: 1.1;
-            }
-            hr {
-                margin: 1mm 0;
-            }
-            .logo {
-                width: 40mm;
-                height: auto;
-                margin: 0 auto 1mm;
-                display: block;
-            }
-            .qr-code {
+                margin-top: 3mm;
                 text-align: center;
-                margin: 2mm 0;
-            }
-            .qr-code img {
-                width: 20mm;
-                height: 20mm;
+                font-size: 7pt;
             }
             .cashier-info {
-                margin-top: 2mm;
+                margin: 3mm 0;
+                padding: 2mm 0;
                 border-top: 1px dashed #000;
-                padding-top: 2mm;
+                border-bottom: 1px dashed #000;
+                text-align: left;
             }
             .cashier-info p {
-                margin: 0;
-                font-size: 7pt;
+                margin: 0.5mm 0;
+                font-size: 7.5pt;
             }
-            .totals-separator {
+            .qr-code {
+                margin: 3mm auto;
+                text-align: center;
+            }
+            .qr-code img {
+                width: 25mm;
+                height: 25mm;
+                margin: 0 auto;
+            }
+            small {
+                font-size: 6.5pt;
+                color: #666;
+            }
+            em {
+                font-style: italic;
+                color: #555;
+            }
+            hr {
+                border: none;
                 border-top: 1px dashed #000;
-                margin-top: 1mm;
+                margin: 2mm 0;
+            }
+            .logo {
+                width: 35mm;
+                height: auto;
+                margin: 0 auto 2mm;
+                display: block;
             }
         </style>
     </head>

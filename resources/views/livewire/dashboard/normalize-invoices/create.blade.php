@@ -4,10 +4,10 @@
     <div class="invoice-header">
         <img src="{{ asset('home/site-images/logo.png') }}" alt="Logo" class="logo">
         <h1>BAR RESTAURANT<br>LES SAVEURS DU CORIDOR</h1>
-        <p>RCCM : {{ env('RCCM') }} | IFU : {{ env('SGMEF_IFU') }}</p>
-        <p>Tél : {{ env('TEL') }}</p>
-        <p>Email : {{ env('EMAIL') }}</p>
-        <p>Adresse : {{ env('ADDR') }}</p>
+        <p><strong>RCCM :</strong> {{ env('RCCM') }} | <strong>IFU :</strong> {{ env('SGMEF_IFU') }}</p>
+        <p><strong>Tél :</strong> {{ env('TEL') }}</p>
+        <p><strong>Email :</strong> {{ env('EMAIL') }}</p>
+        <p><strong>Adresse :</strong> {{ env('ADDR') }}</p>
         <hr>
     </div>
 
