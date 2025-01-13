@@ -5,135 +5,206 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Facture</title>
         <style>
+            /* Configuration de base */
             @page {
                 margin: 0;
                 size: 100mm 297mm;
             }
+
             body {
-                font-family: 'Arial', sans-serif;
+                font-family: 'Segoe UI', Arial, sans-serif;
                 width: 100mm;
                 margin: 5mm;
                 font-size: 8pt;
-                line-height: 1.3;
+                line-height: 1.4;
+                color: #333;
             }
+
+            /* En-tête améliorée */
             .invoice-header {
                 text-align: center;
-                margin-bottom: 3mm;
-                padding-bottom: 2mm;
-                border-bottom: 1px solid #000;
+                margin-bottom: 4mm;
+                padding-bottom: 3mm;
+                border-bottom: 2px solid #2c3e50;
             }
+
+            .logo {
+                width: 45mm;
+                height: auto;
+                margin: 0 auto 3mm;
+                display: block;
+            }
+
             .invoice-header h1 {
-                font-size: 10pt;
-                font-weight: bold;
-                margin: 1mm 0;
+                font-size: 11pt;
+                font-weight: 600;
+                margin: 2mm 0;
+                color: #2c3e50;
                 text-transform: uppercase;
                 letter-spacing: 0.5pt;
             }
+
             .invoice-header p {
-                margin: 0.3mm 0;
-                font-size: 7pt;
-                color: #333;
+                margin: 0.5mm 0;
+                font-size: 7.5pt;
+                color: #505050;
             }
+
+            /* Table des détails */
             .invoice-details {
                 width: 100%;
-                margin: 2mm 0;
-                font-size: 7.5pt;
+                margin: 3mm 0;
+                border-collapse: collapse;
             }
+
             .invoice-details td {
-                padding: 1mm 2mm;
+                padding: 1.5mm 2mm;
                 vertical-align: top;
+                font-size: 8pt;
             }
+
+            .invoice-details tr:first-child td {
+                font-weight: bold;
+                color: #2c3e50;
+            }
+
+            /* Table des articles */
             .invoice-items {
                 width: 100%;
                 border-collapse: collapse;
-                margin: 2mm 0;
+                margin: 3mm 0;
             }
+
             .invoice-items th {
-                padding: 1.5mm 1mm;
-                font-size: 7.5pt;
+                padding: 2mm 1mm;
+                font-size: 8pt;
                 text-transform: uppercase;
-                border-top: 1px dashed #000;
-                border-bottom: 1px dashed #000;
-                background-color: #f8f8f8;
+                background-color: #f8f9fa;
+                border-top: 1px solid #dee2e6;
+                border-bottom: 1px solid #dee2e6;
+                color: #2c3e50;
             }
+
             .invoice-items td {
-                padding: 1mm;
-                font-size: 7.5pt;
-                border-bottom: 0.5px dotted #ddd;
+                padding: 1.5mm 1mm;
+                font-size: 8pt;
+                border-bottom: 1px dotted #eee;
             }
-            .invoice-items tbody tr:last-child td {
-                border-bottom: none;
+
+            .invoice-items tbody tr:hover {
+                background-color: #f8f9fa;
             }
-            .invoice-items td:nth-child(2),
-            .invoice-items td:nth-child(3),
-            .invoice-items td:nth-child(4) {
-                text-align: right;
-            }
+
+            /* Totaux */
             .totals-separator {
-                border-top: 1.5px dashed #000 !important;
-                font-weight: bold;
+                border-top: 2px solid #2c3e50 !important;
             }
+
             .total {
-                font-weight: bold;
+                font-weight: 600;
+                color: #2c3e50;
                 text-transform: uppercase;
+                font-size: 8.5pt;
+            }
+
+            tfoot td {
+                padding: 2mm 1mm !important;
+            }
+
+            /* Pied de page */
+            .invoice-footer {
+                margin-top: 4mm;
+                text-align: center;
                 font-size: 8pt;
             }
-            .invoice-footer {
-                margin-top: 3mm;
-                text-align: center;
-                font-size: 7pt;
+
+            .invoice-footer p {
+                margin: 1mm 0;
+                color: #505050;
             }
+
             .cashier-info {
                 margin: 3mm 0;
                 padding: 2mm 0;
-                border-top: 1px dashed #000;
-                border-bottom: 1px dashed #000;
+                border-top: 1px dashed #dee2e6;
+                border-bottom: 1px dashed #dee2e6;
                 text-align: left;
+                background-color: #f8f9fa;
             }
+
             .cashier-info p {
                 margin: 0.5mm 0;
-                font-size: 7.5pt;
+                font-size: 8pt;
+                color: #2c3e50;
             }
+
+            /* QR Code */
             .qr-code {
-                margin: 3mm auto;
+                margin: 4mm auto;
                 text-align: center;
             }
+
             .qr-code img {
                 width: 25mm;
                 height: 25mm;
-                margin: 0 auto;
+                padding: 1mm;
+                border: 1px solid #dee2e6;
+                background-color: white;
             }
+
+            /* Éléments supplémentaires */
             small {
-                font-size: 6.5pt;
+                font-size: 7pt;
                 color: #666;
             }
+
             em {
                 font-style: italic;
-                color: #555;
+                color: #666;
             }
+
             hr {
                 border: none;
-                border-top: 1px dashed #000;
+                border-top: 1px dashed #dee2e6;
                 margin: 2mm 0;
             }
-            .logo {
-                width: 50mm;
-                height: auto;
-                margin: 0 auto 2mm;
-                display: block;
+
+            /* Ajustements des colonnes */
+            .invoice-items td:first-child { width: 45%; }
+            .invoice-items td:nth-child(2) { width: 15%; text-align: center; }
+            .invoice-items td:nth-child(3) { width: 20%; text-align: right; }
+            .invoice-items td:nth-child(4) { width: 20%; text-align: right; }
+
+            /* Styles pour l'impression */
+            @media print {
+                .invoice-wrapper {
+                    padding: 0;
+                    background-color: white;
+                }
+
+                .invoice-content {
+                    box-shadow: none;
+                    padding: 5mm;
+                    width: 100mm;
+                }
+
+                .print-button {
+                    display: none;
+                }
             }
-            /* Styles pour le bouton d'impression */
+
+            /* Styles du bouton d'impression */
             .print-button {
                 position: fixed;
                 top: 20px;
                 right: 20px;
-                z-index: 999;
+                z-index: 1000;
             }
 
             .print-btn {
-                background-color: #4CAF50;
+                background-color: #2c3e50;
                 color: white;
-                padding: 10px 20px;
+                padding: 12px 24px;
                 border: none;
                 border-radius: 5px;
                 cursor: pointer;
@@ -146,79 +217,20 @@
             }
 
             .print-btn:hover {
-                background-color: #45a049;
+                background-color: #34495e;
                 transform: translateY(-2px);
+                box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            }
+
+            .print-btn i {
+                font-size: 16px;
             }
 
             /* Cacher le bouton lors de l'impression */
             @media print {
                 .print-button {
-                    display: none;
+                    display: none !important;
                 }
-
-                /* Forcer le format A6 en mode portrait lors de l'impression */
-                @page {
-                    size: 100mm 297mm;
-                    margin: 0;
-                }
-
-                body {
-                    width: 100mm;
-                    margin: 5mm;
-                }
-
-                /* Éviter les sauts de page indésirables */
-                .invoice-content {
-                    page-break-inside: avoid;
-                }
-            }
-
-            /* Styles pour le conteneur principal */
-            .invoice-wrapper {
-                min-height: 100vh;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                padding: 20px;
-                background-color: #f5f5f5; /* Fond gris clair pour distinguer la facture */
-            }
-
-            /* Styles pour la facture elle-même */
-            .invoice-content {
-                background: white;
-                padding: 5mm;
-                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-                width: 100mm;
-            }
-
-            /* Ajustement pour l'impression */
-            @media print {
-                .invoice-wrapper {
-                    padding: 0;
-                    display: block;
-                    background-color: white;
-                    min-height: auto;
-                }
-
-                .invoice-content {
-                    box-shadow: none;
-                    padding: 5mm;
-                    width: 100mm;
-                }
-            }
-
-            /* Ajustement des colonnes du tableau */
-            .invoice-items td:first-child {
-                width: 45%;
-            }
-            .invoice-items td:nth-child(2) {
-                width: 15%;
-            }
-            .invoice-items td:nth-child(3) {
-                width: 20%;
-            }
-            .invoice-items td:nth-child(4) {
-                width: 20%;
             }
         </style>
         <!-- Ajoutez Font Awesome pour l'icône d'impression -->
