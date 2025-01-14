@@ -21,7 +21,7 @@
                     <div class="col-lg-6 mb-4">
                         <h3 class="mb-4">Notre Histoire</h3>
                         <p>
-                            Bienvenue au bar restaurant les saveurs du corridor, une destination culinaire unique où la tradition africaine rencontre l'innovation gastronomique. Fondé en 2022, notre établissement s'est donné pour mission de faire découvrir les saveurs authentiques de la cuisine béninoise et ouest-africaine dans un cadre moderne et chaleureux.
+                            Bienvenue au bar restaurant les saveurs du corridor, une destination culinaire unique où la tradition africaine rencontre l'innovation gastronomique. Fondé en 2024, notre établissement s'est donné pour mission de faire découvrir les saveurs authentiques de la cuisine béninoise et ouest-africaine dans un cadre moderne et chaleureux.
                         </p>
                         
                         <p>

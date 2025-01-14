@@ -66,16 +66,6 @@
         <div class="swiper">
             <!-- Additional required wrapper -->
             <div class="swiper-wrapper">
-                {{-- <div class="swiper-slide" style="background-image: url('{{ asset('home/banners/banner1.png') }}');"> --}}
-                <div class="swiper-slide" style="background-image: url('{{ asset('home/banners/img2.png') }}');">
-                    <div class="row">
-                        <div class="col-6">
-                            <h1>Créer votre expérience culinaire exceptionnelle</h1>
-                            <span class="d-block mb-4">Découvrez une expérience culinaire unique qui vous fera vivre des émotions inoubliables.</span>
-                        </div>
-                    </div>
-                </div>
-                
                 {{-- <div class="swiper-slide" style="background-image: url('{{ asset('home/banners/banner2.png') }}');"> --}}
                 <div class="swiper-slide" style="background-image: url('{{ asset('home/banners/img1.png') }}');">
                     <div class="row">
@@ -85,7 +75,15 @@
                         </div>
                     </div>
                 </div>
-                
+                {{-- <div class="swiper-slide" style="background-image: url('{{ asset('home/banners/banner1.png') }}');"> --}}
+                <div class="swiper-slide" style="background-image: url('{{ asset('home/banners/img2.png') }}');">
+                    <div class="row">
+                        <div class="col-6">
+                            <h1>Créer votre expérience culinaire exceptionnelle</h1>
+                            <span class="d-block mb-4">Découvrez une expérience culinaire unique qui vous fera vivre des émotions inoubliables.</span>
+                        </div>
+                    </div>
+                </div>
             </div>
             
             <!-- Pagination -->
