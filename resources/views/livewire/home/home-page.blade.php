@@ -107,9 +107,9 @@
                 <div class="col-lg-4 col-md-6 h-100">
                     <div class="category-box">
                         {{-- <img src="{{ asset('home/manage_category/ilya-mashkov-mkVa2hLJgnI-unsplash.jpg') }}" alt="image name"> --}}
-                        <img src="{{ asset('home/pub/y.jpeg') }}" alt="image name">
+                        <img src="{{ asset('home/pub/a9.jpeg') }}" alt="image name">
                         <div class="content d-flex flex-row justify-content-between">
-                            <h4 class="align-self-center m-0"><a href="#">Igname Pilée</a></h4>
+                            <h4 class="align-self-center m-0"><a href="#">Igname Pilée & Sauce Claire du Togo</a></h4>
                             <a href="#" class="read-more"><i class="fa fa-angle-right"></i></a>
                         </div>
                     </div>
