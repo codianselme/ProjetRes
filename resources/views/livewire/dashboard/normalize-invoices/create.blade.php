@@ -155,7 +155,7 @@
                 </p>
                 
                 <div class="cashier-info">
-                    <p>Caissier(e) : Codi Anselme</p>
+                    <p>Caissier(e) : {{ auth()->user()->name }}</p>
                     <p style="text-size: 5px">Date : {{ date('d/m/Y à H:i:s') }}</p>
                 </div>
                 
