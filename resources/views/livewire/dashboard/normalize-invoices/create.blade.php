@@ -38,13 +38,13 @@
                                 FACTURE D'AVOIR : Ref.fact.orig : {{ $reference ?? '' }}
                             @endif
                         </td>
-                        <td>Date : {{ $date ?? '' }}</td>
-                        <td>Heure : {{ $heure ?? '' }}</td>
+                        {{-- <td>Date : {{ $date ?? '' }}</td> --}}
+                        <td>Date : {{ $date ?? '' }} à {{ $heure ?? '' }}</td>
                     </tr>
                     <tr>
-                        <td>@if(isset($data['client']['name'])) {{ $data['client']['name'] }} @endif</td>
-                        <td>@if(isset($data['client']['contact'])) {{ $data['client']['contact'] }} @endif</td>
-                        <td>@if(isset($data['client']['ifu'])) {{ $data['client']['ifu'] }} @endif</td>
+                        <td>@if(isset($data['client']['name'])) Client : {{ $data['client']['name'] }} @endif</td>
+                        {{-- <td>@if(isset($data['client']['contact'])) {{ $data['client']['contact'] }} @endif</td> --}}
+                        <td>@if(isset($data['client']['ifu'])) IFU : {{ $data['client']['ifu'] }} @endif</td>
                     </tr>
                     <tr>
                         <td>
@@ -57,7 +57,7 @@
                                 Non Numérisé
                             @endif
                         </td>
-                        <td></td>
+                        {{-- <td></td> --}}
                         <td>
                             Mode de paiement 
                             <br>
@@ -86,10 +86,10 @@
                 <table class="invoice-items">
                     <thead>
                         <tr>
-                            <th>Désignation</th>
-                            <th>Qté</th>
-                            <th>PU</th>
-                            <th>Montant</th>
+                            <th style=with: 70%>Désignation</th>
+                            <th style=with: 10%>Qté</th>
+                            <th style=with: 10%>&emsp;&emsp;&emsp;&emsp;PU</th>
+                            <th style=with: 10%>&emsp;Montant</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -116,14 +116,14 @@
                     <tfoot>
                         <tr class="totals-separator">
                             <td colspan="3" class="total">Total HT</td>
-                            <td>
+                            <td style="text-align: right">
                                 {{ $data['type'] == 'FA' ? '-' : '' }}
                                 {{ number_format((($createInvoice['hab'] ?? 0) + ($createInvoice['had'] ?? 0)), 0, '', ' ') }}
                             </td>
                         </tr>
                         <tr>
                             <td colspan="3" class="total">TVA 18%</td>
-                            <td>
+                            <td style="text-align: right">
                                 {{ $data['type'] == 'FA' ? '-' : '' }}
                                 {{ number_format((($createInvoice['vab'] ?? 0) + ($createInvoice['vad'] ?? 0)), 0, '', ' ') }}
                             </td>
@@ -137,7 +137,7 @@
                         </tr> --}}
                         <tr class="totals-separator">
                             <td colspan="3" class="total">Net à payer</td>
-                            <td>
+                            <td style="text-align: right">
                                 {{ $data['type'] == 'FA' ? '-' : '' }}
                                 {{ number_format($createInvoice['total'] ?? 0, 0, '', ' ') }}
                             </td>
@@ -156,7 +156,7 @@
                 
                 <div class="cashier-info">
                     <p>Caissier(e) : Codi Anselme</p>
-                    <p>Date : {{ date('d/m/Y H:i:s') }}</p>
+                    <p style="text-size: 5px">Date : {{ date('d/m/Y à H:i:s') }}</p>
                 </div>
                 
                 <div class="qr-code">

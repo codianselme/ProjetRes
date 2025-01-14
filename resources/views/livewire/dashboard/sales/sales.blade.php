@@ -325,15 +325,15 @@
                         <div class="invoice-header text-center mb-4">
                             <h1 class="h5 fw-bold text-primary mb-2">{{ $parametres->type }} {{ $parametres->name }}</h1>
                             <div class="contact-info text-muted">
-                                <p class="mb-1">{{ $parametres->address ?? "123 Rue de la Gastronomie, Cotonou, Bénin"}}</p>
+                                <p class="mb-1">{{ env('ADDR') }}</p>
                                 <p class="mb-1">Tél : {{ $parametres->contact_phone_1 }}</p>
-                                <p class="mb-0 text-muted">{{ now()->format('d/m/Y à H:i:s') }}</p>
+                                {{-- <p class="mb-0 text-muted">{{ now()->format('d/m/Y à H:i:s') }}</p> --}}
                             </div>
                         </div>
 
                         <div class="invoice-details row mb-4">
                             <div class="col-6">
-                                <small class="text-muted">Date : {{ $currentSale->created_at->format('d/m/Y à H:i:s') }} </small>
+                                <small class="text-muted">Date : {{ \Carbon\Carbon::parse($currentSale->date)->format('d/m/Y à H:i:s') }} </small>
                             </div>
                             <div class="col-6 text-end">
                                 <small class="text-muted">Caissière : {{ auth()->user()->first_name }} {{ auth()->user()->last_name }}</small>
