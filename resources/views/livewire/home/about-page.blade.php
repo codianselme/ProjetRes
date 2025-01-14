@@ -26,7 +26,40 @@
                     </div>
                     
                     <div class="col-lg-6 mb-4">
-                        <img src="{{ asset('home/restaurant_images/reservation.png') }}" alt="Notre Restaurant" class="img-fluid rounded">
+                        <div class="gallery-container">
+                            <!-- Image principale -->
+                            <div class="main-image">
+                                <img src="{{ asset('home/restaurant_images/img2.png') }}" alt="Notre Restaurant" class="img-fluid rounded" id="mainImage">
+                            </div>
+                            
+                            <!-- Galerie miniature -->
+                            <div class="thumbnail-gallery">
+                                {{-- <div class="thumbnail active">
+                                    <img src="{{ asset('home/restaurant_images/img1.jpg') }}" alt="Restaurant Vue 1" onclick="changeImage(this.src)">
+                                </div> --}}
+                                <div class="thumbnail">
+                                    <img src="{{ asset('home/restaurant_images/img2.png') }}" alt="Restaurant Vue 2" onclick="changeImage(this.src)">
+                                </div>
+                                <div class="thumbnail">
+                                    <img src="{{ asset('home/restaurant_images/img3.jpeg') }}" alt="Restaurant Vue 3" onclick="changeImage(this.src)">
+                                </div>
+                                <div class="thumbnail">
+                                    <img src="{{ asset('home/restaurant_images/img4.jpeg') }}" alt="Restaurant Vue 4" onclick="changeImage(this.src)">
+                                </div>
+                                <div class="thumbnail active">
+                                    <img src="{{ asset('home/restaurant_images/img5.jpeg') }}" alt="Restaurant Vue 5" onclick="changeImage(this.src)">
+                                </div>
+                                <div class="thumbnail">
+                                    <img src="{{ asset('home/restaurant_images/img6.jpeg') }}" alt="Restaurant Vue 6" onclick="changeImage(this.src)">
+                                </div>
+                                <div class="thumbnail">
+                                    <img src="{{ asset('home/restaurant_images/img7.jpeg') }}" alt="Restaurant Vue 7" onclick="changeImage(this.src)">
+                                </div>
+                                <div class="thumbnail">
+                                    <img src="{{ asset('home/restaurant_images/img8.jpeg') }}" alt="Restaurant Vue 8" onclick="changeImage(this.src)">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     
                     <div class="col-lg-12 mb-5">
@@ -59,3 +92,104 @@
         </div>
     </article>
 </div>
+
+<!-- Ajoutez ces styles CSS -->
+<style>
+    .gallery-container {
+        position: relative;
+    }
+
+    .main-image {
+        margin-bottom: 15px;
+        overflow: hidden;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .main-image img {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+    .main-image:hover img {
+        transform: scale(1.05);
+    }
+
+    .thumbnail-gallery {
+        display: flex;
+        gap: 10px;
+        overflow-x: auto;
+        padding: 10px 0;
+    }
+
+    .thumbnail {
+        flex: 0 0 auto;
+        width: 80px;
+        height: 80px;
+        border-radius: 6px;
+        overflow: hidden;
+        cursor: pointer;
+        opacity: 0.7;
+        transition: all 0.3s ease;
+    }
+
+    .thumbnail.active {
+        opacity: 1;
+        border: 2px solid #2c3e50;
+    }
+
+    .thumbnail:hover {
+        opacity: 1;
+    }
+
+    .thumbnail img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* Pour masquer la scrollbar tout en gardant la fonction de défilement */
+    .thumbnail-gallery::-webkit-scrollbar {
+        height: 6px;
+    }
+
+    .thumbnail-gallery::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 3px;
+    }
+
+    .thumbnail-gallery::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 3px;
+    }
+
+    .thumbnail-gallery::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+</style>
+
+<!-- Ajoutez ce script JavaScript -->
+<script>
+function changeImage(src) {
+    const mainImage = document.getElementById('mainImage');
+    mainImage.style.opacity = '0';
+    
+    setTimeout(() => {
+        mainImage.src = src;
+        mainImage.style.opacity = '1';
+    }, 200);
+
+    // Mise à jour de la miniature active
+    document.querySelectorAll('.thumbnail').forEach(thumb => {
+        thumb.classList.remove('active');
+        if(thumb.querySelector('img').src === src) {
+            thumb.classList.add('active');
+        }
+    });
+}
+
+// Animation de transition pour l'image principale
+document.getElementById('mainImage').style.transition = 'opacity 0.2s ease';
+</script>
