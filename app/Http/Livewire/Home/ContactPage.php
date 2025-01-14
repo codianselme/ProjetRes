@@ -20,7 +20,7 @@ class ContactPage extends Component
         'name' => 'required|string|max:255',
         'email' => 'required|email',
         'phone' => 'nullable|string|max:15',
-        'website' => 'nullable|string|max:255',
+        //'website' => 'nullable|string|max:255',
         'message' => 'required|string',
     ];
 
@@ -38,6 +38,7 @@ class ContactPage extends Component
 
     public function submit()
     {
+        // dd($this->name, $this->email, $this->phone, $this->website, $this->message);
         try {
             $this->validate();
 

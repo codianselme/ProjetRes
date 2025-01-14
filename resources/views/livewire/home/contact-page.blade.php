@@ -82,7 +82,7 @@
                     <div class="alert alert-success mt-3">{{ session('success') }}</div>
                 @endif
 
-                <form class="row position-relative" wire:click="submit">
+                <form class="row position-relative" {{-- wire:click="submit" --}}>
                     <div class="form-group col-md-12 mb-4">
                         <input type="text" class="form-control" wire:model="name" placeholder="Nom Complet">
                         @error('name') <span class="text-danger">{{ $message }}</span> @enderror
@@ -95,16 +95,12 @@
                         <input type="number" class="form-control" wire:model="phone" placeholder="Numéro de téléphone">
                         @error('phone') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
-                    {{-- <div class="form-group col-md-6 mb-4">
-                        <input type="text" class="form-control" wire:model="website" placeholder="Site web">
-                        @error('website') <span class="text-danger">{{ $message }}</span> @enderror
-                    </div> --}}
                     <div class="form-group col-md-12 mb-4">
                         <textarea wire:model="message" rows="5" class="form-control" placeholder="Écrire un message"></textarea>
                         @error('message') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group col-md-12 mb-3 text-center">
-                        <button type="submit" class="btn link-button">Envoyez-nous un message</button>
+                        <button type="button" wire:click="submit" class="btn link-button">Envoyez-nous un message</button>
                     </div>
                 </form>
             </div>

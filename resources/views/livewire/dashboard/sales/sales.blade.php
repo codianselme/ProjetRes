@@ -327,7 +327,7 @@
                             <div class="contact-info text-muted">
                                 <p class="mb-1">{{ env('ADDR') }}</p>
                                 <p class="mb-1">Tél : {{ $parametres->contact_phone_1 }}</p>
-                                {{-- <p class="mb-0 text-muted">{{ now()->format('d/m/Y à H:i:s') }}</p> --}}
+                                {{-- <p class="mb-0 text-muted">{{ now()->format('d/m/Y à H:i:s') }}</p> --}} 
                             </div>
                         </div>
 

@@ -66,17 +66,8 @@
         <div class="swiper">
             <!-- Additional required wrapper -->
             <div class="swiper-wrapper">
-                {{-- <div class="swiper-slide" style="background-image: url('{{ asset('home/banners/banner2.png') }}');"> --}}
-                <div class="swiper-slide" style="background-image: url('{{ asset('home/banners/ban2.png') }}');">
-                    <div class="row">
-                        <div class="col-6">
-                            <h1>Nous ne cuisinons pas, nous créons vos émotions !</h1>
-                            <span class="d-block mb-4">Découvrez une expérience culinaire unique qui vous fera vivre des émotions inoubliables.</span>
-                        </div>
-                    </div>
-                </div>
                 {{-- <div class="swiper-slide" style="background-image: url('{{ asset('home/banners/banner1.png') }}');"> --}}
-                <div class="swiper-slide" style="background-image: url('{{ asset('home/banners/ban1.png') }}');">
+                <div class="swiper-slide" style="background-image: url('{{ asset('home/banners/img2.png') }}');">
                     <div class="row">
                         <div class="col-6">
                             <h1>Créer votre expérience culinaire exceptionnelle</h1>
@@ -84,6 +75,17 @@
                         </div>
                     </div>
                 </div>
+                
+                {{-- <div class="swiper-slide" style="background-image: url('{{ asset('home/banners/banner2.png') }}');"> --}}
+                <div class="swiper-slide" style="background-image: url('{{ asset('home/banners/img1.png') }}');">
+                    <div class="row">
+                        <div class="col-6">
+                            <h1>Nous ne cuisinons pas, nous créons vos émotions !</h1>
+                            <span class="d-block mb-4">Découvrez une expérience culinaire unique qui vous fera vivre des émotions inoubliables.</span>
+                        </div>
+                    </div>
+                </div>
+                
             </div>
             
             <!-- Pagination -->
@@ -109,7 +111,7 @@
                         {{-- <img src="{{ asset('home/manage_category/ilya-mashkov-mkVa2hLJgnI-unsplash.jpg') }}" alt="image name"> --}}
                         <img src="{{ asset('home/pub/y.jpeg') }}" alt="image name">
                         <div class="content d-flex flex-row justify-content-between">
-                            <h4 class="align-self-center m-0"><a href="#">Ignape Pilée</a></h4>
+                            <h4 class="align-self-center m-0"><a href="#">Igname Pilée</a></h4>
                             <a href="#" class="read-more"><i class="fa fa-angle-right"></i></a>
                         </div>
                     </div>
@@ -249,8 +251,8 @@
             <div class="row">
                 <div class="col-lg-3 col-md-4">
                     <a href="#" class="menu-box">
-                        <img src="{{ asset('home/pub/30.jpeg') }}" alt="image name">
-                        <h4>Riz au poisson frite</h4>
+                        <img src="{{ asset('home/pub/a8.jpeg') }}" alt="image name">
+                        <h4>Riz gras au poulet</h4>
                     </a>
                 </div>
                 <div class="col-lg-3 col-md-4">
@@ -293,7 +295,7 @@
                 <div class="col-lg-3 col-md-4">
                     <a href="#" class="menu-box">
                         <img src="{{ asset('home/pub/a1.jpeg') }}" alt="image name">
-                        <h4>Atassi au poulet frit</h4>
+                        <h4>Atassi au poulet</h4>
                     </a>
                 </div>
 
