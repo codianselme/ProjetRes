@@ -51,7 +51,7 @@ class DetailsPage extends Component
                     [
                         'id' => 2,
                         'title' => 'Pate de maïs',
-                        'description' => 'Notre délicieuse igname pilée servie avec une sauce arachide crémeuse',
+                        'description' => "Savoureuse pâte de maïs accompagnée d'une sauce arachide onctueuse et riche, garnie de morceaux de viande de bœuf succulents, pour une expérience culinaire authentique.",
                         'price' => '3500 FCFA',
                         'images' => [
                             asset('home/details/d1/9.jpeg'),
@@ -64,7 +64,7 @@ class DetailsPage extends Component
                     [
                         'id' => 3,
                         'title' => "Pate de caussette d'igname",
-                        'description' => 'Notre délicieuse igname pilée servie avec une sauce arachide crémeuse',
+                        'description' => "Délectable pâte d'igname servie avec une sauce arachide crémeuse et savoureuse, sublimée par des morceaux de viande de bœuf tendres et assaisonnés d'épices locales.",
                         'price' => '3500 FCFA',
                         'images' => [
                             asset('home/details/d1/12.jpeg'),
@@ -84,7 +84,7 @@ class DetailsPage extends Component
                     [
                         'id' => 3,
                         'title' => 'Le riz blanc',
-                        'description' => 'Un steak de bœuf juteux grillé à la perfection',
+                        'description' => "Riz blanc parfaitement cuit, accompagné de poissons braisé à la perfection, assaisonné d'épices savoureuses.",
                         'price' => '4500 FCFA',
                         'images' => [
                             asset('home/details/d4/4.png'),
@@ -104,7 +104,7 @@ class DetailsPage extends Component
                     [
                         'id' => 4,
                         'title' => 'Le Atassi',
-                        'description' => 'Steak enrobé de poivre concassé avec sa sauce crémeuse',
+                        'description' => "Délicieux Atassi, un mélange traditionnel de riz et de haricots, rehaussé de savoureux poisson ou viande, servi avec une sauce crémeuse.",
                         'price' => '5000 FCFA',
                         'images' => [
                             asset('home/details/d4/2.jpeg'),
@@ -116,7 +116,7 @@ class DetailsPage extends Component
                     [
                         'id' => 5,
                         'title' => 'Le riz creol - Riz au gras',
-                        'description' => 'Steak enrobé de poivre concassé avec sa sauce crémeuse',
+                        'description' => "Riz créole riche et parfumé, cuit dans une sauce grasse et accompagnée de morceaux de viande tendre, relevée par des épices et une touche de poivre noir, pour une explosion de saveurs exotiques.",
                         'price' => '5000 FCFA',
                         'images' => [
                             asset('home/details/d4/5.jpeg'),
@@ -146,7 +146,7 @@ class DetailsPage extends Component
                     [
                         'id' => 6,
                         'title' => 'Sauce Gluante',
-                        'description' => 'Une sauce crémeuse à base d\'arachides fraîchement moulues',
+                        'description' => "Savoureuse sauce gombo, sublimée par des épices locales pour une expérience authentique et réconfortante.",
                         'price' => '1500 FCFA',
                         'images' => [
                             asset('home/details/d3/3.jpeg'),
@@ -161,7 +161,7 @@ class DetailsPage extends Component
                     [
                         'id' => 7,
                         'title' => 'Sauce tomate',
-                        'description' => 'Une sauce légère et savoureuse à base de poisson fumé',
+                        'description' => "Délicieuse sauce tomate légère, mijotée avec de la viande.",
                         'price' => '1200 FCFA',
                         'images' => [
                             asset('home/details/d3/1.jpeg'),
@@ -173,18 +173,18 @@ class DetailsPage extends Component
                         'ingredients' => ['Poisson fumé', 'Légumes verts', 'Épices locales'],
                         'preparation_time' => '30 minutes'
                     ], 
-                    [
-                        'id' => 8,
-                        'title' => 'Autre Sauce',
-                        'description' => 'Une sauce légère et savoureuse à base de poisson fumé',
-                        'price' => '1200 FCFA',
-                        'images' => [
-                            asset('home/details/d3/10.jpeg'),
-                            asset('home/details/d3/6.jpeg'),
-                        ],
-                        'ingredients' => ['Poisson fumé', 'Légumes verts', 'Épices locales'],
-                        'preparation_time' => '30 minutes'
-                    ]
+                    // [
+                    //     'id' => 8,
+                    //     'title' => 'Autre Sauce',
+                    //     'description' => 'Une sauce légère et savoureuse à base de poisson fumé',
+                    //     'price' => '1200 FCFA',
+                    //     'images' => [
+                    //         asset('home/details/d3/10.jpeg'),
+                    //         asset('home/details/d3/6.jpeg'),
+                    //     ],
+                    //     'ingredients' => ['Poisson fumé', 'Légumes verts', 'Épices locales'],
+                    //     'preparation_time' => '30 minutes'
+                    // ]
                 ]
             ],
             'fast_food' => [
@@ -194,7 +194,7 @@ class DetailsPage extends Component
                 ],
                 'dishes' => [
                     [
-                        'id' => 9,
+                        'id' => 8,
                         'title' => 'Chawarma',
                         'description' => 'Notre burger signature avec sauce maison',
                         'price' => '2500 FCFA',
@@ -206,7 +206,7 @@ class DetailsPage extends Component
                         'preparation_time' => '15 minutes'
                     ],
                     [
-                        'id' => 10,
+                        'id' => 9,
                         'title' => 'Pizza, Burger',
                         'description' => 'Frites croustillantes préparées sur place',
                         'price' => '1000 FCFA',
@@ -220,7 +220,7 @@ class DetailsPage extends Component
                         'preparation_time' => '20 minutes'
                     ],
                     [
-                        'id' => 11,
+                        'id' => 10,
                         'title' => 'Pommes Frites',
                         'description' => 'Frites croustillantes préparées sur place',
                         'price' => '1000 FCFA',
@@ -241,9 +241,9 @@ class DetailsPage extends Component
                 ],
                 'dishes' => [
                     [
-                        'id' => 12,
+                        'id' => 11,
                         'title' => 'Jus',
-                        'description' => 'Cocktail rafraîchissant à base de menthe fraîche',
+                        'description' => "Cocktail rafraîchissant à base de menthe fraîche, citron et autres fruits exotiques frais tels que la mangue, l'ananas et le fruit de la passion, enrichies de lait de coco pour une touche de douceur tropicale",
                         'price' => '2000 FCFA',
                         'images' => [
                             asset('home/details/d5/15.jpeg'),
@@ -256,9 +256,9 @@ class DetailsPage extends Component
                         'preparation_time' => '5 minutes'
                     ],
                     [
-                        'id' => 13,
+                        'id' => 12,
                         'title' => 'Glaces',
-                        'description' => 'Mélange de fruits exotiques frais',
+                        'description' => "Un assortiment gourmand de glaces aux saveurs variées, incluant vanille, chocolat, fraise et autres délices, parfait pour se rafraîchir et satisfaire toutes les envies sucrées.",
                         'price' => '1800 FCFA',
                         'images' => [
                             asset('home/details/d5/1.jpeg'),
@@ -295,7 +295,7 @@ class DetailsPage extends Component
                     [
                         'id' => 14,
                         'title' => 'Amiwo, Piron',
-                        'description' => 'Gâteau moelleux au chocolat noir',
+                        'description' => 'Délicieux Amiwo, une spécialité béninoise de pâte de maïs rouge, de Piron, une pâte douce à base de manioc, le tout servi avec une sauce savoureuse pour une expérience culinaire authentique.',
                         'price' => '1500 FCFA',
                         'images' => [
                             asset('home/details/d6/17.jpeg'),
@@ -310,7 +310,7 @@ class DetailsPage extends Component
                     [
                         'id' => 15,
                         'title' => 'Atchèkè',
-                        'description' => 'Assortiment de fruits frais de saison',
+                        'description' => "Plat traditionnel ivoirien, servi avec du poisson grillé ou du poulet, accompagné d'une sauce épicée et d'oignons sautés pour un repas complet et délicieux.",
                         'price' => '1200 FCFA',
                         'images' => [
                             asset('home/details/d6/3.png'),
@@ -324,7 +324,7 @@ class DetailsPage extends Component
                     [
                         'id' => 16,
                         'title' => 'Autre repas',
-                        'description' => 'Assortiment de fruits frais de saison',
+                        'description' => "Une sélection variée de plats traditionnels, combinant des saveurs locales authentiques et des ingrédients frais, pour un repas riche en goût et en culture.",
                         'price' => '1200 FCFA',
                         'images' => [
                             asset('home/details/d6/5.jpeg'),
