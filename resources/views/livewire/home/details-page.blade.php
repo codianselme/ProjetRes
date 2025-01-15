@@ -30,31 +30,31 @@
 
                 <div class="dish-content">
                     <h2 class="dish-title">{{ $dish['title'] }}</h2>
-                    <div class="price mb-3">
+                    {{-- <div class="price mb-3">
                         <span class="text-primary h4">{{ $dish['price'] }}</span>
-                    </div>
+                    </div> --}}
                     <div class="description mb-3">
                         <p>{{ $dish['description'] }}</p>
                     </div>
                     <div class="details">
-                        <div class="ingredients mb-3">
+                        {{-- <div class="ingredients mb-3">
                             <h5><i class="fas fa-utensils me-2"></i>Ingrédients:</h5>
                             <ul class="list-unstyled">
                                 @foreach($dish['ingredients'] as $ingredient)
                                     <li><i class="fas fa-check text-success me-2"></i>{{ $ingredient }}</li>
                                 @endforeach
                             </ul>
-                        </div>
+                        </div> --}}
                         <div class="preparation-time">
                             <h5><i class="far fa-clock me-2"></i>Temps de préparation:</h5>
                             <p>{{ $dish['preparation_time'] }}</p>
                         </div>
                     </div>
-                    <div class="actions mt-3">
+                    {{-- <div class="actions mt-3">
                         <button class="btn btn-primary" wire:click="orderDish({{ $dish['id'] }})">
                             Commander
                         </button>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

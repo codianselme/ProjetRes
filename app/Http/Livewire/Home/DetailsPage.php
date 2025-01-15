@@ -29,13 +29,13 @@ class DetailsPage extends Component
             'igname_pilee_sauce_claire_togo' => [
                 'category' => [
                     'name' => 'Igname Pilée & Sauces',
-                    'description' => 'Découvrez notre sélection d\'igname pilée accompagnée de différentes sauces traditionnelles'
+                    'description' => 'L\'excellence de la cuisine togolaise à travers nos différentes préparations d\'igname pilée'
                 ],
                 'dishes' => [
                     [
                         'id' => 1,
-                        'title' => 'Igname Pilée',
-                        'description' => 'L\'igname pilée traditionnelle servie avec une sauce claire légère et savoureuse',
+                        'title' => 'Igname pilée sauce claire',
+                        'description' => 'Délicieuse igname pilée servie avec une sauce claire légère et parfumée, accompagnée de morceaux de poulet tendres et juteux.',
                         'price' => '3000 FCFA',
                         'images' => [
                             asset('home/details/d1/1.jpeg'),
@@ -45,12 +45,12 @@ class DetailsPage extends Component
                             asset('home/details/d1/5.jpeg'),
                             asset('home/details/d1/7.jpeg'),
                         ],
-                        'ingredients' => ['Igname', 'Poisson fumé', 'Épinards', 'Épices traditionnelles'],
-                        'preparation_time' => '30 minutes'
+                        'ingredients' => ['Igname fraîche', 'Poulet fermier', 'Tomates', 'Oignons', 'Épices traditionnelles', 'Légumes verts'],
+                        'preparation_time' => '35 minutes'
                     ],
                     [
                         'id' => 2,
-                        'title' => 'Pate de Mais',
+                        'title' => 'Pate de maïs',
                         'description' => 'Notre délicieuse igname pilée servie avec une sauce arachide crémeuse',
                         'price' => '3500 FCFA',
                         'images' => [
@@ -77,7 +77,7 @@ class DetailsPage extends Component
             ],
             'le_riz' => [
                 'category' => [
-                    'name' => 'Les Steaks',
+                    'name' => 'Le Riz',
                     'description' => 'Une sélection de steaks savoureux préparés selon vos préférences'
                 ],
                 'dishes' => [
@@ -115,7 +115,7 @@ class DetailsPage extends Component
                     ], 
                     [
                         'id' => 5,
-                        'title' => 'Le riz creol',
+                        'title' => 'Le riz creol - Riz au gras',
                         'description' => 'Steak enrobé de poivre concassé avec sa sauce crémeuse',
                         'price' => '5000 FCFA',
                         'images' => [
@@ -145,7 +145,7 @@ class DetailsPage extends Component
                 'dishes' => [
                     [
                         'id' => 6,
-                        'title' => 'Sauce Arachide',
+                        'title' => 'Sauce Gluante',
                         'description' => 'Une sauce crémeuse à base d\'arachides fraîchement moulues',
                         'price' => '1500 FCFA',
                         'images' => [
@@ -160,7 +160,7 @@ class DetailsPage extends Component
                     ],
                     [
                         'id' => 7,
-                        'title' => 'Sauce Claire',
+                        'title' => 'Sauce tomate',
                         'description' => 'Une sauce légère et savoureuse à base de poisson fumé',
                         'price' => '1200 FCFA',
                         'images' => [
@@ -175,7 +175,7 @@ class DetailsPage extends Component
                     ], 
                     [
                         'id' => 8,
-                        'title' => 'Sauce Claire',
+                        'title' => 'Autre Sauce',
                         'description' => 'Une sauce légère et savoureuse à base de poisson fumé',
                         'price' => '1200 FCFA',
                         'images' => [
@@ -221,7 +221,7 @@ class DetailsPage extends Component
                     ],
                     [
                         'id' => 11,
-                        'title' => 'Frites Maison',
+                        'title' => 'Pommes Frites',
                         'description' => 'Frites croustillantes préparées sur place',
                         'price' => '1000 FCFA',
                         'images' => [
@@ -242,7 +242,7 @@ class DetailsPage extends Component
                 'dishes' => [
                     [
                         'id' => 12,
-                        'title' => 'Mojito',
+                        'title' => 'Jus',
                         'description' => 'Cocktail rafraîchissant à base de menthe fraîche',
                         'price' => '2000 FCFA',
                         'images' => [
@@ -250,13 +250,14 @@ class DetailsPage extends Component
                             asset('home/details/d5/13.jpeg'),
                             asset('home/details/d5/14.jpeg'),
                             asset('home/details/d5/10.jpeg'),
+                            asset('home/details/d5/9.jpeg')
                         ],
                         'ingredients' => ['Rhum', 'Menthe fraîche', 'Citron vert', 'Sucre de canne'],
                         'preparation_time' => '5 minutes'
                     ],
                     [
                         'id' => 13,
-                        'title' => 'Smoothie Tropical',
+                        'title' => 'Glaces',
                         'description' => 'Mélange de fruits exotiques frais',
                         'price' => '1800 FCFA',
                         'images' => [
@@ -266,22 +267,23 @@ class DetailsPage extends Component
                             asset('home/details/d5/5.jpeg'),
                             asset('home/details/d5/6.jpeg'),
                             asset('home/details/d5/8.jpeg'),
+                            asset('home/details/d5/7.jpeg'),
                         ],
                         'ingredients' => ['Mangue', 'Ananas', 'Fruit de la passion', 'Lait de coco'],
                         'preparation_time' => '10 minutes'
                     ],
-                    [
-                        'id' => 14,
-                        'title' => 'Smoothie Tropical',
-                        'description' => 'Mélange de fruits exotiques frais',
-                        'price' => '1800 FCFA',
-                        'images' => [
-                            asset('home/details/d5/7.jpeg'),
-                            asset('home/details/d5/9.jpeg')
-                        ],
-                        'ingredients' => ['Mangue', 'Ananas', 'Fruit de la passion', 'Lait de coco'],
-                        'preparation_time' => '10 minutes'
-                    ]
+                    // [
+                    //     'id' => 14,
+                    //     'title' => 'Smoothie Tropical',
+                    //     'description' => 'Mélange de fruits exotiques frais',
+                    //     'price' => '1800 FCFA',
+                    //     'images' => [
+                    //         asset('home/details/d5/7.jpeg'),
+                    //         asset('home/details/d5/9.jpeg')
+                    //     ],
+                    //     'ingredients' => ['Mangue', 'Ananas', 'Fruit de la passion', 'Lait de coco'],
+                    //     'preparation_time' => '10 minutes'
+                    // ]
                 ]
             ],
             'autres' => [
@@ -291,8 +293,8 @@ class DetailsPage extends Component
                 ],
                 'dishes' => [
                     [
-                        'id' => 15,
-                        'title' => 'Gâteau au Chocolat',
+                        'id' => 14,
+                        'title' => 'Amiwo, Piron',
                         'description' => 'Gâteau moelleux au chocolat noir',
                         'price' => '1500 FCFA',
                         'images' => [
@@ -306,22 +308,22 @@ class DetailsPage extends Component
                         'preparation_time' => '40 minutes'
                     ],
                     [
-                        'id' => 16,
-                        'title' => 'Salade de Fruits Frais',
+                        'id' => 15,
+                        'title' => 'Atchèkè',
                         'description' => 'Assortiment de fruits frais de saison',
                         'price' => '1200 FCFA',
                         'images' => [
                             asset('home/details/d6/3.png'),
                             asset('home/details/d6/6.jpeg'),
-                            asset('home/details/d6/5.jpeg'),
-                            asset('home/details/d6/8.jpeg'),
+                            // asset('home/details/d6/5.jpeg'),
+                            // asset('home/details/d6/8.jpeg'),
                         ],
                         'ingredients' => ['Mangue', 'Ananas', 'Papaye', 'Fruit du dragon'],
                         'preparation_time' => '15 minutes'
                     ], 
                     [
-                        'id' => 17,
-                        'title' => 'Salade de Fruits Frais',
+                        'id' => 16,
+                        'title' => 'Autre repas',
                         'description' => 'Assortiment de fruits frais de saison',
                         'price' => '1200 FCFA',
                         'images' => [
