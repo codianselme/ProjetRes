@@ -106,7 +106,6 @@
             <div class="row">
                 <div class="col-lg-4 col-md-6 h-100">
                     <div class="category-box">
-                        {{-- <img src="{{ asset('home/manage_category/ilya-mashkov-mkVa2hLJgnI-unsplash.jpg') }}" alt="image name"> --}}
                         <img src="{{ asset('home/pub/a9.jpeg') }}" alt="image name">
                         <div class="content d-flex flex-row justify-content-between">
                             <h4 class="align-self-center m-0"><a href="{{ route('details.page', ['slug' => 'igname_pilee_sauce_claire_togo']) }}">Igname Pilée & Sauce Claire du Togo</a></h4>
@@ -116,17 +115,15 @@
                 </div>
                 <div class="col-lg-4 col-md-6 h-100">
                     <div class="category-box">
-                        {{-- <img src="{{ asset('home/manage_category/lai-yuching-WxePxgrIJbQ-unsplash.jpg') }}" alt="image name"> --}}
-                        <img src="{{ asset('home/pub/x.jpeg') }}" alt="image name">
+                        <img src="{{ asset('home/pub/32.png') }}" alt="image name">
                         <div class="content d-flex flex-row justify-content-between">
-                            <h4 class="align-self-center m-0"><a href="{{ route('details.page', ['slug' => 'les_steaks']) }}">Les steaks</a></h4>
-                            <a href="{{ route('details.page', ['slug' => 'les_steaks']) }}" class="read-more"><i class="fa fa-angle-right"></i></a>
+                            <h4 class="align-self-center m-0"><a href="{{ route('details.page', ['slug' => 'le_riz']) }}">Le riz blanc</a></h4>
+                            <a href="{{ route('details.page', ['slug' => 'le_riz']) }}" class="read-more"><i class="fa fa-angle-right"></i></a>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 h-100">
                     <div class="category-box">
-                        {{-- <img src="{{ asset('home/manage_category/kelvin-t-AcA8moIiD3g-unsplash.jpg') }}" alt="image name"> --}}
                         <img src="{{ asset('home/pub/9.jpeg') }}" alt="image name">
                         <div class="content d-flex flex-row justify-content-between">
                             <h4 class="align-self-center m-0"><a href="{{ route('details.page', ['slug' => 'nos_sauces']) }}">Nos sauces</a></h4>{{-- Burger --}}
@@ -136,7 +133,6 @@
                 </div>
                 <div class="col-lg-4 col-md-6 h-100">
                     <div class="category-box">
-                        {{-- <img src="{{ asset('home/manage_category/bluebird-provisions-CjmlUpo3eAw-unsplash.jpg') }}" alt="image name"> --}}
                         <img src="{{ asset('home/pub/u.jpeg') }}" alt="image name">
                         <div class="content d-flex flex-row justify-content-between">
                             <h4 class="align-self-center m-0"><a href="{{ route('details.page', ['slug' => 'fast_food']) }}">Fast Food</a></h4>
@@ -146,7 +142,6 @@
                 </div>
                 <div class="col-lg-4 col-md-6 h-100">
                     <div class="category-box">
-                        {{-- <img src="{{ asset('home/manage_category/katherine-sousa-ln2R1wJ8TCM-unsplash.jpg') }}" alt="image name"> --}}
                         <img src="{{ asset('home/pub/w.jpeg') }}" alt="image name">
                         <div class="content d-flex flex-row justify-content-between">
                             <h4 class="align-self-center m-0"><a href="{{ route('details.page', ['slug' => 'coocktail']) }}">Coocktail</a></h4>
@@ -156,73 +151,14 @@
                 </div>
                 <div class="col-lg-4 col-md-6 h-100">
                     <div class="category-box">
-                        {{-- <img src="{{ asset('home/manage_category/david-holifield-kPxsqUGneXQ-unsplash.jpg') }}" alt="image name"> --}}
-                        <img src="{{ asset('home/pub/v.png') }}" alt="image name">
+                        <img src="{{ asset('home/pub/6.jpeg') }}" alt="image name">
                         <div class="content d-flex flex-row justify-content-between">
-                            <h4 class="align-self-center m-0"><a href="{{ route('details.page', ['slug' => 'deserts']) }}">Déserts</a></h4>
-                            <a href="{{ route('details.page', ['slug' => 'deserts']) }}" class="read-more"><i class="fa fa-angle-right"></i></a>
+                            <h4 class="align-self-center m-0"><a href="{{ route('details.page', ['slug' => 'autres']) }}">Autres</a></h4>
+                            <a href="{{ route('details.page', ['slug' => 'autres']) }}" class="read-more"><i class="fa fa-angle-right"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
-
-
-            {{-- <div class="row">
-                <div class="col-lg-4 col-md-6 h-100">
-                    <div class="category-box">
-                        <img src="{{ asset('home/pub/8.jpeg') }}" alt="image name" style="width: 100%; height: 40%; object-fit: cover; object-position: center; ">
-                        <div class="content d-flex flex-row justify-content-between">
-                            <h4 class="align-self-center m-0"><a href="#">IGNAME PILÉE</a></h4>
-                            <a href="#" class="read-more"><i class="fa fa-angle-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 h-100">
-                    <div class="category-box">
-                        <img src="{{ asset('home/pub/2.png') }}" alt="image name">
-                        <div class="content d-flex flex-row justify-content-between">
-                            <h4 class="align-self-center m-0"><a href="#">Indien</a></h4>
-                            <a href="#" class="read-more"><i class="fa fa-angle-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 h-100">
-                    <div class="category-box">
-                        <img src="{{ asset('home/manage_category/kelvin-t-AcA8moIiD3g-unsplash.jpg') }}" alt="image name">
-                        <div class="content d-flex flex-row justify-content-between">
-                            <h4 class="align-self-center m-0"><a href="#">Pizza</a></h4>
-                            <a href="#" class="read-more"><i class="fa fa-angle-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 h-100">
-                    <div class="category-box">
-                        <img src="{{ asset('home/manage_category/bluebird-provisions-CjmlUpo3eAw-unsplash.jpg') }}" alt="image name">
-                        <div class="content d-flex flex-row justify-content-between">
-                            <h4 class="align-self-center m-0"><a href="#">Soupes</a></h4>
-                            <a href="#" class="read-more"><i class="fa fa-angle-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 h-100">
-                    <div class="category-box">
-                        <img src="{{ asset('home/manage_category/katherine-sousa-ln2R1wJ8TCM-unsplash.jpg') }}" alt="image name">
-                        <div class="content d-flex flex-row justify-content-between">
-                            <h4 class="align-self-center m-0"><a href="#">Boissons</a></h4>
-                            <a href="#" class="read-more"><i class="fa fa-angle-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 h-100">
-                    <div class="category-box">
-                        <img src="{{ asset('home/pub/5.jpeg') }}" alt="image name">
-                        <div class="content d-flex flex-row justify-content-between">
-                            <h4 class="align-self-center m-0"><a href="#">Gâteau</a></h4>
-                            <a href="#" class="read-more"><i class="fa fa-angle-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div> --}}
         </div>
     </section>
 

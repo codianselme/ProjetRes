@@ -28,11 +28,15 @@ use App\Http\Controllers\InvoicesController;
 
 
 Route::get('/',  \App\Http\Livewire\Home\HomePage::class)->name('home.page');
-// Route::get('/{slug}',  \App\Http\Livewire\Home\DetailsPage::class)->name('details.page');
+Route::get('nos-plats/{slug}',  \App\Http\Livewire\Home\DetailsPage::class)->name('details.page');
 Route::get('/contact',  \App\Http\Livewire\Home\ContactPage::class)->name('contact.page');
+Route::get('/connexion',    \App\Http\Livewire\Home\Login::class)->name('connexion.page');
 Route::get('/a propos',  \App\Http\Livewire\Home\AboutPage::class)->name('about.page');
 Route::get('/reservation',  \App\Http\Livewire\Home\ReservationPage::class)->name('reservation.page');
-Route::get('/connexion',    \App\Http\Livewire\Home\Login::class)->name('connexion.page');
+
+// Mettez la route avec {slug} en dernier
+// Route::get('/mets/{slug}',  \App\Http\Livewire\Home\DetailsPage::class)->name('details.page')
+//     ->where('slug', '^(?!contact|connexion|a-propos|reservation).*$');
 
 # Pour les envois de mails
 Route::get('/activation/{token}', [App\Http\Controllers\Utilisateurs\AuthController::class, 'activation'])->name('activation');

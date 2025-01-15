@@ -1,118 +1,185 @@
 <div class="container py-5">
-    <div class="row">
-        <!-- Galerie d'images -->
-        <div class="col-lg-6 mb-4">
-            <div class="product-gallery">
-                <div class="main-image mb-3">
-                    <img src="{{ $details['images'][0] }}" alt="{{ $details['title'] }}" class="img-fluid rounded main-img" id="mainImage">
-                </div>
-                @if(count($details['images']) > 1)
-                    <div class="thumbnails d-flex gap-2">
-                        @foreach($details['images'] as $image)
-                            <div class="thumbnail-item" onclick="changeMainImage('{{ $image }}')">
-                                <img src="{{ $image }}" alt="Thumbnail" class="img-fluid rounded">
-                            </div>
-                        @endforeach
-                    </div>
-                @endif
-            </div>
-        </div>
+    <!-- En-tête de la catégorie -->
+    <div class="category-header mb-5">
+        <h1 class="text-center mb-3">{{ $category['name'] }}</h1>
+        <p class="text-center lead mb-5">{{ $category['description'] }}</p>
+    </div>
 
-        <!-- Détails du produit -->
-        <div class="col-lg-6">
-            <h1 class="mb-4">{{ $details['title'] }}</h1>
-            <div class="price mb-4">
-                <h3 class="text-primary">{{ $details['price'] }}</h3>
-            </div>
-            <div class="description mb-4">
-                <h4>Description</h4>
-                <p>{{ $details['description'] }}</p>
-            </div>
-            <div class="ingredients mb-4">
-                <h4>Ingrédients</h4>
-                <ul class="list-unstyled">
-                    @foreach($details['ingredients'] as $ingredient)
-                        <li><i class="fas fa-check text-success me-2"></i>{{ $ingredient }}</li>
-                    @endforeach
-                </ul>
-            </div>
-            <div class="preparation-time mb-4">
-                <h4>Temps de préparation</h4>
-                <p><i class="far fa-clock me-2"></i>{{ $details['preparation_time'] }}</p>
+    <!-- Catalogue des plats -->
+    <div class="row">
+        @foreach($dishes as $dish)
+        <div class="col-lg-4 mb-4">
+            <div class="dish-card">
+                <div class="dish-gallery">
+                    <div class="main-image mb-3">
+                        <img src="{{ $dish['images'][0] }}" alt="{{ $dish['title'] }}" 
+                             class="img-fluid rounded main-img" 
+                             id="mainImage-{{ $loop->index }}">
+                    </div>
+                    @if(count($dish['images']) > 1)
+                        <div class="thumbnails d-flex gap-2">
+                            @foreach($dish['images'] as $image)
+                                <div class="thumbnail-item" 
+                                     onclick="changeMainImage('{{ $image }}', {{ $loop->parent->index }})">
+                                    <img src="{{ $image }}" alt="Thumbnail" class="img-fluid rounded">
+                                </div>
+                            @endforeach
+                        </div>
+                    @endif
+                </div>
+
+                <div class="dish-content">
+                    <h2 class="dish-title">{{ $dish['title'] }}</h2>
+                    <div class="price mb-3">
+                        <span class="text-primary h4">{{ $dish['price'] }}</span>
+                    </div>
+                    <div class="description mb-3">
+                        <p>{{ $dish['description'] }}</p>
+                    </div>
+                    <div class="details">
+                        <div class="ingredients mb-3">
+                            <h5><i class="fas fa-utensils me-2"></i>Ingrédients:</h5>
+                            <ul class="list-unstyled">
+                                @foreach($dish['ingredients'] as $ingredient)
+                                    <li><i class="fas fa-check text-success me-2"></i>{{ $ingredient }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        <div class="preparation-time">
+                            <h5><i class="far fa-clock me-2"></i>Temps de préparation:</h5>
+                            <p>{{ $dish['preparation_time'] }}</p>
+                        </div>
+                    </div>
+                    <div class="actions mt-3">
+                        <button class="btn btn-primary" wire:click="orderDish({{ $dish['id'] }})">
+                            Commander
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
+        @endforeach
     </div>
 </div>
 
 <style>
-    .product-gallery {
-        position: relative;
-    }
+.category-header {
+    background-color: #f8f9fa;
+    padding: 3rem 0;
+    border-radius: 15px;
+    margin-bottom: 2rem;
+}
 
-    .main-image {
-        overflow: hidden;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
+.dish-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    height: 100%;
+}
 
-    .main-image img {
-        width: 100%;
-        height: 400px;
-        object-fit: cover;
-        transition: transform 0.3s ease;
-    }
+.dish-gallery {
+    position: relative;
+}
 
-    .main-image:hover img {
-        transform: scale(1.05);
-    }
+.main-image {
+    height: 300px;
+    overflow: hidden;
+}
 
-    .thumbnails {
-        display: flex;
-        gap: 10px;
-        margin-top: 15px;
-    }
+.main-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
 
-    .thumbnail-item {
-        flex: 0 0 80px;
-        height: 80px;
-        overflow: hidden;
-        border-radius: 4px;
-        cursor: pointer;
-        opacity: 0.7;
-        transition: all 0.3s ease;
-    }
+.thumbnails {
+    padding: 10px;
+    gap: 10px;
+    overflow-x: auto;
+    display: flex;
+    align-items: center;
+}
 
-    .thumbnail-item:hover {
-        opacity: 1;
-    }
+.thumbnail-item {
+    flex: 0 0 60px;
+    height: 60px;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+    position: relative;
+}
 
-    .thumbnail-item img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
+.thumbnail-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
 
-    .description, .ingredients, .preparation-time {
-        padding: 15px;
-        background-color: #f8f9fa;
-        border-radius: 8px;
-        margin-bottom: 20px;
-    }
+.thumbnail-item:hover {
+    opacity: 1;
+    transform: scale(1.05);
+}
 
-    h4 {
-        color: #2c3e50;
-        margin-bottom: 15px;
-    }
+.thumbnails::-webkit-scrollbar {
+    height: 6px;
+}
 
-    .price h3 {
-        font-weight: bold;
-        color: #2c3e50;
-    }
+.thumbnails::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.thumbnails::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 3px;
+}
+
+.thumbnails::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.dish-content {
+    padding: 1.5rem;
+}
+
+.dish-title {
+    font-size: 1.5rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.details {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.ingredients ul li {
+    margin-bottom: 0.5rem;
+}
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-primary {
+    padding: 0.5rem 2rem;
+}
 </style>
 
 <script>
-function changeMainImage(src) {
-    const mainImage = document.getElementById('mainImage');
+function changeMainImage(src, index) {
+    const mainImage = document.getElementById(`mainImage-${index}`);
     mainImage.style.opacity = '0';
     
     setTimeout(() => {
@@ -121,8 +188,9 @@ function changeMainImage(src) {
     }, 200);
 }
 
-// Animation de transition pour l'image principale
 document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('mainImage').style.transition = 'opacity 0.2s ease';
+    document.querySelectorAll('.main-img').forEach(img => {
+        img.style.transition = 'opacity 0.2s ease';
+    });
 });
 </script>
