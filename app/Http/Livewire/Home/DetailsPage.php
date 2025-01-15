@@ -335,6 +335,7 @@ class DetailsPage extends Component
                         'description' => "Une sélection variée de plats traditionnels, combinant des saveurs locales authentiques et des ingrédients frais, pour un repas riche en goût et en culture.",
                         'price' => '1200 FCFA',
                         'images' => [
+                            asset('home/details/d6/21.jpeg'),
                             asset('home/details/d6/5.jpeg'),
                             asset('home/details/d6/8.jpeg'),
                             asset('home/details/d6/9.jpeg'),
