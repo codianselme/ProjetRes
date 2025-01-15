@@ -115,9 +115,9 @@
                 </div>
                 <div class="col-lg-4 col-md-6 h-100">
                     <div class="category-box">
-                        <img src="{{ asset('home/pub/32.png') }}" alt="image name">
+                        <img src="{{ asset('home/pub/d0/3.png') }}" alt="image name">
                         <div class="content d-flex flex-row justify-content-between">
-                            <h4 class="align-self-center m-0"><a href="{{ route('details.page', ['slug' => 'le_riz']) }}">Le riz blanc</a></h4>
+                            <h4 class="align-self-center m-0"><a href="{{ route('details.page', ['slug' => 'le_riz']) }}">Poisson Braisé</a></h4>
                             <a href="{{ route('details.page', ['slug' => 'le_riz']) }}" class="read-more"><i class="fa fa-angle-right"></i></a>
                         </div>
                     </div>

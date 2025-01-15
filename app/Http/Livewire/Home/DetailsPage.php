@@ -83,7 +83,7 @@ class DetailsPage extends Component
                 'dishes' => [
                     [
                         'id' => 3,
-                        'title' => 'Le riz blanc',
+                        'title' => 'Le riz blanc & Le Atassi',
                         'description' => "Riz blanc parfaitement cuit, accompagné de poissons braisé à la perfection, assaisonné d'épices savoureuses.",
                         'price' => '4500 FCFA',
                         'images' => [
@@ -97,18 +97,26 @@ class DetailsPage extends Component
                             asset('home/details/d4/30.jpeg'),
                             asset('home/details/d4/32.jpeg'), 
                             asset('home/details/d4/35.jpeg'), 
+                            asset('home/details/d4/2.jpeg'),
+                            asset('home/details/d4/10.jpeg')
                         ],
                         'ingredients' => ['Bœuf de qualité supérieure', 'Épices', 'Beurre maître d\'hôtel'],
                         'preparation_time' => '20 minutes'
                     ],
                     [
                         'id' => 4,
-                        'title' => 'Le Atassi',
-                        'description' => "Délicieux Atassi, un mélange traditionnel de riz et de haricots, rehaussé de savoureux poisson ou viande, servi avec une sauce crémeuse.",
+                        'title' => 'Le poisson braisé',
+                        'description' => "De délicieux poisson braisé, cuit à perfection dans une sauce savoureuse, accompagné de pomme de terre frite pour un repas complet et satisfaisant.",
+                        // 'description' => "Délicieux Atassi, un mélange traditionnel de riz et de haricots, rehaussé de savoureux poisson ou viande, servi avec une sauce crémeuse.",
                         'price' => '5000 FCFA',
                         'images' => [
-                            asset('home/details/d4/2.jpeg'),
-                            asset('home/details/d4/10.jpeg')
+                            asset('home/details/d0/1.jpeg'),
+                            asset('home/details/d0/2.jpeg'),
+                            asset('home/details/d0/3.png'),
+                            asset('home/details/d0/4.jpeg'),
+                            asset('home/details/d0/5.jpeg'),
+                            asset('home/details/d0/6.jpeg'),
+                            asset('home/details/d0/7.jpeg')
                         ],
                         'ingredients' => ['Bœuf tendre', 'Poivre noir', 'Crème fraîche', 'Cognac'],
                         'preparation_time' => '25 minutes'
