@@ -29,6 +29,7 @@ use App\Http\Controllers\InvoicesController;
 
 Route::get('/',  \App\Http\Livewire\Home\HomePage::class)->name('home.page');
 Route::get('nos-plats/{slug}',  \App\Http\Livewire\Home\DetailsPage::class)->name('details.page');
+Route::get('details/{slug}',  \App\Http\Livewire\Home\DasheDetailsPage::class)->name('details.menu.page');
 Route::get('/contact',  \App\Http\Livewire\Home\ContactPage::class)->name('contact.page');
 Route::get('/connexion',    \App\Http\Livewire\Home\Login::class)->name('connexion.page');
 Route::get('/a propos',  \App\Http\Livewire\Home\AboutPage::class)->name('about.page');

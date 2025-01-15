@@ -108,8 +108,8 @@
                     <div class="category-box">
                         <img src="{{ asset('home/pub/a9.jpeg') }}" alt="image name">
                         <div class="content d-flex flex-row justify-content-between">
-                            <h4 class="align-self-center m-0"><a href="{{ route('details.page', ['slug' => 'igname_pilee_sauce_claire_togo']) }}">Igname Pilée & Sauce Claire du Togo</a></h4>
-                            <a href="{{ route('details.page', ['slug' => 'igname_pilee_sauce_claire_togo']) }}" class="read-more"><i class="fa fa-angle-right"></i></a>
+                            <h4 class="align-self-center m-0"><a href="{{ route('details.menu.page', ['slug' => 'igname_pilee_sauce_claire_togo']) }}">Igname Pilée & Sauce Claire du Togo</a></h4>
+                            <a href="{{ route('details.menu.page', ['slug' => 'igname_pilee_sauce_claire_togo']) }}" class="read-more"><i class="fa fa-angle-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -117,8 +117,8 @@
                     <div class="category-box">
                         <img src="{{ asset('home/pub/d0/3.png') }}" alt="image name">
                         <div class="content d-flex flex-row justify-content-between">
-                            <h4 class="align-self-center m-0"><a href="{{ route('details.page', ['slug' => 'le_riz']) }}">Poisson & Poulet Braisé</a></h4>
-                            <a href="{{ route('details.page', ['slug' => 'le_riz']) }}" class="read-more"><i class="fa fa-angle-right"></i></a>
+                            <h4 class="align-self-center m-0"><a href="{{ route('details.menu.page', ['slug' => 'le_riz']) }}">Poisson & Poulet Braisé</a></h4>
+                            <a href="{{ route('details.menu.page', ['slug' => 'le_riz']) }}" class="read-more"><i class="fa fa-angle-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -126,8 +126,8 @@
                     <div class="category-box">
                         <img src="{{ asset('home/pub/9.jpeg') }}" alt="image name">
                         <div class="content d-flex flex-row justify-content-between">
-                            <h4 class="align-self-center m-0"><a href="{{ route('details.page', ['slug' => 'nos_sauces']) }}">Nos sauces</a></h4>{{-- Burger --}}
-                            <a href="{{ route('details.page', ['slug' => 'nos_sauces']) }}" class="read-more"><i class="fa fa-angle-right"></i></a>
+                            <h4 class="align-self-center m-0"><a href="{{ route('details.menu.page', ['slug' => 'nos_sauces']) }}">Nos sauces</a></h4>{{-- Burger --}}
+                            <a href="{{ route('details.menu.page', ['slug' => 'nos_sauces']) }}" class="read-more"><i class="fa fa-angle-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -135,8 +135,8 @@
                     <div class="category-box">
                         <img src="{{ asset('home/pub/u.jpeg') }}" alt="image name">
                         <div class="content d-flex flex-row justify-content-between">
-                            <h4 class="align-self-center m-0"><a href="{{ route('details.page', ['slug' => 'fast_food']) }}">Fast Food</a></h4>
-                            <a href="{{ route('details.page', ['slug' => 'fast_food']) }}" class="read-more"><i class="fa fa-angle-right"></i></a>
+                            <h4 class="align-self-center m-0"><a href="{{ route('details.menu.page', ['slug' => 'fast_food']) }}">Fast Food</a></h4>
+                            <a href="{{ route('details.menu.page', ['slug' => 'fast_food']) }}" class="read-more"><i class="fa fa-angle-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -144,8 +144,8 @@
                     <div class="category-box">
                         <img src="{{ asset('home/pub/w.jpeg') }}" alt="image name">
                         <div class="content d-flex flex-row justify-content-between">
-                            <h4 class="align-self-center m-0"><a href="{{ route('details.page', ['slug' => 'coocktail']) }}">Coocktail</a></h4>
-                            <a href="{{ route('details.page', ['slug' => 'coocktail']) }}" class="read-more"><i class="fa fa-angle-right"></i></a>
+                            <h4 class="align-self-center m-0"><a href="{{ route('details.menu.page', ['slug' => 'coocktail']) }}">Coocktail</a></h4>
+                            <a href="{{ route('details.menu.page', ['slug' => 'coocktail']) }}" class="read-more"><i class="fa fa-angle-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -153,14 +153,196 @@
                     <div class="category-box">
                         <img src="{{ asset('home/pub/6.jpeg') }}" alt="image name">
                         <div class="content d-flex flex-row justify-content-between">
-                            <h4 class="align-self-center m-0"><a href="{{ route('details.page', ['slug' => 'autres']) }}">Autres</a></h4>
-                            <a href="{{ route('details.page', ['slug' => 'autres']) }}" class="read-more"><i class="fa fa-angle-right"></i></a>
+                            <h4 class="align-self-center m-0"><a href="{{ route('details.menu.page', ['slug' => 'autres']) }}">Autres</a></h4>
+                            <a href="{{ route('details.menu.page', ['slug' => 'autres']) }}" class="read-more"><i class="fa fa-angle-right"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+
+    <section id="category-section" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="section-heading">Notre Menu 2</h2>
+                    <h3 class="section-sub-heading">Nos catégories 2</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 h-100">
+                    <div class="category-box">
+                        <img src="{{ asset('home/pub/a90.jpeg') }}" alt="Igname Pilée">
+                        <div class="content d-flex flex-row justify-content-between">
+                            <h4 class="align-self-center m-0">
+                                <a href="{{ route('details.menu.page', ['slug' => 'igname_pilee']) }}">Igname Pilée</a>
+                            </h4>
+                            <a href="{{ route('details.menu.page', ['slug' => 'igname_pilee']) }}" class="read-more">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 h-100">
+                    <div class="category-box">
+                        <img src="{{ asset('home/pub/90.jpeg') }}" alt="Sauces">
+                        <div class="content d-flex flex-row justify-content-between">
+                            <h4 class="align-self-center m-0">
+                                <a href="{{ route('details.menu.page', ['slug' => 'sauces_feuilles']) }}">Sauces Feuilles</a>
+                            </h4>
+                            <a href="{{ route('details.menu.page', ['slug' => 'sauces_feuilles']) }}" class="read-more">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 h-100">
+                    <div class="category-box">
+                        <img src="{{ asset('home/pub/d0/30.png') }}" alt="Riz">
+                        <div class="content d-flex flex-row justify-content-between">
+                            <h4 class="align-self-center m-0">
+                                <a href="{{ route('details.menu.page', ['slug' => 'riz']) }}">Riz</a>
+                            </h4>
+                            <a href="{{ route('details.menu.page', ['slug' => 'riz']) }}" class="read-more">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 h-100">
+                    <div class="category-box">
+                        <img src="{{ asset('home/pub/60.jpeg') }}" alt="Autres Résistances">
+                        <div class="content d-flex flex-row justify-content-between">
+                            <h4 class="align-self-center m-0">
+                                <a href="{{ route('details.menu.page', ['slug' => 'autres_resistances']) }}">Autres Résistances</a>
+                            </h4>
+                            <a href="{{ route('details.menu.page', ['slug' => 'autres_resistances']) }}" class="read-more">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 h-100">
+                    <div class="category-box">
+                        <img src="{{ asset('home/pub/d0/30.png') }}" alt="Viandes et Poissons">
+                        <div class="content d-flex flex-row justify-content-between">
+                            <h4 class="align-self-center m-0">
+                                <a href="{{ route('details.menu.page', ['slug' => 'viandes_poissons']) }}">Viandes et Poissons</a>
+                            </h4>
+                            <a href="{{ route('details.menu.page', ['slug' => 'viandes_poissons']) }}" class="read-more">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 h-100">
+                    <div class="category-box">
+                        <img src="{{ asset('home/pub/290.jpeg') }}" alt="Salades">
+                        <div class="content d-flex flex-row justify-content-between">
+                            <h4 class="align-self-center m-0">
+                                <a href="{{ route('details.menu.page', ['slug' => 'salades']) }}">Salades</a>
+                            </h4>
+                            <a href="{{ route('details.menu.page', ['slug' => 'salades']) }}" class="read-more">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 h-100">
+                    <div class="category-box">
+                        <img src="{{ asset('home/pub/u0.jpeg') }}" alt="Fast Food">
+                        <div class="content d-flex flex-row justify-content-between">
+                            <h4 class="align-self-center m-0">
+                                <a href="{{ route('details.menu.page', ['slug' => 'fast_food']) }}">Fast Food</a>
+                            </h4>
+                            <a href="{{ route('details.menu.page', ['slug' => 'fast_food']) }}" class="read-more">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 h-100">
+                    <div class="category-box">
+                        <img src="{{ asset('home/pub/steaks0.jpeg') }}" alt="Les Steaks">
+                        <div class="content d-flex flex-row justify-content-between">
+                            <h4 class="align-self-center m-0">
+                                <a href="{{ route('details.menu.page', ['slug' => 'steaks']) }}">Les Steaks</a>
+                            </h4>
+                            <a href="{{ route('details.menu.page', ['slug' => 'steaks']) }}" class="read-more">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 h-100">
+                    <div class="category-box">
+                        <img src="{{ asset('home/pub/w0.jpeg') }}" alt="Boissons">
+                        <div class="content d-flex flex-row justify-content-between">
+                            <h4 class="align-self-center m-0">
+                                <a href="{{ route('details.menu.page', ['slug' => 'boissons']) }}">Boissons</a>
+                            </h4>
+                            <a href="{{ route('details.menu.page', ['slug' => 'boissons']) }}" class="read-more">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 h-100">
+                    <div class="category-box">
+                        <img src="{{ asset('home/pub/cocktails0.jpeg') }}" alt="Cocktails">
+                        <div class="content d-flex flex-row justify-content-between">
+                            <h4 class="align-self-center m-0">
+                                <a href="{{ route('details.menu.page', ['slug' => 'cocktails']) }}">Cocktails</a>
+                            </h4>
+                            <a href="{{ route('details.menu.page', ['slug' => 'cocktails']) }}" class="read-more">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 h-100">
+                    <div class="category-box">
+                        <img src="{{ asset('home/pub/vins0.jpeg') }}" alt="Vins & Champagnes">
+                        <div class="content d-flex flex-row justify-content-between">
+                            <h4 class="align-self-center m-0">
+                                <a href="{{ route('details.menu.page', ['slug' => 'vins_champagnes']) }}">Vins & Champagnes</a>
+                            </h4>
+                            <a href="{{ route('details.menu.page', ['slug' => 'vins_champagnes']) }}" class="read-more">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 h-100">
+                    <div class="category-box">
+                        <img src="{{ asset('home/pub/desserts0.jpeg') }}" alt="Desserts">
+                        <div class="content d-flex flex-row justify-content-between">
+                            <h4 class="align-self-center m-0">
+                                <a href="{{ route('details.menu.page', ['slug' => 'desserts']) }}">Desserts</a>
+                            </h4>
+                            <a href="{{ route('details.menu.page', ['slug' => 'desserts']) }}" class="read-more">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
 
     <section id="reservation-section">
         <div class="container">
