@@ -95,7 +95,7 @@
         </div>
     </section>
 
-    <section id="category-section" class="py-5">
+    {{-- <section id="category-section" class="py-5">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -126,7 +126,7 @@
                     <div class="category-box">
                         <img src="{{ asset('home/pub/9.jpeg') }}" alt="image name">
                         <div class="content d-flex flex-row justify-content-between">
-                            <h4 class="align-self-center m-0"><a href="{{ route('details.menu.page', ['slug' => 'nos_sauces']) }}">Nos sauces</a></h4>{{-- Burger --}}
+                            <h4 class="align-self-center m-0"><a href="{{ route('details.menu.page', ['slug' => 'nos_sauces']) }}">Nos sauces</a></h4>
                             <a href="{{ route('details.menu.page', ['slug' => 'nos_sauces']) }}" class="read-more"><i class="fa fa-angle-right"></i></a>
                         </div>
                     </div>
@@ -160,15 +160,15 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
 
     <section id="category-section" class="py-5">
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h2 class="section-heading">Notre Menu 2</h2>
-                    <h3 class="section-sub-heading">Nos catégories 2</h3>
+                    <h2 class="section-heading">Notre Menu</h2>
+                    <h3 class="section-sub-heading">Nos catégories</h3>
                 </div>
             </div>
             <div class="row">
@@ -230,7 +230,7 @@
 
                 <div class="col-lg-4 col-md-6 h-100">
                     <div class="category-box">
-                        <img src="{{ asset('home/details/a4_viandes_poissons/8.jpg') }}" alt="Viandes et Poissons">
+                        <img src="{{ asset('home/details/a4_viandes_poissons/3.png') }}" alt="Viandes et Poissons">
                         <div class="content d-flex flex-row justify-content-between">
                             <h4 class="align-self-center m-0">
                                 <a href="{{ route('details.menu.page', ['slug' => 'viandes_poissons']) }}">Viandes et Poissons</a>
@@ -244,7 +244,7 @@
 
                 <div class="col-lg-4 col-md-6 h-100">
                     <div class="category-box">
-                        <img src="{{ asset('home/details/d4/4.png') }}" alt="Salades">
+                        <img src="{{ asset('home/details/a6_salades/9.jpeg') }}" alt="Salades">
                         <div class="content d-flex flex-row justify-content-between">
                             <h4 class="align-self-center m-0">
                                 <a href="{{ route('details.menu.page', ['slug' => 'salades']) }}">Salades</a>
@@ -258,7 +258,7 @@
 
                 <div class="col-lg-4 col-md-6 h-100">
                     <div class="category-box">
-                        <img src="{{ asset('home/details/d4/4.png') }}" alt="Fast Food">
+                        <img src="{{ asset('home/details/a7_fast_food/2.jpeg') }}" alt="Fast Food">
                         <div class="content d-flex flex-row justify-content-between">
                             <h4 class="align-self-center m-0">
                                 <a href="{{ route('details.menu.page', ['slug' => 'fast_food']) }}">Fast Food</a>
@@ -272,7 +272,7 @@
 
                 <div class="col-lg-4 col-md-6 h-100">
                     <div class="category-box">
-                        <img src="{{ asset('home/details/d4/4.png') }}" alt="Les Steaks">
+                        <img src="{{ asset('home/details/a8_steaks/9.jpeg') }}" alt="Les Steaks">
                         <div class="content d-flex flex-row justify-content-between">
                             <h4 class="align-self-center m-0">
                                 <a href="{{ route('details.menu.page', ['slug' => 'steaks']) }}">Les Steaks</a>
@@ -286,7 +286,7 @@
 
                 <div class="col-lg-4 col-md-6 h-100">
                     <div class="category-box">
-                        <img src="{{ asset('home/details/d4/4.png') }}" alt="Boissons">
+                        <img src="{{ asset('home/details/a10_boissons/9.jpg') }}" alt="Boissons">
                         <div class="content d-flex flex-row justify-content-between">
                             <h4 class="align-self-center m-0">
                                 <a href="{{ route('details.menu.page', ['slug' => 'boissons']) }}">Boissons</a>
@@ -300,7 +300,7 @@
 
                 <div class="col-lg-4 col-md-6 h-100">
                     <div class="category-box">
-                        <img src="{{ asset('home/details/d4/4.png') }}" alt="Cocktails">
+                        <img src="{{ asset('home/details/a12_cocktails/5.jpeg') }}" alt="Cocktails">
                         <div class="content d-flex flex-row justify-content-between">
                             <h4 class="align-self-center m-0">
                                 <a href="{{ route('details.menu.page', ['slug' => 'cocktails']) }}">Cocktails</a>
@@ -314,7 +314,7 @@
 
                 <div class="col-lg-4 col-md-6 h-100">
                     <div class="category-box">
-                        <img src="{{ asset('home/details/d4/4.png') }}" alt="Vins & Champagnes">
+                        <img src="{{ asset('home/details/a13_vins_champagnes/2.jpeg') }}" alt="Vins & Champagnes">
                         <div class="content d-flex flex-row justify-content-between">
                             <h4 class="align-self-center m-0">
                                 <a href="{{ route('details.menu.page', ['slug' => 'vins_champagnes']) }}">Vins & Champagnes</a>
@@ -328,7 +328,7 @@
 
                 <div class="col-lg-4 col-md-6 h-100">
                     <div class="category-box">
-                        <img src="{{ asset('home/details/d4/4.png') }}" alt="Desserts">
+                        <img src="{{ asset('home/details/a9_desserts/3.jpeg') }}" alt="Desserts">
                         <div class="content d-flex flex-row justify-content-between">
                             <h4 class="align-self-center m-0">
                                 <a href="{{ route('details.menu.page', ['slug' => 'desserts']) }}">Desserts</a>

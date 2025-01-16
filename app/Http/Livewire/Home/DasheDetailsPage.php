@@ -418,7 +418,7 @@ class DasheDetailsPage extends Component
                         'preparation_time' => '20 minutes'
                     ],
                     [
-                        'title' => 'Riz au poisson frité / aloko',
+                        'title' => 'Riz au poisson frite / aloko',
                         'price' => '4000 FCFA',
                         'description' => 'Riz accompagné de poisson frit et de bananes plantains frites (aloko)',
                         'preparation_time' => '25 minutes'
@@ -497,7 +497,7 @@ class DasheDetailsPage extends Component
                     'description' => 'Saucisses artisanales grillées'
                 ],
                 [
-                    'image' => 'home/details/a4_viandes_poissons/8.jpg',
+                    'image' => 'home/details/a4_viandes_poissons/12.jpg',
                     'title' => 'Saucisses braisées',
                     'description' => 'Saucisses artisanales grillées'
                 ],
@@ -585,16 +585,16 @@ class DasheDetailsPage extends Component
                     'title' => 'Pommes',
                     'description' => 'Pommes fraîches servies en quartiers'
                 ],
-                [
-                    'image' => 'home/details/a9_desserts/5.jpeg',
-                    'title' => 'Raisin',
-                    'description' => 'Grappe de raisin frais et sucré'
-                ],
-                [
-                    'image' => 'home/details/a9_desserts/6.jpeg',
-                    'title' => 'Assortiment de fruits',
-                    'description' => 'Sélection variée de fruits frais de saison'
-                ]
+                // [
+                //     'image' => 'home/details/a9_desserts/5.jpeg',
+                //     'title' => 'Raisin',
+                //     'description' => 'Grappe de raisin frais et sucré'
+                // ],
+                // [
+                //     'image' => 'home/details/a9_desserts/6.jpeg',
+                //     'title' => 'Assortiment de fruits',
+                //     'description' => 'Sélection variée de fruits frais de saison'
+                // ]
             ],
                 'dishes' => [
                     [
@@ -636,35 +636,65 @@ class DasheDetailsPage extends Component
                 ],
                 'details' => [
                 [
-                    'image' => 'home/details/a10_boissons/1.jpeg',
+                    'image' => 'home/details/a10_boissons/3.jpg',
                     'title' => 'Bières Locales',
                     'description' => 'Sélection de bières locales rafraîchissantes'
                 ],
                 [
-                    'image' => 'home/details/a10_boissons/2.jpeg',
+                    'image' => 'home/details/a10_boissons/4.jpg',
                     'title' => 'Bières Premium',
                     'description' => 'Collection de bières premium internationales'
                 ],
                 [
-                    'image' => 'home/details/a10_boissons/3.jpeg',
+                    'image' => 'home/details/a10_boissons/5.jpg',
                     'title' => 'Sodas',
                     'description' => 'Variété de sodas rafraîchissants'
                 ],
                 [
-                    'image' => 'home/details/a10_boissons/4.jpeg',
+                    'image' => 'home/details/a10_boissons/6.png',
                     'title' => 'Eau Minérale',
                     'description' => 'Eau minérale pure et rafraîchissante'
                 ],
                 [
-                    'image' => 'home/details/a10_boissons/5.jpeg',
+                    'image' => 'home/details/a10_boissons/8.jpg',
                     'title' => 'Jus Naturels',
                     'description' => 'Jus de fruits frais pressés'
                 ],
                 [
-                    'image' => 'home/details/a10_boissons/6.jpeg',
+                    'image' => 'home/details/a10_boissons/9.jpg',
                     'title' => 'Cocktails',
                     'description' => 'Cocktails signature préparés avec soin'
-                ]
+                ],
+                [
+                    'image' => 'home/details/a10_boissons/10.jpg',
+                    'title' => 'Cocktails',
+                    'description' => 'Cocktails signature préparés avec soin'
+                ],
+                [
+                    'image' => 'home/details/a10_boissons/12.jpg',
+                    'title' => 'Cocktails',
+                    'description' => 'Cocktails signature préparés avec soin'
+                ],
+                [
+                    'image' => 'home/details/a10_boissons/14.png',
+                    'title' => 'Cocktails',
+                    'description' => 'Cocktails signature préparés avec soin'
+                ],
+                [
+                    'image' => 'home/details/a10_boissons/15.jpg',
+                    'title' => 'Cocktails',
+                    'description' => 'Cocktails signature préparés avec soin'
+                ],
+                [
+                    'image' => 'home/details/a10_boissons/16.jpg',
+                    'title' => 'Cocktails',
+                    'description' => 'Cocktails signature préparés avec soin'
+                ],
+                [
+                    'image' => 'home/details/a10_boissons/18.png',
+                    'title' => 'Cocktails',
+                    'description' => 'Cocktails signature préparés avec soin'
+                ],
             ],
                 'dishes' => [
                     [
@@ -937,10 +967,30 @@ class DasheDetailsPage extends Component
                         'description' => 'Notre sélection exclusive'
                     ],
                     [
-                        'image' => 'home/details/a13_vins_champagnes/6.jpeg',
+                        'image' => 'home/details/a13_vins_champagnes/7.jpeg',
                         'title' => 'Dégustation',
                         'description' => 'Expérience de dégustation unique'
-                    ]
+                    ],
+                    [
+                        'image' => 'home/details/a13_vins_champagnes/8.jpeg',
+                        'title' => 'Dégustation',
+                        'description' => 'Expérience de dégustation unique'
+                    ],
+                    [
+                        'image' => 'home/details/a13_vins_champagnes/9.jpeg',
+                        'title' => 'Dégustation',
+                        'description' => 'Expérience de dégustation unique'
+                    ],
+                    [
+                        'image' => 'home/details/a13_vins_champagnes/10.jpeg',
+                        'title' => 'Dégustation',
+                        'description' => 'Expérience de dégustation unique'
+                    ],
+                    [
+                        'image' => 'home/details/a13_vins_champagnes/11.jpeg',
+                        'title' => 'Dégustation',
+                        'description' => 'Expérience de dégustation unique'
+                    ],
                 ],
                 'dishes' => [
                     [
@@ -971,8 +1021,8 @@ class DasheDetailsPage extends Component
                 'details' => [
                     [
                         'image' => 'home/details/a3_autres_resistances/1.jpeg',
-                        'title' => 'Amivo',
-                        'description' => 'Pâte traditionnelle Amivo préparée avec soin'
+                        'title' => 'Amiwo',
+                        'description' => 'Pâte traditionnelle Amiwo préparée avec soin'
                     ],
                     [
                         'image' => 'home/details/a3_autres_resistances/2.jpeg',
@@ -1032,9 +1082,9 @@ class DasheDetailsPage extends Component
                 ],
                 'dishes' => [
                     [
-                        'title' => 'Amivo au poulet',
+                        'title' => 'Amiwo au poulet',
                         'price' => '4000 FCFA',
-                        'description' => 'Pâte traditionnelle Amivo servie avec une délicieuse sauce au poulet',
+                        'description' => 'Pâte traditionnelle Amiwo servie avec une délicieuse sauce au poulet',
                         'preparation_time' => '25 minutes'
                     ],
                     [
@@ -1204,7 +1254,52 @@ class DasheDetailsPage extends Component
                         'image' => 'home/details/a6_salades/6.jpeg',
                         'title' => 'Service Soigné',
                         'description' => 'Présentation élégante de nos salades'
-                    ]
+                    ], 
+                    [
+                        'image' => 'home/details/a6_salades/7.jpeg',
+                        'title' => 'Service Soigné',
+                        'description' => 'Présentation élégante de nos salades'
+                    ],
+                    [
+                        'image' => 'home/details/a6_salades/8.jpeg',
+                        'title' => 'Service Soigné',
+                        'description' => 'Présentation élégante de nos salades'
+                    ],
+                    [
+                        'image' => 'home/details/a6_salades/9.jpeg',
+                        'title' => 'Service Soigné',
+                        'description' => 'Présentation élégante de nos salades'
+                    ],
+                    // [
+                    //     'image' => 'home/details/a6_salades/10.jpeg',
+                    //     'title' => 'Service Soigné',
+                    //     'description' => 'Présentation élégante de nos salades'
+                    // ],
+                    [
+                        'image' => 'home/details/a6_salades/11.jpeg',
+                        'title' => 'Service Soigné',
+                        'description' => 'Présentation élégante de nos salades'
+                    ],
+                    [
+                        'image' => 'home/details/a6_salades/12.jpeg',
+                        'title' => 'Service Soigné',
+                        'description' => 'Présentation élégante de nos salades'
+                    ],
+                    [
+                        'image' => 'home/details/a6_salades/13.jpeg',
+                        'title' => 'Service Soigné',
+                        'description' => 'Présentation élégante de nos salades'
+                    ],
+                    [
+                        'image' => 'home/details/a6_salades/14.jpeg',
+                        'title' => 'Service Soigné',
+                        'description' => 'Présentation élégante de nos salades'
+                    ],
+                    [
+                        'image' => 'home/details/a6_salades/15.jpeg',
+                        'title' => 'Service Soigné',
+                        'description' => 'Présentation élégante de nos salades'
+                    ],
                 ],
                 'dishes' => [
                     [
@@ -1261,7 +1356,7 @@ class DasheDetailsPage extends Component
                         'description' => 'Burger fait maison et ses accompagnements'
                     ],
                     [
-                        'image' => 'home/details/a7_fast_food/4.jpeg',
+                        'image' => 'home/details/a7_fast_food/7.jpeg',
                         'title' => 'Hot Dog',
                         'description' => 'Hot dog garni à votre goût'
                     ],
@@ -1274,7 +1369,17 @@ class DasheDetailsPage extends Component
                         'image' => 'home/details/a7_fast_food/6.jpeg',
                         'title' => 'Service Rapide',
                         'description' => 'Préparation express et soignée'
-                    ]
+                    ],
+                    [
+                        'image' => 'home/details/a7_fast_food/8.jpeg',
+                        'title' => 'Service Rapide',
+                        'description' => 'Préparation express et soignée'
+                    ],
+                    [
+                        'image' => 'home/details/a7_fast_food/9.jpeg',
+                        'title' => 'Service Rapide',
+                        'description' => 'Préparation express et soignée'
+                    ],
                 ],
                 'dishes' => [
                     [
@@ -1362,7 +1467,63 @@ class DasheDetailsPage extends Component
                         'image' => 'home/details/a8_steaks/6.jpeg',
                         'title' => 'Service Soigné',
                         'description' => 'Présentation élégante de nos plats'
-                    ]
+                    ],
+                    [
+                        'image' => 'home/details/a8_steaks/7.jpeg',
+                        'title' => 'Steak au Poivre',
+                        'description' => 'Steak de bœuf avec sa sauce au poivre noir'
+                    ],
+                    [
+                        'image' => 'home/details/a8_steaks/8.jpeg',
+                        'title' => 'Émincé aux Champignons',
+                        'description' => 'Émincé de filet aux champignons frais'
+                    ],
+                    [
+                        'image' => 'home/details/a8_steaks/9.jpeg',
+                        'title' => 'Filet à la Crème',
+                        'description' => 'Émincé de filet dans sa sauce crémeuse'
+                    ],
+                    [
+                        'image' => 'home/details/a8_steaks/10.jpeg',
+                        'title' => 'Sauce Forestière',
+                        'description' => 'Délicieuse sauce aux champignons des bois'
+                    ],
+                    [
+                        'image' => 'home/details/a8_steaks/11.jpeg',
+                        'title' => 'Spaghettis Maison',
+                        'description' => 'Pâtes fraîches avec sauces signature'
+                    ],
+                    [
+                        'image' => 'home/details/a8_steaks/12.jpeg',
+                        'title' => 'Service Soigné',
+                        'description' => 'Présentation élégante de nos plats'
+                    ],
+                    [
+                        'image' => 'home/details/a8_steaks/13.jpeg',
+                        'title' => 'Steak au Poivre',
+                        'description' => 'Steak de bœuf avec sa sauce au poivre noir'
+                    ],
+                    [
+                        'image' => 'home/details/a8_steaks/14.jpeg',
+                        'title' => 'Émincé aux Champignons',
+                        'description' => 'Émincé de filet aux champignons frais'
+                    ],
+                    [
+                        'image' => 'home/details/a8_steaks/15.jpeg',
+                        'title' => 'Filet à la Crème',
+                        'description' => 'Émincé de filet dans sa sauce crémeuse'
+                    ],
+                    [
+                        'image' => 'home/details/a8_steaks/16.jpeg',
+                        'title' => 'Sauce Forestière',
+                        'description' => 'Délicieuse sauce aux champignons des bois'
+                    ],
+                    [
+                        'image' => 'home/details/a8_steaks/17.jpeg',
+                        'title' => 'Spaghettis Maison',
+                        'description' => 'Pâtes fraîches avec sauces signature'
+                    ],
+                    
                 ],
                 'dishes' => [
                     [
