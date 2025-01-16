@@ -9,6 +9,7 @@ class DasheDetailsPage extends Component
     public $slug;
     public $category;
     public $dishes;
+    public $details;
 
     public function mount($slug)
     {
@@ -21,6 +22,7 @@ class DasheDetailsPage extends Component
 
         $this->category = $categoryData['category'];
         $this->dishes = $categoryData['dishes'];
+        $this->details = $categoryData['details'] ?? null;
     }
 
     private function getCategoryDetails($slug)
@@ -30,6 +32,63 @@ class DasheDetailsPage extends Component
                 'category' => [
                     'name' => 'Igname Pilée',
                     'description' => 'Découvrez nos délicieuses préparations d\'igname pilée accompagnées de sauces variées'
+                ],
+                'details' => [
+                    [
+                        'image' => 'home/details/a0_igname_pilee/1.jpeg',
+                        'title' => 'Préparation traditionnelle',
+                        'description' => 'Notre igname pilée est préparée selon la tradition'
+                    ],
+                    [
+                        'image' => 'home/details/a0_igname_pilee/2.jpeg',
+                        'title' => 'Sauces variées',
+                        'description' => 'Accompagnée de sauces authentiques'
+                    ],
+                    [
+                        'image' => 'home/details/a0_igname_pilee/3.jpeg',
+                        'title' => 'Service soigné',
+                        'description' => 'Une présentation élégante et appétissante'
+                    ],
+                    [
+                        'image' => 'home/details/a0_igname_pilee/4.jpeg',
+                        'title' => 'Service soigné',
+                        'description' => ''
+                    ],
+                    [
+                        'image' => 'home/details/a0_igname_pilee/5.jpeg',
+                        'title' => 'Service soigné',
+                        'description' => ''
+                    ],
+                    [
+                        'image' => 'home/details/a0_igname_pilee/6.jpeg',
+                        'title' => 'Service soigné',
+                        'description' => ''
+                    ],
+                    [
+                        'image' => 'home/details/a0_igname_pilee/7.jpeg',
+                        'title' => 'Service soigné',
+                        'description' => ''
+                    ],
+                    [
+                        'image' => 'home/details/a0_igname_pilee/8.jpeg',
+                        'title' => 'Service soigné',
+                        'description' => ''
+                    ],
+                    [
+                        'image' => 'home/details/a0_igname_pilee/9.jpeg',
+                        'title' => 'Service soigné',
+                        'description' => ''
+                    ],
+                    [
+                        'image' => 'home/details/a0_igname_pilee/10.jpeg',
+                        'title' => 'Service soigné',
+                        'description' => ''
+                    ],
+                    [
+                        'image' => 'home/details/a0_igname_pilee/11.jpeg',
+                        'title' => 'Service soigné',
+                        'description' => ''
+                    ],
                 ],
                 'dishes' => [
                     [
@@ -75,6 +134,88 @@ class DasheDetailsPage extends Component
                     'name' => 'Sauces Feuilles',
                     'description' => 'Nos délicieuses sauces feuilles traditionnelles'
                 ],
+                'details' => [
+                    [
+                        'image' => 'home/details/a1_sauces_feuilles/1.jpeg',
+                        'title' => 'Sauce Gboma',
+                        'description' => 'Sauce traditionnelle à base de feuilles de gboma'
+                    ],
+                    [
+                        'image' => 'home/details/a1_sauces_feuilles/2.jpeg',
+                        'title' => 'Préparation Soignée',
+                        'description' => 'Nos sauces sont préparées avec des ingrédients frais'
+                    ],
+                    [
+                        'image' => 'home/details/a1_sauces_feuilles/3.jpeg',
+                        'title' => 'Sauce Crincrin',
+                        'description' => 'Délicieuse sauce à base de feuilles de crincrin'
+                    ],
+                    [
+                        'image' => 'home/details/a1_sauces_feuilles/4.jpeg',
+                        'title' => 'Accompagnements',
+                        'description' => 'Servie avec viande ou poisson au choix'
+                    ],
+                    [
+                        'image' => 'home/details/a1_sauces_feuilles/5.jpeg',
+                        'title' => 'Présentation',
+                        'description' => 'Une présentation soignée et appétissante'
+                    ],
+                    [
+                        'image' => 'home/details/a1_sauces_feuilles/6.jpeg',
+                        'title' => 'Sauce Adémè',
+                        'description' => 'Sauce traditionnelle aux feuilles d\'adémè'
+                    ],
+                    [
+                        'image' => 'home/details/a1_sauces_feuilles/6.jpeg',
+                        'title' => 'Sauce Adémè',
+                        'description' => ''
+                    ],
+                    [
+                        'image' => 'home/details/a1_sauces_feuilles/7.jpeg',
+                        'title' => 'Sauce Adémè',
+                        'description' => ''
+                    ],
+                    [
+                        'image' => 'home/details/a1_sauces_feuilles/8.jpeg',
+                        'title' => 'Sauce Adémè',
+                        'description' => ''
+                    ],
+                    [
+                        'image' => 'home/details/a1_sauces_feuilles/9.jpeg',
+                        'title' => 'Sauce Adémè',
+                        'description' => ''
+                    ],
+                    // [
+                    //     'image' => 'home/details/a1_sauces_feuilles/10.jpeg',
+                    //     'title' => 'Sauce Adémè',
+                    //     'description' => ''
+                    // ],
+                    [
+                        'image' => 'home/details/a1_sauces_feuilles/11.jpeg',
+                        'title' => 'Sauce Adémè',
+                        'description' => ''
+                    ],
+                    // [
+                    //     'image' => 'home/details/a1_sauces_feuilles/12.jpeg',
+                    //     'title' => 'Sauce Adémè',
+                    //     'description' => ''
+                    // ],
+                    [
+                        'image' => 'home/details/a1_sauces_feuilles/13.jpeg',
+                        'title' => 'Sauce Adémè',
+                        'description' => ''
+                    ],
+                    [
+                        'image' => 'home/details/a1_sauces_feuilles/14.jpeg',
+                        'title' => 'Sauce Adémè',
+                        'description' => ''
+                    ],
+                    [
+                        'image' => 'home/details/a1_sauces_feuilles/15.jpeg',
+                        'title' => 'Sauce Adémè',
+                        'description' => ''
+                    ],
+                ],
                 'dishes' => [
                     [
                         'title' => 'Gboman poisson/mouton',
@@ -100,6 +241,168 @@ class DasheDetailsPage extends Component
                 'category' => [
                     'name' => 'Riz',
                     'description' => 'Nos différentes préparations de riz traditionnelles et modernes'
+                ],
+                'details' => [
+                    [
+                        'image' => 'home/details/a2_riz/1.jpeg',
+                        'title' => 'Riz au poulet',
+                        'description' => 'Riz parfumé servi avec du poulet grillé'
+                    ],
+                    [
+                        'image' => 'home/details/a2_riz/2.jpeg',
+                        'title' => 'Riz aux légumes',
+                        'description' => 'Riz sauté avec des légumes frais de saison'
+                    ],
+                    [
+                        'image' => 'home/details/a2_riz/3.jpeg',
+                        'title' => 'Riz au poisson',
+                        'description' => 'Riz accompagné de poisson frais'
+                    ],
+                    [
+                        'image' => 'home/details/a2_riz/4.png',
+                        'title' => 'Riz pilaf',
+                        'description' => 'Riz pilaf aux épices et aromates'
+                    ],
+                    [
+                        'image' => 'home/details/a2_riz/5.jpeg',
+                        'title' => 'Atassi traditionnel',
+                        'description' => 'Mélange de riz et haricots à la sauce tomate'
+                    ],
+                    [
+                        'image' => 'home/details/a2_riz/6.jpeg',
+                        'title' => 'Fried rice spécial',
+                        'description' => 'Riz frit à la façon asiatique avec légumes et protéines'
+                    ],
+                    // [
+                    //     'image' => 'home/details/a2_riz/7.jpeg',
+                    //     'title' => 'Fried rice spécial',
+                    //     'description' => ''
+                    // ],
+                    [
+                        'image' => 'home/details/a2_riz/8.jpeg',
+                        'title' => 'Fried rice spécial',
+                        'description' => ''
+                    ],
+                    [
+                        'image' => 'home/details/a2_riz/9.jpeg',
+                        'title' => 'Fried rice spécial',
+                        'description' => ''
+                    ],
+                    [
+                        'image' => 'home/details/a2_riz/10.jpeg',
+                        'title' => 'Fried rice spécial',
+                        'description' => ''
+                    ],
+                    [
+                        'image' => 'home/details/a2_riz/11.jpeg',
+                        'title' => 'Fried rice spécial',
+                        'description' => ''
+                    ],
+                    [
+                        'image' => 'home/details/a2_riz/12.jpeg',
+                        'title' => 'Fried rice spécial',
+                        'description' => ''
+                    ],
+                    [
+                        'image' => 'home/details/a2_riz/13.jpeg',
+                        'title' => 'Fried rice spécial',
+                        'description' => ''
+                    ],
+                    [
+                        'image' => 'home/details/a2_riz/14.jpeg',
+                        'title' => 'Fried rice spécial',
+                        'description' => ''
+                    ],
+                    // [
+                    //     'image' => 'home/details/a2_riz/15.jpeg',
+                    //     'title' => 'Fried rice spécial',
+                    //     'description' => ''
+                    // ],
+                    [
+                        'image' => 'home/details/a2_riz/16.jpeg',
+                        'title' => 'Fried rice spécial',
+                        'description' => ''
+                    ],
+                    [
+                        'image' => 'home/details/a2_riz/17.jpeg',
+                        'title' => 'Fried rice spécial',
+                        'description' => ''
+                    ],
+                    [
+                        'image' => 'home/details/a2_riz/18.jpeg',
+                        'title' => 'Fried rice spécial',
+                        'description' => ''
+                    ],
+                    [
+                        'image' => 'home/details/a2_riz/19.jpeg',
+                        'title' => 'Fried rice spécial',
+                        'description' => ''
+                    ],
+                    [
+                        'image' => 'home/details/a2_riz/20.jpeg',
+                        'title' => 'Fried rice spécial',
+                        'description' => ''
+                    ],
+                    [
+                        'image' => 'home/details/a2_riz/21.webp',
+                        'title' => 'Fried rice spécial',
+                        'description' => ''
+                    ],
+                    [
+                        'image' => 'home/details/a2_riz/23.jpg',
+                        'title' => 'Fried rice spécial',
+                        'description' => ''
+                    ],
+                    [
+                        'image' => 'home/details/a2_riz/25.jpeg',
+                        'title' => 'Fried rice spécial',
+                        'description' => ''
+                    ],
+                    [
+                        'image' => 'home/details/a2_riz/26.jpeg',
+                        'title' => 'Fried rice spécial',
+                        'description' => ''
+                    ],
+                    [
+                        'image' => 'home/details/a2_riz/28.png',
+                        'title' => 'Fried rice spécial',
+                        'description' => ''
+                    ],
+                    [
+                        'image' => 'home/details/a2_riz/29.jpeg',
+                        'title' => 'Fried rice spécial',
+                        'description' => ''
+                    ],
+                    [
+                        'image' => 'home/details/a2_riz/30.jpeg',
+                        'title' => 'Fried rice spécial',
+                        'description' => ''
+                    ],
+                    [
+                        'image' => 'home/details/a2_riz/31.jpeg',
+                        'title' => 'Fried rice spécial',
+                        'description' => ''
+                    ],
+                    [
+                        'image' => 'home/details/a2_riz/32.jpeg',
+                        'title' => 'Fried rice spécial',
+                        'description' => ''
+                    ],
+                    [
+                        'image' => 'home/details/a2_riz/33.jpeg',
+                        'title' => 'Fried rice spécial',
+                        'description' => ''
+                    ],
+                    [
+                        'image' => 'home/details/a2_riz/34.jpeg',
+                        'title' => 'Fried rice spécial',
+                        'description' => ''
+                    ],
+                    [
+                        'image' => 'home/details/a2_riz/35.jpeg',
+                        'title' => 'Fried rice spécial',
+                        'description' => ''
+                    ],
                 ],
                 'dishes' => [
                     [
@@ -157,6 +460,48 @@ class DasheDetailsPage extends Component
                     'name' => 'Viandes et Poissons',
                     'description' => 'Sélection de viandes et poissons grillés ou braisés, préparés selon nos recettes traditionnelles'
                 ],
+                'details' => [
+                [
+                    'image' => 'home/details/a4_viandes_poissons/1.jpeg',
+                    'title' => 'Poisson braisé',
+                    'description' => 'Poisson frais braisé aux épices traditionnelles'
+                ],
+                [
+                    'image' => 'home/details/a4_viandes_poissons/2.jpeg',
+                    'title' => 'Poulet braisé',
+                    'description' => 'Poulet local braisé à la perfection'
+                ],
+                [
+                    'image' => 'home/details/a4_viandes_poissons/3.png',
+                    'title' => 'Brochettes de mouton',
+                    'description' => 'Tendres brochettes de mouton grillées'
+                ],
+                [
+                    'image' => 'home/details/a4_viandes_poissons/4.jpeg',
+                    'title' => 'Poisson pané',
+                    'description' => 'Filet de poisson pané croustillant'
+                ],
+                [
+                    'image' => 'home/details/a4_viandes_poissons/5.jpeg',
+                    'title' => 'Gésiers braisés',
+                    'description' => 'Gésiers de volaille marinés et braisés'
+                ],
+                [
+                    'image' => 'home/details/a4_viandes_poissons/6.jpeg',
+                    'title' => 'Saucisses braisées',
+                    'description' => 'Saucisses artisanales grillées'
+                ],
+                [
+                    'image' => 'home/details/a4_viandes_poissons/7.jpeg',
+                    'title' => 'Saucisses braisées',
+                    'description' => 'Saucisses artisanales grillées'
+                ],
+                [
+                    'image' => 'home/details/a4_viandes_poissons/8.jpg',
+                    'title' => 'Saucisses braisées',
+                    'description' => 'Saucisses artisanales grillées'
+                ],
+            ],
                 'dishes' => [
                     [
                         'title' => 'Poisson braisé (tilapia, bar)',
@@ -219,6 +564,38 @@ class DasheDetailsPage extends Component
                     'name' => 'Desserts',
                     'description' => 'Une sélection de fruits frais de saison'
                 ],
+                'details' => [
+                [
+                    'image' => 'home/details/a9_desserts/1.jpeg',
+                    'title' => 'Ananas frais',
+                    'description' => 'Tranches d\'ananas juteux et parfumé'
+                ],
+                [
+                    'image' => 'home/details/a9_desserts/2.jpeg',
+                    'title' => 'Pastèque',
+                    'description' => 'Tranches de pastèque rafraîchissante'
+                ],
+                [
+                    'image' => 'home/details/a9_desserts/3.jpeg',
+                    'title' => 'Papaye',
+                    'description' => 'Morceaux de papaye mûre à point'
+                ],
+                [
+                    'image' => 'home/details/a9_desserts/4.jpeg',
+                    'title' => 'Pommes',
+                    'description' => 'Pommes fraîches servies en quartiers'
+                ],
+                [
+                    'image' => 'home/details/a9_desserts/5.jpeg',
+                    'title' => 'Raisin',
+                    'description' => 'Grappe de raisin frais et sucré'
+                ],
+                [
+                    'image' => 'home/details/a9_desserts/6.jpeg',
+                    'title' => 'Assortiment de fruits',
+                    'description' => 'Sélection variée de fruits frais de saison'
+                ]
+            ],
                 'dishes' => [
                     [
                         'title' => 'Ananas frais',
@@ -257,6 +634,38 @@ class DasheDetailsPage extends Component
                     'name' => 'Boissons',
                     'description' => 'Large sélection de boissons fraîches et alcoolisées'
                 ],
+                'details' => [
+                [
+                    'image' => 'home/details/a10_boissons/1.jpeg',
+                    'title' => 'Bières Locales',
+                    'description' => 'Sélection de bières locales rafraîchissantes'
+                ],
+                [
+                    'image' => 'home/details/a10_boissons/2.jpeg',
+                    'title' => 'Bières Premium',
+                    'description' => 'Collection de bières premium internationales'
+                ],
+                [
+                    'image' => 'home/details/a10_boissons/3.jpeg',
+                    'title' => 'Sodas',
+                    'description' => 'Variété de sodas rafraîchissants'
+                ],
+                [
+                    'image' => 'home/details/a10_boissons/4.jpeg',
+                    'title' => 'Eau Minérale',
+                    'description' => 'Eau minérale pure et rafraîchissante'
+                ],
+                [
+                    'image' => 'home/details/a10_boissons/5.jpeg',
+                    'title' => 'Jus Naturels',
+                    'description' => 'Jus de fruits frais pressés'
+                ],
+                [
+                    'image' => 'home/details/a10_boissons/6.jpeg',
+                    'title' => 'Cocktails',
+                    'description' => 'Cocktails signature préparés avec soin'
+                ]
+            ],
                 'dishes' => [
                     [
                         'title' => 'Bières locales (33cl)',
@@ -313,6 +722,38 @@ class DasheDetailsPage extends Component
                     'name' => 'Apéritifs & Whiskys',
                     'description' => 'Une sélection de spiritueux et liqueurs de qualité'
                 ],
+                'details' => [
+                [
+                    'image' => 'home/details/a11_aperitifs/1.jpeg',
+                    'title' => 'Whiskys Premium',
+                    'description' => 'Sélection de whiskys haut de gamme'
+                ],
+                [
+                    'image' => 'home/details/a11_aperitifs/2.jpeg',
+                    'title' => 'Liqueurs Fines',
+                    'description' => 'Collection de liqueurs raffinées'
+                ],
+                [
+                    'image' => 'home/details/a11_aperitifs/3.jpeg',
+                    'title' => 'Apéritifs Classiques',
+                    'description' => 'Assortiment d\'apéritifs traditionnels'
+                ],
+                [
+                    'image' => 'home/details/a11_aperitifs/4.jpeg',
+                    'title' => 'Spiritueux Sélects',
+                    'description' => 'Gamme de spiritueux de qualité'
+                ],
+                [
+                    'image' => 'home/details/a11_aperitifs/5.jpeg',
+                    'title' => 'Digestifs',
+                    'description' => 'Choix de digestifs raffinés'
+                ],
+                [
+                    'image' => 'home/details/a11_aperitifs/6.jpeg',
+                    'title' => 'Service Premium',
+                    'description' => 'Service personnalisé et professionnel'
+                ]
+            ],
                 'dishes' => [
                     [
                         'title' => 'Amarula',
@@ -401,7 +842,7 @@ class DasheDetailsPage extends Component
                     [
                         'title' => 'Suze',
                         'price' => '1500 FCFA',
-                        'description' => 'Apéritif français à base de gentiane',
+                        'description' => 'Apéritif français à base de gentiane', // 3709 
                         'preparation_time' => '2 minutes'
                     ]
                 ]
@@ -411,6 +852,38 @@ class DasheDetailsPage extends Component
                     'name' => 'Cocktails',
                     'description' => 'Délicieux cocktails préparés par nos barmans'
                 ],
+                'details' => [
+                [
+                    'image' => 'home/details/a12_cocktails/1.jpeg',
+                    'title' => 'Cocktails Classiques',
+                    'description' => 'Sélection de cocktails traditionnels'
+                ],
+                [
+                    'image' => 'home/details/a12_cocktails/2.jpeg',
+                    'title' => 'Cocktails Signature',
+                    'description' => 'Nos créations exclusives'
+                ],
+                [
+                    'image' => 'home/details/a12_cocktails/3.jpeg',
+                    'title' => 'Mocktails',
+                    'description' => 'Cocktails sans alcool'
+                ],
+                [
+                    'image' => 'home/details/a12_cocktails/4.jpeg',
+                    'title' => 'Cocktails Fruités',
+                    'description' => 'Mélanges de fruits frais'
+                ],
+                [
+                    'image' => 'home/details/a12_cocktails/5.jpeg',
+                    'title' => 'Cocktails Premium',
+                    'description' => 'Créations haut de gamme'
+                ],
+                [
+                    'image' => 'home/details/a12_cocktails/6.jpeg',
+                    'title' => 'Service Cocktail',
+                    'description' => 'Préparation professionnelle'
+                ]
+            ],
                 'dishes' => [
                     [
                         'title' => 'Ananas - Pastèque',
@@ -437,6 +910,38 @@ class DasheDetailsPage extends Component
                     'name' => 'Vins & Champagnes',
                     'description' => 'Une sélection raffinée de vins et champagnes - Prix selon la sélection'
                 ],
+                'details' => [
+                    [
+                        'image' => 'home/details/a13_vins_champagnes/1.jpeg',
+                        'title' => 'Vins Rouges',
+                        'description' => 'Sélection de grands vins rouges'
+                    ],
+                    [
+                        'image' => 'home/details/a13_vins_champagnes/2.jpeg',
+                        'title' => 'Vins Blancs',
+                        'description' => 'Collection de vins blancs raffinés'
+                    ],
+                    [
+                        'image' => 'home/details/a13_vins_champagnes/3.jpeg',
+                        'title' => 'Champagnes',
+                        'description' => 'Champagnes de prestige'
+                    ],
+                    [
+                        'image' => 'home/details/a13_vins_champagnes/4.jpeg',
+                        'title' => 'Service',
+                        'description' => 'Service professionnel des vins'
+                    ],
+                    [
+                        'image' => 'home/details/a13_vins_champagnes/5.jpeg',
+                        'title' => 'Cave à Vins',
+                        'description' => 'Notre sélection exclusive'
+                    ],
+                    [
+                        'image' => 'home/details/a13_vins_champagnes/6.jpeg',
+                        'title' => 'Dégustation',
+                        'description' => 'Expérience de dégustation unique'
+                    ]
+                ],
                 'dishes' => [
                     [
                         'title' => 'Vins Blancs',
@@ -462,6 +967,68 @@ class DasheDetailsPage extends Component
                 'category' => [
                     'name' => 'Autres Résistances',
                     'description' => 'Découvrez nos spécialités traditionnelles africaines'
+                ],
+                'details' => [
+                    [
+                        'image' => 'home/details/a3_autres_resistances/1.jpeg',
+                        'title' => 'Amivo',
+                        'description' => 'Pâte traditionnelle Amivo préparée avec soin'
+                    ],
+                    [
+                        'image' => 'home/details/a3_autres_resistances/2.jpeg',
+                        'title' => 'Akassa',
+                        'description' => 'Akassa traditionnelle servie avec sauce'
+                    ],
+                    [
+                        'image' => 'home/details/a3_autres_resistances/3.png',
+                        'title' => 'Attiéké',
+                        'description' => 'Couscous de manioc traditionnel'
+                    ],
+                    [
+                        'image' => 'home/details/a3_autres_resistances/4.jpeg',
+                        'title' => 'Kpètè',
+                        'description' => 'Kpètè traditionnel et ses accompagnements'
+                    ],
+                    [
+                        'image' => 'home/details/a3_autres_resistances/5.jpeg',
+                        'title' => 'Préparation',
+                        'description' => 'Nos plats sont préparés avec des ingrédients frais'
+                    ],
+                    [
+                        'image' => 'home/details/a3_autres_resistances/6.jpeg',
+                        'title' => 'Service',
+                        'description' => 'Une présentation soignée et traditionnelle'
+                    ],
+                    [
+                        'image' => 'home/details/a3_autres_resistances/7.jpeg',
+                        'title' => 'Service',
+                        'description' => ''
+                    ],
+                    [
+                        'image' => 'home/details/a3_autres_resistances/8.jpeg',
+                        'title' => 'Service',
+                        'description' => ''
+                    ],
+                    [
+                        'image' => 'home/details/a3_autres_resistances/9.jpeg',
+                        'title' => 'Service',
+                        'description' => ''
+                    ],
+                    [
+                        'image' => 'home/details/a3_autres_resistances/10.jpeg',
+                        'title' => 'Service',
+                        'description' => ''
+                    ],
+                    [
+                        'image' => 'home/details/a3_autres_resistances/11.jpeg',
+                        'title' => 'Service',
+                        'description' => ''
+                    ],
+                    [
+                        'image' => 'home/details/a3_autres_resistances/12.jpeg',
+                        'title' => 'Service',
+                        'description' => ''
+                    ],
                 ],
                 'dishes' => [
                     [
@@ -494,6 +1061,38 @@ class DasheDetailsPage extends Component
                 'category' => [
                     'name' => 'Accompagnements',
                     'description' => 'Une variété d\'accompagnements traditionnels et modernes au choix'
+                ],
+                'details' => [
+                    [
+                        'image' => 'home/details/a5_accompagnements/1.jpeg',
+                        'title' => 'Pâtes Traditionnelles',
+                        'description' => 'Sélection de pâtes traditionnelles africaines'
+                    ],
+                    [
+                        'image' => 'home/details/a5_accompagnements/2.jpeg',
+                        'title' => 'Riz et Dérivés',
+                        'description' => 'Différentes préparations de riz'
+                    ],
+                    [
+                        'image' => 'home/details/a5_accompagnements/3.jpeg',
+                        'title' => 'Frites et Alloco',
+                        'description' => 'Accompagnements frits variés'
+                    ],
+                    [
+                        'image' => 'home/details/a5_accompagnements/4.jpeg',
+                        'title' => 'Légumes',
+                        'description' => 'Assortiment de légumes préparés'
+                    ],
+                    [
+                        'image' => 'home/details/a5_accompagnements/5.jpeg',
+                        'title' => 'Igname et Manioc',
+                        'description' => 'Préparations à base d\'igname et de manioc'
+                    ],
+                    [
+                        'image' => 'home/details/a5_accompagnements/6.jpeg',
+                        'title' => 'Accompagnements Spéciaux',
+                        'description' => 'Nos accompagnements signature'
+                    ]
                 ],
                 'dishes' => [
                     [
@@ -575,6 +1174,38 @@ class DasheDetailsPage extends Component
                     'name' => 'Salades',
                     'description' => 'Nos salades fraîches et gourmandes préparées avec des produits de saison'
                 ],
+                'details' => [
+                    [
+                        'image' => 'home/details/a6_salades/1.jpeg',
+                        'title' => 'Salade Composée',
+                        'description' => 'Mélange frais de légumes de saison'
+                    ],
+                    [
+                        'image' => 'home/details/a6_salades/2.jpeg',
+                        'title' => 'Salade Mixte',
+                        'description' => 'Assortiment varié de crudités et garnitures'
+                    ],
+                    [
+                        'image' => 'home/details/a6_salades/3.jpeg',
+                        'title' => 'Salade au Poulet',
+                        'description' => 'Salade fraîche garnie de poulet grillé'
+                    ],
+                    [
+                        'image' => 'home/details/a6_salades/4.jpeg',
+                        'title' => 'Salade Floridale',
+                        'description' => 'Salade exotique aux fruits et légumes'
+                    ],
+                    [
+                        'image' => 'home/details/a6_salades/5.jpeg',
+                        'title' => 'Salade Belle Saison',
+                        'description' => 'Légumes frais de saison assortis'
+                    ],
+                    [
+                        'image' => 'home/details/a6_salades/6.jpeg',
+                        'title' => 'Service Soigné',
+                        'description' => 'Présentation élégante de nos salades'
+                    ]
+                ],
                 'dishes' => [
                     [
                         'title' => 'Salade composée',
@@ -612,6 +1243,38 @@ class DasheDetailsPage extends Component
                 'category' => [
                     'name' => 'Fast Food',
                     'description' => 'Une sélection de plats rapides et savoureux, préparés à la commande'
+                ],
+                'details' => [
+                    [
+                        'image' => 'home/details/a7_fast_food/1.jpeg',
+                        'title' => 'Chawama',
+                        'description' => 'Délicieux sandwich grillé aux épices'
+                    ],
+                    [
+                        'image' => 'home/details/a7_fast_food/2.jpeg',
+                        'title' => 'Pizza Maison',
+                        'description' => 'Nos pizzas préparées sur place'
+                    ],
+                    [
+                        'image' => 'home/details/a7_fast_food/3.jpeg',
+                        'title' => 'Hamburger',
+                        'description' => 'Burger fait maison et ses accompagnements'
+                    ],
+                    [
+                        'image' => 'home/details/a7_fast_food/4.jpeg',
+                        'title' => 'Hot Dog',
+                        'description' => 'Hot dog garni à votre goût'
+                    ],
+                    [
+                        'image' => 'home/details/a7_fast_food/5.jpeg',
+                        'title' => 'Sandwich Club',
+                        'description' => 'Club sandwich multicouches'
+                    ],
+                    [
+                        'image' => 'home/details/a7_fast_food/6.jpeg',
+                        'title' => 'Service Rapide',
+                        'description' => 'Préparation express et soignée'
+                    ]
                 ],
                 'dishes' => [
                     [
@@ -668,6 +1331,38 @@ class DasheDetailsPage extends Component
                 'category' => [
                     'name' => 'Les Steaks et Pâtes',
                     'description' => 'Nos spécialités de viandes et pâtes préparées avec soin'
+                ],
+                'details' => [
+                    [
+                        'image' => 'home/details/a8_steaks/1.jpeg',
+                        'title' => 'Steak au Poivre',
+                        'description' => 'Steak de bœuf avec sa sauce au poivre noir'
+                    ],
+                    [
+                        'image' => 'home/details/a8_steaks/2.jpeg',
+                        'title' => 'Émincé aux Champignons',
+                        'description' => 'Émincé de filet aux champignons frais'
+                    ],
+                    [
+                        'image' => 'home/details/a8_steaks/3.jpeg',
+                        'title' => 'Filet à la Crème',
+                        'description' => 'Émincé de filet dans sa sauce crémeuse'
+                    ],
+                    [
+                        'image' => 'home/details/a8_steaks/4.jpeg',
+                        'title' => 'Sauce Forestière',
+                        'description' => 'Délicieuse sauce aux champignons des bois'
+                    ],
+                    [
+                        'image' => 'home/details/a8_steaks/5.jpeg',
+                        'title' => 'Spaghettis Maison',
+                        'description' => 'Pâtes fraîches avec sauces signature'
+                    ],
+                    [
+                        'image' => 'home/details/a8_steaks/6.jpeg',
+                        'title' => 'Service Soigné',
+                        'description' => 'Présentation élégante de nos plats'
+                    ]
                 ],
                 'dishes' => [
                     [
