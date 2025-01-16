@@ -16,10 +16,10 @@
                  class="main-image"
                  id="mainDisplayImage"
                  onclick="openZoom()">
-            <div class="image-caption">
+            {{-- <div class="image-caption">
                 <h4 class="title mb-2" id="mainImageTitle">{{ $details[0]['title'] }}</h4>
                 <p class="description mb-0" id="mainImageDescription">{{ $details[0]['description'] }}</p>
-            </div>
+            </div> --}}
         </div>
         
         <div class="thumbnails-container">
