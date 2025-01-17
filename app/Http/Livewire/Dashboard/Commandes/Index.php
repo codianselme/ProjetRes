@@ -7,6 +7,7 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use App\Mail\CommandStatusChanged;
 use Illuminate\Support\Facades\Mail;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class Index extends Component
 {
@@ -22,7 +23,6 @@ class Index extends Component
 
     public function showCommandDetails($id)
     {
-        // dd($id, Command::with('items')->find($id));
         $this->selectedCommand = Command::with('items')->find($id);
         $this->showModal = true;
     }
@@ -35,6 +35,7 @@ class Index extends Component
 
     public function updateStatus($id, $status)
     {
+        // dd($id, $status);
         $command = Command::find($id);
         $command->status = $status;
         $command->save();
@@ -47,8 +48,8 @@ class Index extends Component
             'message' => 'Statut mis à jour avec succès!',
             'type' => 'success'
         ]);
-
-        return redirect()->route('dashboard.commandes');
+        // Alert::success('Succès', 'Statut mis à jour avec succès !');
+        // return redirect()->route('dashboard.commandes');
     }
 
     public function render()

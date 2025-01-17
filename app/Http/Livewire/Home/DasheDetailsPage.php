@@ -135,7 +135,7 @@ class DasheDetailsPage extends Component
                         'preparation_time' => '30 minutes'
                     ],
                     [
-                        'title' => 'Igname pilée sauce graines poisson Filet',
+                        'title' => 'Igname pilée sauce graines poisson Fumé',
                         'price' => '3500 FCFA',
                         'description' => 'Igname pilée accompagnée de sauce graines et poisson filet',
                         'preparation_time' => '25 minutes'
@@ -1671,6 +1671,8 @@ class DasheDetailsPage extends Component
                 'type' => 'error'
             ]);
         }
+
+        return redirect()->route('home.page');
     }
 
     public function toggleCart()

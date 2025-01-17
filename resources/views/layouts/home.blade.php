@@ -29,6 +29,14 @@
                     <li><a href="#"><i class="fab fa-youtube"></i></a></li>
                 </ul>
                 <ul>
+                    {{-- @if (Route::has('login'))
+                        @auth
+                            <li><a href="{{ route('home.page') }}">Tableau de Bord</a></li>
+                        @else
+                            <li><a href="{{ route('connexion.page') }}">Connexion</a></li>
+                        @endauth
+                    @endif --}}
+
                     <li><a href="{{ route('connexion.page') }}">Connexion</a></li>
                     {{-- <li><a href="#">Inscription</a></li> --}}
                 </ul>

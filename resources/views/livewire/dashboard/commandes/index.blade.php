@@ -248,3 +248,15 @@
         <div class="modal-backdrop fade show"></div>
     @endif
 </div>
+
+{{-- @push('js') --}}
+    <script>
+        window.addEventListener('swal:success', event => {
+            Swal.fire({
+                title: event.detail.title,
+                text: event.detail.text,
+                icon: 'success',
+            });
+        });
+    </script>
+{{-- @endpush --}}

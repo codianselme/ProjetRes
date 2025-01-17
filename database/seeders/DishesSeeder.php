@@ -145,7 +145,7 @@ class DishesSeeder extends Seeder
                 'is_available' => 1,
             ],
             [
-                'name' => 'Igname pilée sauce graines poisson Filet',
+                'name' => 'Igname pilée sauce graines poisson Fumé',
                 'description' => 'Igname pilée servie avec une sauce aux graines et du poisson Filet.',
                 'price' => 3500,
                 'category_id' => 1, 
