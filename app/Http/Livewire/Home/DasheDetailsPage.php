@@ -3,6 +3,8 @@
 namespace App\Http\Livewire\Home;
 
 use Livewire\Component;
+use App\Models\Command;
+use App\Models\CommandItem;
 
 class DasheDetailsPage extends Component
 {
@@ -10,6 +12,23 @@ class DasheDetailsPage extends Component
     public $category;
     public $dishes;
     public $details;
+    public $cart = [];
+    public $showCommandForm = false;
+    public $commandForm = [
+        'customer_name' => '',
+        'phone' => '',
+        'email' => '',
+        'delivery_address' => '',
+        'notes' => ''
+    ];
+    public $showCart = false;
+
+    protected $rules = [
+        'commandForm.customer_name' => 'required|min:3',
+        'commandForm.phone' => 'required|regex:/^[0-9]{8,}$/',
+        'commandForm.email' => 'nullable|email',
+        'commandForm.delivery_address' => 'required|min:10',
+    ];
 
     public function mount($slug)
     {
@@ -1573,6 +1592,98 @@ class DasheDetailsPage extends Component
         ];
 
         return $categories[$slug] ?? null;
+    }
+
+    public function addToCart($dishTitle, $dishPrice)
+    {
+        dd($dishTitle, $dishPrice);
+        $found = false;
+        foreach ($this->cart as &$item) {
+            if ($item['dish_name'] === $dishTitle) {
+                $item['quantity']++;
+                $found = true;
+                break;
+            }
+        }
+
+        if (!$found) {
+            $this->cart[] = [
+                'dish_name' => $dishTitle,
+                'price' => (float) str_replace(' FCFA', '', $dishPrice),
+                'quantity' => 1,
+                'notes' => ''
+            ];
+        }
+
+        $this->emit('cartUpdated');
+        $this->dispatchBrowserEvent('showToast', ['message' => 'Plat ajouté au panier']);
+    }
+
+    public function removeFromCart($index)
+    {
+        unset($this->cart[$index]);
+        $this->cart = array_values($this->cart);
+        $this->emit('cartUpdated');
+    }
+
+    public function updateQuantity($index, $change)
+    {
+        $this->cart[$index]['quantity'] = max(1, $this->cart[$index]['quantity'] + $change);
+    }
+
+    public function placeCommand()
+    {
+        $this->validate();
+
+        try {
+            $totalAmount = collect($this->cart)->sum(function($item) {
+                return $item['price'] * $item['quantity'];
+            });
+
+            $command = Command::create([
+                'customer_name' => $this->commandForm['customer_name'],
+                'phone' => $this->commandForm['phone'],
+                'email' => $this->commandForm['email'],
+                'delivery_address' => $this->commandForm['delivery_address'],
+                'total_amount' => $totalAmount,
+                'status' => 'pending'
+            ]);
+
+            foreach ($this->cart as $item) {
+                CommandItem::create([
+                    'command_id' => $command->id,
+                    'dish_name' => $item['dish_name'],
+                    'quantity' => $item['quantity'],
+                    'price' => $item['price'],
+                    'notes' => $item['notes'] ?? null
+                ]);
+            }
+
+            $this->cart = [];
+            $this->showCommandForm = false;
+            $this->reset('commandForm');
+            
+            $this->dispatchBrowserEvent('showToast', [
+                'message' => 'Commande effectuée avec succès!'
+            ]);
+        } catch (\Exception $e) {
+            $this->dispatchBrowserEvent('showToast', [
+                'message' => 'Erreur lors de la commande: ' . $e->getMessage(),
+                'type' => 'error'
+            ]);
+        }
+    }
+
+    public function toggleCart()
+    {
+        $this->showCart = !$this->showCart;
+    }
+
+    public function clearCart()
+    {
+        $this->cart = [];
+        $this->emit('cartUpdated');
+        $this->dispatchBrowserEvent('showToast', ['message' => 'Panier vidé']);
     }
 
     public function render()

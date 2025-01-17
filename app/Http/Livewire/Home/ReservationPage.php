@@ -31,7 +31,9 @@ class ReservationPage extends Component
     public function submit()
     {
         try {
+            
             $this->validate();
+            dd($this->persons, $this->date, $this->time);
 
             // Enregistrement des données dans la base de données
             Reservation::create([
