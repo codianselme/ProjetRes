@@ -22,6 +22,7 @@ class Index extends Component
 
     public function showCommandDetails($id)
     {
+        // dd($id, Command::with('items')->find($id));
         $this->selectedCommand = Command::with('items')->find($id);
         $this->showModal = true;
     }
@@ -46,6 +47,8 @@ class Index extends Component
             'message' => 'Statut mis à jour avec succès!',
             'type' => 'success'
         ]);
+
+        return redirect()->route('dashboard.commandes');
     }
 
     public function render()

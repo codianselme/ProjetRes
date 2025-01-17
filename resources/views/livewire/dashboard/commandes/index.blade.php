@@ -52,8 +52,9 @@
                                     <div class="nk-tb-list nk-tb-ulist">
                                         <div class="nk-tb-item nk-tb-head">
                                             <div class="nk-tb-col"><span class="sub-text">Client</span></div>
+                                            <div class="nk-tb-col"><span class="sub-text">Contact</span></div>
                                             <div class="nk-tb-col"><span class="sub-text">Montant</span></div>
-                                            <div class="nk-tb-col"><span class="sub-text">Date</span></div>
+                                            <div class="nk-tb-col"><span class="sub-text">Date Demande</span></div>
                                             <div class="nk-tb-col"><span class="sub-text">Statut</span></div>
                                             <div class="nk-tb-col"><span class="sub-text">Actions</span></div>
                                         </div>
@@ -62,36 +63,38 @@
                                             <div class="nk-tb-item">
                                                 <div class="nk-tb-col">
                                                     <span class="tb-lead">{{ $command->customer_name }}</span>
-                                                    <span class="tb-sub">{{ $command->phone }}</span>
                                                 </div>
                                                 <div class="nk-tb-col">
                                                     <span class="tb-lead">{{ number_format($command->total_amount, 0, ',', ' ') }} FCFA</span>
                                                 </div>
                                                 <div class="nk-tb-col">
-                                                    <span>{{ $command->created_at->format('d/m/Y H:i') }}</span>
+                                                    <span class="tb-lead">{{ $command->phone }}</span>
+                                                </div>
+                                                <div class="nk-tb-col">
+                                                    <span>{{ $command->created_at->format('d/m/Y à H:i:s') }}</span>
                                                 </div>
                                                 <div class="nk-tb-col">
                                                     @switch($command->status)
                                                         @case('pending')
-                                                            <span class="badge badge-dim badge-warning">
+                                                            <span class="badge text-bg-warning d-md-inline-flex">
                                                                 <em class="icon ni ni-clock"></em>
                                                                 <span>En attente</span>
                                                             </span>
                                                             @break
                                                         @case('confirmed')
-                                                            <span class="badge badge-dim badge-info">
+                                                            <span class="badge text-bg-info d-md-inline-flex">
                                                                 <em class="icon ni ni-check-circle"></em>
                                                                 <span>Confirmée</span>
                                                             </span>
                                                             @break
                                                         @case('delivered')
-                                                            <span class="badge badge-dim badge-success">
+                                                            <span class="badge text-bg-success d-md-inline-flex">
                                                                 <em class="icon ni ni-truck"></em>
                                                                 <span>Livrée</span>
                                                             </span>
                                                             @break
                                                         @case('cancelled')
-                                                            <span class="badge badge-dim badge-danger">
+                                                            <span class="badge text-bg-danger d-md-inline-flex">">
                                                                 <em class="icon ni ni-cross-circle"></em>
                                                                 <span>Annulée</span>
                                                             </span>
@@ -99,16 +102,16 @@
                                                     @endswitch
                                                 </div>
                                                 <div class="nk-tb-col nk-tb-col-tools">
-                                                    <ul class="nk-tb-actions gx-1">
+                                                    <ul class="nk-tb-actions gx-1 justify-content-center">
                                                         <li>
-                                                            <div class="drodown">
-                                                                <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown">
+                                                            <div class="drodown d-inline-block">
+                                                                <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-bs-toggle="dropdown">
                                                                     <em class="icon ni ni-more-h"></em>
                                                                 </a>
-                                                                <div class="dropdown-menu dropdown-menu-right">
+                                                                <div class="dropdown-menu">
                                                                     <ul class="link-list-opt no-bdr">
                                                                         <li>
-                                                                            <a href="#" wire:click="showCommandDetails({{ $command->id }})">
+                                                                            <a href="#" wire:click.prevent="showCommandDetails({{ $command->id }})">
                                                                                 <em class="icon ni ni-eye"></em>
                                                                                 <span>Voir détails</span>
                                                                             </a>
@@ -207,11 +210,11 @@
                                     <table class="table table-bordered">
                                         <thead>
                                             <tr>
-                                                <th>Plat</th>
-                                                <th>Quantité</th>
-                                                <th>Prix unitaire</th>
-                                                <th>Total</th>
-                                                <th>Notes</th>
+                                                <th style="width: 30%">Plat</th>
+                                                <th style="width: 10%">Qté</th>
+                                                <th style="width: 15%">Prix unitaire</th>
+                                                <th style="width: 15%">Total</th>
+                                                <th style="width: 20%">Notes</th>
                                             </tr>
                                         </thead>
                                         <tbody>

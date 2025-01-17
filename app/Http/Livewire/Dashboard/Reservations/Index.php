@@ -22,6 +22,7 @@ class Index extends Component
 
     public function showReservationDetails($id)
     {
+        // dd($id);
         $this->selectedReservation = Reservation::find($id);
         $this->showModal = true;
     }
@@ -47,6 +48,8 @@ class Index extends Component
             'message' => 'Statut mis à jour avec succès!',
             'type' => 'success'
         ]);
+
+        return redirect()->route('dashboard.reservations');
     }
 
     public function render()
