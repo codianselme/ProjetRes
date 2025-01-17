@@ -2,10 +2,11 @@
 
 namespace App\Http\Livewire\Home;
 
+use App\Models\User;
+use App\Models\Contact;
 use Livewire\Component;
 use App\Mail\ContactFormMail;
 use Illuminate\Support\Facades\Mail;
-use App\Models\Contact;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class ContactPage extends Component

@@ -72,6 +72,7 @@
             </nav>
         </header>
         
+        @include("sweetalert::alert")
         @yield('content')
 
         <footer id="footer" class="pt-5">
