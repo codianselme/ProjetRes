@@ -205,6 +205,11 @@
                                 </a>
                             </li>
                             <li class="nk-menu-item">
+                                <a href="{{ route('dashboard.commandes') }}" class="nk-menu-link">
+                                    <span class="nk-menu-text">Commandes</span>
+                                </a>
+                            </li>
+                            <li class="nk-menu-item">
                                 <a href="{{ route('dashboard.contacts') }}" class="nk-menu-link">
                                     <span class="nk-menu-text">Messages Contact</span>
                                 </a>

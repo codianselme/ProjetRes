@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Livewire\Dashboard\Reservations;
+namespace App\Http\Livewire\Dashboard\Commandes;
 
-use App\Models\Reservation;
+use App\Models\Command;
 use Livewire\Component;
 use Livewire\WithPagination;
-use App\Mail\ReservationStatusChanged;
+use App\Mail\CommandStatusChanged;
 use Illuminate\Support\Facades\Mail;
 
 class Index extends Component
@@ -15,32 +15,31 @@ class Index extends Component
     public $search = '';
     public $filterDate = '';
     public $filterStatus = '';
-    public $selectedReservation = null;
+    public $selectedCommand = null;
     public $showModal = false;
 
     protected $queryString = ['search', 'filterDate', 'filterStatus'];
 
-    public function showReservationDetails($id)
+    public function showCommandDetails($id)
     {
-        $this->selectedReservation = Reservation::find($id);
+        $this->selectedCommand = Command::with('items')->find($id);
         $this->showModal = true;
     }
 
     public function closeModal()
     {
         $this->showModal = false;
-        $this->selectedReservation = null;
+        $this->selectedCommand = null;
     }
 
     public function updateStatus($id, $status)
     {
-        $reservation = Reservation::find($id);
-        $reservation->status = $status;
-        $reservation->save();
+        $command = Command::find($id);
+        $command->status = $status;
+        $command->save();
 
-        // Envoyer l'email de notification
-        if ($reservation->email) {
-            Mail::to($reservation->email)->send(new ReservationStatusChanged($reservation));
+        if ($command->email) {
+            Mail::to($command->email)->send(new CommandStatusChanged($command));
         }
 
         $this->dispatchBrowserEvent('showToast', [
@@ -51,7 +50,7 @@ class Index extends Component
 
     public function render()
     {
-        $reservations = Reservation::query()
+        $commands = Command::query()
             ->when($this->search, function($query) {
                 $query->where(function($q) {
                     $q->where('customer_name', 'like', '%' . $this->search . '%')
@@ -60,16 +59,16 @@ class Index extends Component
                 });
             })
             ->when($this->filterDate, function($query) {
-                $query->whereDate('date', $this->filterDate);
+                $query->whereDate('created_at', $this->filterDate);
             })
             ->when($this->filterStatus, function($query) {
                 $query->where('status', $this->filterStatus);
             })
-            ->orderBy('date', 'desc')
+            ->orderBy('created_at', 'desc')
             ->paginate(10);
 
-        return view('livewire.dashboard.reservations.index', [
-            'reservations' => $reservations
+        return view('livewire.dashboard.commandes.index', [
+            'commands' => $commands
         ])->extends('layouts.base')->section('content');
     }
 }
