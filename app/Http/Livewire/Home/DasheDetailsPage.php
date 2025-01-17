@@ -1596,7 +1596,6 @@ class DasheDetailsPage extends Component
 
     public function addToCart($dishTitle, $dishPrice)
     {
-        dd($dishTitle, $dishPrice);
         $found = false;
         foreach ($this->cart as &$item) {
             if ($item['dish_name'] === $dishTitle) {

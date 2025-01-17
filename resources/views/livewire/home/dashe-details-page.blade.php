@@ -99,9 +99,9 @@
                         <div class="d-flex justify-content-between">
                             <h6>{{ $item['dish_name'] }}</h6>
                             <div class="quantity-controls">
-                                <button wire:click="updateQuantity({{ $index }}, -1)">-</button>
+                                <button class="form-control" wire:click="updateQuantity({{ $index }}, -1)">-</button>
                                 <span>{{ $item['quantity'] }}</span>
-                                <button wire:click="updateQuantity({{ $index }}, 1)">+</button>
+                                <button class="form-control" wire:click="updateQuantity({{ $index }}, 1)">+</button>
                             </div>
                         </div>
                         <div class="d-flex justify-content-between align-items-center">
@@ -122,6 +122,48 @@
                         <button class="btn btn-primary" wire:click="$set('showCommandForm', true)">Commander</button>
                     </div>
                 @endif
+            </div>
+        </div>
+
+        <div class="command-form {{ $showCommandForm ? 'active' : '' }}">
+            <div class="command-header">
+                <h5>Finaliser votre commande</h5>
+                <button type="button" class="btn-close" wire:click="$set('showCommandForm', false)"></button>
+            </div>
+            
+            <div class="command-body">
+                <form wire:submit.prevent="placeCommand">
+                    <div class="mb-3">
+                        <label class="form-label">Nom complet</label>
+                        <input type="text" class="form-control" wire:model="commandForm.customer_name">
+                        @error('commandForm.customer_name') <span class="text-danger">{{ $message }}</span> @enderror
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Téléphone</label>
+                        <input type="tel" class="form-control" wire:model="commandForm.phone">
+                        @error('commandForm.phone') <span class="text-danger">{{ $message }}</span> @enderror
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Email (optionnel)</label>
+                        <input type="email" class="form-control" wire:model="commandForm.email">
+                        @error('commandForm.email') <span class="text-danger">{{ $message }}</span> @enderror
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Adresse de livraison</label>
+                        <textarea class="form-control" wire:model="commandForm.delivery_address"></textarea>
+                        @error('commandForm.delivery_address') <span class="text-danger">{{ $message }}</span> @enderror
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Notes (optionnel)</label>
+                        <textarea class="form-control" wire:model="commandForm.notes"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100">Confirmer la commande</button>
+                </form>
             </div>
         </div>
     </div>
@@ -345,10 +387,17 @@
             padding: 10px;
         }
 
+        .cart-counter i {
+            font-size: 24px;
+            color: #333;
+        }
+
         .cart-counter .badge {
             position: absolute;
-            top: 0;
-            right: 0;
+            top: -5px;
+            right: -5px;
+            font-size: 12px;
+            padding: 4px 8px;
         }
 
         .cart-panel {
@@ -467,6 +516,38 @@
             display: flex;
             gap: 10px;
             margin-top: 1rem;
+        }
+
+        .command-form {
+            position: fixed;
+            right: -400px;
+            top: 0;
+            width: 400px;
+            height: 100vh;
+            background: white;
+            box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+            transition: right 0.3s ease;
+            z-index: 1001;
+            padding: 1rem;
+        }
+
+        .command-form.active {
+            right: 0;
+        }
+
+        .command-header {
+            padding-bottom: 1rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .command-body {
+            overflow-y: auto;
+            height: calc(100vh - 80px);
+            padding-right: 1rem;
         }
     </style>
 </div>
