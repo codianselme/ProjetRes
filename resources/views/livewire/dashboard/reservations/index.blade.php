@@ -74,37 +74,68 @@
                                                     <span>{{ $reservation->persons }} personnes</span>
                                                 </div>
                                                 <div class="nk-tb-col">
-                                                
                                                     @switch($reservation->status)
                                                         @case('pending')
-                                                            <span class="badge badge-dim badge-warning d-none d-md-inline-flex">
+                                                            <span class="badge text-bg-warning d-md-inline-flex">
                                                                 <em class="icon ni ni-clock"></em>
                                                                 <span>En attente</span>
                                                             </span>
                                                             @break
                                                         
                                                         @case('confirmed')
-                                                            <span class="badge badge-dim badge-success d-none d-md-inline-flex">
+                                                            <span class="badge text-bg-success d-md-inline-flex">
                                                                 <em class="icon ni ni-check-circle"></em>
                                                                 <span>Confirmée</span>
                                                             </span>
                                                             @break
                                                             
                                                         @case('cancelled')
-                                                            <span class="badge badge-dim badge-danger d-none d-md-inline-flex">
+                                                            <span class="badge text-bg-danger d-md-inline-flex">
                                                                 <em class="icon ni ni-cross-circle"></em>
                                                                 <span>Annulée</span>
                                                             </span>
                                                             @break
                                                             
                                                         @default
-                                                            <span class="badge badge-dim badge-secondary d-none d-md-inline-flex">
+                                                            <span class="badge text-bg-secondary d-md-inline-flex">
                                                                 <span>{{ $reservation->status }}</span>
                                                             </span>
                                                     @endswitch
                                                 </div>
-                                                <div class="nk-tb-col nk-tb-col-tools">
-                                                    
+                                                <div class="nk-tb-col nk-tb-col-tools text-right">
+                                                    <ul class="nk-tb-actions gx-1 justify-content-center">
+                                                        <li>
+                                                            <div class="drodown d-inline-block">
+                                                                <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-bs-toggle="dropdown">
+                                                                    <em class="icon ni ni-more-h"></em>
+                                                                </a>
+                                                                <div class="dropdown-menu">
+                                                                    <ul class="link-list-opt no-bdr">
+                                                                        <li>
+                                                                            <a href="#" wire:click.prevent="showReservationDetails({{ $reservation->id }})">
+                                                                                <em class="icon ni ni-eye"></em>
+                                                                                <span>Voir détails</span>
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a href="#" wire:click.prevent="updateStatus({{ $reservation->id }}, 'confirmed')" 
+                                                                               @if($reservation->status === 'confirmed') class="disabled" @endif>
+                                                                                <em class="icon ni ni-check-circle"></em>
+                                                                                <span>Confirmer</span>
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a href="#" wire:click.prevent="updateStatus({{ $reservation->id }}, 'cancelled')"
+                                                                               @if($reservation->status === 'cancelled') class="disabled" @endif>
+                                                                                <em class="icon ni ni-cross-circle"></em>
+                                                                                <span>Annuler</span>
+                                                                            </a>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
                                                 </div>
                                             </div>
                                         @endforeach
@@ -124,47 +155,108 @@
 
     @if($showModal)
         <div class="modal fade show" style="display: block;">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Détails de la réservation</h5>
-                        <button wire:click="closeModal" class="close">
-                            <span>&times;</span>
+                    <div class="modal-header bg-primary">
+                        <h5 class="modal-title text-white">Détails de la réservation</h5>
+                        <button wire:click="closeModal" class="close text-white">
+                            <em class="icon ni ni-cross"></em>
                         </button>
                     </div>
-                    <div class="modal-body">
-                        <!-- Détails de la réservation -->
-                        <div class="form-group">
-                            <label class="form-label">Client</label>
-                            <input type="text" class="form-control" value="{{ $selectedReservation->customer_name }}" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Téléphone</label>
-                            <input type="text" class="form-control" value="{{ $selectedReservation->phone }}" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Email</label>
-                            <input type="text" class="form-control" value="{{ $selectedReservation->email }}" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Date et Heure</label>
-                            <input type="text" class="form-control" value="{{ \Carbon\Carbon::parse($selectedReservation->date)->format('d/m/Y') }} à {{ \Carbon\Carbon::parse($selectedReservation->time)->format('H:i') }}" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Nombre de personnes</label>
-                            <input type="text" class="form-control" value="{{ $selectedReservation->persons }}" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Demandes spéciales</label>
-                            <textarea class="form-control" rows="3" readonly>{{ $selectedReservation->special_requests }}</textarea>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Statut</label>
-                            <input type="text" class="form-control" value="{{ $selectedReservation->status }}" readonly>
+                    <div class="modal-body p-4">
+                        <div class="card card-bordered h-100">
+                            <div class="card-inner">
+                                <div class="card-title-group align-start mb-3">
+                                    <div class="card-title">
+                                        <h6 class="title">Informations de la réservation</h6>
+                                        <p class="text-soft">
+                                            Réservation #{{ $selectedReservation->id }}
+                                        </p>
+                                    </div>
+                                    <div class="card-tools">
+                                        @switch($selectedReservation->status)
+                                            @case('pending')
+                                                <span class="badge badge-dim badge-warning d-md-inline-flex">
+                                                    <em class="icon ni ni-clock me-1"></em>
+                                                    <span>En attente</span>
+                                                </span>
+                                                @break
+                                            @case('confirmed')
+                                                <span class="badge badge-dim badge-success d-md-inline-flex">
+                                                    <em class="icon ni ni-check-circle me-1"></em>
+                                                    <span>Confirmée</span>
+                                                </span>
+                                                @break
+                                            @case('cancelled')
+                                                <span class="badge badge-dim badge-danger d-md-inline-flex">
+                                                    <em class="icon ni ni-cross-circle me-1"></em>
+                                                    <span>Annulée</span>
+                                                </span>
+                                                @break
+                                        @endswitch
+                                    </div>
+                                </div>
+                                <div class="row g-4">
+                                    <div class="col-sm-6">
+                                        <div class="detail-group">
+                                            <label class="overline-title text-primary-alt mb-2">
+                                                <em class="icon ni ni-user me-2"></em>Client
+                                            </label>
+                                            <p class="fs-15px">{{ $selectedReservation->customer_name }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="detail-group">
+                                            <label class="overline-title text-primary-alt mb-2">
+                                                <em class="icon ni ni-call me-2"></em>Téléphone
+                                            </label>
+                                            <p class="fs-15px">{{ $selectedReservation->phone }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="detail-group">
+                                            <label class="overline-title text-primary-alt mb-2">
+                                                <em class="icon ni ni-mail me-2"></em>Email
+                                            </label>
+                                            <p class="fs-15px">{{ $selectedReservation->email }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="detail-group">
+                                            <label class="overline-title text-primary-alt mb-2">
+                                                <em class="icon ni ni-calendar me-2"></em>Date et Heure
+                                            </label>
+                                            <p class="fs-15px">
+                                                {{ \Carbon\Carbon::parse($selectedReservation->date)->format('d/m/Y') }}
+                                                à {{ \Carbon\Carbon::parse($selectedReservation->time)->format('H:i') }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="detail-group">
+                                            <label class="overline-title text-primary-alt mb-2">
+                                                <em class="icon ni ni-users me-2"></em>Nombre de personnes
+                                            </label>
+                                            <p class="fs-15px">{{ $selectedReservation->persons }} personnes</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="detail-group">
+                                            <label class="overline-title text-primary-alt mb-2">
+                                                <em class="icon ni ni-notes me-2"></em>Demandes spéciales
+                                            </label>
+                                            <p class="fs-15px">{{ $selectedReservation->special_requests ?: 'Aucune demande spéciale' }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button wire:click="closeModal" class="btn btn-secondary">Fermer</button>
+                    <div class="modal-footer bg-light">
+                        <button wire:click="closeModal" class="btn btn-outline-primary">
+                            <em class="icon ni ni-cross me-1"></em>
+                            <span>Fermer</span>
+                        </button>
                     </div>
                 </div>
             </div>
