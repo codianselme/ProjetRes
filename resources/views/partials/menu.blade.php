@@ -193,6 +193,24 @@
                         </ul><!-- .nk-menu-sub -->
                     </li><!-- .nk-menu-item -->
 
+                    <li class="nk-menu-item has-sub">
+                        <a href="#" class="nk-menu-link nk-menu-toggle">
+                            <span class="nk-menu-icon"><em class="icon ni ni-calendar-booking"></em></span>
+                            <span class="nk-menu-text">Gestion Client</span>
+                        </a>
+                        <ul class="nk-menu-sub">
+                            <li class="nk-menu-item">
+                                <a href="{{ route('dashboard.reservations') }}" class="nk-menu-link">
+                                    <span class="nk-menu-text">Réservations</span>
+                                </a>
+                            </li>
+                            <li class="nk-menu-item">
+                                <a href="{{ route('dashboard.contacts') }}" class="nk-menu-link">
+                                    <span class="nk-menu-text">Messages Contact</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                     
                     <li class="nk-menu-item has-sub">
                     {{-- @can("_menu_rapport")  --}}
@@ -227,6 +245,7 @@
                         </a>
                     {{-- @endcan --}}
                     </li><!-- .nk-menu-item -->
+
                 </ul><!-- .nk-menu -->
             </div><!-- .nk-sidebar-menu -->
         </div><!-- .nk-sidebar-content -->

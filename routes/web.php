@@ -125,5 +125,8 @@ Route::middleware([ 'auth:sanctum', config('jetstream.auth_session'), 'verified'
         
         Route::get('parametrage/', App\Http\Livewire\Dashboard\Parametre\Parametrage::class)->name('dashboard.Parametre.Parametrage');
 
+        Route::get('reservations', App\Http\Livewire\Dashboard\Reservations\Index::class)->name('dashboard.reservations');
+        Route::get('contacts', App\Http\Livewire\Dashboard\Contacts\Index::class)->name('dashboard.contacts');
+
     });
 });
