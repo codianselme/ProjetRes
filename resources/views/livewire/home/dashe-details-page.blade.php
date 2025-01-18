@@ -17,16 +17,20 @@
 
         @if($details)
             <div class="gallery-container mb-5">
-                <div class="main-image-container mb-4">
+                <div class="main-image-container mb-4 position-relative">
+                    <button class="nav-arrow prev" onclick="changeSlide(-1)">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    
                     <img src="{{ asset($details[0]['image']) }}" 
                         alt="{{ $details[0]['title'] }}"
                         class="main-image"
                         id="mainDisplayImage"
                         onclick="openZoom()">
-                    {{-- <div class="image-caption">
-                        <h4 class="title mb-2" id="mainImageTitle">{{ $details[0]['title'] }}</h4>
-                        <p class="description mb-0" id="mainImageDescription">{{ $details[0]['description'] }}</p>
-                    </div> --}}
+                        
+                    <button class="nav-arrow next" onclick="changeSlide(1)">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
                 </div>
                 
                 <div class="thumbnails-container">
@@ -200,6 +204,35 @@
 
         // Ajout de l'événement de clic sur l'image principale
         document.getElementById('mainDisplayImage').addEventListener('click', openZoom);
+
+        function changeSlide(direction) {
+            const thumbnails = document.querySelectorAll('.thumbnail');
+            const currentImage = document.getElementById('mainDisplayImage');
+            let currentIndex = 0;
+            
+            // Trouver l'index de l'image actuelle
+            thumbnails.forEach((thumb, index) => {
+                if (thumb.querySelector('img').classList.contains('active')) {
+                    currentIndex = index;
+                }
+            });
+            
+            // Calculer le nouvel index
+            let newIndex = currentIndex + direction;
+            if (newIndex >= thumbnails.length) newIndex = 0;
+            if (newIndex < 0) newIndex = thumbnails.length - 1;
+            
+            // Simuler le clic sur la nouvelle miniature
+            const newThumbnail = thumbnails[newIndex];
+            const clickEvent = new Event('click');
+            newThumbnail.dispatchEvent(clickEvent);
+            
+            // Mettre à jour la classe active
+            document.querySelectorAll('.thumbnail img').forEach(img => {
+                img.classList.remove('active');
+            });
+            newThumbnail.querySelector('img').classList.add('active');
+        }
     </script>
 
     
@@ -258,7 +291,7 @@
 
         .main-image-container {
             position: relative;
-            height: 700px;
+            height: 500px;
             overflow: hidden;
             border-radius: 10px;
             cursor: zoom-in;
@@ -548,6 +581,40 @@
             overflow-y: auto;
             height: calc(100vh - 80px);
             padding-right: 1rem;
+        }
+
+        .nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .nav-arrow:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .nav-arrow.prev {
+            left: 20px;
+        }
+
+        .nav-arrow.next {
+            right: 20px;
+        }
+
+        .nav-arrow i {
+            font-size: 18px;
         }
     </style>
 </div>
