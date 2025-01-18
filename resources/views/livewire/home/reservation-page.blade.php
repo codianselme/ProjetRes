@@ -15,7 +15,7 @@
                 </div>
             </div>
         </div>
-        <section id="reservation-form" class="py-5">
+        <section id="reservation-form" class="py-5"> 
             <div class="container">
                 <div class="row">
                     <div class="col">

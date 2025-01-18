@@ -3,7 +3,6 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
@@ -14,13 +13,15 @@ class ContactFormMail extends Mailable
     use Queueable, SerializesModels;
 
     public $contact;
+    public $type;
 
     /**
      * Create a new message instance.
      */
-    public function __construct($contact)
+    public function __construct($contact, $type = 'admin')
     {
         $this->contact = $contact;
+        $this->type = $type;
     }
 
     /**
@@ -28,15 +29,13 @@ class ContactFormMail extends Mailable
      */
     public function envelope(): Envelope
     {
-        return new Envelope(
-            subject: 'Contact Form Mail',
-        );
-    }
+        $subject = $this->type === 'admin' 
+            ? 'Nouveau message de contact' 
+            : 'Confirmation de votre message - Les Saveurs du Corridor';
 
-    public function build()
-    {
-        return $this->subject('Nouveau message de contact')
-                    ->view('emails.contact-form');
+        return new Envelope(
+            subject: $subject,
+        );
     }
 
     /**
@@ -44,15 +43,17 @@ class ContactFormMail extends Mailable
      */
     public function content(): Content
     {
+        $view = $this->type === 'admin' 
+            ? 'emails.contact-form'
+            : 'emails.contact-confirmation-form';
+
         return new Content(
-            view: 'emails.contact-form',
+            view: $view,
         );
     }
 
     /**
      * Get the attachments for the message.
-     *
-     * @return array<int, \Illuminate\Mail\Mailables\Attachment>
      */
     public function attachments(): array
     {

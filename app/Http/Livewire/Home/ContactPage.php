@@ -48,28 +48,32 @@ class ContactPage extends Component
                 'name' => $this->name,
                 'email' => $this->email,
                 'phone' => $this->phone,
-                'website' => $this->website,
+                //'website' => $this->website,
                 'message' => $this->message,
             ]);
 
+            // Envoi du mail aux administrateurs
             $adminUsers = User::whereHas('roles', function ($query) {
-                $query->whereIn('name', ['Super Admin', 'Admin']);
+                $query->whereIn('name', ['Super Admin', 'Admin', 'Gestionnaire', 'Gérante']);
             })->get();
 
             if (!$adminUsers->isEmpty()) {
                 foreach ($adminUsers as $adminUser) {
-                    // Envoi de l'e-mail
-                    Mail::to($adminUser->email)->send(new ContactFormMail($this));
+                    Mail::to($adminUser->email)->send(new ContactFormMail($this, 'admin'));
                 }
+            }
+
+            // Envoi du mail de confirmation à l'expéditeur
+            if ($this->email) {
+                Mail::to($this->email)->send(new ContactFormMail($this, 'client'));
             }
 
             // Réinitialiser le formulaire
             $this->reset();
 
-            // Optionnel : ajouter un message de succès
             Alert::success('Succès', 'Votre message a été envoyé avec succès !');
         } catch (\Exception $e) {
-            dd($e);
+            // dd($e);
             Alert::error('Erreur', "Une erreur est survenue lors de l'envoi du message.");
         }
 

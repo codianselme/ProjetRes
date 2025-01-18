@@ -2,9 +2,13 @@
 
 namespace App\Http\Livewire\Home;
 
-use Livewire\Component;
+use App\Models\User;
 use App\Models\Command;
+use Livewire\Component;
+use App\Mail\CommandMail;
 use App\Models\CommandItem;
+use Illuminate\Support\Facades\Mail;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class DasheDetailsPage extends Component
 {
@@ -28,6 +32,19 @@ class DasheDetailsPage extends Component
         'commandForm.phone' => 'required|regex:/^[0-9]{8,}$/',
         'commandForm.email' => 'nullable|email',
         'commandForm.delivery_address' => 'required|min:10',
+    ];
+
+    protected $messages = [
+        'commandForm.customer_name.required' => 'Le nom est obligatoire',
+        'commandForm.customer_name.min' => 'Le nom doit contenir au moins 3 caractères',
+        
+        'commandForm.phone.required' => 'Le numéro de téléphone est obligatoire',
+        'commandForm.phone.regex' => 'Le numéro de téléphone doit contenir au moins 8 chiffres',
+        
+        'commandForm.email.email' => 'Veuillez entrer une adresse email valide',
+        
+        'commandForm.delivery_address.required' => 'L\'adresse de livraison est obligatoire',
+        'commandForm.delivery_address.min' => 'L\'adresse doit contenir au moins 10 caractères',
     ];
 
     public function mount($slug)
@@ -1635,40 +1652,57 @@ class DasheDetailsPage extends Component
         $this->validate();
 
         try {
-            $totalAmount = collect($this->cart)->sum(function($item) {
-                return $item['price'] * $item['quantity'];
-            });
-
+            // Création de la commande
             $command = Command::create([
                 'customer_name' => $this->commandForm['customer_name'],
                 'phone' => $this->commandForm['phone'],
                 'email' => $this->commandForm['email'],
                 'delivery_address' => $this->commandForm['delivery_address'],
-                'total_amount' => $totalAmount,
+                'notes' => $this->commandForm['notes'],
+                'total_amount' => collect($this->cart)->sum(fn($item) => $item['price'] * $item['quantity']),
                 'status' => 'pending'
             ]);
 
+            // Enregistrement des items de la commande
             foreach ($this->cart as $item) {
                 CommandItem::create([
                     'command_id' => $command->id,
                     'dish_name' => $item['dish_name'],
                     'quantity' => $item['quantity'],
-                    'price' => $item['price'],
-                    'notes' => $item['notes'] ?? null
+                    'price' => $item['price']
                 ]);
             }
 
-            $this->cart = [];
-            $this->showCommandForm = false;
-            $this->reset('commandForm');
+            // Envoi du mail aux gérants
+            $managers = User::whereHas('roles', function ($query) {
+                $query->where('name', 'Gérante');
+            })->get();
+
+            foreach ($managers as $manager) {
+                Mail::to($manager->email)->send(new CommandMail($command, $this->cart, 'admin'));
+            }
+
+            // Envoi du mail de confirmation au client s'il a fourni un email
+            if ($this->commandForm['email']) {
+                Mail::to($this->commandForm['email'])->send(new CommandMail($command, $this->cart, 'client'));
+            }
+
+            // Réinitialisation du formulaire et du panier
+            $this->reset(['cart', 'commandForm', 'showCommandForm']);
             
-            $this->dispatchBrowserEvent('showToast', [
-                'message' => 'Commande effectuée avec succès!'
-            ]);
+            // Message de succès
+            // $this->dispatch('alert', [
+            //     'type' => 'success',
+            //     'message' => 'Votre commande a été enregistrée avec succès !'
+            // ]);
+
+            Alert::success('Votre commande a été enregistrée avec succès !');
+
         } catch (\Exception $e) {
-            $this->dispatchBrowserEvent('showToast', [
-                'message' => 'Erreur lors de la commande: ' . $e->getMessage(),
-                'type' => 'error'
+            // Message d'erreur
+            $this->dispatch('alert', [
+                'type' => 'error',
+                'message' => 'Une erreur est survenue lors de l\'enregistrement de la commande.'
             ]);
         }
 

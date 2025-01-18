@@ -82,25 +82,30 @@
                     <div class="alert alert-success mt-3">{{ session('success') }}</div>
                 @endif
 
-                <form class="row position-relative" {{-- wire:click="submit" --}}>
+                <form class="row position-relative" wire:submit.prevent="submit">
                     <div class="form-group col-md-12 mb-4">
-                        <input type="text" class="form-control" wire:model="name" placeholder="Nom Complet">
-                        @error('name') <span class="text-danger">{{ $message }}</span> @enderror
+                        <input type="text" class="form-control @error('name') is-invalid @enderror" 
+                               wire:model.live="name" placeholder="Nom Complet">
+                        @error('name') <span class="invalid-feedback">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group col-md-6 mb-4">
-                        <input type="email" class="form-control" wire:model="email" placeholder="Adresse e-mail">
-                        @error('email') <span class="text-danger">{{ $message }}</span> @enderror
+                        <input type="email" class="form-control @error('email') is-invalid @enderror" 
+                               wire:model.live="email" placeholder="Adresse e-mail">
+                        @error('email') <span class="invalid-feedback">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group col-md-6 mb-4">
-                        <input type="number" class="form-control" wire:model="phone" placeholder="Numéro de téléphone">
-                        @error('phone') <span class="text-danger">{{ $message }}</span> @enderror
+                        <input type="tel" class="form-control @error('phone') is-invalid @enderror" 
+                               wire:model.live="phone" placeholder="Numéro de téléphone">
+                        @error('phone') <span class="invalid-feedback">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group col-md-12 mb-4">
-                        <textarea wire:model="message" rows="5" class="form-control" placeholder="Écrire un message"></textarea>
-                        @error('message') <span class="text-danger">{{ $message }}</span> @enderror
+                        <textarea wire:model.live="message" rows="5" 
+                                  class="form-control @error('message') is-invalid @enderror" 
+                                  placeholder="Écrire un message"></textarea>
+                        @error('message') <span class="invalid-feedback">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group col-md-12 mb-3 text-center">
-                        <button type="button" wire:click="submit" class="btn link-button">Envoyez-nous un message</button>
+                        <button type="submit" class="btn link-button">Envoyez-nous un message</button>
                     </div>
                 </form>
             </div>

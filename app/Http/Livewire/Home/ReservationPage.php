@@ -5,6 +5,9 @@ namespace App\Http\Livewire\Home;
 use Livewire\Component;
 use App\Models\Reservation;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\Mail\ReservationMail;
+use App\Models\User;
+use Illuminate\Support\Facades\Mail;
 
 class ReservationPage extends Component
 {
@@ -21,8 +24,8 @@ class ReservationPage extends Component
         'date' => 'required|date',
         'time' => 'required|date_format:H:i',
         'customer_name' => 'required|min:3',
-        'phone' => 'required|regex:/^[0-9]{8,}$/',
-        'email' => 'nullable|email',
+        'phone' => 'required', //|regex:/^[0-9]{8,}$/',
+        // 'email' => 'nullable|email',
         'special_requests' => 'nullable|string|max:500'
     ];
 
@@ -44,12 +47,10 @@ class ReservationPage extends Component
     public function submit()
     {
         try {
-            // dd($this->all());
-
             $this->validate();
 
-            // Enregistrement des données dans la base de données
-            Reservation::create([
+            // Enregistrement de la réservation
+            $reservation = Reservation::create([
                 'customer_name' => $this->customer_name,
                 'phone' => $this->phone,
                 'email' => $this->email,
@@ -60,16 +61,24 @@ class ReservationPage extends Component
                 'status' => 'pending'
             ]);
 
-            // Réinitialiser le formulaire
-            $this->reset();
+            // Envoi du mail aux administrateurs
+            $adminUsers = User::whereHas('roles', function ($query) {
+                $query->whereIn('name', ['Super Admin', 'Admin', 'Gérante']);
+            })->get();
 
-            // Optionnel : ajouter un message de succès
-            // session()->flash('success', 'Votre réservation a été effectuée avec succès !');
+            foreach ($adminUsers as $adminUser) {
+                Mail::to($adminUser->email)->send(new ReservationMail($reservation, 'admin'));
+            }
+
+            // Envoi du mail de confirmation au client s'il a fourni un email
+            if ($this->email) {
+                Mail::to($this->email)->send(new ReservationMail($reservation, 'client'));
+            }
+
+            $this->reset();
             Alert::success('Succès', 'Votre réservation a été effectuée avec succès !');
             
         } catch (\Exception $e) {
-            dd($e);
-            // Gérer l'erreur
             Alert::error('Erreur', "Une erreur est survenue lors de la réservation : " . $e->getMessage());
         }
 
