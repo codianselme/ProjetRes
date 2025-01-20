@@ -4,88 +4,99 @@ namespace App\Helpers;
 
 class NumberToWords
 {
+    private static $units = [
+        0 => "", 1 => "un", 2 => "deux", 3 => "trois", 4 => "quatre", 
+        5 => "cinq", 6 => "six", 7 => "sept", 8 => "huit", 9 => "neuf"
+    ];
+    
+    private static $teens = [
+        0 => "dix", 1 => "onze", 2 => "douze", 3 => "treize", 4 => "quatorze", 
+        5 => "quinze", 6 => "seize", 7 => "dix-sept", 8 => "dix-huit", 9 => "dix-neuf"
+    ];
+    
+    private static $tens = [
+        0 => "", 1 => "dix", 2 => "vingt", 3 => "trente", 4 => "quarante", 
+        5 => "cinquante", 6 => "soixante", 7 => "soixante", 8 => "quatre-vingt", 9 => "quatre-vingt"
+    ];
+
     public static function convert($number)
     {
-        $units = ["", "un", "deux", "trois", "quatre", "cinq", "six", "sept", "huit", "neuf"];
-        $tens = ["", "dix", "vingt", "trente", "quarante", "cinquante", "soixante", "soixante-dix", "quatre-vingt", "quatre-vingt-dix"];
-        $teens = ["dix", "onze", "douze", "treize", "quatorze", "quinze", "seize", "dix-sept", "dix-huit", "dix-neuf"];
-        
         if ($number === 0) {
             return "zéro";
         }
 
-        $words = "";
-        
+        if ($number < 0) {
+            return "moins " . self::convert(abs($number));
+        }
+
+        $words = [];
+
         // Milliards
-        if ($number >= 1000000000) {
-            $words .= self::convert(floor($number / 1000000000)) . " milliard" . (floor($number / 1000000000) > 1 ? "s" : "") . " ";
+        $billions = floor($number / 1000000000);
+        if ($billions > 0) {
+            $words[] = ($billions === 1 ? "un" : self::convert($billions)) . " milliard" . ($billions > 1 ? "s" : "");
             $number %= 1000000000;
         }
-        
+
         // Millions
-        if ($number >= 1000000) {
-            $words .= self::convert(floor($number / 1000000)) . " million" . (floor($number / 1000000) > 1 ? "s" : "") . " ";
+        $millions = floor($number / 1000000);
+        if ($millions > 0) {
+            $words[] = ($millions === 1 ? "un" : self::convert($millions)) . " million" . ($millions > 1 ? "s" : "");
             $number %= 1000000;
         }
-        
+
         // Milliers
-        if ($number >= 1000) {
-            $thousands = floor($number / 1000);
-            if ($thousands === 1) {
-                $words .= "mille ";
-            } else {
-                $words .= self::convert($thousands) . " mille ";
-            }
+        $thousands = floor($number / 1000);
+        if ($thousands > 0) {
+            $words[] = $thousands === 1 ? "mille" : self::convert($thousands) . " mille";
             $number %= 1000;
         }
-        
+
         // Centaines
-        if ($number >= 100) {
-            if (floor($number / 100) === 1) {
-                $words .= "cent ";
-            } else {
-                $words .= $units[floor($number / 100)] . " cent ";
-            }
+        $hundreds = floor($number / 100);
+        if ($hundreds > 0) {
+            $words[] = $hundreds === 1 ? "cent" : self::convert($hundreds) . " cent";
             $number %= 100;
         }
-        
+
         // Dizaines et unités
-        if ($number >= 10) {
+        if ($number > 0) {
             if ($number < 20) {
-                $words .= $teens[$number - 10];
-                return trim($words);
-            }
-            
-            $ten = floor($number / 10);
-            $unit = $number % 10;
-            
-            if ($ten === 7 || $ten === 9) {
-                $words .= $tens[$ten-1];
-                if ($unit === 1) {
-                    $words .= " et ";
+                $words[] = $number < 10 ? self::$units[$number] : self::$teens[$number - 10];
+            } else {
+                $ten = floor($number / 10);
+                $unit = $number % 10;
+
+                if ($ten === 7 || $ten === 9) {
+                    // Cas particuliers : 70-79 et 90-99
+                    $baseWord = self::$tens[$ten];
+                    if ($unit === 1 && $ten === 7) {
+                        $words[] = $baseWord . " et " . self::$teens[$unit];
+                    } else {
+                        $words[] = $baseWord . "-" . self::$teens[$unit];
+                    }
                 } else {
-                    $words .= "-";
+                    // Autres dizaines
+                    $baseWord = self::$tens[$ten];
+                    if ($unit === 0) {
+                        $words[] = $baseWord . ($ten === 8 ? "s" : "");
+                    } else if ($unit === 1 && $ten !== 8) {
+                        $words[] = $baseWord . " et " . self::$units[$unit];
+                    } else {
+                        $words[] = $baseWord . "-" . self::$units[$unit];
+                    }
                 }
-                $words .= $teens[$unit];
-                return trim($words);
             }
-            
-            $words .= $tens[$ten];
-            if ($unit > 0) {
-                if ($ten !== 8 && $unit === 1) {
-                    $words .= " et ";
-                } else {
-                    $words .= "-";
-                }
-                $words .= $units[$unit];
-            }
-            if ($ten === 8 && $unit === 0) {
-                $words .= "s";
-            }
-        } else if ($number > 0) {
-            $words .= $units[$number];
         }
+
+        // Gestion des règles spéciales pour "cent" et "vingt"
+        $result = implode(" ", $words);
         
-        return trim($words);
+        // Règle pour "cents" au pluriel
+        if (preg_match('/^(.+) cent$/', $result) && !preg_match('/^un cent$/', $result)) {
+            $result .= "s";
+        }
+
+        return $result;
     }
 }

@@ -1,12 +1,15 @@
 @extends('layouts.invoices')
 
 @section('content')
+<div class="page-wrapper">
     <!-- Bouton d'impression - visible uniquement à l'écran -->
-    <div class="print-button">
-        <button onclick="window.print()" class="print-btn">
-            <i class="fas fa-print"></i> Imprimer le ticket
-        </button>
-    </div>
+    @if (isset($securityElementsDto) && isset($securityElementsDto['qrCode']))
+        <div class="print-button">
+            <button onclick="window.print()" class="print-btn">
+                <i class="fas fa-print"></i> Imprimer le ticket
+            </button>
+        </div>
+    @endif
 
     <div class="invoice-wrapper">
         <div class="invoice-content">
@@ -178,4 +181,64 @@
             </div>
         </div>
     </div>
+</div>
+
+<style>
+    .page-wrapper {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+    }
+
+    .invoice-wrapper {
+        background: white;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 450px;
+        margin: 20px auto;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .print-button {
+        margin-bottom: 20px;
+    }
+
+    .print-btn {
+        background: #2c3e50;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+    .print-btn:hover {
+        background: #34495e;
+    }
+
+    @media print {
+        .page-wrapper {
+            padding: 0;
+            display: block;
+        }
+
+        .invoice-wrapper {
+            box-shadow: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .print-button {
+            display: none;
+        }
+    }
+</style>
 @endsection
