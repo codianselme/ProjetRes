@@ -20,7 +20,7 @@
                                                     <select class="form-select" wire:model="orders.{{ $index }}.dish_id">
                                                         <option value="">Sélectionner un plat</option>
                                                         @foreach($dishes as $k => $dish)
-                                                            <option value="{{ $dish->id }}">{{ $k + 1 }}. {{ $dish->name }}</option>
+                                                            <option value="{{ $dish->id }}">{{ $k + 1 }}. {{ $dish->name }} - {{ $dish->price }} FCFA</option>
                                                         @endforeach
                                                     </select>
                                                     @error('orders.'.$index.'.dish_id') <span class="text-danger">{{ $message }}</span> @enderror
