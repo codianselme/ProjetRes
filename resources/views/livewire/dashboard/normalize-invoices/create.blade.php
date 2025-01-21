@@ -83,7 +83,7 @@
                 </table>
             </div>
 
-            <br>
+            
 
             <div>
                 <table class="invoice-items">
@@ -149,7 +149,7 @@
                 </table>
             </div>
 
-            <br>
+            
 
             <div class="invoice-footer">
                 <p>
@@ -195,7 +195,7 @@
 
     .invoice-wrapper {
         background: white;
-        padding: 30px;
+        padding: 5px;
         border-radius: 8px;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         width: 100%;
