@@ -31,7 +31,7 @@ class DasheDetailsPage extends Component
         'commandForm.customer_name' => 'required|min:3',
         'commandForm.phone' => 'required|regex:/^[0-9]{8,}$/',
         'commandForm.email' => 'nullable|email',
-        'commandForm.delivery_address' => 'required|min:10',
+        'commandForm.delivery_address' => 'required', //|min:10',
     ];
 
     protected $messages = [

@@ -15,12 +15,20 @@
         <div class="invoice-content">
             <!-- En-tête de la facture -->
             <div class="invoice-header">
-                <img src="{{ asset('home/site-images/logo.png') }}" alt="Logo" class="logo">
-                <h1>BAR RESTAURANT<br>LES SAVEURS DU CORIDOR</h1>
-                <p><strong>RCCM :</strong> {{ env('RCCM') }} | <strong>IFU :</strong> {{ env('SGMEF_IFU') }}</p>
-                <p><strong>Tél :</strong> {{ env('TEL') }}</p>
-                <p><strong>Email :</strong> {{ env('EMAIL') }}</p>
-                <p><strong>Adresse :</strong> {{ env('ADDR') }}</p>
+                <div class="header-content">
+                    <div class="logo-container">
+                        <img src="{{ asset('home/site-images/logo.png') }}" alt="Logo" class="logo">
+                    </div>
+                    <div class="company-info">
+                        <h1>BAR RESTAURANT<br>LES SAVEURS DU CORIDOR</h1>
+                        <div class="company-details">
+                            <p><strong>RCCM :</strong> {{ env('RCCM') }} | <strong>IFU :</strong> {{ env('SGMEF_IFU') }}</p>
+                            <p><strong>Tél :</strong> {{ env('TEL') }}</p>
+                            <p><strong>Email :</strong> {{ env('EMAIL') }}</p>
+                            <p><strong>Adresse :</strong> {{ env('ADDR') }}</p>
+                        </div>
+                    </div>
+                </div>
                 <hr>
             </div>
 
@@ -239,6 +247,58 @@
         .print-button {
             display: none;
         }
+    }
+
+    .invoice-header {
+        margin-bottom: 20px;
+    }
+
+    .header-content {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        margin-bottom: 15px;
+    }
+
+    .logo-container {
+        flex: 0 0 auto;
+    }
+
+    .logo {
+        width: 120px;
+        height: auto;
+        object-fit: contain;
+    }
+
+    .company-info {
+        flex: 1;
+    }
+
+    .company-info h1 {
+        font-size: 18px;
+        font-weight: bold;
+        margin: 0 0 10px 0;
+        color: #2c3e50;
+        line-height: 1.3;
+    }
+
+    .company-details {
+        font-size: 14px;
+    }
+
+    .company-details p {
+        margin: 5px 0;
+        color: #444;
+    }
+
+    .company-details strong {
+        color: #2c3e50;
+    }
+
+    hr {
+        border: none;
+        border-top: 1px solid #ddd;
+        margin: 15px 0;
     }
 </style>
 @endsection
