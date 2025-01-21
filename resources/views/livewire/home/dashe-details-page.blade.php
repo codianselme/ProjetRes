@@ -156,14 +156,43 @@
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label">Adresse de livraison</label>
-                        <textarea class="form-control" wire:model="commandForm.delivery_address"></textarea>
-                        @error('commandForm.delivery_address') <span class="text-danger">{{ $message }}</span> @enderror
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" wire:model="commandForm.needs_delivery" id="needsDelivery">
+                            <label class="form-check-label" for="needsDelivery">
+                                Je souhaite être livré(e) (Frais de livraison : 1000 FCFA)
+                            </label>
+                        </div>
                     </div>
+
+                    @if($commandForm['needs_delivery'])
+                        <div class="mb-3">
+                            <label class="form-label">Adresse de livraison</label>
+                            <textarea class="form-control" wire:model="commandForm.delivery_address"></textarea>
+                            @error('commandForm.delivery_address') <span class="text-danger">{{ $message }}</span> @enderror
+                        </div>
+                    @endif
 
                     <div class="mb-3">
                         <label class="form-label">Notes (optionnel)</label>
                         <textarea class="form-control" wire:model="commandForm.notes"></textarea>
+                    </div>
+
+                    <div class="order-summary mb-4">
+                        <h6 class="mb-3">Récapitulatif de la commande</h6>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Sous-total:</span>
+                            <span>{{ number_format($this->getSubtotal()) }} FCFA</span>
+                        </div>
+                        @if($commandForm['needs_delivery'])
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Frais de livraison:</span>
+                                <span>{{ number_format($this->deliveryFee) }} FCFA</span>
+                            </div>
+                        @endif
+                        <div class="d-flex justify-content-between fw-bold">
+                            <span>Total:</span>
+                            <span>{{ number_format($this->getTotal()) }} FCFA</span>
+                        </div>
                     </div>
 
                     <button type="submit" class="btn btn-primary w-100">Confirmer la commande</button>
@@ -615,6 +644,23 @@
 
         .nav-arrow i {
             font-size: 18px;
+        }
+
+        .order-summary {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        .order-summary .d-flex {
+            margin-bottom: 0.5rem;
+        }
+
+        .order-summary .fw-bold {
+            padding-top: 0.5rem;
+            border-top: 1px solid #dee2e6;
+            margin-top: 0.5rem;
         }
     </style>
 </div>

@@ -2,14 +2,18 @@
 
 @section('content')
 <div class="page-wrapper">
-    <!-- Bouton d'impression - visible uniquement à l'écran -->
-    @if (isset($securityElementsDto) && isset($securityElementsDto['qrCode']))
-        <div class="print-button">
+    <!-- Bouton de retour - visible uniquement à l'écran -->
+    <div class="navigation-buttons">
+        <a href="{{ route('dashboard.sales.sales') }}" class="back-btn">
+            <i class="fas fa-arrow-left"></i> Retour aux ventes
+        </a>
+        
+        @if (isset($securityElementsDto) && isset($securityElementsDto['qrCode']))
             <button onclick="window.print()" class="print-btn">
                 <i class="fas fa-print"></i> Imprimer le ticket
             </button>
-        </div>
-    @endif
+        @endif
+    </div>
 
     <div class="invoice-wrapper">
         <div class="invoice-content">
@@ -214,8 +218,30 @@
         transform: translateX(-50%);
     }
 
-    .print-button {
+    .navigation-buttons {
+        display: flex;
+        gap: 15px;
         margin-bottom: 20px;
+    }
+
+    .back-btn {
+        background: #34495e;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .back-btn:hover {
+        background: #2c3e50;
+        color: white;
+        text-decoration: none;
     }
 
     .print-btn {
@@ -226,6 +252,9 @@
         border-radius: 5px;
         cursor: pointer;
         transition: background 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 8px;
     }
 
     .print-btn:hover {
@@ -244,7 +273,7 @@
             margin: 0;
         }
 
-        .print-button {
+        .navigation-buttons {
             display: none;
         }
     }

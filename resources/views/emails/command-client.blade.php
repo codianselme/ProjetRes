@@ -160,6 +160,30 @@
             text-decoration: none;
             margin: 0 10px;
         }
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+        }
+        
+        .grand-total {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        
+        .delivery-fee {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        .highlight {
+            color: #e74c3c;
+            font-weight: 600;
+        }
     </style>
 </head>
 <body>
@@ -192,7 +216,20 @@
                 @endforeach
                 
                 <div class="order-total">
-                    Total à payer: {{ number_format($command->total_amount) }} FCFA
+                    <div class="total-row">
+                        <span>Sous-total:</span>
+                        <span>{{ number_format($command->total_amount) }} FCFA</span>
+                    </div>
+                    @if($command->needs_delivery)
+                        <div class="total-row">
+                            <span>Frais de livraison:</span>
+                            <span>{{ number_format($command->delivery_fee) }} FCFA</span>
+                        </div>
+                    @endif
+                    <div class="total-row grand-total">
+                        <span>Total à payer:</span>
+                        <span>{{ number_format($command->final_amount) }} FCFA</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -201,14 +238,23 @@
             <div class="section-title">Informations de Livraison</div>
             <div class="delivery-info">
                 <div class="delivery-detail">
-                    <div class="delivery-label">Adresse</div>
-                    <div class="delivery-value">{{ $command->delivery_address }}</div>
+                    <div class="delivery-label">Mode de livraison</div>
+                    <div class="delivery-value">
+                        @if($command->needs_delivery)
+                            Livraison à domicile
+                            <div class="delivery-fee">
+                                Frais de livraison : {{ number_format($command->delivery_fee) }} FCFA
+                            </div>
+                        @else
+                            À emporter
+                        @endif
+                    </div>
                 </div>
-                @if($command->notes)
-                <div class="notes">
-                    <div class="delivery-label">Notes spéciales</div>
-                    <div class="delivery-value">{{ $command->notes }}</div>
-                </div>
+                @if($command->needs_delivery)
+                    <div class="delivery-detail">
+                        <div class="delivery-label">Adresse</div>
+                        <div class="delivery-value">{{ $command->delivery_address }}</div>
+                    </div>
                 @endif
             </div>
         </div>

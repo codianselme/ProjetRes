@@ -43,6 +43,13 @@
                                                         <option value="cancelled">Annulée</option>
                                                     </select>
                                                 </div>
+                                                <div class="form-wrap w-150px">
+                                                    <select class="form-control" wire:model="filterDelivery">
+                                                        <option value="">Type de commande</option>
+                                                        <option value="delivery">Livraison</option>
+                                                        <option value="pickup">À emporter</option>
+                                                    </select>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -53,6 +60,7 @@
                                         <div class="nk-tb-item nk-tb-head">
                                             <div class="nk-tb-col"><span class="sub-text">Client</span></div>
                                             <div class="nk-tb-col"><span class="sub-text">Contact</span></div>
+                                            <div class="nk-tb-col"><span class="sub-text">Type</span></div>
                                             <div class="nk-tb-col"><span class="sub-text">Montant</span></div>
                                             <div class="nk-tb-col"><span class="sub-text">Date Demande</span></div>
                                             <div class="nk-tb-col"><span class="sub-text">Statut</span></div>
@@ -65,10 +73,18 @@
                                                     <span class="tb-lead">{{ $command->customer_name }}</span>
                                                 </div>
                                                 <div class="nk-tb-col">
-                                                    <span class="tb-lead">{{ number_format($command->total_amount, 0, ',', ' ') }} FCFA</span>
+                                                    <span class="tb-lead">{{ $command->phone }}</span>
                                                 </div>
                                                 <div class="nk-tb-col">
-                                                    <span class="tb-lead">{{ $command->phone }}</span>
+                                                    <span class="{{ $this->getDeliveryStatusBadgeClass($command) }}">
+                                                        {{ $this->getDeliveryStatusText($command) }}
+                                                    </span>
+                                                    @if($command->needs_delivery)
+                                                        <div class="text-muted small mt-1">{{ $command->delivery_address }}</div>
+                                                    @endif
+                                                </div>
+                                                <div class="nk-tb-col">
+                                                    <span class="tb-lead">{{ $this->getFormattedAmount($command) }}</span>
                                                 </div>
                                                 <div class="nk-tb-col">
                                                     <span>{{ $command->created_at->format('d/m/Y à H:i:s') }}</span>
@@ -200,10 +216,18 @@
                             </div>
                             <div class="col-12">
                                 <div class="form-group">
-                                    <label class="form-label">Adresse de livraison</label>
-                                    <textarea class="form-control" rows="2" readonly>{{ $selectedCommand->delivery_address }}</textarea>
+                                    <label class="form-label">Type de commande</label>
+                                    <input type="text" class="form-control" value="{{ $selectedCommand->needs_delivery ? 'Livraison à domicile' : 'À emporter' }}" readonly>
                                 </div>
                             </div>
+                            @if($selectedCommand->needs_delivery)
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label">Adresse de livraison</label>
+                                        <textarea class="form-control" rows="2" readonly>{{ $selectedCommand->delivery_address }}</textarea>
+                                    </div>
+                                </div>
+                            @endif
                             <div class="col-12">
                                 <h6 class="title">Articles commandés</h6>
                                 <div class="table-responsive">

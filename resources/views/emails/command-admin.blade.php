@@ -163,10 +163,21 @@
                 <div class="detail-label">Email</div>
                 <div class="detail-value">{{ $command->email ?? 'Non renseigné' }}</div>
             </div>
-            <div class="detail-row">
-                <div class="detail-label">Adresse de livraison</div>
-                <div class="detail-value">{{ $command->delivery_address }}</div>
-            </div>
+            @if($command->needs_delivery)
+                <div class="detail-row">
+                    <div class="detail-label">Mode de livraison</div>
+                    <div class="detail-value highlight">Livraison à domicile</div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Adresse de livraison</div>
+                    <div class="detail-value">{{ $command->delivery_address }}</div>
+                </div>
+            @else
+                <div class="detail-row">
+                    <div class="detail-label">Mode de livraison</div>
+                    <div class="detail-value">À emporter</div>
+                </div>
+            @endif
         </div>
 
         <div class="content-section">
@@ -184,7 +195,20 @@
                 @endforeach
                 
                 <div class="order-total">
-                    Total à payer: {{ number_format($command->total_amount) }} FCFA
+                    <div class="total-row">
+                        <span>Sous-total:</span>
+                        <span>{{ number_format($command->total_amount) }} FCFA</span>
+                    </div>
+                    @if($command->needs_delivery)
+                        <div class="total-row">
+                            <span>Frais de livraison:</span>
+                            <span>{{ number_format($command->delivery_fee) }} FCFA</span>
+                        </div>
+                    @endif
+                    <div class="total-row grand-total">
+                        <span>Total à payer:</span>
+                        <span>{{ number_format($command->final_amount) }} FCFA</span>
+                    </div>
                 </div>
             </div>
 

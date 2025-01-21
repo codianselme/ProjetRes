@@ -16,8 +16,11 @@ return new class extends Migration
             $table->string('customer_name');
             $table->string('phone');
             $table->string('email')->nullable();
-            $table->text('delivery_address');
+            $table->text('delivery_address')->nullable();
+            $table->boolean('needs_delivery')->default(false);
+            $table->decimal('delivery_fee', 10, 2)->default(0);
             $table->decimal('total_amount', 10, 2);
+            $table->decimal('final_amount', 10, 2);
             $table->enum('status', ['pending', 'confirmed', 'delivered', 'cancelled'])->default('pending');
             $table->timestamps();
         });
@@ -28,6 +31,8 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('commands');
+        Schema::enableForeignKeyConstraints();
     }
 };

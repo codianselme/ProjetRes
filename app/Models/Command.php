@@ -17,6 +17,9 @@ class Command extends Model
         'delivery_address',
         'total_amount',
         'status',
+        'delivery_fee',
+        'final_amount',
+        'needs_delivery',
     ];
 
     public function items(): HasMany

@@ -23,13 +23,15 @@ class DasheDetailsPage extends Component
         'phone' => '',
         'email' => '',
         'delivery_address' => '',
-        'notes' => ''
+        'notes' => '',
+        'needs_delivery' => false
     ];
     public $showCart = false;
+    protected $deliveryFee = 1000; // Frais de livraison fixe
 
     protected $rules = [
         'commandForm.customer_name' => 'required|min:3',
-        'commandForm.phone' => 'required|regex:/^[0-9]{8,}$/',
+        'commandForm.phone' => 'required', //|regex:/^[0-9]{8,}$/',
         'commandForm.email' => 'nullable|email',
         'commandForm.delivery_address' => 'required', //|min:10',
     ];
@@ -1647,19 +1649,37 @@ class DasheDetailsPage extends Component
         $this->cart[$index]['quantity'] = max(1, $this->cart[$index]['quantity'] + $change);
     }
 
+    public function getSubtotal()
+    {
+        return collect($this->cart)->sum(fn($item) => $item['price'] * $item['quantity']);
+    }
+
+    public function getTotal()
+    {
+        $subtotal = $this->getSubtotal();
+        return $subtotal + ($this->commandForm['needs_delivery'] ? $this->deliveryFee : 0);
+    }
+
     public function placeCommand()
     {
-        $this->validate();
+        
+        $this->validate([
+            'commandForm.customer_name' => 'required',
+            'commandForm.phone' => 'required',
+            'commandForm.email' => 'nullable|email',
+            'commandForm.delivery_address' => $this->commandForm['needs_delivery'] ? 'required' : 'nullable',
+        ]);
 
         try {
-            // Création de la commande
             $command = Command::create([
                 'customer_name' => $this->commandForm['customer_name'],
                 'phone' => $this->commandForm['phone'],
                 'email' => $this->commandForm['email'],
                 'delivery_address' => $this->commandForm['delivery_address'],
-                'notes' => $this->commandForm['notes'],
-                'total_amount' => collect($this->cart)->sum(fn($item) => $item['price'] * $item['quantity']),
+                'needs_delivery' => $this->commandForm['needs_delivery'],
+                'delivery_fee' => $this->commandForm['needs_delivery'] ? $this->deliveryFee : 0,
+                'total_amount' => $this->getSubtotal(),
+                'final_amount' => $this->getTotal(),
                 'status' => 'pending'
             ]);
 
@@ -1691,19 +1711,16 @@ class DasheDetailsPage extends Component
             $this->reset(['cart', 'commandForm', 'showCommandForm']);
             
             // Message de succès
-            // $this->dispatch('alert', [
-            //     'type' => 'success',
-            //     'message' => 'Votre commande a été enregistrée avec succès !'
-            // ]);
-
             Alert::success('Votre commande a été enregistrée avec succès !');
 
         } catch (\Exception $e) {
+            dd($e);
             // Message d'erreur
             $this->dispatch('alert', [
                 'type' => 'error',
                 'message' => 'Une erreur est survenue lors de l\'enregistrement de la commande.'
             ]);
+            Alert::success('Une erreur est survenue lors de l\'enregistrement de la commande.');
         }
 
         return redirect()->route('home.page');
