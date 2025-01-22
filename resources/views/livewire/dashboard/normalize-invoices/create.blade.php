@@ -170,8 +170,10 @@
                 </p>
                 
                 <div class="cashier-info">
-                    <p>Caissier(e) : {{ auth()->user()->name }}</p>
-                    <p style="text-size: 5px">Date : {{ date('d/m/Y à H:i:s') }}</p>
+                    <div class="info-row">
+                        <span class="cashier">Caissier(e) : {{ auth()->user()->name }}</span>
+                        <span class="date">Date : {{ date('d/m/Y à H:i:s') }}</span>
+                    </div>
                 </div>
                 
                 <div class="qr-code">
@@ -328,6 +330,25 @@
         border: none;
         border-top: 1px solid #ddd;
         margin: 15px 0;
+    }
+
+    .cashier-info {
+        margin: 10px 0;
+    }
+
+    .info-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 12px;
+    }
+
+    .cashier {
+        font-weight: 500;
+    }
+
+    .date {
+        color: #666;
     }
 </style>
 @endsection
