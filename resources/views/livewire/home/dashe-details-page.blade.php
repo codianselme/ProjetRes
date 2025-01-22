@@ -69,7 +69,7 @@
                                 </small>
                             </div>
                             <button class="btn btn-primary" 
-                                    wire:click="addToCart('{{ $dish['title'] }}', '{{ $dish['price'] }}')"
+                                    wire:click="addToCart(@js($dish['title']), @js($dish['price']))"
                                     wire:loading.attr="disabled">
                                 Ajouter au panier
                             </button>
@@ -464,9 +464,9 @@
 
         .cart-panel {
             position: fixed;
-            right: -400px;
+            right: -500px;
             top: 0;
-            width: 400px;
+            width: 500px;
             height: 100vh;
             background: white;
             box-shadow: -2px 0 10px rgba(0,0,0,0.1);
@@ -529,9 +529,9 @@
 
         .cart-panel {
             position: fixed;
-            right: -400px;
+            right: -500px;
             top: 0;
-            width: 400px;
+            width: 500px;
             height: 100vh;
             background: white;
             box-shadow: -2px 0 10px rgba(0,0,0,0.1);
@@ -582,9 +582,9 @@
 
         .command-form {
             position: fixed;
-            right: -400px;
+            right: -500px;
             top: 0;
-            width: 400px;
+            width: 500px;
             height: 100vh;
             background: white;
             box-shadow: -2px 0 10px rgba(0,0,0,0.1);

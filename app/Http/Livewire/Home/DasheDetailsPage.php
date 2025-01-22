@@ -555,13 +555,13 @@ class DasheDetailsPage extends Component
                     ],
                     [
                         'title' => 'Poulet braisé entier (bicyclette)',
-                        'price' => '4000 FCFA',
+                        'price' => '9000 FCFA',
                         'description' => 'Poulet local entier braisé aux épices traditionnelles',
                         'preparation_time' => '45 minutes'
                     ],
                     [
                         'title' => '½ Poulet braisé (bicyclette)',
-                        'price' => '3000 FCFA',
+                        'price' => '5000 FCFA',
                         'description' => 'Demi-poulet local braisé aux épices traditionnelles',
                         'preparation_time' => '35 minutes'
                     ],
@@ -1278,11 +1278,11 @@ class DasheDetailsPage extends Component
                         'title' => 'Salade au Poulet',
                         'description' => 'Salade fraîche garnie de poulet grillé'
                     ],
-                    [
-                        'image' => 'home/details/a6_salades/4.jpeg',
-                        'title' => 'Salade Floridale',
-                        'description' => 'Salade exotique aux fruits et légumes'
-                    ],
+                    // [
+                    //     'image' => 'home/details/a6_salades/4.jpeg',
+                    //     'title' => 'Salade Floridale',
+                    //     'description' => 'Salade exotique aux fruits et légumes'
+                    // ],
                     [
                         'image' => 'home/details/a6_salades/5.jpeg',
                         'title' => 'Salade Belle Saison',
@@ -1313,11 +1313,11 @@ class DasheDetailsPage extends Component
                     //     'title' => 'Service Soigné',
                     //     'description' => 'Présentation élégante de nos salades'
                     // ],
-                    [
-                        'image' => 'home/details/a6_salades/11.jpeg',
-                        'title' => 'Service Soigné',
-                        'description' => 'Présentation élégante de nos salades'
-                    ],
+                    // [
+                    //     'image' => 'home/details/a6_salades/11.jpeg',
+                    //     'title' => 'Service Soigné',
+                    //     'description' => 'Présentation élégante de nos salades'
+                    // ],
                     [
                         'image' => 'home/details/a6_salades/12.jpeg',
                         'title' => 'Service Soigné',
