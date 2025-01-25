@@ -185,6 +185,12 @@
                                 ) !!}" alt="QR Code"
                                     class="text-center">
                             </center>
+                            {{-- @isset($securityElementsDto['codeMECeFDGI'])
+                                <center> code_MECeF_DGI : {{ $securityElementsDto['codeMECeFDGI'] }}</center>
+                            @endisset
+                            @isset($securityElementsDto['nim'])
+                                <center> Nim : {{ $securityElementsDto['nim'] }}</center>
+                            @endisset --}}
                         @else
                             Numérisation : Annulée
                         @endif
