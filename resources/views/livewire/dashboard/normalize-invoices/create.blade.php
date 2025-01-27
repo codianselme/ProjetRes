@@ -33,7 +33,6 @@
                         </div>
                     </div>
                 </div>
-                <hr>
             </div>
 
             <div>
@@ -312,7 +311,7 @@
     }
 
     .company-info h1 {
-        font-size: 18px;
+        font-size: 16px;
         font-weight: bold;
         margin: 0 0 10px 0;
         color: #2c3e50;
@@ -320,7 +319,7 @@
     }
 
     .company-details {
-        font-size: 14px;
+        font-size: 12px;
     }
 
     .company-details p {
@@ -340,6 +339,7 @@
 
     .cashier-info {
         margin: 10px 0;
+        font-size: 11px;
     }
 
     .info-row {
@@ -355,6 +355,26 @@
 
     .date {
         color: #666;
+    }
+
+    .invoice-content {
+        font-size: 10px;
+    }
+
+    .invoice-details {
+        font-size: 10px;
+    }
+
+    .invoice-items {
+        font-size: 10px;
+    }
+
+    .invoice-items th {
+        font-size: 10px;
+    }
+
+    .invoice-footer {
+        font-size: 11px;
     }
 </style>
 @endsection
