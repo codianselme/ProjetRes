@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\SoftDeletes; 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Sale extends Model
@@ -31,7 +31,7 @@ class Sale extends Model
     ];
 
     /**
-     * Relation : Une vente a plusieurs articles.
+     * Relation : Une vente a plusieurs articles. 
      */
     public function items()
     {

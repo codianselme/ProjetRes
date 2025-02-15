@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Dashboard\Orders;
+namespace App\Http\Livewire\Dashboard\Orders; 
 
 use App\Models\Dish;
 use App\Models\Order;
@@ -64,6 +64,15 @@ class Orders extends Component
         
         // Générer un nouveau numéro de client
         $this->mount();
+    }
+
+    public function deleteClientOrders($clientNumber)
+    {
+        // dd($clientNumber);
+        // $order = Order::where('client_number', $clientNumber)->get();
+        // dd($order);
+        Order::where('client_number', $clientNumber)->delete();
+        session()->flash('message', 'Les commandes du client N° ' . $clientNumber . ' ont été supprimées avec succès.');
     }
 
     public function render()
