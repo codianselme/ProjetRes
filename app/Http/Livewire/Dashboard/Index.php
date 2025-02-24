@@ -12,7 +12,7 @@ use App\Models\DrinkSupply;
 use App\Models\DishCategory;
 use App\Models\DrinkCategory;
 
-class Index extends Component
+class Index extends Component 
 {
     public $totalSales;
     public $totalAmount;
@@ -25,13 +25,15 @@ class Index extends Component
     public $totalUsers;
     public $isCashRegisterOpen;
     public $dataCaisse;
+    public $startDate;
+    public $endDate;
+    public $filterPeriod = 'week'; // valeurs possibles: 'all', 'today', 'week', 'month', 'custom'
 
     public function mount()
     {
-        $this->totalSales = Sale::count();
-        $this->totalAmount = Sale::sum('total_amount');
-        $this->monthlySalesData = $this->getMonthlySalesData();
-        $this->salesByPaymentMethod = $this->getSalesByPaymentMethod();
+        $this->startDate = now()->startOfWeek()->format('Y-m-d');
+        $this->endDate = now()->endOfWeek()->format('Y-m-d');
+        $this->updateStats();
         $this->totalDishes = Dish::count();
         $this->totalDrinks = DrinkSupply::count();
         $this->totalFoodStock = $this->getTotalFoodStock();
@@ -39,6 +41,55 @@ class Index extends Component
         $this->totalUsers = User::count();
         $this->isCashRegisterOpen = $this->checkCashRegisterStatus();
         $this->dataCaisse = $this->checkDataCaisse();
+    }
+
+    public function updatedFilterPeriod()
+    {
+        switch ($this->filterPeriod) {
+            case 'today':
+                $this->startDate = now()->format('Y-m-d');
+                $this->endDate = now()->format('Y-m-d');
+                break;
+            case 'week':
+                $this->startDate = now()->startOfWeek()->format('Y-m-d');
+                $this->endDate = now()->endOfWeek()->format('Y-m-d');
+                break;
+            case 'month':
+                $this->startDate = now()->startOfMonth()->format('Y-m-d');
+                $this->endDate = now()->endOfMonth()->format('Y-m-d');
+                break;
+            case 'all':
+                $this->startDate = null;
+                $this->endDate = null;
+                break;
+        }
+        $this->updateStats();
+    }
+
+    public function updatedStartDate()
+    {
+        $this->filterPeriod = 'custom';
+        $this->updateStats();
+    }
+
+    public function updatedEndDate()
+    {
+        $this->filterPeriod = 'custom';
+        $this->updateStats();
+    }
+
+    public function updateStats()
+    {
+        $query = Sale::query();
+        
+        if ($this->filterPeriod !== 'all') {
+            $query->whereBetween('date', [$this->startDate, $this->endDate]);
+        }
+
+        $this->totalSales = $query->count();
+        $this->totalAmount = $query->sum('total_amount');
+        $this->monthlySalesData = $this->getMonthlySalesData();
+        $this->salesByPaymentMethod = $this->getSalesByPaymentMethod();
     }
 
     public function checkCashRegisterStatus()
@@ -57,9 +108,14 @@ class Index extends Component
 
     public function getMonthlySalesData()
     {
-        return Sale::selectRaw('MONTH(date) as month, SUM(total_amount) as total')
-            ->whereYear('date', Carbon::now()->year)
-            ->groupBy('month')
+        $query = Sale::selectRaw('MONTH(date) as month, SUM(total_amount) as total')
+            ->whereYear('date', Carbon::now()->year);
+            
+        if ($this->filterPeriod !== 'all') {
+            $query->whereBetween('date', [$this->startDate, $this->endDate]);
+        }
+
+        return $query->groupBy('month')
             ->orderBy('month')
             ->pluck('total')
             ->toArray();
@@ -67,8 +123,13 @@ class Index extends Component
 
     public function getSalesByPaymentMethod()
     {
-        return Sale::selectRaw('payment_method, COUNT(*) as count')
-            ->groupBy('payment_method')
+        $query = Sale::selectRaw('payment_method, COUNT(*) as count');
+            
+        if ($this->filterPeriod !== 'all') {
+            $query->whereBetween('date', [$this->startDate, $this->endDate]);
+        }
+
+        return $query->groupBy('payment_method')
             ->pluck('count', 'payment_method')
             ->toArray();
     }

@@ -1,4 +1,5 @@
 <div>
+    <br><br>
     <div class="nk-content">
         <div class="container-fluid">
             <div class="nk-content-inner">
@@ -7,6 +8,27 @@
                         <div class="nk-block-between">
                             <div class="nk-block-head-content">
                                 <h3 class="nk-block-title page-title">Tableau de Bord Administrateur</h3>
+                            </div>
+                            <div class="nk-block-head-content">
+                                <div class="row g-2">
+                                    <div class="col-auto">
+                                        <select wire:model="filterPeriod" class="form-select">
+                                            <option value="all">Toutes les périodes</option>
+                                            <option value="today">Aujourd'hui</option>
+                                            <option value="week">Cette semaine</option>
+                                            <option value="month">Ce mois</option>
+                                            <option value="custom">Personnalisé</option>
+                                        </select>
+                                    </div>
+                                    @if($filterPeriod === 'custom')
+                                    <div class="col-auto">
+                                        <input type="date" wire:model="startDate" class="form-control">
+                                    </div>
+                                    <div class="col-auto">
+                                        <input type="date" wire:model="endDate" class="form-control">
+                                    </div>
+                                    @endif
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -17,7 +39,7 @@
                                 <div class="card-inner">
                                     <div class="card-title-group align-start mb-0">
                                         <div class="card-title">
-                                            <h4 class="title">Total des Ventes</h4>
+                                            <h4 class="title">Total des Ventes</h4> 
                                         </div>
                                     </div>
                                     <div class="card-amount">
