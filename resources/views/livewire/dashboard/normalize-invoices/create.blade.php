@@ -24,7 +24,7 @@
                         <img src="{{ asset('home/site-images/logo.png') }}" alt="Logo" class="logo">
                     </div>
                     <div class="company-info">
-                        <h1>LES SAVEURS DU CORRIDOR<br>(METCHONHOUN MARIUS MALIC DUBOIX)</h1>
+                        <h1>BAR RESTAURANT<br>LES SAVEURS DU CORRIDOR</h1>
                         <div class="company-details">
                             <p><strong>RCCM :</strong> {{ env('RCCM') }} | <strong>IFU :</strong> {{ env('SGMEF_IFU') }}</p>
                             <p><strong>Tél :</strong> {{ env('TEL') }}</p>
