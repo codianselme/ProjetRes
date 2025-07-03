@@ -24,7 +24,7 @@
                         <img src="{{ asset('home/site-images/logo.png') }}" alt="Logo" class="logo">
                     </div>
                     <div class="company-info">
-                        <h1>BAR RESTAURANT<br>LES SAVEURS DU CORIDOR</h1>
+                        <h1>LES SAVEURS DU CORRIDOR<br>(METCHONHOUN MARIUS MALIC DUBOIX)</h1>
                         <div class="company-details">
                             <p><strong>RCCM :</strong> {{ env('RCCM') }} | <strong>IFU :</strong> {{ env('SGMEF_IFU') }}</p>
                             <p><strong>Tél :</strong> {{ env('TEL') }}</p>
@@ -129,26 +129,49 @@
                     </tbody>
                     <tfoot>
                         <tr class="totals-separator">
-                            <td colspan="3" class="total">Total HT</td>
+                            <td colspan="3" class="total">@if($item['taxGroup'] == 'A') EXONERES @else Total HT @endif</td>
                             <td style="text-align: right">
+                            @if($item['taxGroup'] == 'A')
+                                {{ $data['type'] == 'FA' ? '-' : '' }}
+                                {{ number_format($createInvoice['taa'] ?? 0) }}
+                            @else
                                 {{ $data['type'] == 'FA' ? '-' : '' }}
                                 {{ number_format((($createInvoice['hab'] ?? 0) + ($createInvoice['had'] ?? 0)), 0, '', ' ') }}
+                            @endif
                             </td>
                         </tr>
+                        @if(collect($data['items'])->contains('taxGroup', 'B'))
+                            <tr>
+                                <td colspan="3" class="total">Total H.T. [B] 18%</td>
+                                <td style="text-align: right">
+                                    {{ $data['type'] == 'FA' ? '-' : '' }}
+                                    {{ number_format($createInvoice['hab'] ?? 0) }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" class="total">Total TVA [B] 18%</td>
+                                <td style="text-align: right">
+                                    {{ $data['type'] == 'FA' ? '-' : '' }}
+                                    {{ number_format($createInvoice['vab'] ?? 0) }}
+                                </td>
+                            </tr>
+                        @endif
+                        @if($item['taxGroup'] != 'A')
+                            <tr>
+                                <td colspan="3" class="total">TVA 18%</td>
+                                <td style="text-align: right">
+                                    {{ $data['type'] == 'FA' ? '-' : '' }}
+                                    {{ number_format((($createInvoice['vab'] ?? 0) + ($createInvoice['vad'] ?? 0)), 0, '', ' ') }}
+                                </td>
+                            </tr>
+                        @endif
                         <tr>
-                            <td colspan="3" class="total">TVA 18%</td>
+                            <td colspan="3" class="total">Montant AIB {{ isset($data['aib']) ? '('. ( $data['aib'] == 'A' ? '1%' : '5%' ) . ')' : '' }}</td>
                             <td style="text-align: right">
-                                {{ $data['type'] == 'FA' ? '-' : '' }}
-                                {{ number_format((($createInvoice['vab'] ?? 0) + ($createInvoice['vad'] ?? 0)), 0, '', ' ') }}
-                            </td>
-                        </tr>
-                        {{-- <tr>
-                            <td colspan="3" class="total">Montant AIB <small>{{ isset($data['aib']) ? '('. ( $data['aib'] == 'A' ? '1%' : '5%' ) . ')' : '' }}</small>:</td>
-                            <td>
                                 {{ $data['type'] == 'FA' ? '-' : '' }}
                                 {{ ($createInvoice['aib'] ?? 0) }}
                             </td>
-                        </tr> --}}
+                        </tr>
                         <tr class="totals-separator">
                             <td colspan="3" class="total">Net à payer</td>
                             <td style="text-align: right">
@@ -170,7 +193,7 @@
                 
                 <div class="cashier-info">
                     <div class="info-row">
-                        <span class="cashier">Caissier(e) : {{ auth()->user()->name }}</span>
+                        <span class="cashier">Caissier(e) : [{{ auth()->user()->id }}] {{ auth()->user()->name }}</span>
                         <span class="date">Date : {{ date('d/m/Y à H:i:s') }}</span>
                     </div>
                 </div>
@@ -184,12 +207,18 @@
                                 ) !!}" alt="QR Code"
                                     class="text-center">
                             </center>
-                            {{-- @isset($securityElementsDto['codeMECeFDGI'])
-                                <center> code_MECeF_DGI : {{ $securityElementsDto['codeMECeFDGI'] }}</center>
+                            @isset($securityElementsDto['codeMECeFDGI'])
+                                <center> Code MECeF/DGI : {{ $securityElementsDto['codeMECeFDGI'] }}</center>
                             @endisset
                             @isset($securityElementsDto['nim'])
-                                <center> Nim : {{ $securityElementsDto['nim'] }}</center>
-                            @endisset --}}
+                                <center> MECeF NIM: {{ $securityElementsDto['nim'] }}</center>
+                            @endisset
+                            @isset($securityElementsDto['counters'])
+                                <center> MECeF Compteurs: {{ $securityElementsDto['counters'] }}</center>
+                            @endisset
+                            @isset($securityElementsDto['dateTime'])
+                                <center> MECeF Heure: {{ $securityElementsDto['dateTime'] }}</center>
+                            @endisset
                         @else
                             Numérisation : Annulée
                         @endif
